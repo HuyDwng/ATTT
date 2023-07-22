@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food's Blog</title>
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <!--Reset Css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <!---->
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.4.0-web/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="blog">
+        <header class="header">
+            <div class="grid">
+                <nav class="navbar">
+                    <ul class="navlist">
+                        <li class="navitem navhasnotify">
+                            <a href="" class="navlink">
+                                <i class="navicon fa-solid fa-bell"></i>
+                                Thông báo
+                            </a>
+                            <div class="navnotify">
+                                <header class="notihead">
+                                    <h3>Thông báo mới</h3>
+                                </header>
+                                <ul class="notilist">
+                                    <li class="notiitem">
+                                        <a href="" class="notilink">
+                                            <div class="notiimg"><img src="./assets/images/banh mi ba huynh.jpg" alt="image" class="linkimg"></div>
+                                            <div class="notiinfo">
+                                                <span class="notiname">Bánh mì Ô môi Bà Huynh tự hào với thương hiệu ô môi gần 40 năm tuổi tại Sài Thành</span>
+                                                <span class="notidescribe">Công Quận và 1412 người đã thích bài viết của bạn</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="notiitem">
+                                        <a href="" class="notilink">
+                                            <div class="notiimg"><img src="./assets/images/Com ba ghien.jpeg" alt="image" class="linkimg"></div>
+                                            <div class="notiinfo">
+                                                <span class="notiname">Cơm tấm Ba Ghiền được Michelin gọi tên, khách hàng tranh cãi, chủ quán nói gì?</span>
+                                                <span class="notidescribe">Quý Đào đã bình luận bài viết của bạn</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="notiitem notiviewed">
+                                        <a href="" class="notilink">
+                                            <div class="notiimg"><img src="./assets/images/KFC.jpg" alt="image" class="linkimg"></div>
+                                            <div class="notiinfo">
+                                                <span class="notiname">Hàng trăm người ngộ độc thực phẩm, chuỗi nhà hàng KFC phải đóng cửa</span>
+                                                <span class="notidescribe">Trần Hậu đã bình luận bài viết của bạn</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <footer class="notifoot">
+                                    <a href="" class="notiall">Xem tất cả</a>
+                                </footer>
+                            </div>
+                        </li>
+                        <li class="navitem">
+                            <a href="" class="navlink">
+                                <i class="navicon fa-solid fa-question"></i>
+                                Trợ giúp
+                            </a>
+                        </li>
+                        <li class="navitem item-strong item-separate">Đăng Ký</li>
+                        <li class="navitem item-strong">Đăng nhập</li>
+                    </ul>
+                </nav>
+
+                <div class="withsearch">
+                    <div class="headerlogo">
+                        <img src="https://i.redd.it/f8fejuy3tqi91.png" alt="Logo" class="logoimg">
+                        <div class="logoname">Food's Blog</div>
+                    </div>
+                    
+                    <div class="headersearch">
+                        <div class="inputwrap">
+                            <input type="text" class="searchinput" placeholder="Tìm kiếm">
+                            
+                            <!-- Search History -->
+                            <div class="searchhistory">
+                                <h3 class="historyheading">Lịch sử tìm kiếm</h3>
+                                <ul class="historylist">
+                                    <li class="historyitem">
+                                        <a href="">Bún bò nước lèo vị trà sữa</a>
+                                    </li>
+                                    <li class="historyitem">
+                                        <a href="">Cơm chang canh nước súp sting</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="searchbtn">
+                            <i class="fa-solid fa-magnifying-glass searchicon"></i>
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="danhmuc">
+                <ul>
+                        <li class="food">
+                            <a href="#">
+                                Đồ Ăn
+                                <i class="fa-solid fa-utensils"></i>
+                            </a>
+                        </li>
+                        <li class="drink">
+                            <a href="#">
+                                Thức Uống
+                                <i class="fa-solid fa-martini-glass-citrus"></i>
+                            </a>
+                        </li>
+                        <li class="event">
+                            <a href="#">
+                                Sự Kiện
+                                <i class="fa-solid fa-torii-gate"></i>
+                            </a>
+                        </li>
+                    </ul>
+            </div>
+            <div class="background-content">
+            <!--image slider start-->
+            <div class="content-left">
+            <div class="title">
+                <h2>Bài Viết Hay</h2>
+                <hr>
+            </div>
+            <div class="slider">
+                <div class="slides">
+                    <!--radio button start-->
+                    <input type="radio" name="radio-choose" id="radio1">
+                    <input type="radio" name="radio-choose" id="radio2">
+                    <input type="radio" name="radio-choose" id="radio3">
+                    <input type="radio" name="radio-choose" id="radio4">
+                    <!--radio button end-->
+                    <!--slide images start-->
+                    <div class="slide first">
+                        <a href="#">
+                            <img src="./assets/images/food-hotel-hanoi-2023.jpg" alt="event">
+                            <div class="info">
+                                <h2>FOOD & HOTEL HANOI 2023</h2>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="slide">
+                        <a href="#">
+                            <img src="./assets/images/vietnam-foodexpo-2023.jpg" alt="event">
+                            <div class="info">
+                                <h2>VietNam FoodExpo 2023</h2>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="slide">
+                        <a href="#">
+                            <img src="./assets/images/vietnam-foodtech-2023.jpg" alt="event">
+                            <div class="info">
+                                <h2>VietNam FoodTech 2023</h2>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="slide">
+                        <a href="#">
+                            <img src="./assets/images/trien-lam-quoc-te-cafe-viet-nam-2024.jpg" alt="event">
+                            <div class="info">
+                                <h2>Vietnam Int’l Café Show 2024</h2>
+                            </div>
+                        </a>
+                    </div>
+                    <!--slide images end-->
+                    <!--auto start-->
+                    <div class="navigation-auto">
+                        <div class="auto-btn1"></div>
+                        <div class="auto-btn2"></div>
+                        <div class="auto-btn3"></div>
+                        <div class="auto-btn4"></div>
+                    </div>
+                    <!--auto end-->
+                        <div class="navigation-manual">
+                            <label for="radio1" class="manual-bnt" id="radio1" onclick="onClick(this)"></label>
+                            <label for="radio2" class="manual-bnt" id="radio2" onclick="onClick(this)"></label>
+                            <label for="radio3" class="manual-bnt" id="radio3" onclick="onClick(this)"></label>
+                            <label for="radio4" class="manual-bnt" id="radio4" onclick="onClick(this)"></label>
+                        </div>
+                </div>
+            </div>
+            </div>
+            <!--image slider end-->
+            <div class="content-right" id="sticky">
+                <div class="title">
+                    <h2>Bài Viết Mới Nhất</h2>
+                    <hr>
+                </div>
+                <div class="child-right">
+                <div class="baiviet">
+                    <a href="#">
+                        <div class="img"><img src="./assets/images/fes1.jpg" alt="saigontourist"></div>
+                        <div class="description-baiviet">
+                            <h3>'Lễ hội Văn hóa Ẩm thực, Món ngon Saigontourist Group 2023' mở cửa</h3>
+                            <p>"Lễ hội Văn hóa Ẩm thực, Món ngon Saigontourist Group 2023" do Tổng Công ty Du lịch Sài Gòn (Saigontourist Group) tổ chức chính thức khai mạc vào lúc 17g30 ngày 20.4.2023 tại Khu Du lịch Văn Thánh, TP.HCM.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="baiviet">
+                    <a href="#">
+                        <div class="img"><img src="./assets/images/đại hội.png" alt="Trà sữa"></div>
+                        <div class="description-baiviet">
+                            <h3>Ngày hội Ẩm thực Năm Châu năm 2023 sẽ được tổ chức tại TP.HCM</h3>
+                            <p>Chiều ngày 5 tháng 5, 2023 tại khách sạn Liberty Central Saigon City Point, 59 Pasteur, Quận 1 đã diễn ra buổi họp báo công bố “Ngày hội Ẩm thực Năm châu” (tên tiếng Anh: Five Continents Food Festival) năm 2023. </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="baiviet">
+                    <a href="#">
+                        <div class="img"><img src="./assets/images/hoichothai.jpg" alt="Chè hạt sen"></div>
+                        <div class="description-baiviet">
+                            <h3>Hội chợ mua sắm và ẩm thực Thái Lan Tân Bình 2023</h3>
+                            <p>Hội chợ Thái Lan Tân Bình hay còn gọi là Hội chợ hàng Thái Lan tại Sài Gòn là sự kiện được diễn ra thường niên hàng năm.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="baiviet">
+                    <a href="#">
+                        <div class="img"><img src="./assets/images/the-coffee-expo-2023.jpg" alt="Kem milo"></div>
+                        <div class="description-baiviet">
+                            <h3>THE COFFEE EXPO VIETNAM 2023 – Triển lãm Quốc tế Cà Phê, Bánh và Trà tại Việt Nam</h3>
+                            <p>Là sự kiện thương mại nổi bật trong ngành cà phê, trà và bánh ngọt, The Coffee Expo Vietnam 2023 sẽ được tổ chức vào ngày 02 – 04/11/2023 tại Trung tâm Hội nghị và Triển lãm Sài Gòn (SECC), Quận 7, TP.HCM.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            </div>
+           </div>
+            <div class="random-content">
+                <div class="child-random">
+                    <div class="title">
+                        <h2>Bài Viết Ngẫu Nhiên</h2>
+                        <hr>
+                    </div>
+                <div class="content">
+                    <div class="img">
+                        <a href="#">
+                            <img src="./assets/images/food-ingredients-vietnam-2024-new.jpg" alt="Xu hướng">
+                        </a>
+                    </div>
+                    <div class="description-content">
+                        <a href="#">
+                            <h3>Food Ingredients Vietnam 2024</h3>
+                        </a>
+                        <p>Từ ngày 09 – 11 tháng 10 năm 2024, triển lãm Food Ingredients Vietnam 2024 (Fi Vietnam 2024) sẽ diễn ra tại Trung tâm Hội chợ Triển lãm Sài Gòn (SECC), dự kiến thu hút hơn 4.700 chuyên gia trong ngành.</p>
+                        <a href="#">
+                            <p class="XemThem">Xem thêm</p>
+                        </a>
+                        <p>February 16, 2023</p>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="img">
+                        <a href="#">
+                            <img src="./assets/images/learn-play-festival-lapf-2023.jpg" alt="chè trứng">
+                        </a>
+                    </div>
+                    <div class="description-content">
+                        <a href="#">
+                            <h3>LAPF 2023 – LEARN & PLAY FESTIVAL</h3>
+                        </a>
+                        <p>LAPF 2023 – Learn & Play Festival được tổ chức tại Trung tâm Thương mại Thế giới Thành phố mới Bình Dương (WTC EXPO), từ ngày 14/09/2023 đến ngày 16/09/2023.</p>
+                        <a href="#">
+                            <p class="XemThem">Xem thêm</p>
+                        </a>
+                        <p>June 01, 2023</p>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="img">
+                        <a href="#">
+                            <img src="./assets/images/lienhoanamthuc.jpg" alt="sữa">
+                        </a>
+                    </div>
+                    <div class="description-content">
+                        <a href="#">
+                            <h3>Liên hoan “Ẩm thực Hương sắc Phương Nam" năm 2023</h3>
+                        </a>
+                        <p>Liên hoan "Ẩm thực Hương sắc Phương Nam" là sự kiện định kỳ của Công ty Cổ phần Dịch vụ - Du lịch Phú Thọ và các đơn vị Thành viên Saigontourist Group tổ chức tại Công viên Văn hóa Đầm Sen. Đây cũng là dịp tôn vinh và giới thiệu đến du khách trong nước và quốc tế các giá trị văn hóa ẩm thực của Việt Nam nói chung và của vùng đất phương Nam nói riêng.</p>
+                        <a href="#">
+                            <p class="XemThem">Xem thêm</p>
+                        </a>
+                        <p>May 22, 2023</p>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="img">
+                        <a href="#">
+                            <img src="./assets/images/bun.jpg" alt="cà phê trứng">
+                        </a>
+                    </div>
+                    <div class="description-content">
+                        <a href="#">
+                            <h3>Sắp diễn ra Lễ hội ẩm thực “Tinh hoa nghề bún” 2023</h3>
+                        </a>
+                        <p>Tại Festival Nghề truyền thống Huế 2023 này, những nét tinh hoa của nghề bún sẽ được vinh danh trong Lễ hội Ẩm thực. Dự kiến, Lễ hội diễn ra từ ngày 29/4 - 2/5 tại công viên Thương Bạc, TP. Huế (Thừa Thiên Huế).</p>
+                        <a href="#">
+                            <p class="XemThem">Xem thêm</p>
+                        </a>
+                        <p>April 19, 2023</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="grid">
+                <div class="gridrow">
+                    <div class="gridcol">
+                        <h3 class="footerheading">Hỗ trợ</h3>
+                        <ul class="footerlist">
+                            <li class="footeritem">
+                                <a href="" class="itemlink">Trung Tâm Trợ Giúp</a>
+                            </li>
+                            <li class="footeritem">
+                                <a href="" class="itemlink">Gửi Yêu Cầu Hỗ Trợ</a>
+                            </li>
+                            <li class="footeritem">
+                                <a href="" class="itemlink">Hướng Dẫn Xem Web</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="gridcol">
+                        <h3 class="footerheading">Chính sách</h3>
+                        <ul class="footerlist">
+                            <li class="footeritem">
+                                <a href="" class="itemlink">Chính Sách Bảo Mật</a>
+                            </li>
+                            <li class="footeritem">
+                                <a href="" class="itemlink">Chính Sách Giải Quyết Khiếu Nại</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="gridcol">
+                        <h3 class="footerheading">Theo dõi chúng tôi</h3>
+                        <ul class="footerlist">
+                            <li class="footeritem">
+                                <a href="" class="itemlink">
+                                    <i class="fa-brands fa-facebook"></i>
+                                    Facebook
+                                </a>
+                            </li>
+                            <li class="footeritem">
+                                <a href="" class="itemlink">
+                                    <i class="fa-brands fa-instagram"></i>
+                                    Instagram
+                                </a>
+                            </li>
+                            <li class="footeritem">
+                                <a href="" class="itemlink">
+                                    <i class="fa-brands fa-youtube"></i>
+                                    Youtube
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="gridcol">
+                        <h3 class="footerheading">Liên hệ</h3>
+                        <ul class="footerlist">
+                            <li class="footeritem">
+                                <div class="itemcontact">
+                                    <i class="fa-solid fa-phone"></i>
+                                    Tel: 1900 6969
+                                </div>
+                            </li>
+                            <li class="footeritem">
+                                <div class="itemcontact">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    Mail: 
+                                    <a href="blogfood@gmail.com" class="itemlink">blogfood@gmail.com</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!--Layout-->
+    <!-- <div class="modal">
+        <div class="modaloverlay">
+
+        </div>
+        <div class="modalbody"> -->
+            <!-- Register Form-->
+            <!-- <div class="mainform">
+                <div class="maincontainer">
+                    <div class="mainheader">
+                        <h3 class="mainheading">Đăng Ký</h3>
+                    </div>
+
+                    <div class="form">
+                        <div class="formgroup">
+                            <input type="text" class="forminput" placeholder="Nhập email của bạn">
+                        </div>
+                        <div class="formgroup">
+                            <input type="text" class="forminput" placeholder="Nhập mật khẩu">
+                        </div>
+                        <div class="formgroup">
+                            <input type="text" class="forminput" placeholder="Nhập lại mật khẩu">
+                        </div>
+                    </div>
+
+                    <div class="mainconfirm">
+                        <p class="mainpolicy">
+                            Bằng cách đăng nhập hoặc đăng ký, bạn đồng ý với
+                            <a href="" class="policylink">Chính sách quy định của Wibu</a>
+                        </p>
+                    </div>
+                    <div class="maincontrols">
+                        <button class="btn">Đăng Ký</button>
+                        <div class="question">
+                            Bạn đã có tài khoản?
+                            <a href="" class="switch">Đăng nhập ngay</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mainsocials">
+                    <a href="" class="btn btnicon btnfacebook">
+                        <i class="fa-brands fa-square-facebook"></i>
+                        Đăng ký bằng Facebook
+                    </a>
+                    <a href="" class="btn btnicon btngoogle">
+                        <i class="fa-brands fa-google"></i>
+                        Đăng ý bằng Google
+                    </a>
+                </div>
+            </div> -->
+            <!-- Login Form -->
+            <!-- <div class="mainform">
+                <div class="maincontainer">
+                    <div class="mainheader">
+                        <h3 class="mainheading">Đăng Nhập</h3>
+                    </div>
+
+                    <div class="form">
+                        <div class="formgroup">
+                            <input type="text" class="forminput" placeholder="Nhập email của bạn">
+                        </div>
+                        <div class="formgroup">
+                            <input type="text" class="forminput" placeholder="Nhập mật khẩu">
+                        </div>
+                    </div>
+
+                    <div class="mainforgot">
+                        <div class="mainhelp">
+                            <a href="" class="helplink">Quên mật khẩu</a>
+                            <span class="helpseparate"></span>
+                            <a href="" class="helplink">Cần trợ giúp ?</a>
+                        </div>
+                    </div>
+                    <div class="maincontrols">
+                        <button class="btn">Đăng Nhập</button>
+                        <div class="question">
+                            Bạn chưa có tài khoản?
+                            <a href="" class="switch">Đăng ký ngay</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mainsocials">
+                    <a href="" class="btn btnicon btnfacebook">
+                        <i class="fa-brands fa-square-facebook"></i>
+                        Đăng nhập bằng Facebook
+                    </a>
+                    <a href="" class="btn btnicon btngoogle">
+                        <i class="fa-brands fa-google"></i>
+                        Đăng nhập bằng Google
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>
