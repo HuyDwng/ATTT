@@ -1,0 +1,7 @@
+django-admin startproject MilkyWay ==> tạo thư mục gốc của project
+py manage.py runserver ==> chạy server (cần phải nằm trong thư mục gốc - MilkyWay)
+cd MilkyWaycd MilkyWay ==> chuyển từ thư mục hiện tại sang thư mục MilkyWay
+python -m django startapp HomePage ==> tạo thư mục xây dựng các website - HomePage
+Chú ý: 
+    + Save tất cả file trước khi chạy
+    + Sửa code ==> Ctrl + C để dừng chương trình đang thực thi
