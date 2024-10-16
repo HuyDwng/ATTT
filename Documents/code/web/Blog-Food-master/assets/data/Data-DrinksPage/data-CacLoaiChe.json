@@ -1,0 +1,65 @@
+[
+    {
+        "img":"dauvan.jpg",
+        "alt":"che",
+        "title":"Review",
+        "name_food":"Chè đậu ván",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Chè đậu ván là món ăn vừa ngon vừa dễ thực hiện, lại giải nhiệt cực tốt vào ngày nắng nên được rất nhiều người yêu thích."
+    },
+    {
+        "img":"dautrang.jpg",
+        "alt":"che",
+        "title":"Review",
+        "name_food":"Chè đậu trắng nước cốt dừa",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Đây là món ăn quen thuộc, có nguồn gốc xuất xứ từ nền ẩm thực vùng Nam Bộ. Chè có vị bùi của đậu, dẻo thơm của gạo nếp quyện cùng vị béo ngậy của nước cốt dừa “đốn tim” bất cứ thực khách nào."
+    },
+    {
+        "img":"chehatsen.jpg",
+        "alt":"che",
+        "title":"Review",
+        "name_food":"Chè hạt sen long nhãn",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Chè hạt sen long nhãn không chỉ là món ăn tráng miệng ngon mà còn là bài thuốc quý rất có lợi cho sức khỏe. Thế nhưng, bạn cũng cần chú ý, những người bị bệnh đầy bụng, khó tiêu, người mắc bệnh tim nên hạn chế sử dụng loại chè này."
+    },
+    {
+        "img":"dauxanh.jpg",
+        "alt":"che",
+        "title":"Truyền thống",
+        "name_food":"Chè đậu xanh phổ tai",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Thành phần nguyên liệu chế biến chè đậu xanh tai phổ gồm có 200g đậu xanh nguyên vỏ, 1 ống vani, 5g phổ tai và 200g đường cát trắng."
+    },
+    {
+        "img":"chebap.jpg",
+        "alt":"che",
+        "title":"Review",
+        "name_food":"Chè bắp",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Chè bắp là một trong số các món chè ngon dễ làm mùa hè."
+    },
+    {
+        "img":"chethapcam.jpg",
+        "alt":"che",
+        "title":"Review",
+        "name_food":"Chè thập cẩm",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Chè thập cẩm là sự kết hợp của nhiều nguyên liệu như đậu đen, đậu đỏ, đậu xanh, đậu nành, khoai môn, khoai lang… Đây đều là các nguyên liệu chứa nhiều dinh dưỡng nên rất tốt cho sức khỏe."
+    },
+    {
+        "img":"chebuoi.jpg",
+        "alt":"che",
+        "title":"Review",
+        "name_food":"Chè bưởi giòn dai",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Chè bưởi là món ăn quen thuộc được rất nhiều người yêu thích không chỉ bởi hương vị ngọt, thanh mát mà còn có nhiều công dụng với sức khỏe, chăm sóc sắc đẹp."
+    }
+]

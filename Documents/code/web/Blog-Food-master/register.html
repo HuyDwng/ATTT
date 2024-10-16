@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food's Blog</title>
+    <link rel="stylesheet" href="./assets/css/form.css">
+    <link rel="stylesheet" href="./assets/css/mobile-content(short).css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <!--Reset Css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="main">
+        <form action="" method="POST" class="form" id="form-1">
+            <h3 class="heading">Đăng Ký</h3>
+
+            <div class="spacer"></div>
+                <div class="form-gr">
+                    <label for="account" class="form-lb">Tên đăng nhập</label>
+                    <input type="text" name="account" id="account" placeholder="Nhập tên đăng nhập">
+                    <span class="form-mess"></span>
+                </div>
+
+                <div class="form-gr">
+                    <label for="email" class="form-lb">Email</label> 
+                    <br>
+                    <input type="text" name="email" id="email" placeholder="Nhập email">
+                    <span class="form-mess"></span>
+                </div>
+
+                <div class="form-gr">
+                    <label for="password" class="form-lb">Mật khẩu</label>
+                    <br>
+                    <input type="password" name="password" id="password" placeholder="Nhập mật khẩu">
+                    <span class="form-mess"></span>
+                </div>
+
+                <div class="form-gr">
+                    <label for="password-conf" class="form-lb">Nhập lại mật khẩu</label>
+                    <input type="password" name="password-conf" id="password-conf" placeholder="Nhập lại mật khẩu">
+                    <span class="form-mess"></span>
+                </div>
+
+                <button class="form-submit">Đăng ký</button>
+        </form>
+    </div>
+
+    <script src="./assets/js/validator.js"></script>
+    <!-- Expect -->
+    <script>
+        Validator({
+            form: '#form-1', 
+            errorSelector: '.form-mess',
+            rules: [
+                Validator.isRequired('#account'),
+                Validator.isRequired('#email'),
+                Validator.isEmail('#email'),
+                Validator.minLength('#password', 6),
+                Validator.isRequired('#password-conf'),
+                Validator.isConfirmed('#password-conf', function () {
+                    return document.querySelector('#form-1 #password').value;
+                })
+            ]
+        });
+    </script>
+</body>
+</html>

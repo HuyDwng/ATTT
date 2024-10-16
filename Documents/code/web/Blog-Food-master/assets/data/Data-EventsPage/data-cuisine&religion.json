@@ -1,0 +1,65 @@
+[
+    {
+        "img":"dothai.webp",
+        "alt":"tongiao",
+        "title":"Do Thái",
+        "name_food":"Yom Kippur và Purim",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Trong Do Thái giáo, Yom Kippur, “Ngày Chuộc Tội”, là ngày linh thiêng nhất trong năm. Một ngày lễ khác của người Do Thái, Purim, liên quan đến việc gửi quà tặng thực phẩm cho bạn bè có thể bao gồm hamantashen..."
+    },
+    {
+        "img":"hoigiao.webp",
+        "alt":"tongiao",
+        "title":"Hồi giáo",
+        "name_food":"Halal và Haram",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Giáo lý Hồi giáo nói rằng người Hồi giáo chỉ có thể ăn các loại thực phẩm là halal. Kinh Qur’an dạy rằng động vật nên được chăm sóc và đối xử tôn trọng, vì vậy trong khi bạn có thể ăn thịt, con vật phải được giết mổ đúng cách, với máu rút hết."
+    },
+    {
+        "img":"daohoi.webp",
+        "alt":"tongiao",
+        "title":"Đạo Hồi",
+        "name_food":"Ramadan",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Ăn chay trong tháng Ramadan là một trong năm trụ cột của đạo Hồi. Kỳ nghỉ kéo dài hàng tháng là thời gian để tôn thờ và tăng cường mối quan hệ gia đình và cộng đồng."
+    },
+    {
+        "img":"kosher.webp",
+        "alt":"tongiao",
+        "title":"Do Thái",
+        "name_food":"Giữ Kosher",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Một số người Do Thái tuân theo các quy tắc ăn kiêng cấm một số loại thực phẩm, chẳng hạn như thịt lợn hoặc động vật có vỏ."
+    },
+    {
+        "img":"hoigiaoo.webp",
+        "alt":"tongiao",
+        "title":"Hồi Giáo",
+        "name_food":"Eid al-Fitr",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Người Hồi giáo kỷ niệm kết thúc tháng Ramadan bằng một lễ hội có tên Eid al-Fitr."
+    },
+    {
+        "img":"andogiao.webp",
+        "alt":"tongiao",
+        "title":"Ấn Độ giáo",
+        "name_food":"Ấn Độ giáo",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Trong Ấn Độ giáo, việc ăn thịt thường không được chấp thuận và được coi là điều mà tín hữu có thể tránh được."
+    },
+    {
+        "img":"phatgiao.webp",
+        "alt":"tongiao",
+        "title":"Phật giáo",
+        "name_food":"Phật giáo",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Phật tử tin vào tái sinh, và một trong những nguyên lý cơ bản của tôn giáo là “Không sát sinh.”"
+    }
+]

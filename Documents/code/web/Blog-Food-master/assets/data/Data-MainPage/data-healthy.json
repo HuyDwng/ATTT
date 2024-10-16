@@ -1,0 +1,65 @@
+[
+    {
+        "img":"banhmiden.jpg",
+        "alt":"bánh mì đen và trứng ốp la",
+        "title":"Giảm cân",
+        "name_food":"bánh mì đen & trứng ốp la",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Ai nói ăn tinh bột không thể giảm cân? Còn giảm cân tốt là đằng khác bạn nhé! Cùng tìm hiểu cách giảm cân bằng bánh mì đen và trứng ốp la nhé!"
+    },
+    {
+        "img":"comgaoluc.jpg",
+        "alt":"Cơm gạo lức & ức gà",
+        "title":"Giảm cân",
+        "name_food":"Cơm gạo lức & ức gà",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Vừa ít tinh bột nhưng lại đầy đủ chất. Mời bạn cùng mình thực hiện ngay bí quyết bữa ăn ngon với món Cơm gạo lứt ức gà nhé!"
+    },
+    {
+        "img":"namxao.jpg",
+        "alt":"Nấm xào rau củ",
+        "title":"Giảm cân",
+        "name_food":"Nấm xào rau củ",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Nấm rơm thường được dùng trong nhiều món xào chay bởi vị ngọt thanh, dễ ăn, dễ chế biến và bổ dưỡng mà nó mang lại."
+    },
+    {
+        "img":"dauhu.jpg",
+        "alt":"đậu phụ",
+        "title":"Giảm cân",
+        "name_food":"Đậu phụ",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Giảm cân bằng thực đơn với đậu phụ là một trong những phương pháp giảm cân được nhiều người sử dụng."
+    },
+    {
+        "img":"trungcuon.jpg",
+        "alt":"trứng cuộn",
+        "title":"Giảm cân",
+        "name_food":"Trứng cuộn",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Trứng cuộn là món cuốn có thể được coi là một món ăn rất phổ biến ở Hàn Quốc và được rất nhiều người yêu thích."
+    },
+    {
+        "img":"miy.jpg",
+        "alt":"Mì Ý",
+        "title":"Giảm cân",
+        "name_food":"Mì Ý xào thịt bò",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Không cần phải ra hàng, cũng chẳng phải đi xa. Chỉ cần vào bếp 15 phút bạn sẽ có ngay đĩa mì Ý xào bò thơm ngon."
+    },
+    {
+        "img":"caixoan.jpg",
+        "alt":"Salad cải xoăn & đậu gà",
+        "title":"Giảm cân",
+        "name_food":"Salad cải xoăn & đậu gà",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Cách làm salad cải xoăn đậu gà cho Món ăn sáng đủ cho 4 người ăn chỉ mất khoảng 25 phút cho cả bước chuẩn bị và thực hiện."
+    }
+]

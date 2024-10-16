@@ -1,0 +1,92 @@
+/*design tablet and mobile width < 1024px*/
+@media screen and (max-width:1024px){
+    .container{
+        width:90%;
+    }
+}
+/*design fold and mobile phone <740px*/
+@media screen and (max-width:740px){
+    .header{
+        height:160px;
+    }
+    .navnotify {
+        left: 0;
+        width: 200px;
+    }
+    .navnotify::before {
+        content: "";
+        border-width: 5px 3px;
+        position: absolute;
+        left: 0px;
+        top:-10px;
+    }
+    .withsearch{
+        flex-direction: column;
+    }
+    .headersearch {
+        width: 100%;
+        margin-left: 0;
+    }
+    .content img{
+        height:230px;
+        margin-bottom:3.8rem;   
+    }
+    .page-title{
+        line-height:3rem;
+        padding-bottom:4rem;
+    }
+    .page-title h1{
+        line-height:5rem;
+        font-size: 3.2rem;
+    }
+
+}
+/*design mobile width >= 360px and width < 740px*/
+@media screen and (min-width:360px) and (max-width:740px){
+    #toggle{
+        position:absolute;
+        right:50px;
+        top:8px;
+        width: 3%;
+        height: 100%;
+        font-size: 1.5rem;
+        color: var(--black-color);
+        cursor: pointer;
+    }
+}
+
+/*design tablet width >= 740px and width < 1024px*/
+@media screen and (min-width:740px) and (max-width:1024px){
+    .page-title h1{
+        font-size: 5rem;
+    }
+    .content img{
+        height:450px;
+        margin-bottom:3.8rem;   
+    }
+}
+
+/*design fold phone*/
+@media screen and (max-width:360px){
+    .danhmuc{
+        padding:20px 0px 10px 10px;
+        margin:0;
+    }
+    div.danhmuc ul li a{
+        width:100%;
+        font-size:12.1px;
+    }
+    .info{
+        font-size:10px;
+    }
+    #toggle{
+        position:absolute;
+        right:20px;
+        top:13px;
+        width: 3%;
+        height: 100%;
+        font-size: 1.5rem;
+        color: var(--black-color);
+        cursor: pointer;
+    }
+}

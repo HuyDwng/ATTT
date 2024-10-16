@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food's Blog</title>
+    <link rel="stylesheet" href="./assets/css/sup1.css">
+    <link rel="stylesheet" href="./assets/css/mobile-content(long).css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <!--Reset Css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="blog">
+        <header class="header">
+            <div class="grid">
+                <nav class="navbar">
+                    <ul class="navlist">
+                        <li class="navitem navhasnotify">
+                            <a href="css:;" class="navlink">
+                                <i class="navicon fa-solid fa-bell"></i>
+                                Thông báo
+                            </a>
+                            <div class="navnotify">
+                                <header class="notihead">
+                                    <h3>Thông báo mới</h3>
+                                </header>
+                                <ul class="notilist" id="notilist">
+                                    <li class="notiitem">
+                                        <a href="" class="notilink">
+                                            <div class="notiimg"><img src="./assets/images/banh mi ba huynh.jpg" alt="image" class="linkimg"></div>
+                                            <div class="notiinfo">
+                                                <span class="notiname">Bánh mì Ô môi Bà Huynh tự hào với thương hiệu ô môi gần 40 năm tuổi tại Sài Thành</span>
+                                                <span class="notidescribe">Công Quận và 1412 người đã thích bài viết của bạn</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <footer class="notifoot">
+                                    <a href="" class="notiall">Xem tất cả</a>
+                                </footer>
+                            </div>
+                        </li>
+                        <li class="navitem">
+                            <a href="" class="navlink">
+                                <i class="navicon fa-solid fa-question"></i>
+                                Trợ giúp
+                            </a>
+                        </li>
+                        <li class="navitem item-strong item-separate">
+                            <a href="./register.html" class="navlink">Đăng ký</a>
+                        </li>
+                        <li class="navitem item-strong">
+                            <a href="./login.html" class="navlink">Đăng nhập</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="withsearch">
+                    <div class="headerlogo">
+                        <img src="https://i.redd.it/f8fejuy3tqi91.png" alt="Logo" class="logoimg">
+                        <div class="logoname">Food's Blog</div>
+                    </div>
+                    
+                    <div class="headersearch">
+                        <div class="inputwrap">
+                            <input type="text" class="searchinput" id="searchinput" placeholder="Tìm kiếm">
+                            
+                            <!-- Search History -->
+                            <div class="searchhistory">
+                                <h3 class="historyheading">Lịch sử tìm kiếm</h3>
+                                <ul class="historylist">
+                                    <li class="historyitem">
+                                        <a href="" id="output-history1"></a>
+                                    </li>
+                                    <li class="historyitem">
+                                        <a href="" id="output-history2"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="searchbtn" onclick="search()">
+                            <i class="fa-solid fa-magnifying-glass searchicon"></i>
+                        </button>
+                    </div>
+                    <div id="toggle"><i class="fa-solid fa-circle-half-stroke switch"></i></div>
+                </div>
+            </div>
+        </header>
+        <div class="cover-container">
+            <div class="container">
+                <div class="danhmuc">
+                    <ul id="danhmuc">
+                            <li class="food">
+                                <a href="index.html">
+                                    Đồ Ăn
+                                    <i class="fa-solid fa-utensils"></i>
+                                </a>
+                            </li>
+                        </ul>
+                </div>
+                <div class="Gototop" id="Gototop">
+                    <a href="javascript:;" onclick="goToTop()"><i class="fa-solid fa-house"></i></a>
+                </div>
+                <div class="page-title">
+                    <h1>CÀ PHÊ MUỐI LÀ GÌ? CÁCH PHA CAFE MUỐI CHUẨN HUẾ</h1>
+                    <div class="types">
+                        <a href="#">cà phê muối</a><a href="#">thức uống</a><a href="#">Huế</a><a href="#">nổi bật</a>
+                    </div>
+                    <p class="description-title">Cách pha chế cà phê</p>
+                    <div class="date-upload">Đăng ngày 20/2/2023</div>
+                </div>
+                <div class="content">
+                    <img src="assets/images/ca-phe-muoi.jpg" alt="caphemuoi">
+                    <p>Bạn đã từng nghe đến cà phê muối? Bạn băn khoăn không biết cà phê muối là gì? Vì sao cà phê lại bỏ muối? Liệu hương vị cà phê có gì độc đáo so với cà phê nguyên chất hay cafe cho thêm đường, sữa? Câu trả lời sẽ có ngay trong bài viết dưới đây. Bên cạnh cafe muối, bạn có thể tham khảo các cách pha cà phê độc đáo cần thiết cho một Barista chuyên nghiệp hoặc cho các bạn có ý định mở quán cà phê.</p>
+                    <h2 id="item-search">Nguồn gốc cà phê muối</h2>
+                    <p>Cà phê muối được biết đến đầu tiên ở xứ Huế. Hương vị cà phê này được cho là công thức đặc biệt của một quán cà phê sân vườn nằm trên con đường Nguyễn Lương Bằng. Cho đến nay, nhiều người vẫn không có nhiều thông tin về nguồn gốc thực sự cũng như cảm hứng sáng chế ra cách pha chế cafe độc đáo này. </p>
+                    <img src="assets/images/nguon-goc-cafe-muoi.jpg" alt="nguongoc">
+                    <p class="desimg">Cà phê muối được biết đến đầu tiên ở Huế.</p>
+                    <p>Bản chất của các loại cà phê thường sẽ có vị đắng. Tuy nhiên, vị đắng nhiều hay ít sẽ còn tùy thuộc vào từng cách pha của mỗi người. Cũng giống như việc cho thêm sữa hay đường thì muối cũng là một thứ gia vị để giúp người dùng làm dịu đi vị đắng của cà phê. Không những thế, việc cho thêm muối vào cà phê sẽ giúp giải phóng các ion Natri. Yếu tố này vừa giúp giảm vị đắng của cà phê và khơi dậy hương vị để thức uống trở nên ngon và quyến rũ hơn.</p>
+                    <h2 id="item-search">Cách pha cà phê muối đơn giản ngay tại nhà</h2>
+                    <img src="assets/images/cach-pha-cafe-muoi.jpg" alt="cachpha">
+                    <p class="desimg">Để pha cafe muối bạn cần chuẩn bị các dụng cụ như hướng dẫn.</p>
+                    <h2 id="item-search">Dụng cụ, chuẩn bị</h2>
+                    <ul class="contentlist">
+                        <li>Cà phê nguyên chất: 25gr (khoảng 3 muỗng cà phê)</li>
+                        <li>25ml sữa đặc. </li>
+                        <li>100ml nước đun sôi ở 95 độ C.</li>
+                        <li>200ml kem béo thực vật. </li>
+                        <li>5g muối tinh</li>
+                        <li>Đá viên.</li>
+                    </ul>
+                    <h2 id="item-search">Các bước thực hiện</h2>
+                    <p>Để có được một ly cafe muối ngon đúng điệu, bạn cần thực hiện theo trình tự các bước sau:</p>
+                    <p class="steps"> <b>Bước 1:</b> Dùng nước đun sôi để tráng qua phin. Cách này sẽ giúp giảm tình trạng chênh lệch nhiệt độ trong quá trình pha. Hơn thế nữa, khi dùng nước sôi để tráng sẽ giúp phin nóng ấm. Yếu tố này sẽ khiến bột cà phê nở đều, sẽ pha được ly cà phê với hương vị thơm ngon nhất.</p>
+                    <p class="steps"> <b>Bước 2:</b> Cho 3 muỗng bột cà phê nguyên chất vào phin. Đặt phin lên trên ly thủy tinh. Ép bột cà phê với lực vừa phải.</p>
+                    <p class="steps"> <b>Bước 3:</b> Rót khoảng 45ml nước sôi vào phin để ủ cà phê trong khoảng 2 phút cho bột cà phê nở đều. Tiếp tục rót thêm 50ml nước sôi vào phin. Chờ cà phê nhỏ giọt đến khi hết nước trong phin.</p>
+                    <img src="assets/images/pha-ca-phe-muoi.jpg" alt="phacaphe">
+                    <p class="desimg">Các bước pha cafe muối tương tự cà phê phin.</p>
+                    <p class="steps"> <b>Bước 4:</b> Trong khi chờ cà phê nhỏ giọt, cho 5g muối vào 200ml kem béo thực vật. Dùng máy đánh sữa đánh bông hỗn hợp trong 2-3 phút. </p>
+                    <p class="steps"> <b>Bước 5:</b> Cho 25ml sữa đặc vào cà phê đã pha. Sau đó cho 15-20ml hỗn hợp kem mặn vào là được ly cà phê muối thành phẩm. </p>
+                    <h2 id="item-search">Lưu ý để có ly cà phê muối thơm ngon</h2>
+                    <p>Pha cafe muối có thể nói là đơn giản nhưng không phải ai cũng có được một ly thức uống thơm ngon như mong muốn. Trong quá trình pha chế và thưởng thức, bạn nên lưu ý một vài thông tin dưới đây. </p>
+                    <h2 id="item-search">Nguyên liệu cà phê</h2>
+                    <p>Dù là cafe pha với muối hay sữa hoặc đường thì yếu tố nguyên liệu luôn đóng vai trò rất quan trọng. Hương vị cà phê có thơm ngon và nguyên chất thực sự hay không sẽ được quyết định bởi việc bạn chọn cafe có chất lượng không. Bạn nên chọn cà phê nguyên chất. Tốt nhất là bạn nên sử dụng cà phê hạt. </p>
+                    <img src="assets/images/ca-phe-nguyen-chat-sach-rang-xay.jpeg" alt="caphenguyenchat">
+                    <p class="desimg">Dùng cà phê nguyên chất ở của những nhà cung cấp uy tín để có ly cafe ngon hơn.</p>
+                    <h2 id="item-search">Dụng cụ và nước pha cà phê</h2>
+                    <p>Hương vị của cafe muối sẽ có sự ảnh hưởng không nhỏ bởi các dụng cụ pha cafe. Đặc biệt là phin pha, nên sử dụng phin nhôm là tốt nhất.</p>
+                    <img src="assets/images/dung-cu-pha-ca-phe-muoi.jpg" alt="dungcu">
+                    <p class="desimg">Bạn cần chuẩn bị phin nhôm và sử dụng nước lọc để cho ly cafe muối ngon nhất.</p>
+                    <p>Ngoài ra, nước được sử dụng để pha cà phê nên chọn nước lọc được đun sôi. </p>
+                    <h2 id="item-search">Thưởng thức cafe muối</h2>
+                    <p>Thực ra, cách uống cafe muối cũng không có nhiều khác biệt so với cafe sữa hay đường. Bạn có thể chọn cách uống nóng ngay sau khi pha. Bạn có thể cho thêm một ít đá viên để có được một ly thức uống thơm ngon mát lạnh.</p>
+                    <img src="assets/images/thuong-thuc-cafe-muoi.jpg" alt="thuongthuc">
+                    <p class="desimg">Bạn có thể thưởng thức cà phê muối như cà phê pha phin.</p>
+                    <p>Có thể thấy, cà phê muối là một thức uống đặc trưng của xứ Huế. Thế nhưng, đến nay cách pha này đã trở thành sự lựa chọn của nhiều “tín đồ” cafe. Với những người yêu thích cà phê và mong muốn khám phá được những hương vị cafe mới mẻ sẽ khó có thể từ chối cách pha này. Mặc dù đơn giản nhưng việc kết hợp với muối sẽ giúp ly cà phê có được nét độc đáo trong cả hương lẫn vị.</p>
+                </div>
+                <div class="readmore">
+                    Xem Thêm
+                    <div class="tags">
+                        <a href="#">nổi bật</a><a href="#">thức uống</a><a href="#">Huế</a>
+                    </div>
+                </div>
+                <div class="comment">
+                    <h1>Tất cả bình luận</h1>
+                    <div class="comments">
+                        <img src="https://assetsio.reedpopcdn.com/honkai-star-rail-himeko-build.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp" alt="" class="avt">
+                        <p>Tôi biết mời đội tàu uống gì rồi</p>
+                    </div>
+                    <div class="comments">
+                        <img src="https://i.pinimg.com/originals/37/4d/f1/374df1d423b5032889b5cf89efe23f8f.jpg" alt="" class="avt">
+                        <p>Đang uống luôn đây!!</p>
+                    </div>
+                    <div class="comments">
+                        <img src="https://i.pinimg.com/1200x/92/d4/5b/92d45b5df87cccacf46d02a37fe42a64.jpg" alt="" class="avt">
+                        <p>Hợp cho tiệm tôi đấy</p>
+                    </div>
+                    <div class="comments">
+                        <img src="https://64.media.tumblr.com/df69743bba0dd293f24109b8b2c9b438/be0ad957b8566523-1d/s400x600/bc1cb0a84b784159245fc06f5a3210d92ddc36e4.png" alt="" class="avt">
+                        <p>Cảm ơn</p>
+                    </div>
+                    <hr>
+                    <h1>Bình Luận</h1>
+                    <div class="commentform">
+                        <img src="https://assetsio.reedpopcdn.com/honkai-star-rail-stelle-looks-at-her-phone.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp" alt="" class="avt">
+                        <textarea name="cmt" id="cmt" cols="30" rows="4" placeholder="Nhập bình luận..."></textarea>
+                    </div> 
+                    <div class="send"><input type="button" value="Gửi" class="sendbtn"></div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="grid">
+                <div class="gridrow">
+                    <div class="gridcol">
+                        <h3 class="footerheading">Hỗ trợ</h3>
+                        <ul class="footerlist">
+                            <li class="footeritem">
+                                <a href="" class="itemlink">Trung Tâm Trợ Giúp</a>
+                            </li>
+                            <li class="footeritem">
+                                <a href="" class="itemlink">Gửi Yêu Cầu Hỗ Trợ</a>
+                            </li>
+                            <li class="footeritem">
+                                <a href="" class="itemlink">Hướng Dẫn Xem Web</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="gridcol">
+                        <h3 class="footerheading">Chính sách</h3>
+                        <ul class="footerlist">
+                            <li class="footeritem">
+                                <a href="" class="itemlink">Chính Sách Bảo Mật</a>
+                            </li>
+                            <li class="footeritem">
+                                <a href="" class="itemlink">Chính Sách Giải Quyết Khiếu Nại</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="gridcol">
+                        <h3 class="footerheading">Theo dõi chúng tôi</h3>
+                        <ul class="footerlist">
+                            <li class="footeritem">
+                                <a href="" class="itemlink">
+                                    <i class="fa-brands fa-facebook"></i>
+                                    Facebook
+                                </a>
+                            </li>
+                            <li class="footeritem">
+                                <a href="" class="itemlink">
+                                    <i class="fa-brands fa-instagram"></i>
+                                    Instagram
+                                </a>
+                            </li>
+                            <li class="footeritem">
+                                <a href="" class="itemlink">
+                                    <i class="fa-brands fa-youtube"></i>
+                                    Youtube
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="gridcol">
+                        <h3 class="footerheading">Liên hệ</h3>
+                        <ul class="footerlist">
+                            <li class="footeritem">
+                                <div class="itemcontact">
+                                    <i class="fa-solid fa-phone"></i>
+                                    Tel: 1900 6969
+                                </div>
+                            </li>
+                            <li class="footeritem">
+                                <div class="itemcontact">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    Mail: 
+                                    <a href="blogfood@gmail.com" class="itemlink">blogfood@gmail.com</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/read-data/ReadData-public.js"></script>
+    <script src="./assets/js/read-data/readData-coffee.js"></script>
+</body>

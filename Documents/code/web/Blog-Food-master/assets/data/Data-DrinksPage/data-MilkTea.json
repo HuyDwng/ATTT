@@ -1,0 +1,65 @@
+[
+    {
+        "img":"matcha.webp",
+        "alt":"trasua",
+        "title":"Review",
+        "name_food":"Trà sữa matcha",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Bột trà xanh matcha cũng rất được ưa chuộng trong pha chế trà sữa. Trà sữa matcha kết hợp cùng trân châu, thạch trà xanh, pudding, đậu đỏ là sự lựa chọn của nhiều bạn trẻ."
+    },
+    {
+        "img":"olong.webp",
+        "alt":"olong",
+        "title":"Review",
+        "name_food":"Trà sữa ô long",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Ô long là loại trà bán lên men (lên men một phần) với hương vị đặc biệt. Có nhiều loại nguyên liệu trà ô long được trồng và chế biến ở những vùng khác nhau, cách chế biến khác nhau, do đó cũng có nhiều loại trà sữa ô long đặc sắc."
+    },
+    {
+        "img":"kemman.webp",
+        "alt":"trà sữa kem mặn",
+        "title":"Review",
+        "name_food":"Trà sữa kem mặn",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Trà sữa kem mặn (kem cheese) được yêu thích bởi sự hòa quyện tuyệt vời giữa vị chát nhẹ của cốt trà, vị thơm ngon ngọt ngào của sữa và đặc biệt là vị ngậy béo, hơi mằn mặn của kem cheese."
+    },
+    {
+        "img":"tranchauduongden.webp",
+        "alt":"chân trâu đường đen",
+        "title":"Công thức",
+        "name_food":"Trà sữa trân châu đường đen",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Đây chính là cái tên đình đám nhất trong làng đồ uống năm 2019 và tiếp tục khuấy đảo thị trường trà sữa 2020. Bí quyết nằm ở loại trân châu đặc biệt mang vị ngọt ngào khó cưỡng của đường đen."
+    },
+    {
+        "img":"oreo.jpg",
+        "alt":"trasua",
+        "title":"Sáng tạo",
+        "name_food":"Trà sữa Oreo",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Trà sữa kết hợp với Oreo cũng là một sáng tạo thú vị, mang đến hương vị mới lạ cho thế giới trà sữa."
+    },
+    {
+        "img":"tranchautrang.jpg",
+        "alt":"trasua",
+        "title":"Công thức",
+        "name_food":"Trà sữa trân châu trắng",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Trân châu trắng dai giòn sần sật khiến cho ly trà sữa trở nên hấp dẫn gấp nhiều lần. Vậy mới biết đôi khi bí quyết của một ly trà sữa ngon nằm ở topping."
+    },
+    {
+        "img":"trasuapudding.jpg",
+        "alt":"trasua",
+        "title":"Review",
+        "name_food":"Trà sữa pudding",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Thay vì uống trà sữa với trân châu, thì bạn có thể thưởng thức với pudding. Mềm mịn như tan trong miệng, pudding là loại topping đặc biệt có thể “nâng tầm” một ly trà sữa thông thường."
+    }
+]

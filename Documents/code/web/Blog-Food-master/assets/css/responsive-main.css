@@ -1,0 +1,188 @@
+/*design tablet and mobile width < 1024px*/
+@media screen and (max-width:1024px)
+{
+    div.background-content{
+        flex-wrap:wrap;
+        width:100%;
+        height:max-content;
+    }
+    .content-left{
+        width:100%;
+        margin: 0 10px;
+    }
+    div.content-right .title{
+        margin-left:10px;
+    }
+    div.content-right div.baiviet .img{
+        width:50%;
+        height:154px;
+        height:auto;
+        display:flex;
+        margin-right:10px;
+    }
+    .background-random{
+        padding-top:30px;
+        height:max-content;
+        display:flex;
+        flex-wrap:wrap;
+    } 
+    .random-content .content .img{
+        width:50%;
+        height:25%;
+    }
+    .random-content{
+        width:100%;
+    }  
+}
+/*design fold and mobile phone <740px*/
+@media screen and (max-width:740px)
+{
+    .header{
+        height:160px;
+    }
+    .navnotify {
+        left: 0;
+        width: 200px;
+    }
+    .navnotify::before {
+        content: "";
+        border-width: 5px 3px;
+        position: absolute;
+        left: 0px;
+        top:-10px;
+    }
+    .withsearch{
+        flex-direction: column;
+    }
+    .headersearch {
+        width: 100%;
+        margin-left: 0;
+    }
+    div.background-content{
+        flex-wrap:wrap;
+        width:100%;
+        height:max-content;
+    }
+    .content-left{
+        height:max-content;
+    }
+    .navigation-manual{
+        bottom:15px;
+    }
+    .navigation-auto{
+        bottom:15px;
+    }
+    div.info h2{
+        width:auto;
+        padding: 10px 10px;
+    }
+    .slider{
+        width:100%;
+        height:60%;
+        border-radius:3px;
+        position:relative;
+        overflow:hidden;
+    }
+    div.content-right{
+        width:100%;
+        margin: 10px 10px 0 0;
+    }
+    .background-random .title{
+        margin-left:10px;
+        margin-right:10px;
+    }
+    div.art{
+        width:60%;
+        margin:10px 50px 0 10px;
+    }
+    .description-content{
+        width:50%;
+        margin-left:10px;
+    }
+    .description-content h3 {
+        font-size:17px;
+    }
+    div.description-content > p{
+        display: none
+    }
+    .frame-posts{
+        justify-content: center;
+    }
+    .post{
+        width:90%;
+        margin-left:0;
+        margin-right:0;
+        margin-bottom:20px;
+    }
+}
+/*design mobile width >= 360px and width < 740px*/
+@media screen and (min-width:360px) and (max-width:740px){
+    #toggle{
+        position:absolute;
+        right:50px;
+        top:8px;
+        width: 3%;
+        height: 100%;
+        font-size: 1.5rem;
+        color: var(--black-color);
+        cursor: pointer;
+    }
+    .info{
+        bottom:33px;
+    }
+}
+/*design tablet width >= 740px and width < 1024px*/
+@media screen and (min-width:740px) and (max-width:1024px){
+    div.content-right{
+        width:100%;
+        margin: 10px 10px 0 0;
+    }
+    div.content-right div.baiviet .img{
+        width:35%;
+        height:100%;
+        display:flex;
+        margin-right:10px;
+    }
+    div.content-right div.description-baiviet{
+        width:57%;
+        height:100%;
+    }
+    div.art{
+        display:flex;
+        width:100%;
+        margin:10px 50px 0 10px;
+    }
+    div.art div.title{
+        margin-top:25px;
+        font-size:20px;
+        width:30%;
+    }
+    div.art div{
+        margin-bottom:10px;
+        width:30%;
+    }
+    .post{
+        width:30%;
+        margin-left:10px;
+    }
+}
+/*design fold phone*/
+@media screen and (max-width:360px){
+    div.danhmuc ul li a{
+        font-size:12.1px;
+    }
+    .info{
+        font-size:10px;
+    }
+    #toggle{
+        position:absolute;
+        right:20px;
+        top:15px;
+        width: 3%;
+        height: 100%;
+        font-size: 1.5rem;
+        color: var(--black-color);
+        cursor: pointer;
+    }
+}
+/*end deign Flod phone*/

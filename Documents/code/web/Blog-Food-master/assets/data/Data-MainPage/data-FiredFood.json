@@ -1,0 +1,65 @@
+[
+    {
+        "img":"tempura.jpg",
+        "alt":"tempura",
+        "title":"Mới lạ",
+        "name_food":"Tempura",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Tempura là món chiên có tẩm bột, thường hay được dùng kèm với mì udon hoặc bento (cơm hộp) của người Nhật."
+    },
+    {
+        "img":"suon.jpg",
+        "alt":"Sườn Cốt Lết",
+        "title":"Review",
+        "name_food":"Sườn cốt lết chiên xù",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Cốt lết heo chiên xù, món ăn hấp dẫn sẳn sàng hạ gục bất cứ một tín đồ nào."
+    },
+    {
+        "img":"muc.jpg",
+        "alt":"Mực chiên nước mắm",
+        "title":"Công thức",
+        "name_food":"Mực chiên nước mắm",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Mực chiên nước mắm là một món ăn ngon với hương vị đậm đà, cùng với hải sản tươi ngon."
+    },
+    {
+        "img":"mucxu.jpg",
+        "alt":"Mực chiên xù",
+        "title":"Công thức",
+        "name_food":"Mực chiên xù",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Một món ăn mà các tín đồ yêu hải sản chắc chắn không thể bỏ qua đó chính là món mực chiên xù."
+    },
+    {
+        "img":"takoyaki.jpg",
+        "alt":"Takoyaki",
+        "title":"Review",
+        "name_food":"Takoyaki - Nhật Bản",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Một món ăn mà các tín đồ yêu hải sản chắc chắn không thể bỏ qua đó chính là món mực chiên xù."
+    },
+    {
+        "img":"cathu.jpg",
+        "alt":"Cá thu chiên",
+        "title":"Công thức",
+        "name_food":"Cá Thu Chiên",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Cá thu chiên là một món ăn đặc biệt nhiều khoáng chất và vitamin rất có lợi cho cơ thể."
+    },
+    {
+        "img":"cahoi.jpg",
+        "alt":"Cá hồi chiên bơ tỏi",
+        "title":"Review",
+        "name_food":"Cá hồi chiên bơ tỏi",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Cá hồi chiên bơ tỏi nghe rất Tây nhưng cách chế biến không hề phức tạp chút nào."
+    }
+]

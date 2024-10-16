@@ -1,0 +1,21 @@
+[
+    {
+        "img":"matcha.png",
+        "alt":"Trà sữa",
+        "title":"Cách làm trà sữa matcha chuẩn vị trà xanh ngay tại nhà",
+        "content":"Trà sữa vốn là thức uống vô cùng quen thuộc với các bạn giới trẻ. Vì sự đa dạng về mùi vị và các loại topping mà trà sữa bao nhiêu năm qua vẫn không"
+
+    },
+    {
+        "img":"che.png",
+        "alt":"Chè hạt sen",
+        "title":"Bí quyết nấu chè ngon cho bát chè hạt sen không bị sượng",
+        "content":"Chè hạt sen là món chè truyền thống và quen thuộc với người Việt. Tuy nhiên, mỗi khi nấu món chè này, lỗi thường gặp nhất đó chính là việc hạt sen bị sượng."
+    },
+    {
+        "img":"milo.png",
+        "alt":"Kem milo",
+        "title":"Kem milo: cách biến tấu milo khiến trẻ mê mẩn",
+        "content":"Kem milo mát lạnh, ngọt ngào quen thuộc với hương vị ca cao chắc chắn không chỉ làm các bé nhà mình mê mẩn mà ngay cả người lớn cũng chẳng thể bỏ qua."
+    }
+]

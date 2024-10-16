@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food's Blog</title>
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/responsive-main.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <!--Reset Css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="blog">
+        <header class="header">
+            <div class="grid">
+                <nav class="navbar">
+                    <ul class="navlist">
+                        <li class="navitem navhasnotify">
+                            <a href="css:;" class="navlink">
+                                <i class="navicon fa-solid fa-bell"></i>
+                                Thông báo
+                            </a>
+                            <div class="navnotify">
+                                <header class="notihead">
+                                    <h3>Thông báo mới</h3>
+                                </header>
+                                <ul class="notilist" id="notilist">
+                                    <li class="notiitem">
+                                        <a href="" class="notilink">
+                                            <div class="notiimg"><img src="./assets/images/banh mi ba huynh.jpg" alt="image" class="linkimg"></div>
+                                            <div class="notiinfo">
+                                                <span class="notiname">Bánh mì Ô môi Bà Huynh tự hào với thương hiệu ô môi gần 40 năm tuổi tại Sài Thành</span>
+                                                <span class="notidescribe">Công Quận và 1412 người đã thích bài viết của bạn</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <footer class="notifoot">
+                                    <a href="" class="notiall">Xem tất cả</a>
+                                </footer>
+                            </div>
+                        </li>
+                        <li class="navitem">
+                            <a href="" class="navlink">
+                                <i class="navicon fa-solid fa-question"></i>
+                                Trợ giúp
+                            </a>
+                        </li>
+                        <li class="navitem item-strong item-separate">
+                            <a href="./register.html" class="navlink">Đăng ký</a>
+                        </li>
+                        <li class="navitem item-strong">
+                            <a href="./login.html" class="navlink">Đăng nhập</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="withsearch">
+                    <div class="headerlogo">
+                        <img src="https://i.redd.it/f8fejuy3tqi91.png" alt="Logo" class="logoimg">
+                        <div class="logoname">Food's Blog</div>
+                    </div>
+                    
+                    <div class="headersearch">
+                        <div class="inputwrap">
+                            <input type="text" class="searchinput" id="searchinput" placeholder="Tìm kiếm">
+                            
+                            <!-- Search History -->
+                            <div class="searchhistory">
+                                <h3 class="historyheading">Lịch sử tìm kiếm</h3>
+                                <ul class="historylist">
+                                    <li class="historyitem">
+                                        <a href="" id="output-history1"></a>
+                                    </li>
+                                    <li class="historyitem">
+                                        <a href="" id="output-history2"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="searchbtn" onclick="search()">
+                            <i class="fa-solid fa-magnifying-glass searchicon"></i>
+                        </button>
+                    </div>
+                    <div id="toggle"><i class="fa-solid fa-circle-half-stroke switch"></i></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="Gototop" id="Gototop">
+                <a href="javascript:;" onclick="goToTop()"><i class="fa-solid fa-house"></i></a>
+            </div>
+            <div class="danhmuc">
+                <ul id="danhmuc">
+                        <li class="food">
+                            <a href="index.html" class="food">Đồ Ăn
+                                <i class="fa-solid fa-utensils"></i>
+                            </a>
+                        </li>
+                    </ul>
+            </div>
+            <div class="background-content">
+            <!--image slider start-->
+            <div class="content-left">
+            <div class="title">
+                <h2 id="item-search">Bài Viết Hay</h2>
+                <hr>
+            </div>
+            <div class="slider">
+                <div class="slides">
+                    <!--radio button start-->
+                    <input type="radio" name="radio-choose" id="radio1">
+                    <input type="radio" name="radio-choose" id="radio2">
+                    <input type="radio" name="radio-choose" id="radio3">
+                    <input type="radio" name="radio-choose" id="radio4">
+                    <!--radio button end-->
+                    <!--slide images start-->
+                    <div class="slide first">
+                        <a href="index4.html">
+                            <img src="./assets/images/caphemuoi.jpg" alt="cà phê muối">
+                            <div class="info">
+                                <h2 id="item-search">Cà phê muối là gì? Cách làm cà phê muối chuẩn Huế</h2>
+                            </div>
+                        </a>
+                    </div>
+                    <!--slide images end-->
+                    <!--auto start-->
+                    <div class="navigation-auto">
+                        <div class="auto-btn1"></div>
+                        <div class="auto-btn2"></div>
+                        <div class="auto-btn3"></div>
+                        <div class="auto-btn4"></div>
+                    </div>
+                    <!--auto end-->
+                        <div class="navigation-manual">
+                            <label for="radio1" class="manual-bnt" id="radio1" onclick="onClick(this)"></label>
+                            <label for="radio2" class="manual-bnt" id="radio2" onclick="onClick(this)"></label>
+                            <label for="radio3" class="manual-bnt" id="radio3" onclick="onClick(this)"></label>
+                            <label for="radio4" class="manual-bnt" id="radio4" onclick="onClick(this)"></label>
+                        </div>
+                </div>
+            </div>
+            </div>
+            <!--image slider end-->
+            <div class="content-right">
+                <div class="title">
+                    <h2 id="item-search">Bài Viết Mới Nhất</h2>
+                    <hr>
+                </div>
+                <div class="child-right" id="child-right">
+                <div class="baiviet">
+                    <a href="#">
+                        <div class="img"><img src="./assets/images/hongtra.png" alt="hồng trà"></div>
+                        <div class="description-baiviet">
+                            <h3 id="item-search">Hướng dẫn cách pha hồng trà ngon tuyệt cú mèo</h3>
+                            <p>Hồng trà là thức uống được giới trẻ Việt Nam yêu thích và thường xuyên uống trong mỗi lần tụ họp, ở công ty hay đơn giản là để giải nhiệt. Tự làm trà sữa</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            </div>
+           </div>
+           <div class="background-random">
+            <div class="random-content">
+                <div class="child-random" id="child-random">
+                    <div class="title">
+                        <h2 id="item-search">Bài Viết Ngẫu Nhiên</h2>
+                        <hr>
+                    </div>
+                <div class="content">
+                    <div class="img">
+                        <a href="#">
+                            <img src="./assets/images/xuhuong.png" alt="Xu hướng">
+                        </a>
+                    </div>
+                    <div class="description-content">
+                        <a href="#">
+                            <h3 id="item-search">[Cập nhật] Xu hướng đồ uống 2023 HOT nhất của giới trẻ</h3>
+                        </a>
+                        <p>Xu hướng đồ uống 2023 chính là cụm từ được tìm kiếm nhiều nhất của nhưng người đang và sẽ kinh doanh đồ uống. Bắt kịp xu hướng đồ uống của năm sẽ giúp bạn</p>
+                        <a href="#">
+                            <p class="XemThem">Xem thêm</p>
+                        </a>
+                        <p>February 16, 2023</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="art" id="art">
+                <div class="title">
+                    <h2 id="item-search">Cocktail</h2>
+                    <hr>
+                </div>
+                <div class="count">
+                    <a href="#">
+                        <p class="country" id="item-search">Tây Ban Nha</p>
+                        <p class="title-fcountry" id="item-search">Pina Colada</p>
+                        <p class="introduce-fcountry">Pina Colada là loại cocktail nổi tiếng đến từ đất nước Tây Ban Nha. Pina Colada được pha chế theo tỉ lệ là 1 phần rượu rum, 1 phần nước dừa cùng với 3 phần nước dứa trộn chung rồi lắc đều cùng đá.</p>
+                    </a>
+                </div>
+                <hr>
+            </div>
+        </div>
+        <div class="background-chude">
+            <div class="posts">
+            <div class="title">
+                <h2 id="item-search">Trà sữa</h2>
+            </div>
+            <div class="frame-posts" id="frame-posts-MilkTea">
+                <div class="post">
+                    <a href="#">
+                        <div class="img-post">
+                            <img src="assets/images/hongtra.webp" alt="trasua">
+                            <div class="title-post">Công thức</div>
+                        </div>
+                        <div class="content-post">
+                            <h4 id="item-search">Hồng trà sữa </h4>
+                            <div class="rating">
+                                <span>đánh giá: 5</span>
+                                <div class="star"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            </div>
+                            <p>Hồng trà sữa là sự kết hợp giữa hồng trà (trà đen) với sữa tươi, thêm các loại topping như trân châu, thạch, pudding, tạo nên một đồ uống luôn có mặt trong menu các quán.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            </div>
+            <div class="posts">
+                <div class="title">
+                    <h2 id="item-search">Nước ép</h2>
+                </div>
+                <div class="frame-posts" id="frame-posts-nuocep">
+                    <div class="post">
+                        <a href="#">
+                            <div class="img-post">
+                                <img src="assets/images/cam.jpg" alt="nuocep">
+                                <div class="title-post">Healthy</div>
+                            </div>
+                            <div class="content-post">
+                                <h4 id="item-search">Nước ép cam</h4>
+                                <div class="rating">
+                                    <span>đánh giá: 5</span>
+                                    <div class="star"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                </div>
+                                <p>Nước ép cam là thức uống phổ biến yêu thích của nhiều người. Không chỉ có hương vị thơm ngon, thanh mát, đây còn là nguồn cung cấp vitamin C dồi dào giúp cơ thể nâng cao hệ miễn dịch, tăng cường sức đề kháng.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                </div>
+                <div class="posts">
+                    <div class="title">
+                        <h2 id="item-search">Các loại chè</h2>
+                    </div>
+                    <div class="frame-posts" id="frame-posts-che">
+                        <div class="post">
+                            <a href="#">
+                                <div class="img-post">
+                                    <img src="assets/images/troinuoc.jpg" alt="che">
+                                    <div class="title-post">Truyền thống</div>
+                                </div>
+                                <div class="content-post">
+                                    <h4 id="item-search">Chè trôi nước</h4>
+                                    <div class="rating">
+                                        <span>đánh giá: 5</span>
+                                        <div class="star"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                    </div>
+                                    <p>Chè trôi nước là món ăn nổi tiếng ở miền Bắc nước ta với phần nhân được làm từ đậu xanh hoặc nhân mặn. Phần vỏ làm từ bột nếp kết hợp với các nguyên liệu bí đỏ, khoai lang tím, lá dứa, cà rốt, hoa đậu biếc, nước cốt dừa… để tạo màu sắc đẹp mắt cho những viên trôi nước.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    </div>
+                    <h1 class="thank">THANKS FOR COMING</h1>
+        </div>
+        <footer class="footer">
+            <div class="grid">
+                <div class="gridrow">
+                    <div class="gridcol">
+                        <h3 class="footerheading">Hỗ trợ</h3>
+                        <ul class="footerlist">
+                            <li class="footeritem">
+                                <a href="" class="itemlink">Trung Tâm Trợ Giúp</a>
+                            </li>
+                            <li class="footeritem">
+                                <a href="" class="itemlink">Gửi Yêu Cầu Hỗ Trợ</a>
+                            </li>
+                            <li class="footeritem">
+                                <a href="" class="itemlink">Hướng Dẫn Xem Web</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="gridcol">
+                        <h3 class="footerheading">Chính sách</h3>
+                        <ul class="footerlist">
+                            <li class="footeritem">
+                                <a href="" class="itemlink">Chính Sách Bảo Mật</a>
+                            </li>
+                            <li class="footeritem">
+                                <a href="" class="itemlink">Chính Sách Giải Quyết Khiếu Nại</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="gridcol">
+                        <h3 class="footerheading">Theo dõi chúng tôi</h3>
+                        <ul class="footerlist">
+                            <li class="footeritem">
+                                <a href="" class="itemlink">
+                                    <i class="fa-brands fa-facebook"></i>
+                                    Facebook
+                                </a>
+                            </li>
+                            <li class="footeritem">
+                                <a href="" class="itemlink">
+                                    <i class="fa-brands fa-instagram"></i>
+                                    Instagram
+                                </a>
+                            </li>
+                            <li class="footeritem">
+                                <a href="" class="itemlink">
+                                    <i class="fa-brands fa-youtube"></i>
+                                    Youtube
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="gridcol">
+                        <h3 class="footerheading">Liên hệ</h3>
+                        <ul class="footerlist">
+                            <li class="footeritem">
+                                <div class="itemcontact">
+                                    <i class="fa-solid fa-phone"></i>
+                                    Tel: 1900 6969
+                                </div>
+                            </li>
+                            <li class="footeritem">
+                                <div class="itemcontact">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    Mail: 
+                                    <a href="blogfood@gmail.com" class="itemlink">blogfood@gmail.com</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/read-data/ReadData-public.js"></script>
+    <script src="./assets/js/read-data/ReadData-drink.js"></script>
+</body>
+</html>

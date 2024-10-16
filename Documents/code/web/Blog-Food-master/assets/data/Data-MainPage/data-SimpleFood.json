@@ -1,0 +1,65 @@
+[
+    {
+        "img":"rautron.jpg",
+        "alt":"Rau trộn",
+        "title":"Healthy",
+        "name_food":"Salad rau trộn",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Salad là món ăn yêu thích của nhiều người, nhất là những người đang ăn kiêng, muốn giảm cân."
+    },
+    {
+        "img":"traicaydam.jpg",
+        "alt":"Trái cây dầm sữa chua",
+        "title":"Healthy",
+        "name_food":"Trái cây dầm sữa chua",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Đúng như tên gọi, món ăn này chỉ đơn giản là các loại trái cây mix với nhau tùy ý mỗi người nhưng luôn rất được yêu thích."
+    },
+    {
+        "img":"mitron.jpg",
+        "alt":"Mì trộn",
+        "title":"Mì",
+        "name_food":"Mì trộn",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Mì trộn là món ăn đang được rất nhiều người yêu thích, bởi sự dai ngon từ sợi mì, nước sốt đậm đà cùng với nhiều loại topping trộn hấp dẫn."
+    },
+    {
+        "img":"bapxao.jpg",
+        "alt":"Bắp xào bơ",
+        "title":"Ăn vặt",
+        "name_food":"Bắp xào bơ",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Bắp xào là món ăn vặt siêu đỉnh, càng ăn càng ghiền mà công thức chế biến lại vô cùng nhanh gọn và đơn giản."
+    },
+    {
+        "img":"hotvitlon.jpg",
+        "alt":"Hột vịt lộn nướng muối ớt",
+        "title":"Ăn vặt",
+        "name_food":"Hột vịt lộn nướng muối ớt",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Ngoài kiểu luộc truyền thống. Món hột vịt lộn nướng muối ớt đang là một trong những món ăn vặt khoái khẩu của người Sài Gòn."
+    },
+    {
+        "img":"camoi.jpg",
+        "alt":"Cá mòi & ốp la",
+        "title":"Review",
+        "name_food":"Cá mòi & ốp la",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Là món điểm tâm có thể thưởng thức tại chỗ hoặc gói lại mang đi cũng rất thuận tiện, vừa đảm bảo vệ sinh, ngon miệng lại đầy đủ chất dinh dưỡng."
+    },
+    {
+        "img":"comcuon.jpg",
+        "alt":"Cơm cuộn",
+        "title":"Review",
+        "name_food":"Cơm cuộn",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Kimbap hay gimbap, là món cơm cuộn rong biển có nguồn gốc từ Hàn Quốc nhưng theo làn sóng du lịch, điện ảnh,… đã du nhập vào Việt Nam."
+    }
+]

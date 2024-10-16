@@ -1,0 +1,65 @@
+[
+    {
+        "img":"bia.jpg",
+        "alt":"fest",
+        "title":"Bia",
+        "name_food":"Lễ hội Oktoberfest",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Nhắc đến những lễ hội ẩm thực nổi tiếng thế giới để các tín đồ ăn uống thỏa sức thưởng thức bia mát lạnh, là nhớ ngay tới Oktoberfest."
+    },
+    {
+        "img":"banhbao.jpg",
+        "alt":"fest",
+        "title":"Bánh bao",
+        "name_food":"Lễ hội bánh bao",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Bạn có ứa nước miếng khi nghĩ đến những chiếc bánh bao ẩm mềm và ngon ngọt không? Nếu có, thì đích thị lễ hội ẩm thực thế giới này là dành cho bạn. "
+    },
+    {
+        "img":"catrich.jpg",
+        "alt":"fest",
+        "title":"Cá Trích",
+        "name_food":"Lễ hội cá trích",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Lễ hội cá trích là một trong những lễ hội ẩm thực nổi tiếng trên khắp thế giới. Vào mỗi tháng 4, những đàn cá trích bơi vào vịnh Ringkobing ở Đan Mạch để đẻ trứng và đó cũng là thời điểm ngư dân đánh bắt cá sôi nổi nhất để chuẩn bị cho lễ hội cá trích tại đây."
+    },
+    {
+        "img":"chay.jpg",
+        "alt":"fest",
+        "title":"Chay",
+        "name_food":"Lễ hội ăn chay",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Tại Thái Lan, cứ tháng 10 hàng năm lại tổ chức lễ hội ăn chay với các cuộc diễu hành đầy màu sắc, âm nhạc và những món ăn thuần chay ngon nhất."
+    },
+    {
+        "img":"toi.jpg",
+        "alt":"fest",
+        "title":"Tỏi",
+        "name_food":"Lễ hội tỏi Gilroy",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Đây là một lễ hội nổi tiếng ở Mỹ, được tổ chức hàng năm vào tháng 7 tại thành phố Gilroy, California."
+    },
+    {
+        "img":"banhkep.jpg",
+        "alt":"fest",
+        "title":"Bánh kếp",
+        "name_food":"Lễ hội bánh kếp Maslenitsa, Nga",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Đây là một trong những lễ hội ẩm thực thế giới năm 2021 và có lẽ là ngày lễ vui vẻ nhất ở mà bạn có thể tham gia khi du lịch Nga."
+    },
+    {
+        "img":"amthucdp.jpg",
+        "alt":"fest",
+        "title":"Ẩm thực",
+        "name_food":"Lễ hội ẩm thực đường phố",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Lễ hội nổi tiếng thế giới này chắc chắn sẽ mang lại nụ cười trên khuôn mặt của tất cả những người yêu thích ẩm thực đường phố."
+    }
+]

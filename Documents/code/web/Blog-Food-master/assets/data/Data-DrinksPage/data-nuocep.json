@@ -1,0 +1,65 @@
+[
+    {
+        "img":"luu.jpg",
+        "alt":"nuocep",
+        "title":"Review",
+        "name_food":"Nước ép lựu",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Nước ép lựu là thức uống được nhiều người ưa chuộng trong thời gian gần đây. Thành phần lựu rất giàu vitamin K, đặc biệt tốt cho quá trình đông máu và sức khỏe tim mạch của con người."
+    },
+    {
+        "img":"duahau.jpg",
+        "alt":"nuocep",
+        "title":"Healthy",
+        "name_food":"Nước ép dưa hấu",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Dưa hấu là một loại trái cây mọng nước, vị ngọt dịu và chứa rất nhiều khoáng chất rất tốt hỗ trợ giảm cân hiệu quả."
+    },
+    {
+        "img":"nuoc-ep-dua.jpg",
+        "alt":"nuocep",
+        "title":"Review",
+        "name_food":"Nước ép dứa",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Nước ép dứa hoàn thành có màu vàng đẹp mắt cùng mùi thơm dịu nhẹ mời gọi thực khách. Vị dứa chua thanh, ngọt nhẹ, cho thêm vài viên đá sẽ càng làm tăng thêm hương vị, tạo cảm giác sảng khoái thêm rất nhiều lần đó!"
+    },
+    {
+        "img":"nuoc-ep-ca-chua.jpg",
+        "alt":"nuocep",
+        "title":"Healthy",
+        "name_food":"Nước ép cà chua",
+        "rate":"đánh giá: 4",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Nước ép cà chua có màu đỏ đẹp mắt, vị chua chua, ngọt dịu, thanh mát tự nhiên. Những ngày trời nóng oi bức, hãy thử làm ngay 1 cốc nước ép này nhé, đảm bảo bạn sẽ thấy tươi mát ngay đó!"
+    },
+    {
+        "img":"nuoc-ep-tao.jpg",
+        "alt":"nuocep",
+        "title":"Healthy",
+        "name_food":"Nước ép táo",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Giảm cân bây giờ đã trở nên đơn giản hơn với các công thức nước ép thơm ngon, bạn có thể học ngay món nước ép táo chua ngọt, thanh mát để bù nước, bù khoáng chất và tăng cường sức đề kháng nhé!"
+    },
+    {
+        "img":"nuoc-ep-dau-tay.jpg",
+        "alt":"nuocep",
+        "title":"Healthy",
+        "name_food":"Nước ép dâu",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Nước ép dâu có tác dụng tích cực trong việc giảm cân, làm giảm các nốt sần và nốt mụn trên da, hiệu quả."
+    },
+    {
+        "img":"thanh long.jpg",
+        "alt":"nuocep",
+        "title":"Review",
+        "name_food":"Nước ép thanh long",
+        "rate":"đánh giá: 5",
+        "star":"<i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i><i class=\"fa-solid fa-star\"></i>",
+        "content":"Nước ép sau hoàn thành sẽ có màu đỏ hồng đặc trưng vô cùng đẹp mắt. Khi uống bạn sẽ cảm nhận được vị ngọt tự nhiên của thanh long vô cùng cuốn hút."
+    }
+]

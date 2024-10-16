@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food's Blog</title>
+    <link rel="stylesheet" href="./assets/css/sup.css">
+    <link rel="stylesheet" href="./assets/css/mobile-content(short).css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <!--Reset Css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="blog">
+        <header class="header">
+            <div class="grid">
+                <nav class="navbar">
+                    <ul class="navlist">
+                        <li class="navitem navhasnotify">
+                            <a href="css:;" class="navlink">
+                                <i class="navicon fa-solid fa-bell"></i>
+                                Thông báo
+                            </a>
+                            <div class="navnotify">
+                                <header class="notihead">
+                                    <h3>Thông báo mới</h3>
+                                </header>
+                                <ul class="notilist" id="notilist">
+                                    <li class="notiitem">
+                                        <a href="" class="notilink">
+                                            <div class="notiimg"><img src="./assets/images/banh mi ba huynh.jpg" alt="image" class="linkimg"></div>
+                                            <div class="notiinfo">
+                                                <span class="notiname">Bánh mì Ô môi Bà Huynh tự hào với thương hiệu ô môi gần 40 năm tuổi tại Sài Thành</span>
+                                                <span class="notidescribe">Công Quận và 1412 người đã thích bài viết của bạn</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <footer class="notifoot">
+                                    <a href="" class="notiall">Xem tất cả</a>
+                                </footer>
+                            </div>
+                        </li>
+                        <li class="navitem">
+                            <a href="" class="navlink">
+                                <i class="navicon fa-solid fa-question"></i>
+                                Trợ giúp
+                            </a>
+                        </li>
+                        <li class="navitem item-strong item-separate">
+                            <a href="./register.html" class="navlink">Đăng ký</a>
+                        </li>
+                        <li class="navitem item-strong">
+                            <a href="./login.html" class="navlink">Đăng nhập</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="withsearch">
+                    <div class="headerlogo">
+                        <img src="https://i.redd.it/f8fejuy3tqi91.png" alt="Logo" class="logoimg">
+                        <div class="logoname">Food's Blog</div>
+                    </div>
+                    
+                    <div class="headersearch">
+                        <div class="inputwrap">
+                            <input type="text" class="searchinput" id="searchinput" placeholder="Tìm kiếm">
+                            
+                            <!-- Search History -->
+                            <div class="searchhistory">
+                                <h3 class="historyheading">Lịch sử tìm kiếm</h3>
+                                <ul class="historylist">
+                                    <li class="historyitem">
+                                        <a href="" id="output-history1"></a>
+                                    </li>
+                                    <li class="historyitem">
+                                        <a href="" id="output-history2"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="searchbtn" onclick="search()">
+                            <i class="fa-solid fa-magnifying-glass searchicon"></i>
+                        </button>
+                    </div>
+                    <div id="toggle"><i class="fa-solid fa-circle-half-stroke switch"></i></div>
+                </div>
+            </div>
+        </header>
+        <div class="cover-container">
+            <div class="container">
+                <div class="danhmuc">
+                    <ul id="danhmuc">
+                            <li class="food">
+                                <a href="index.html" class="food">Đồ Ăn
+                                    <i class="fa-solid fa-utensils"></i>
+                                </a>
+                            </li>
+                        </ul>
+                </div>
+                <div class="Gototop" id="Gototop">
+                    <a href="javascript:;" onclick="goToTop()"><i class="fa-solid fa-house"></i></a>
+                </div>
+                <div class="page-title">
+                    <h1>BÁNH BÈO HUẾ</h1>
+                    <div class="types">
+                        <a href="#">đặc sản</a><a href="#">đồ ăn</a><a href="#">Huế</a><a href="#">nổi bật</a>
+                    </div>
+                    <p class="description-title">Đặc sản mang đậm hương vị xứ Huế</p>
+                    <div class="date-upload">Đăng ngày 23/7/2023</div>
+                </div>
+                <div class="content">
+                    <img src="assets/images/food2.png" alt="bánh bèo Huế">
+                    <p>Huế từ lâu nổi tiếng mang vẻ đẹp mộng mơ, hữu tình. Khi đến với mảnh đất cố đô, ngoài việc được du ngoạn ngắm cảnh sắc thiên nhiên đẹp đẽ và đầy sức hút, du khách còn được thưởng thức những món ăn ngon được làm bởi bàn tay đầy khéo léo của người dân xứ Huế. Huế có rất nhiều đặc sản như bún bò, cơm hến, chè cung đình… Và một trong những đặc sản du lịch Huế mà du khách không nên bỏ lỡ khi du lịch tại vùng đất cố đô chính là bánh bèo Huế!</p>
+                    <h2 id="item-search">Bánh bèo - Đặc sản dân dã xứ Huế</h2>
+                    <p>Trên mảnh đất cong cong hình chữ S, vùng đất nào cũng có bánh bèo từ Sài Gòn ra đến Hà Nội, nhưng tại sao đất cố đô lại nổi tiếng với món bánh bèo như vậy? Có điểm gì đặc biệt ở món bánh bèo xứ Huế, hãy cùng mình tiếp tục tìm hiểu nhé.</p>
+                    <p>Nghe đến hai từ “bánh bèo” chắc hẳn cảm nhận đầu tiên của quý khách rất dân dã và thu hút phải không nào? Không biết quý khách có tò mò về tên của loại bánh này không nhỉ? Tên bánh đã được người dân gọi như thế từ rất lâu đời mà không biết rõ nguồn gốc của tên bánh này bắt đầu từ đâu và từ khi nào.</p>
+                    <img src="assets/images/botbanhbeo.jpg" alt="bột bánh bèo">
+                    <p>Bánh bèo được làm với nguyên liệu chính vô cùng đơn giản là bột gạo, hành lá, tôm tươi, bột bánh bèo, hành tím, da heo… Cách thức làm bánh vô cùng đơn giản nhưng không kém phần tinh tế. Đầu tiên bột gạo phải chọn loại gạo ngon đem ngâm cho mềm sau đó xay ra thành bột. Trộn đều nước vào bột làm bánh lượng vừa phải, đổ hỗn hợp sền sệt đó vào từng chén nhỏ và hấp trong vòng 5 đến 7 phút là chín.</p>
+                    <p>Tôm tươi đem hấp chín, lột sạch vỏ tôm, cắt nhỏ, giã nhuyễn. Xào tôm với dầu ăn để tôm khô vừa phải và da heo đem chiên giòn. Ăn với bánh bèo có thêm nước mắm, tùy vào người chế biến và người ăn để chọn cho mình nước mắm hợp khẩu vị nhất.</p>
+                    <img src="assets/images/banhbeo1.jpg" alt="bánh bèo tôm">
+                    <p>Cách làm đơn giản thế thôi nhưng với tài nghệ và sự khéo léo của người chế biến xứ Huế, món ăn là sự kết hợp hài hòa cân bằng giữa các nguyên liệu. Điều này làm cho món bánh bèo rất bình dân mà trở thành món ăn đặc sản. Nhìn những cánh hoa bánh bèo trắng với nhị vàng tỏa quanh, quý khách chắc chắn sẽ thấy thích thú. Và càng thích hơn khi được múc từng hoa bèo trắng ấy để thưởng thức.</p>
+                    <div class="opinion">
+                        <p>Thật tuyệt vời khi được tận hưởng hương vị thơm ngon của bánh, của nhân nhị; vị ngọt ngào quyện với vị cay cay của nước chấm. Chỉ cần nhìn bát nước chấm thôi cũng thấy đủ sự hòa hợp sắc màu trong ẩm thực xứ Huế. Thêm vào đó, vị giòn rụm giòn tan của tóp mỡ, thơm lừng mùi hành phi cũng tăng thêm độ hấp dẫn cho một món ăn dân dã, bình dị.</p>
+                    </div>
+                    <h2 id="item-search">Chia sẻ một số địa chỉ bán bánh bèo ngon ở Huế</h2>
+                    <p>Nếu có du lịch Huế, du khách dễ dàng tìm thưởng thức món ăn này. Sau đây mình sẽ giới thiệu cho các bạn một vài địa chỉ để thưởng thức bánh bèo khi tới đất cố đô:</p>
+                    <img src="assets/images/banhbeo2.jpg" alt="bánh bèo tôm">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <h3 id="item-search">Gánh Ăn Hàng - Bánh Canh & Bánh Bèo</h3>
+                    <p>Quán này nằm trên đường Đặng Thai Mai, thành phố Huế. Quán này nằm ở vỉa hè, tuy quán nhỏ nhưng lại rất đông khách nhưng không đông khách. Món bánh bèo ở đây có giá rất rẻ. Chỉ cần khoảng 40.000 đồng là quý khách sẽ được ăn no bụng sau khi ra khỏi quán. Nếu quý khách nào muốn thưởng thức thêm các món như bánh nậm, bánh canh cua bột mì và bột lọc, bún mắm nêm thì ở quán sẵn sàng phục vụ.</p>
+                    <p>Thời gian thích hợp để quý khách ghé vào quán là khoảng từ lúc 3 giờ chiều cho tới 19 giờ tối.</p>
+                    <i class="fa-solid fa-location-dot"></i>
+                    <h3 id="item-search">Quán 109 - Bánh Bèo - Nậm - Lọc</h3>
+                    <p>Tọa lạc tại vị trí 109 Lê Huân, Thành phố Huế quán khá dễ tìm khi quý khách đặt chân tới vùng đất cố đô.</p>
+                    <p>Quán đã có từ lâu đời và rất nổi tiếng với món bánh bèo. Món bánh bèo ở đây rất ngon vì thế quán thu hút khách tới ăn và mua về rất đông. Tới đây, quý khách có thể thưởng thức khay bánh bèo 20 chén chỉ với giá 40.000 đồng. Bột bánh ở quán dày mềm, được hấp tại chỗ. Để thưởng thức món bánh ngon đúng điệu, quý khách có thể rưới lên bánh một ít nước mắm ngọt và một ít ớt</p>
+                    <p>Quán mở của từ 6h00 đến 21h00.</p>
+                    <img src="assets/images/banhbeo3.jpg" alt="bánh bèo tôm tươi">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <h3 id="item-search">Bánh Bèo - Nậm & Lọc - Trần Phú</h3>
+                    <p>Quán này cũng lâu đời tại Huế, có diện tích khá rộng, bàn ghế khá sạch sẽ thoải mái để quý khách ăn uống. Quán này rất đông khách. Món bánh bèo của quán rất ngon. Bánh bèo ở đây có tôm chấy, hành phi, tóp mỡ nên chỉ cần nhìn qua thôi là đã thấy muốn thưởng thức liền rồi. Giá cả cũng cực “hạt dẻ”, một khay bánh giá khoảng 20.000 đồng nhưng thực khách có thể ăn no căng bụng.</p>
+                    <p>Giờ mở của quán từ 15 giờ 00 đến 18 giờ 00.</p>
+                    <p>Ngoài ra còn có một số quán có món bánh bèo ngon mà quý khách có thể ghé để thưởng thức khi đến Huế như sau:</p>
+                    <p>- Quán Thạch Hãn ở số 48 Thạch Hãn - Thành phố Huế. Quán mở cửa lúc 8 giờ 00 đến 22 giờ 00</p>
+                    <p>- Khu ẩm thực chợ Tây Lộc ở số 209 Nguyễn Trãi - Thành phố Huế. Các quán ở đây có giờ mở cửa từ 6 giờ 00 đến 18 giờ 00</p>
+                    <p>- Quán Khu Ẩm Thực Phố Đi Bộ Nguyễn Đình Chiểu nằm trên đường Nguyễn Đình Chiểu - thành phố Huế, giờ mở cửa từ 17 giờ 00 đến 23 giờ 00…</p>
+                    <p>Các quán này cũng rất ngon và mỗi quán có hương vị đặc biệt, nét riêng và độc đáo khác nhau!</p>
+                    <img src="assets/images/banhbeo4.jpg" alt="du khách thưởng thức bánh bèo">
+                    <p>Trên đây mình đã giới thiệu cho mọi người tất tần tật về món bánh bèo Huế. Nếu có dịp một lần đến đây, mọi người hãy dành thời gian thưởng thức món ăn ngon tuyệt vời này để mãi mãi không quên được hương vị của Huế mộng mơ.</p>
+                    <p>Mình vừa giới thiệu cho quý khách món bánh bèo Huế vô cùng thơm ngon, hấp dẫn ở đất cố đô. Nếu có dịp một lần đến đây, nếu có dịp mọi người hãy dành thời gian thưởng thức món ăn ngon tuyệt vời này nhé. Và mình sẽ giới thiệu thêm cho mọi người thật chi tiết về món bánh bột lọc Huế ở bài viết khác. mọi người hãy theo dõi và cập nhật thông tin nhé!</p>
+                    <p>Nếu thấy bài viết hay và bổ ích thì tiếc gì cho mình xin 1 cái like, share để mình có thêm động lực viết nhiều blog tiếp theo. Và nếu có chia sẻ hay đóng góp gì bạn có thể comment bên dưới để mọi người cùng biết nhé!</p>
+                </div>
+                <div class="readmore">
+                    Xem Thêm
+                    <div class="tags">
+                        <a href="#">đặc sản</a><a href="#">đồ ăn</a><a href="#">Huế</a>
+                    </div>
+                </div>
+                <div class="comment">
+                    <h1>Tất cả bình luận</h1>
+                    <div class="comments">
+                        <img src="https://i.pinimg.com/736x/af/25/7d/af257d12d94d21cdfd765b95752a0d56.jpg" alt="" class="avt">
+                        <p>Bánh bèo Huế mãi đỉnh</p>
+                    </div>
+                    <div class="comments">
+                        <img src="https://avatarfiles.alphacoders.com/344/344224.png" alt="" class="avt">
+                        <p>Đi Huế là phải ăn bánh bèo</p>
+                    </div>
+                    <div class="comments">
+                        <img src="https://sm.ign.com/ign_in/screenshot/default/mai-sakurajima_1wva.jpg" alt="" class="avt">
+                        <p>Nice</p>
+                    </div>
+                    <div class="comments">
+                        <img src="https://i.pinimg.com/originals/aa/5c/73/aa5c730b8f7608898e916cecabc28cac.jpg" alt="" class="avt">
+                        <p>Lưu lại vội luôn</p>
+                    </div>
+                    <hr>
+                    <h1>Bình Luận</h1>
+                    <div class="commentform">
+                        <img src="https://assetsio.reedpopcdn.com/honkai-star-rail-stelle-looks-at-her-phone.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp" alt="" class="avt">
+                        <textarea name="cmt" id="cmt" cols="30" rows="4" placeholder="Nhập bình luận..."></textarea>
+                    </div> 
+                    <div class="send"><input type="button" value="Gửi" class="sendbtn"></div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="grid">
+                <div class="gridrow">
+                    <div class="gridcol">
+                        <h3 class="footerheading">Hỗ trợ</h3>
+                        <ul class="footerlist">
+                            <li class="footeritem">
+                                <a href="" class="itemlink">Trung Tâm Trợ Giúp</a>
+                            </li>
+                            <li class="footeritem">
+                                <a href="" class="itemlink">Gửi Yêu Cầu Hỗ Trợ</a>
+                            </li>
+                            <li class="footeritem">
+                                <a href="" class="itemlink">Hướng Dẫn Xem Web</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="gridcol">
+                        <h3 class="footerheading">Chính sách</h3>
+                        <ul class="footerlist">
+                            <li class="footeritem">
+                                <a href="" class="itemlink">Chính Sách Bảo Mật</a>
+                            </li>
+                            <li class="footeritem">
+                                <a href="" class="itemlink">Chính Sách Giải Quyết Khiếu Nại</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="gridcol">
+                        <h3 class="footerheading">Theo dõi chúng tôi</h3>
+                        <ul class="footerlist">
+                            <li class="footeritem">
+                                <a href="" class="itemlink">
+                                    <i class="fa-brands fa-facebook"></i>
+                                    Facebook
+                                </a>
+                            </li>
+                            <li class="footeritem">
+                                <a href="" class="itemlink">
+                                    <i class="fa-brands fa-instagram"></i>
+                                    Instagram
+                                </a>
+                            </li>
+                            <li class="footeritem">
+                                <a href="" class="itemlink">
+                                    <i class="fa-brands fa-youtube"></i>
+                                    Youtube
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="gridcol">
+                        <h3 class="footerheading">Liên hệ</h3>
+                        <ul class="footerlist">
+                            <li class="footeritem">
+                                <div class="itemcontact">
+                                    <i class="fa-solid fa-phone"></i>
+                                    Tel: 1900 6969
+                                </div>
+                            </li>
+                            <li class="footeritem">
+                                <div class="itemcontact">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    Mail: 
+                                    <a href="blogfood@gmail.com" class="itemlink">blogfood@gmail.com</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/read-data/ReadData-public.js"></script>
+    <script src="./assets/js/read-data/readData-BeoCake.js"></script>
+</body>
