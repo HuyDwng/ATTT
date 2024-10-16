@@ -7,5 +7,8 @@ def login(request):
     # Logic xử lý đăng nhập
     return render(request, 'log_in/log-in.html')
 
-def sign_up(request):
+def signup(request):
     return render(request, 'log_in/sig-up.html') 
+
+def forget(request):
+    return render(request, 'log_in/forget-password.html') 

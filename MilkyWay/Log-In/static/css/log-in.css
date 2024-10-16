@@ -2,7 +2,7 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 body{
-    background-image: linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)), url('../images/log-in.jpg');
+    background-image: linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)), url("{% static 'images/bg_login.jpg' %}");
     background-size:  cover;
 }
 #form{

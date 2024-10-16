@@ -11,6 +11,7 @@
 </head>
 <body>
     <div id="form">
+        <img src = "{%static 'images/bg_login.jpg'%}" width="50" height= "50" />
         <form id="form-login">
                 <h1 class=heading>Đăng nhập tài khoản</h1>
                 <div class="form-group">
@@ -29,7 +30,7 @@
                     <label>
                         <input type="checkbox"> Lưu trữ
                     </label>
-                    <a href="./forget-password.html">Quên mật khẩu</a>
+                    <a href="{% url 'forget' %}">Quên mật khẩu</a>
                 </div>
                 <input type="submit" value="Đăng nhập" class="submit">
                 <p class="sign-up">Bạn chưa có tài khoản<a href="{% url 'sig-up' %}">Đăng kí</a></p>
