@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
+.bg_Main{
+    padding-bottom: 100px;
+    background-image: url(../image/HomeBG.jpg);
+    background-size: cover;
+}
+
+
+.Menu {
+    margin: 0 12% 0 12%; /*base*/
+    padding-top: 30px;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.Pr_Menu hr{
+    margin: 0 13% 0 13%; /*base*/
+}
+.logo a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #00d4ff;
+}
+
+.Menu ul {
+    list-style: none;
+    display: flex;
+}
+
+.Menu ul li {
+    margin-left: 20px;
+}
+
+.Menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding-bottom: 36px;
+    position: relative;
+}
+.Menu ul li a::after{
+    content: "";
+    height: 2px;
+    width: 0;
+    background: #00d4ff;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+}
+.Menu ul li:not(:last-child) a:hover{
+    color: #00d4ff;
+    transition: 0.5s;
+}
+.Menu ul li:not(:last-child) a:hover::after{
+    transition: all 0.5s ease-in-out; /*all Xác định hiệu ứng của quá trình chuyển đổi cho tất cả thuộc tính.*/
+    width: 100%;
+}
+.Menu ul li .btn {
+    background-color: #01badf;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+.Menu ul li .btn:hover{
+    transition: all 0.5s ease-in-out;
+    background-color: #03bdaa;
+    box-shadow: 0px 0px 10px 3px rgb(46, 46, 46); /*left right blur scale color*/
+}
+.PR_Slogan {
+    margin-left: 13%; /*base*/
+    height: 80vh;
+    margin-right: 60%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    text-align: left;
+}
+
+.PR_Slogan .Slogan h1 {
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.PR_Slogan button {
+    padding: 15px 30px;
+    background-color: #00d4ff;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.PR_Slogan button:hover{
+    transition: all 0.5s ease-in-out;
+    background-color: #03bdaa;
+    box-shadow: 10px 10px 10px 0px rgb(46, 46, 46); /*left right blur scale color*/
+}
