@@ -1,16 +1,11 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: Arial, sans-serif;
     color: #fff;
+    font-size: 17px;
 }
 .bg_Main{
     padding-bottom: 100px;
-    background-image: url(../image/HomeBG.jpg);
+    background-image: url(../pictures/HomeBG.jpg);
     background-size: cover;
 }
 
