@@ -1,0 +1,159 @@
+:root {
+    --main-color: #6dbfe2;
+    --btn-color: #28a745;
+    --remove-btn-color: #d9534f;
+    --text-color: #333;
+    --bg-color: #f2f2f2;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: var(--main-color);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 10px;
+    color: var(--text-color);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="file"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: var(--bg-color);
+}
+
+.image-inputs {
+    margin-bottom: 20px;
+}
+
+.image-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+textarea {
+    height: 100px;
+}
+
+.add-section-btn {
+    width: 10rem;
+    height: 3rem;
+    border-radius: 5px;
+    background-color: var(--main-color);
+    color: var(--bg-color);
+    border-width: 0;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.submit-btn {
+    background-color: var(--btn-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-end;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.form-section {
+    margin-bottom: 20px;
+}
+
+.form-section-title {
+    font-size: 20px;
+    color: var(--main-color);
+    border-bottom: 2px solid var(--main-color);
+    margin-bottom: 15px;
+}
+
+.form-section-title-main {
+    font-size: 25px;
+    color: var(--main-color);
+    border-bottom: 2px solid var(--main-color);
+    margin-bottom: 15px;
+}
+
+.remove-section-btn {
+    background-color: var(--remove-btn-color);
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+
+/*============================HOVER=========================*/
+.submit-btn:hover {
+    background-color: #218838;
+}
+
+.add-section-btn:hover {
+    background-color: #4299bd;
+    transition-duration: 0.5s;
+}
+
+.remove-image-btn {
+    background-color: var(--remove-btn-color);
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.remove-image-btn:hover {
+    background-color: #c9302c;
+}
+
+
+.remove-section-btn:hover {
+    background-color: #c9302c;
+}

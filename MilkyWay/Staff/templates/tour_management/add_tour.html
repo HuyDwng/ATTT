@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm Tour Du Lịch</title>
+    <link rel="stylesheet" href="../../static/css/tour_mng/add_tour.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Thêm Thông Tin Tour Du Lịch</h1>
+        <form id="tour_form" action="/submit-tour" method="POST" enctype="multipart/form-data">
+            <div class="form-section">
+                <h2 class="form-section-title-main">Thông Tin Tour</h2>
+
+                <label for="tour_name">Tên Tour:</label><br>
+                <input type="text" id="tour_name" name="tour_name" autocomplete="off" required>
+
+                <label for="tour_code">Mã Tour:</label><br>
+                <input type="text" id="tour_code" name="tour_code" autocomplete="off" required>
+
+                <label for="passenger_count">Số Lượng Hành Khách:</label><br>
+                <input type="number" id="passenger_count" name="passenger_count" autocomplete="off" required>
+
+                <label for="tour_price">Giá Tiền (VND):</label><br>
+                <input type="number" id="tour_price" name="tour_price" autocomplete="off" required>
+
+                <label for="tour_location">Địa Điểm Du Lịch:</label><br>
+                <input type="text" id="tour_location" name="tour_location" autocomplete="off" required>
+            </div>
+
+            <!-- Container để chứa các khu vực -->
+            <div id="tour_sections_container"></div>
+
+            <!-- Nút để thêm khu vực -->
+            <button type="button" id="add_section_btn" class="add-section-btn">Thêm Khu Vực</button>
+
+            <!-- Nút submit -->
+            <button type="submit" class="submit-btn">Thêm Tour</button>
+        </form>
+    </div>
+
+    <!-- Liên kết file JavaScript -->
+    <script src="../../static/javascript/tour_scpt/add_tour_scripts.js"></script>
+</body>
+
+</html>

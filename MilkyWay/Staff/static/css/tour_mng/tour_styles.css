@@ -1,0 +1,203 @@
+:root {
+    --main_color: #6dbfe2;
+}
+
+#main::-webkit-scrollbar {
+    width: 15px;
+    /* Độ rộng của thanh cuộn */
+    background: #e6ebeb;
+    /* Màu của phần tay cầm */
+    border-radius: 5px;
+    /* Góc bo cho phần tay cầm */
+}
+
+#main::-webkit-scrollbar-thumb {
+    background: var(--main_color);
+    /* Màu của phần tay cầm */
+    border-radius: 10px;
+    /* Góc bo cho phần tay cầm */
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+}
+
+#header_div {
+    background-color: var(--main_color);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sub_head_div {
+    display: flex;
+    align-items: center;
+    margin-right: 5%;
+}
+
+h1 {
+    color: #f2f2f2;
+    font-size: 3rem;
+}
+
+.logout_btn {
+    background-color: #d3392e;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-left: 20px;
+    box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.2);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 18px;
+}
+
+th {
+    background-color: var(--main_color);
+    color: #f2f2f2;
+    position: sticky;
+    /* Dính vào phần trên */
+    top: 0;
+    /* Giữ nó ở trên cùng */
+    z-index: 1;
+    /* Đặt chỉ số z để nó nằm trên nội dung khác */
+}
+
+.add-tour,
+.edit-btn,
+.delete-btn,
+.more-info-btn {
+    background-color: var(--main_color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.more-info-btn a {
+    text-decoration: none;
+    color: #f2f2f2;
+}
+
+.add-tour a {
+    color: #f2f2f2;
+    text-decoration: none;
+}
+
+.add-tour {
+    margin: 20px;
+    box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.2);
+}
+
+.edit-btn {
+    background-color: #ca8912;
+}
+
+.delete-btn {
+    background-color: #d3392e;
+}
+
+#main {
+    margin: 2%;
+    overflow-y: auto;
+    height: 60vh;
+}
+
+/* Dropdown Menu CSS */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: var(--main_color);
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/*==============HOVER====================*/
+.dropdown-content a:hover {
+    background-color: #44b9ec;
+    transition-duration: 0.5s;
+    color: #f2f2f2;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.logout_btn:hover {
+    padding: 15px 25px;
+    transition-duration: 0.5s;
+    background-color: #f44336;
+}
+
+.delete-btn:hover {
+    background-color: #f44336;
+    transition-duration: 0.5s;
+}
+
+.edit-btn:hover {
+    background-color: #ffa500;
+    transition-duration: 0.5s;
+}
+
+.add-tour:hover {
+    background-color: #44b9ec;
+    transition-duration: 0.5s;
+}
+
+.more-info-btn:hover {
+    background-color: #44b9ec;
+    transition-duration: 0.5s;
+}
