@@ -6,20 +6,27 @@
     --bg-color: #f2f2f2;
 }
 
+
+
 body {
     font-family: Arial, sans-serif;
     background-color: var(--bg-color);
     margin: 0;
     padding: 0;
+
+
 }
 
+
 .container {
-    width: 80%;
+    width: 50%;
     margin: auto;
     padding: 20px;
     background-color: white;
     border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 10vh;
+    position: sticky;
 }
 
 h1 {
@@ -36,18 +43,29 @@ label {
     font-weight: bold;
     margin-top: 10px;
     color: var(--text-color);
+    font-size: 1.25rem;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+.form-section h2 {
+    font-size: 2rem;
 }
 
 input[type="text"],
 input[type="number"],
 input[type="date"],
 textarea {
-    width: 100%;
+    width: 97%;
     padding: 10px;
     margin-top: 5px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    background-color: #fbfbfb;
+    font-size: 1.25rem;
 }
 
 input[type="file"] {
@@ -101,6 +119,8 @@ textarea {
     margin-bottom: 20px;
 }
 
+
+
 .form-section-title {
     font-size: 20px;
     color: var(--main-color);
@@ -125,6 +145,19 @@ textarea {
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-top: 10px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.remove-image-btn {
+    background-color: var(--remove-btn-color);
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -138,16 +171,7 @@ textarea {
     transition-duration: 0.5s;
 }
 
-.remove-image-btn {
-    background-color: var(--remove-btn-color);
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+
 
 .remove-image-btn:hover {
     background-color: #c9302c;
