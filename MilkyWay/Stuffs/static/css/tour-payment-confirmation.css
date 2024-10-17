@@ -1,0 +1,183 @@
+:root {
+    --main_color: #6dbfe2;
+}
+
+#header_div {
+    background-color: var(--main_color);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sub_head_div {
+    display: flex;
+    align-items: center;
+    margin-right: 5%;
+}
+
+h1 {
+    color: #f2f2f2;
+    font-size: 3rem;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép xuống dòng */
+    justify-content: space-between;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+.form-section {
+    box-sizing: border-box;
+    border: 2px solid #007BFF;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    flex: 1 1 calc(33.333% - 20px); /* Mỗi ô chiếm 1/3 chiều rộng, trừ khoảng cách */
+    margin: 10px; /* Thêm khoảng cách giữa các ô */
+}
+
+.btn-luu {
+    margin-top: 15px; /* Thay đổi giá trị này để điều chỉnh khoảng cách */
+}
+
+.nhap {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.nhap label {
+    width: 120px;
+    margin-right: 10px;
+}
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"], select, textarea {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.g-num{
+    flex-direction: column; /* Thay đổi thành cột để phần tử nằm chồng lên nhau */
+    align-items: flex-start; /* Đảm bảo các phần tử bên trái */
+    margin-bottom: 10px; /* Khoảng cách giữa các ô */
+}
+
+.warning-message {
+    margin-top: 5px; /* Khoảng cách trên để tách span ra khỏi input */
+}
+
+#seat-warning {
+    display: none; /* Ẩn cảnh báo ban đầu */
+    font-size: 0.9em; /* Kích thước chữ nhỏ hơn */
+    color: red; /* Màu chữ để nổi bật */
+}
+
+/* Khi màn hình nhỏ hơn 768px (điện thoại) */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Xếp chồng các div lên nhau */
+    }
+
+    .form-section {
+        flex: 1 1 100%; /* Mỗi div chiếm toàn bộ chiều rộng */
+        margin: 10px 0; /* Khoảng cách giữa các ô trong hàng dọc */
+    }
+}
+
+/* Chi tiết hóa đơn*/
+.bill-details {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bill-details h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.bill-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.bill-item label {
+    margin-right: 10px;
+}
+
+.bill-item input {
+    padding: 5px;
+    width: 150px;
+}
+
+.bill-item button {
+    padding: 5px 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.bill-item button:hover {
+    background-color: #0056b3;
+}
+
+.bill-item.total {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+/* Nút thanh toán*/
+/* Chỉ căn giữa nút thanh toán */
+.bill-item.button-container {
+    justify-content: center; /* Căn giữa nội dung */
+}
+
+.btn-pay {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 150px; /* Đặt độ rộng của nút */
+    text-align: center;
+}
+
+.btn-pay:hover {
+    background-color: #218838;
+}

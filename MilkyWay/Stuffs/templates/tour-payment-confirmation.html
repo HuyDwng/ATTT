@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xác nhận thông tin thanh toán cho tour</title>
+    <link rel="stylesheet" href="/MilkyWay/Stuffs/static/css/tour-payment-confirmation.css">
+</head>
+<body>
+    <div id="header_div">
+        <div class="sub_head_div">
+            <h1>Xác Nhận Tour Du Lịch</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="form-section customer">
+            <h3>Thông tin khách hàng</h3>
+            <form method="POST"> 
+                <div class="nhap">
+                    <label for="name">Họ và Tên:</label>
+                    <input type="text" id="name" name="name" placeholder="Nhập họ và tên của bạn" required>
+                </div>
+
+                <div class="nhap">
+                    <label for="email">Email: </label>
+                    <input type="email" id="email" name="email" placeholder="Nhập email của bạn" required>
+                </div>
+
+                <div class="nhap">
+                    <label for="sdt">Số điện thoại:</label>
+                    <input type="tel" id="sdt" name="sdt" placeholder="Nhập số điện thoại của bạn" required>
+                </div>
+
+                <div class="nhap">
+                    <label for="address">Địa chỉ:</label>
+                    <input type="text" id="address" name="address" placeholder="Nhập địa chỉ của bạn" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Giới tính:</label>
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Nam</label>
+                    
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Nữ</label>
+                    
+                    <input type="radio" id="other" name="gender" value="other">
+                    <label for="other">Khác</label>
+                </div>
+
+                <input type="submit" value="Lưu" class="btn-luu">
+            </form>
+        </div>
+
+        <div class="form-section tour-info">
+            <h3>Thông tin đặt tour</h3>
+            <form method="POST"> 
+                <div class="nhap">
+                    <label for="tour-name">Tên tour:</label>
+                    <input type="text" id="tour-name" name="tour-name" placeholder="Nhập tên tour du lịch" required>
+                </div>
+        
+                <div class="nhap">
+                    <label for="departure-date">Ngày khởi hành:</label>
+                    <input type="date" id="departure-date" name="departure-date" required>
+                </div>
+        
+                <div class="nhap g-num">
+                    <div>
+                        <label for="guest-number">Số lượng khách:</label>
+                        <input type="number" id="guest-number" name="guest-number" min="1" placeholder="Nhập số lượng khách" required>
+                    </div>
+                    <div class="warning-message">                    
+                        <span id="seat-warning">Số lượng khách không thể lớn hơn số ghế còn lại!</span>
+                    </div>
+                </div>   
+                
+        
+                <div class="nhap">
+                    <label for="service-type">Loại dịch vụ:</label>
+                    <select id="service-type" name="service-type" required>
+                        <option value="" disabled selected hidden>Chọn loại dịch vụ</option>
+                        <option value="standard">Dịch vụ tiêu chuẩn</option>
+                        <option value="premium">Dịch vụ cao cấp</option>
+                        <option value="vip">Dịch vụ VIP</option>
+                    </select>
+                </div>
+        
+                <div class="nhap">
+                    <label for="special-request">Yêu cầu đặc biệt:</label>
+                    <textarea id="special-request" name="special-request" placeholder="Nhập yêu cầu đặc biệt (nếu có)"></textarea>
+                </div>
+        
+                <input type="submit" value="Đặt tour">
+            </form>
+        </div>
+        <div class="form-section bill-details">
+            <h3>Chi tiết hóa đơn</h3>
+            
+            <!-- Tổng tiền -->
+            <div class="bill-item">
+                <span>Tổng tiền vé:</span>
+                <span id="total-amount">2,000,000 VND</span>
+            </div>
+    
+            <!-- Thuế và phí dịch vụ -->
+            <div class="bill-item">
+                <span>Thuế và phí dịch vụ:</span>
+                <span id="tax-service-fee">10%</span>
+            </div>
+    
+            <!-- Mã ưu đãi/khuyến mãi -->
+            <div class="bill-item">
+                <label for="promo-code">Mã khuyến mãi:</label>
+                <input type="text" id="promo-code" placeholder="Nhập mã giảm giá">
+                <button id="apply-code">Áp dụng</button>
+            </div>
+    
+            <!-- Tổng số tiền cần thanh toán -->
+            <div class="bill-item total">
+                <span>Tổng số tiền cần thanh toán:</span>
+                <span id="final-amount">2,200,000 VND</span>
+            </div>
+
+            <!-- Nút Thanh toán -->
+            <div class="bill-item button-container">
+                <button id="pay-button" class="btn-pay">Thanh toán</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/MilkyWay/Stuffs/static/javascript/tour-payment-confirmation.js"></script> 
+</body>
+</html>
