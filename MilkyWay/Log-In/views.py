@@ -8,6 +8,7 @@ from google.auth.transport import requests
 # Create your views here.
 from django.shortcuts import render
 
+@csrf_exempt
 def login(request):
     # Logic xử lý đăng nhập
     return render(request, 'log_in/log-in.html')
@@ -21,6 +22,7 @@ import os
 
 
 
+@csrf_exempt
 def auth_receiver(request):
     """
     Google calls this URL after the user has signed in with their Google account.
