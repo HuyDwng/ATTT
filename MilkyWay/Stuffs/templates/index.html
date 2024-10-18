@@ -1,1 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milky Way</title>
+    <!-- Load static-->
+    <link rel = "icon" href = "../static/pictures/logo.jpg">
+    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/footer.css">
+    <!--Reset Css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
 
+<body>
+    <div class="bg_Main">
+        <header class="Pr_Menu">
+            <div class="Menu">
+                <div class="logo"><a href="index.html">Milky<span>Way</span></a></div>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Destination</a></li>
+                    <li><a href="#">Packages</a></li>
+                    <li><a href="#">Special Offers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Subscription</a></li>
+                    <li><a href="#" class="btn">Book Now</a></li>
+                </ul>
+            </div>
+            <hr>
+            </header>
+            
+            <section class="PR_Slogan">
+                <div class="Slogan">
+                    <h1>Explore the Beauty of the Beautiful World</h1>
+                    <button>Explore Now</button>
+                </div>
+            </section>
+    </div>
+    <!-- Search Tabs -->
+    <div class="search-container">
+        <div class="tabs-search">
+            <button class="tab active" onclick="showTab(event, 'tours')"><i class="fa-brands fa-pagelines"></i> Tours</button>
+            <button class="tab" onclick="showTab(event, 'hotels')"><i class="fa-solid fa-building"></i> Hotels</button>
+            <button class="tab" onclick="showTab(event, 'flights')"><i class="fa-solid fa-plane-departure"></i> Flights</button>
+        </div>
+
+        <div id="tours" class="tab-content">
+            <div class="search-form">
+                <div class="Find_Content">
+                    <p>Destination</p>
+                    <p>Check in</p>
+                    <p>Check out</p>
+                    <p>Duration</p>
+                    <p>Members</p>
+                </div>
+                <input type="text" placeholder="Enter Your Destination Country" class="search-destination">
+                <input type="date">
+                <input type="date">
+                <input type="number" placeholder="Duration">
+                <input type="number" placeholder="Members">
+                <input type="text" placeholder="Enter Your Destination Location" class="search-destination">
+            </div>
+            <div class="Find_budget">
+                <p>Budget :</p>
+                <select>
+                    <option value="low"> &lt; 200$</option><!-- /.option-->
+					<option value="medium">200$ - 500$</option><!-- /.option-->
+                    <option value="rather">500$ - 1000$</option><!-- /.option-->
+                    <option value="high">trên 1000$</option><!-- /.option-->
+                </select>
+                <button class="btn-search">Search</button>
+            </div>
+        </div>
+        <div id="hotels" class="tab-content" style="display:none;">
+            <div class="search-form">
+                <!-- Nội dung tìm kiếm khách sạn giống tab Tours -->
+                <div class="Find_Content">
+                    <p>Destination</p>
+                    <p>Check in</p>
+                    <p>Check out</p>
+                    <p>Duration</p>
+                    <p>Members</p>
+                </div>
+                <input type="text" placeholder="Enter Your Destination Country" class="search-destination">
+                <input type="date">
+                <input type="date">
+                <input type="number" placeholder="Duration">
+                <input type="number" placeholder="Members">
+                <input type="text" placeholder="Enter Your Destination Location" class="search-destination">
+            </div>
+            <div class="Find_budget">
+                <p>Budget :</p>
+                <select>
+                    <option value="low"> &lt; 200$</option><!-- /.option-->
+					<option value="medium">200$ - 500$</option><!-- /.option-->
+                    <option value="rather">500$ - 1000$</option><!-- /.option-->
+                    <option value="high">trên 1000$</option><!-- /.option-->
+                </select>
+                <button class="btn-search">Search</button>
+            </div>
+        </div>
+
+        <div id="flights" class="tab-content" style="display:none;">
+            <div class="search-Flights">
+                <!-- Nội dung tìm kiếm chuyến bay -->
+                <div class="trip-type">
+                    <label><input type="radio" name="trip" checked> Round Trip</label>
+                    <label><input type="radio" name="trip"> On Way</label>
+                </div>
+                <div class="input-FlightsInfo">
+                    <div class="form-FlightsInfo Location-Search">
+                        <label>From</label>
+                        <input type="text" placeholder="Enter Your Location">
+                    </div>
+                    <div class="form-FlightsInfo">
+                        <label>Departure</label>
+                        <input type="date">
+                    </div>
+                    <div class="form-FlightsInfo">
+                        <label>Return</label>
+                        <input type="date">
+                    </div>
+                    <div class="form-FlightsInfo">
+                        <label>Adults</label>
+                        <select>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <div class="form-FlightsInfo">
+                        <label>Childs</label>
+                        <select>
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                        </select>
+                    </div>
+                    <div class="form-FlightsInfo Location-Search">
+                        <label>To</label>
+                        <input type="text" placeholder="Enter Your Destination Location">
+                    </div>
+                    <div class="form-FlightsInfo">
+                        <label>Class</label>
+                        <select>
+                            <option>Economy</option>
+                            <option>Business</option>
+                            <option>First Class</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="search-btn">Search</button>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end search-content -->
+        <!-- Top Destinations -->
+         
+        <section class="destinations">
+            <div class="title-MainPage">
+                <h2>Top Destination</h2>
+                <p>Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.</p>
+            </div>
+            <div class="destination-card">
+                <div class="Parent-TopCard">
+                    <div class="top-card">
+                        <div class="Destination-Info">
+                            <h3 class="Destination-Name">China</h3>
+                            <p class= "Places-number">20 Tours    15 Places</p>
+                        </div>
+                    </div>
+                    <div class="top-card">
+                        <div class="Destination-Info">
+                            <h3 class="Destination-Name">China</h3>
+                            <p class= "Places-number">20 Tours    15 Places</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="other-card">
+                    <div class="left-card">
+                        <div class="Destination-Info">
+                            <h3 class="Destination-Name">China</h3>
+                            <p class= "Places-number">20 Tours    15 Places</p>
+                        </div>
+                    </div>
+                    <div class="right-card">
+                        <div class="right-card1">
+                            <div class="Destination-Info">
+                                <h3 class="Destination-Name">China</h3>
+                                <p class= "Places-number">20 Tours    15 Places</p>
+                            </div>
+                        </div>
+                        <div class="right-card1">
+                            <div class="Destination-Info">
+                                <h3 class="Destination-Name">China</h3>
+                                <p class= "Places-number">20 Tours    15 Places</p>
+                            </div>
+                        </div>
+                        <div class="right-card2">
+                            <div class="Destination-Info">
+                                <h3 class="Destination-Name">China</h3>
+                                <p class= "Places-number">20 Tours    15 Places</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- footer-copyright start -->
+		<footer  class="footer-copyright">
+			<div class="f-container">
+				<div class="footer-content">
+					<div class="f-row">
+
+						<div class="col-sm-3">
+							<div class="single-footer-item">
+								<div class="footer-logo">
+									<a href="index.html">
+										tour<span>Nest</span>
+									</a>
+									<p>
+										best travel agency
+									</p>
+								</div>
+							</div><!--/.single-footer-item-->
+						</div><!--/.col-->
+
+						<div class="col-sm-3">
+							<div class="single-footer-item">
+								<h2>link</h2>
+								<div class="single-footer-txt">
+									<p><a href="#">home</a></p>
+									<p><a href="#">destination</a></p>
+									<p><a href="#">spacial packages</a></p>
+									<p><a href="#">special offers</a></p>
+									<p><a href="#">blog</a></p>
+									<p><a href="#">contacts</a></p>
+								</div><!--/.single-footer-txt-->
+							</div><!--/.single-footer-item-->
+
+						</div><!--/.col-->
+
+						<div class="col-sm-3">
+							<div class="single-footer-item">
+								<h2>popular destination</h2>
+								<div class="single-footer-txt">
+									<p><a href="#">china</a></p>
+									<p><a href="#">venezuela</a></p>
+									<p><a href="#">brazil</a></p>
+									<p><a href="#">australia</a></p>
+									<p><a href="#">london</a></p>
+								</div><!--/.single-footer-txt-->
+							</div><!--/.single-footer-item-->
+						</div><!--/.col-->
+
+						<div class="col-sm-3">
+							<div class="single-footer-item text-center">
+								<h2 class="text-left">contacts</h2>
+								<div class="single-footer-txt text-left">
+									<p>+1 (300) 1234 6543</p>
+									<p class="foot-email"><a href="#">info@tnest.com</a></p>
+									<p>North Warnner Park 336/A</p>
+									<p>Newyork, USA</p>
+								</div><!--/.single-footer-txt-->
+							</div><!--/.single-footer-item-->
+						</div><!--/.col-->
+
+					</div><!--/.row-->
+
+				</div><!--/.footer-content-->
+				<hr>
+				<div class="foot-icons ">
+					<ul class="footer-social-links list-inline list-unstyled">
+		                <li><a href="#" target="_blank" class="foot-icon-bg-1"><i class="fa-brands fa-facebook-f"></i></a></li>
+		                <li><a href="#" target="_blank" class="foot-icon-bg-2"><i class="fa-solid fa-x"></i></a></li>
+		                <li><a href="#" target="_blank" class="foot-icon-bg-3"><i class="fa-brands fa-instagram"></i></a></li>
+		        	</ul>
+		        	<p>&copy; 2017 <a href="https://www.themesine.com">ThemeSINE</a>. All Right Reserved</p>
+
+		        </div><!--/.foot-icons-->
+				<div id="scroll-Top">
+					<i class="fa fa-angle-double-up return-to-top" id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
+				</div><!--/.scroll-Top-->
+			</div><!-- /.container-->
+
+		</footer><!-- /.footer-copyright-->
+		<!-- footer-copyright end -->
+
+    <!--JavaScript-->
+    <script src="../static/javascript/MainPage.js"></script>
+</body>
+</html>
