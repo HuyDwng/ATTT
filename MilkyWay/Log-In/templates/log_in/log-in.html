@@ -14,6 +14,14 @@
     <div id="form">
         <form id="form-login" method="POST" action="/">
             {% csrf_token %}
+            {% if request.session.user_data %}
+            <div>
+                <p>Hi {{ request.session.user_data.given_name }} 🙂</p>
+                <p>Your email is {{ request.session.user_data.email }}</p>
+                <img src="{{ request.session.user_data.picture }}" alt="User picture">
+                <p>Click here to <a href="/sign-out">Sign out</a></p>
+            </div>
+            {% else %}
                 <h1 class=heading>Đăng nhập tài khoản</h1>
                 <div class="form-group">
                     <i class="fa-solid fa-user"></i>
@@ -53,7 +61,7 @@
                     data-logo_alignment="left">
                </div>
                 <p class="sign-up">Bạn chưa có tài khoản<a href="{% url 'sig-up' %}">Đăng kí</a></p>
-
+            {% endif %}
         </form>
     </div>
 
