@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giao Diện Quản Trị</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link href="css/styles.css" rel="stylesheet">
+    <!-- Bootstrap Styles-->
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="css/font-awesome.css" rel="stylesheet" />
+    <script src=""></script>
+</head>
+
+<body>
+
+    <div class="header">
+        <a class="brand" href="tour_list.html"><strong><i class="icon fa fa-plane"></i> TOUR DU LỊCH</strong></a>
+        <div class="options">
+            Chào mừng, Admin | <a href="#">Đổi mật khẩu</a> | <a href="#">Đăng xuất</a>
+        </div>
+    </div>
+
+    <div class="containe">
+        <div class="sidebar">
+            <h3>QUẢN LÝ TÀI KHOẢN</h3>
+            <ul>
+                <li><a href="create_group.html">Nhóm</a></li>
+                <li><a href="create_user.html">Người dùng</a></li>
+            </ul>
+            <h3>QUẢN LÝ TOUR</h3>
+            <ul>
+                <li><a href="#">Các tour hiện tại</a></li>
+                <li><a href="#">Các tour đã tổ chức</a></li>
+            </ul>
+            <h3>QUẢN LÝ GIAO DỊCH</h3>
+            <ul>
+                <li><a href="#">Danh mục</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <div id="page-inner">
+
+                <div class="row">
+                    <div class="col-md-3 col-sm-12 col-xs-12">
+                        <div class="board">
+                            <div class="panel panel-primary">
+                                <div class="number">
+                                    <h3>
+                                        <h3>44,023</h3>
+                                        <small>LƯỢT VÀO</small>
+                                    </h3>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-eye fa-5x red"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-12 col-xs-12">
+                        <div class="board">
+                            <div class="panel panel-primary">
+                                <div class="number">
+                                    <h3>
+                                        <h3>32,850</h3>
+                                        <small>LƯỢT BÁN</small>
+                                    </h3>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-shopping-cart fa-5x blue"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-12 col-xs-12">
+                        <div class="board">
+                            <div class="panel panel-primary">
+                                <div class="number">
+                                    <h3>
+                                        <h3>56,150</h3>
+                                        <small>LƯỢT BÌNH LUẬN</small>
+                                    </h3>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-comments fa-5x green"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-12 col-xs-12">
+                        <div class="board">
+                            <div class="panel panel-primary">
+                                <div class="number">
+                                    <h3>
+                                        <h3>89,645</h3>
+                                        <small>LỢI NHUẬN</small>
+                                    </h3>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-user fa-5x yellow"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="panel panel-default chartJs">
+                            <div class="panel-heading">
+                                <div class="card-title">
+                                    <div class="title">Line Chart</div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <canvas id="line-chart" class="chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="panel panel-default chartJs">
+                            <div class="panel-heading">
+                                <div class="card-title">
+                                    <div class="title">Bar Chart</div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <canvas id="bar-chart" class="chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+</body>
+
+</html>
