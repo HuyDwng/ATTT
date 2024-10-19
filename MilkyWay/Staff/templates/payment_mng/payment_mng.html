@@ -12,6 +12,67 @@
         crossorigin="anonymous"></script>
     <link rel="icon" href="../../static/pictures/logo.jpg">
     <link rel="stylesheet" href="../../static/css/payment_mng/payment_mng.css">
+    <style>
+        /* Reset cơ bản */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        details {
+            position: relative;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+            list-style: none;
+        }
+
+        summary::marker {
+            display: none;
+            /* Ẩn dấu mũi tên mặc định */
+        }
+
+        /* Nội dung modal */
+        details[open]::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+        details div {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 300px;
+            z-index: 20;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
@@ -104,7 +165,25 @@
                             <td>5,000,000</td>
                             <td>Đã thanh toán</td>
                             <td>Chuyển khoản ngân hàng</td>
-                            <td><button class="btn btn-link p-0">Xem chi tiết</button></td>
+                            <td>
+                                <details>
+                                    <summary class="btn btn-link p-0">Xem chi tiết</summary>
+                                    <div class="details-content">
+                                        <span class="close-btn"
+                                            onclick="this.closest('details').removeAttribute('open')">&times;</span>
+                                        <p>Chi tiết giao dịch GD01:</p>
+                                        <ul>
+                                            <li>Mã giao dịch: GD01</li>
+                                            <li>Tên khách hàng: Nguyễn Văn A</li>
+                                            <li>Tên tour: Hà Nội</li>
+                                            <li>Ngày giao dịch: 01/10/2024</li>
+                                            <li>Tổng số tiền: 5,000,000 VND</li>
+                                            <li>Trạng thái: Đã thanh toán</li>
+                                            <li>Phương thức: Chuyển khoản ngân hàng</li>
+                                        </ul>
+                                    </div>
+                                </details>
+                            </td>
                         </tr>
                         <tr>
                             <td>GD02</td>
@@ -114,7 +193,25 @@
                             <td>8,000,000</td>
                             <td>Chờ xử lý</td>
                             <td>Tiền mặt</td>
-                            <td><button class="btn btn-link p-0">Xem chi tiết</button></td>
+                            <td>
+                                <details>
+                                    <summary class="btn btn-link p-0">Xem chi tiết</summary>
+                                    <div class="details-content">
+                                        <span class="close-btn"
+                                            onclick="this.closest('details').removeAttribute('open')">&times;</span>
+                                        <p>Chi tiết giao dịch GD01:</p>
+                                        <ul>
+                                            <li>Mã giao dịch: GD02</li>
+                                            <li>Tên khách hàng: Trần Thị B</li>
+                                            <li>Tên tour: Đà Nẵng</li>
+                                            <li>Ngày giao dịch: 02/10/2024</li>
+                                            <li>Tổng số tiền: 8,000,000 VND</li>
+                                            <li>Trạng thái: Chờ xử lý</li>
+                                            <li>Phương thức: Tiền mặt</li>
+                                        </ul>
+                                    </div>
+                                </details>
+                            </td>
                         </tr>
                         <tr>
                             <td>GD03</td>
@@ -124,7 +221,25 @@
                             <td>12,500,000</td>
                             <td>Đã thanh toán</td>
                             <td>Chuyển khoản ngân hàng</td>
-                            <td><button class="btn btn-link p-0">Xem chi tiết</button></td>
+                            <td>
+                                <details>
+                                    <summary class="btn btn-link p-0">Xem chi tiết</summary>
+                                    <div class="details-content">
+                                        <span class="close-btn"
+                                            onclick="this.closest('details').removeAttribute('open')">&times;</span>
+                                        <p>Chi tiết giao dịch GD01:</p>
+                                        <ul>
+                                            <li>Mã giao dịch: GD03</li>
+                                            <li>Tên khách hàng: Lê Văn C</li>
+                                            <li>Tên tour: Hồ Chí Minh</li>
+                                            <li>Ngày giao dịch: 02/10/2024</li>
+                                            <li>Tổng số tiền: 8,000,000 VND</li>
+                                            <li>Trạng thái: Chờ xử lý</li>
+                                            <li>Phương thức: Tiền mặt</li>
+                                        </ul>
+                                    </div>
+                                </details>
+                            </td>
                         </tr>
                         <tr>
                             <td>GD04</td>
@@ -134,7 +249,25 @@
                             <td>15,000,000</td>
                             <td>Chờ xử lý</td>
                             <td>Tiền mặt</td>
-                            <td><button class="btn btn-link p-0">Xem chi tiết</button></td>
+                            <td>
+                                <details>
+                                    <summary class="btn btn-link p-0">Xem chi tiết</summary>
+                                    <div class="details-content">
+                                        <span class="close-btn"
+                                            onclick="this.closest('details').removeAttribute('open')">&times;</span>
+                                        <p>Chi tiết giao dịch GD01:</p>
+                                        <ul>
+                                            <li>Mã giao dịch: GD03</li>
+                                            <li>Tên khách hàng: Lê Văn C</li>
+                                            <li>Tên tour: Hồ Chí Minh</li>
+                                            <li>Ngày giao dịch: 02/10/2024</li>
+                                            <li>Tổng số tiền: 8,000,000 VND</li>
+                                            <li>Trạng thái: Chờ xử lý</li>
+                                            <li>Phương thức: Tiền mặt</li>
+                                        </ul>
+                                    </div>
+                                </details>
+                            </td>
                         </tr>
                         <tr>
                             <td>GD05</td>
@@ -144,7 +277,25 @@
                             <td>6,500,000</td>
                             <td>Đã thanh toán</td>
                             <td>Chuyển khoản ngân hàng</td>
-                            <td><button class="btn btn-link p-0">Xem chi tiết</button></td>
+                            <td>
+                                <details>
+                                    <summary class="btn btn-link p-0">Xem chi tiết</summary>
+                                    <div class="details-content">
+                                        <span class="close-btn"
+                                            onclick="this.closest('details').removeAttribute('open')">&times;</span>
+                                        <p>Chi tiết giao dịch GD01:</p>
+                                        <ul>
+                                            <li>Mã giao dịch: GD03</li>
+                                            <li>Tên khách hàng: Lê Văn C</li>
+                                            <li>Tên tour: Hồ Chí Minh</li>
+                                            <li>Ngày giao dịch: 02/10/2024</li>
+                                            <li>Tổng số tiền: 8,000,000 VND</li>
+                                            <li>Trạng thái: Chờ xử lý</li>
+                                            <li>Phương thức: Tiền mặt</li>
+                                        </ul>
+                                    </div>
+                                </details>
+                            </td>
                         </tr>
                         <tr>
                             <td>GD06</td>
@@ -154,7 +305,25 @@
                             <td>3,200,000</td>
                             <td>Chờ xử lý</td>
                             <td>Tiền mặt</td>
-                            <td><button class="btn btn-link p-0">Xem chi tiết</button></td>
+                            <td>
+                                <details>
+                                    <summary class="btn btn-link p-0">Xem chi tiết</summary>
+                                    <div class="details-content">
+                                        <span class="close-btn"
+                                            onclick="this.closest('details').removeAttribute('open')">&times;</span>
+                                        <p>Chi tiết giao dịch GD01:</p>
+                                        <ul>
+                                            <li>Mã giao dịch: GD03</li>
+                                            <li>Tên khách hàng: Lê Văn C</li>
+                                            <li>Tên tour: Hồ Chí Minh</li>
+                                            <li>Ngày giao dịch: 02/10/2024</li>
+                                            <li>Tổng số tiền: 8,000,000 VND</li>
+                                            <li>Trạng thái: Chờ xử lý</li>
+                                            <li>Phương thức: Tiền mặt</li>
+                                        </ul>
+                                    </div>
+                                </details>
+                            </td>
                         </tr>
                         <tr>
                             <td>GD07</td>
@@ -164,7 +333,25 @@
                             <td>9,750,000</td>
                             <td>Đã thanh toán</td>
                             <td>Chuyển khoản ngân hàng</td>
-                            <td><button class="btn btn-link p-0">Xem chi tiết</button></td>
+                            <td>
+                                <details>
+                                    <summary class="btn btn-link p-0">Xem chi tiết</summary>
+                                    <div class="details-content">
+                                        <span class="close-btn"
+                                            onclick="this.closest('details').removeAttribute('open')">&times;</span>
+                                        <p>Chi tiết giao dịch GD01:</p>
+                                        <ul>
+                                            <li>Mã giao dịch: GD03</li>
+                                            <li>Tên khách hàng: Lê Văn C</li>
+                                            <li>Tên tour: Hồ Chí Minh</li>
+                                            <li>Ngày giao dịch: 02/10/2024</li>
+                                            <li>Tổng số tiền: 8,000,000 VND</li>
+                                            <li>Trạng thái: Chờ xử lý</li>
+                                            <li>Phương thức: Tiền mặt</li>
+                                        </ul>
+                                    </div>
+                                </details>
+                            </td>
                         </tr>
                         <tr>
                             <td>GD08</td>
@@ -174,7 +361,25 @@
                             <td>4,000,000</td>
                             <td>Chờ xử lý</td>
                             <td>Tiền mặt</td>
-                            <td><button class="btn btn-link p-0">Xem chi tiết</button></td>
+                            <td>
+                                <details>
+                                    <summary class="btn btn-link p-0">Xem chi tiết</summary>
+                                    <div class="details-content">
+                                        <span class="close-btn"
+                                            onclick="this.closest('details').removeAttribute('open')">&times;</span>
+                                        <p>Chi tiết giao dịch GD01:</p>
+                                        <ul>
+                                            <li>Mã giao dịch: GD03</li>
+                                            <li>Tên khách hàng: Lê Văn C</li>
+                                            <li>Tên tour: Hồ Chí Minh</li>
+                                            <li>Ngày giao dịch: 02/10/2024</li>
+                                            <li>Tổng số tiền: 8,000,000 VND</li>
+                                            <li>Trạng thái: Chờ xử lý</li>
+                                            <li>Phương thức: Tiền mặt</li>
+                                        </ul>
+                                    </div>
+                                </details>
+                            </td>
                         </tr>
                         <tr>
                             <td>GD09</td>
@@ -184,7 +389,25 @@
                             <td>11,300,000</td>
                             <td>Đã thanh toán</td>
                             <td>Chuyển khoản ngân hàng</td>
-                            <td><button class="btn btn-link p-0">Xem chi tiết</button></td>
+                            <td>
+                                <details>
+                                    <summary class="btn btn-link p-0">Xem chi tiết</summary>
+                                    <div class="details-content">
+                                        <span class="close-btn"
+                                            onclick="this.closest('details').removeAttribute('open')">&times;</span>
+                                        <p>Chi tiết giao dịch GD01:</p>
+                                        <ul>
+                                            <li>Mã giao dịch: GD03</li>
+                                            <li>Tên khách hàng: Lê Văn C</li>
+                                            <li>Tên tour: Hồ Chí Minh</li>
+                                            <li>Ngày giao dịch: 02/10/2024</li>
+                                            <li>Tổng số tiền: 8,000,000 VND</li>
+                                            <li>Trạng thái: Chờ xử lý</li>
+                                            <li>Phương thức: Tiền mặt</li>
+                                        </ul>
+                                    </div>
+                                </details>
+                            </td>
                         </tr>
                         <tr>
                             <td>GD10</td>
@@ -194,7 +417,25 @@
                             <td>7,800,000</td>
                             <td>Chờ xử lý</td>
                             <td>Tiền mặt</td>
-                            <td><button class="btn btn-link p-0">Xem chi tiết</button></td>
+                            <td>
+                                <details>
+                                    <summary class="btn btn-link p-0">Xem chi tiết</summary>
+                                    <div class="details-content">
+                                        <span class="close-btn"
+                                            onclick="this.closest('details').removeAttribute('open')">&times;</span>
+                                        <p>Chi tiết giao dịch GD01:</p>
+                                        <ul>
+                                            <li>Mã giao dịch: GD03</li>
+                                            <li>Tên khách hàng: Lê Văn C</li>
+                                            <li>Tên tour: Hồ Chí Minh</li>
+                                            <li>Ngày giao dịch: 02/10/2024</li>
+                                            <li>Tổng số tiền: 8,000,000 VND</li>
+                                            <li>Trạng thái: Chờ xử lý</li>
+                                            <li>Phương thức: Tiền mặt</li>
+                                        </ul>
+                                    </div>
+                                </details>
+                            </td>
                         </tr>
                         <tr>
                             <td>GD11</td>
@@ -204,7 +445,25 @@
                             <td>8,900,000</td>
                             <td>Đã thanh toán</td>
                             <td>Chuyển khoản ngân hàng</td>
-                            <td><button class="btn btn-link p-0">Xem chi tiết</button></td>
+                            <td>
+                                <details>
+                                    <summary class="btn btn-link p-0">Xem chi tiết</summary>
+                                    <div class="details-content">
+                                        <span class="close-btn"
+                                            onclick="this.closest('details').removeAttribute('open')">&times;</span>
+                                        <p>Chi tiết giao dịch GD01:</p>
+                                        <ul>
+                                            <li>Mã giao dịch: GD03</li>
+                                            <li>Tên khách hàng: Lê Văn C</li>
+                                            <li>Tên tour: Hồ Chí Minh</li>
+                                            <li>Ngày giao dịch: 02/10/2024</li>
+                                            <li>Tổng số tiền: 8,000,000 VND</li>
+                                            <li>Trạng thái: Chờ xử lý</li>
+                                            <li>Phương thức: Tiền mặt</li>
+                                        </ul>
+                                    </div>
+                                </details>
+                            </td>
                         </tr>
                         <tr>
                             <td>GD12</td>
@@ -214,7 +473,25 @@
                             <td>10,600,000</td>
                             <td>Chờ xử lý</td>
                             <td>Tiền mặt</td>
-                            <td><button class="btn btn-link p-0">Xem chi tiết</button></td>
+                            <td>
+                                <details>
+                                    <summary class="btn btn-link p-0">Xem chi tiết</summary>
+                                    <div class="details-content">
+                                        <span class="close-btn"
+                                            onclick="this.closest('details').removeAttribute('open')">&times;</span>
+                                        <p>Chi tiết giao dịch GD01:</p>
+                                        <ul>
+                                            <li>Mã giao dịch: GD03</li>
+                                            <li>Tên khách hàng: Lê Văn C</li>
+                                            <li>Tên tour: Hồ Chí Minh</li>
+                                            <li>Ngày giao dịch: 02/10/2024</li>
+                                            <li>Tổng số tiền: 8,000,000 VND</li>
+                                            <li>Trạng thái: Chờ xử lý</li>
+                                            <li>Phương thức: Tiền mặt</li>
+                                        </ul>
+                                    </div>
+                                </details>
+                            </td>
                         </tr>
                         <tr>
                             <td>GD13</td>
@@ -224,8 +501,25 @@
                             <td>5,500,000</td>
                             <td>Đã thanh toán</td>
                             <td>Chuyển khoản ngân hàng</td>
-                            <td><button class="btn btn-link p-0">Xem chi tiết</button></td>
-                        </tr>
+                            <td>
+                                <details>
+                                    <summary class="btn btn-link p-0">Xem chi tiết</summary>
+                                    <div class="details-content">
+                                        <span class="close-btn"
+                                            onclick="this.closest('details').removeAttribute('open')">&times;</span>
+                                        <p>Chi tiết giao dịch GD01:</p>
+                                        <ul>
+                                            <li>Mã giao dịch: GD03</li>
+                                            <li>Tên khách hàng: Lê Văn C</li>
+                                            <li>Tên tour: Hồ Chí Minh</li>
+                                            <li>Ngày giao dịch: 02/10/2024</li>
+                                            <li>Tổng số tiền: 8,000,000 VND</li>
+                                            <li>Trạng thái: Chờ xử lý</li>
+                                            <li>Phương thức: Tiền mặt</li>
+                                        </ul>
+                                    </div>
+                                </details>
+                            </td>
                         <tr>
                             <td>GD14</td>
                             <td>Trần Thị N</td>
@@ -234,7 +528,25 @@
                             <td>6,750,000</td>
                             <td>Chờ xử lý</td>
                             <td>Tiền mặt</td>
-                            <td><button class="btn btn-link p-0">Xem chi tiết</button></td>
+                            <td>
+                                <details>
+                                    <summary class="btn btn-link p-0">Xem chi tiết</summary>
+                                    <div class="details-content">
+                                        <span class="close-btn"
+                                            onclick="this.closest('details').removeAttribute('open')">&times;</span>
+                                        <p>Chi tiết giao dịch GD01:</p>
+                                        <ul>
+                                            <li>Mã giao dịch: GD03</li>
+                                            <li>Tên khách hàng: Lê Văn C</li>
+                                            <li>Tên tour: Hồ Chí Minh</li>
+                                            <li>Ngày giao dịch: 02/10/2024</li>
+                                            <li>Tổng số tiền: 8,000,000 VND</li>
+                                            <li>Trạng thái: Chờ xử lý</li>
+                                            <li>Phương thức: Tiền mặt</li>
+                                        </ul>
+                                    </div>
+                                </details>
+                            </td>
                         </tr>
                         <tr>
                             <td>GD15</td>
@@ -244,7 +556,25 @@
                             <td>9,100,000</td>
                             <td>Đã thanh toán</td>
                             <td>Chuyển khoản ngân hàng</td>
-                            <td><button class="btn btn-link p-0">Xem chi tiết</button></td>
+                            <td>
+                                <details>
+                                    <summary class="btn btn-link p-0">Xem chi tiết</summary>
+                                    <div class="details-content">
+                                        <span class="close-btn"
+                                            onclick="this.closest('details').removeAttribute('open')">&times;</span>
+                                        <p>Chi tiết giao dịch GD01:</p>
+                                        <ul>
+                                            <li>Mã giao dịch: GD03</li>
+                                            <li>Tên khách hàng: Lê Văn C</li>
+                                            <li>Tên tour: Hồ Chí Minh</li>
+                                            <li>Ngày giao dịch: 02/10/2024</li>
+                                            <li>Tổng số tiền: 8,000,000 VND</li>
+                                            <li>Trạng thái: Chờ xử lý</li>
+                                            <li>Phương thức: Tiền mặt</li>
+                                        </ul>
+                                    </div>
+                                </details>
+                            </td>
                         </tr>
                         <tr>
                             <td>GD16</td>
@@ -254,7 +584,25 @@
                             <td>7,200,000</td>
                             <td>Chờ xử lý</td>
                             <td>Tiền mặt</td>
-                            <td><button class="btn btn-link p-0">Xem chi tiết</button></td>
+                            <td>
+                                <details>
+                                    <summary class="btn btn-link p-0">Xem chi tiết</summary>
+                                    <div class="details-content">
+                                        <span class="close-btn"
+                                            onclick="this.closest('details').removeAttribute('open')">&times;</span>
+                                        <p>Chi tiết giao dịch GD01:</p>
+                                        <ul>
+                                            <li>Mã giao dịch: GD03</li>
+                                            <li>Tên khách hàng: Lê Văn C</li>
+                                            <li>Tên tour: Hồ Chí Minh</li>
+                                            <li>Ngày giao dịch: 02/10/2024</li>
+                                            <li>Tổng số tiền: 8,000,000 VND</li>
+                                            <li>Trạng thái: Chờ xử lý</li>
+                                            <li>Phương thức: Tiền mặt</li>
+                                        </ul>
+                                    </div>
+                                </details>
+                            </td>
                         </tr>
                         <tr>
                             <td>GD17</td>
@@ -264,7 +612,25 @@
                             <td>10,400,000</td>
                             <td>Đã thanh toán</td>
                             <td>Chuyển khoản ngân hàng</td>
-                            <td><button class="btn btn-link p-0">Xem chi tiết</button></td>
+                            <td>
+                                <details>
+                                    <summary class="btn btn-link p-0">Xem chi tiết</summary>
+                                    <div class="details-content">
+                                        <span class="close-btn"
+                                            onclick="this.closest('details').removeAttribute('open')">&times;</span>
+                                        <p>Chi tiết giao dịch GD01:</p>
+                                        <ul>
+                                            <li>Mã giao dịch: GD03</li>
+                                            <li>Tên khách hàng: Lê Văn C</li>
+                                            <li>Tên tour: Hồ Chí Minh</li>
+                                            <li>Ngày giao dịch: 02/10/2024</li>
+                                            <li>Tổng số tiền: 8,000,000 VND</li>
+                                            <li>Trạng thái: Chờ xử lý</li>
+                                            <li>Phương thức: Tiền mặt</li>
+                                        </ul>
+                                    </div>
+                                </details>
+                            </td>
                         </tr>
                         <tr>
                             <td>GD18</td>
@@ -274,7 +640,25 @@
                             <td>4,500,000</td>
                             <td>Chờ xử lý</td>
                             <td>Tiền mặt</td>
-                            <td><button class="btn btn-link p-0">Xem chi tiết</button></td>
+                            <td>
+                                <details>
+                                    <summary class="btn btn-link p-0">Xem chi tiết</summary>
+                                    <div class="details-content">
+                                        <span class="close-btn"
+                                            onclick="this.closest('details').removeAttribute('open')">&times;</span>
+                                        <p>Chi tiết giao dịch GD01:</p>
+                                        <ul>
+                                            <li>Mã giao dịch: GD03</li>
+                                            <li>Tên khách hàng: Lê Văn C</li>
+                                            <li>Tên tour: Hồ Chí Minh</li>
+                                            <li>Ngày giao dịch: 02/10/2024</li>
+                                            <li>Tổng số tiền: 8,000,000 VND</li>
+                                            <li>Trạng thái: Chờ xử lý</li>
+                                            <li>Phương thức: Tiền mặt</li>
+                                        </ul>
+                                    </div>
+                                </details>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
