@@ -7,128 +7,185 @@
     <link rel="stylesheet" href="/MilkyWay/Stuffs/static/css/tour-payment-confirmation.css">
 </head>
 <body>
-    <div id="header_div">
-        <div class="sub_head_div">
-            <h1>Xác Nhận Tour Du Lịch</h1>
-        </div>
+    <div class="bg_Main">
+        <header class="Pr_Menu">
+            <div class="Menu">
+                <div class="logo"><a href="index.html">Milky<span>Way</span></a></div>
+                <div class="progress-bar-container">
+                    <ul class="progress-bar">
+                        <div class="progress-step">
+                            <div class="circle active-circle">1</div>
+                            <li class="active">Đặt vé</li>
+                            <span class="dash"></span>
+                        </div>
+                        <div class="progress-step">
+                            <div class="circle">2</div>
+                            <li>Thanh toán</li>
+                            <span class="dash"></span>
+                        </div>
+                        <div class="progress-step">
+                            <div class="circle">3</div>
+                            <li>Ví điện tử</li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            </header>
     </div>
-    <div class="container">
-        <div class="form-section customer">
-            <h3>Thông tin khách hàng</h3>
-            <form method="POST"> 
-                <div class="nhap">
-                    <label for="name">Họ và Tên:</label>
-                    <input type="text" id="name" name="name" placeholder="Nhập họ và tên của bạn" required>
-                </div>
-
-                <div class="nhap">
-                    <label for="email">Email: </label>
-                    <input type="email" id="email" name="email" placeholder="Nhập email của bạn" required>
-                </div>
-
-                <div class="nhap">
-                    <label for="sdt">Số điện thoại:</label>
-                    <input type="tel" id="sdt" name="sdt" placeholder="Nhập số điện thoại của bạn" required>
-                </div>
-
-                <div class="nhap">
-                    <label for="address">Địa chỉ:</label>
-                    <input type="text" id="address" name="address" placeholder="Nhập địa chỉ của bạn" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Giới tính:</label>
-                    <input type="radio" id="male" name="gender" value="male">
-                    <label for="male">Nam</label>
-                    
-                    <input type="radio" id="female" name="gender" value="female">
-                    <label for="female">Nữ</label>
-                    
-                    <input type="radio" id="other" name="gender" value="other">
-                    <label for="other">Khác</label>
-                </div>
-
-                <input type="submit" value="Lưu" class="btn-luu">
-            </form>
-        </div>
-
-        <div class="form-section tour-info">
-            <h3>Thông tin đặt tour</h3>
-            <form method="POST"> 
-                <div class="nhap">
-                    <label for="tour-name">Tên tour:</label>
-                    <input type="text" id="tour-name" name="tour-name" placeholder="Nhập tên tour du lịch" required>
-                </div>
-        
-                <div class="nhap">
-                    <label for="departure-date">Ngày khởi hành:</label>
-                    <input type="date" id="departure-date" name="departure-date" required>
-                </div>
-        
-                <div class="nhap g-num">
-                    <div>
-                        <label for="guest-number">Số lượng khách:</label>
-                        <input type="number" id="guest-number" name="guest-number" min="1" placeholder="Nhập số lượng khách" required>
+    <div class="trang">
+        <div class="container">
+            <h1 aria-level="1" dir="auto" role="heading" class="heading">Đặt chỗ của tôi</h1>
+            <div >
+                <p>Điền thông tin và xem tóm tắt đặt chỗ</p>
+            </div>
+            <h3>Thông tin liên hệ</h3>
+            <div class="form-section customer">
+                <div class="header-section">
+                    <h4 id="contact-info-header">Thông tin liên hệ (Nhận vé/phiếu thanh toán)</h4>
+                    <div class="button-section">
+                        <div id="save-button" class="btn-save">Lưu</div>
+                        <div id="edit-button" class="btn-edit hidden">Chỉnh sửa chi tiết</div>
                     </div>
-                    <div class="warning-message">                    
-                        <span id="seat-warning">Số lượng khách không thể lớn hơn số ghế còn lại!</span>
+                </div>
+                <form id="contact-form" class="visible"> 
+                    <div class="nhap">
+                        <label for="name">Họ và Tên:</label>
+                        <input type="text" id="name" name="name" class="required" placeholder="Nhập họ và tên của bạn" required>
                     </div>
-                </div>   
-                
+    
+                    <div class="nhap-group">
+                        <div class="nhap">
+                            <label for="email">Email: </label>
+                            <input type="email" id="email" name="email" class="required" placeholder="Nhập email của bạn" required>
+                        </div>
         
-                <div class="nhap">
-                    <label for="service-type">Loại dịch vụ:</label>
-                    <select id="service-type" name="service-type" required>
-                        <option value="" disabled selected hidden>Chọn loại dịch vụ</option>
-                        <option value="standard">Dịch vụ tiêu chuẩn</option>
-                        <option value="premium">Dịch vụ cao cấp</option>
-                        <option value="vip">Dịch vụ VIP</option>
-                    </select>
+                        <div class="nhap">
+                            <label for="sdt">Số điện thoại:</label>
+                            <input type="tel" id="sdt" name="sdt" class="required" placeholder="Nhập số điện thoại của bạn" required>
+                        </div>
+                    </div>
+    
+                    <div class="nhap">
+                        <label for="address">Địa chỉ:</label>
+                        <input type="text" id="address" name="address" class="required" placeholder="Nhập địa chỉ của bạn" required>
+                    </div>
+    
+                </form>
+
+                <div id="contact-info-display" class="hidden">
+                    <div class="contact-info">
+                        <div>Email: <span id="display-email"></span></div>
+                        <div>Số điện thoại: <span id="display-phone"></span></div>
+                        <div>Địa chỉ: <span id="display-address"></span></div>
+                    </div>
                 </div>
-        
-                <div class="nhap">
-                    <label for="special-request">Yêu cầu đặc biệt:</label>
-                    <textarea id="special-request" name="special-request" placeholder="Nhập yêu cầu đặc biệt (nếu có)"></textarea>
-                </div>
-        
-                <input type="submit" value="Đặt tour">
-            </form>
-        </div>
-        <div class="form-section bill-details">
-            <h3>Chi tiết hóa đơn</h3>
             
-            <!-- Tổng tiền -->
-            <div class="bill-item">
-                <span>Tổng tiền vé:</span>
-                <span id="total-amount">2,000,000 VND</span>
-            </div>
     
-            <!-- Thuế và phí dịch vụ -->
-            <div class="bill-item">
-                <span>Thuế và phí dịch vụ:</span>
-                <span id="tax-service-fee">10%</span>
-            </div>
-    
-            <!-- Mã ưu đãi/khuyến mãi -->
-            <div class="bill-item">
-                <label for="promo-code">Mã khuyến mãi:</label>
-                <input type="text" id="promo-code" placeholder="Nhập mã giảm giá">
-                <button id="apply-code">Áp dụng</button>
-            </div>
-    
-            <!-- Tổng số tiền cần thanh toán -->
-            <div class="bill-item total">
-                <span>Tổng số tiền cần thanh toán:</span>
-                <span id="final-amount">2,200,000 VND</span>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="customer_type" value="khach" required> Tôi là khách</label>
+                    <label class="radio-option"><input type="radio" name="customer_type" value="dat_cho_nguoi_khac"> Tôi đặt cho người khác</label>
+                </div>
             </div>
 
-            <!-- Nút Thanh toán -->
-            <div class="bill-item button-container">
-                <button id="pay-button" class="btn-pay">Thanh toán</button>
+            <h3>Thông tin khách</h3>
+            <div class="form-section tour-info">
+                <div class="header-section">
+                    <h4 id="guest-info-header">Thông tin khách</h4>
+                    <div class="button-section">
+                        <div id="g-save-button" class="btn-save">Lưu</div>
+                        <div id="g-edit-button" class="btn-edit hidden">Chỉnh sửa chi tiết</div>
+                    </div>
+                </div>
+                <form id="guest-inform-form" class="visible"> 
+                    <div class="nhap">
+                        <label for="salutation">Danh xưng:</label>
+                        <select id="salutation" name="salutation" required>
+                            <option value="" disabled selected ></option>
+                            <option value="mr">Ông</option>
+                            <option value="ms">Bà</option>
+                            <option value="miss">Cô</option>
+                        </select>
+                    </div>
+                    <div class="nhap">
+                        <label for="guest-name">Họ và Tên :</label>
+                        <input type="text" id="guest-name" name="guest-name" class="required" placeholder="Nhập tên khách hàng" required>
+                    </div>
+
+                    <div class="nhap-group">
+                        <div class="nhap">
+                            <label for="guest-email">Email: </label>
+                            <input type="email" id="guest-email" name="guest-email" class="required" placeholder="Nhập email của bạn" required>
+                        </div>
+        
+                        <div class="nhap">
+                            <label for="sdt">Số điện thoại:</label>
+                            <input type="tel" id="guest-phone" name="guest-phone" class="required" placeholder="Nhập số điện thoại của bạn" required>
+                        </div>
+                    </div>
+    
+                    <div class="nhap">
+                        <label for="address">Địa chỉ:</label>
+                        <input type="text" id="guest-address" name="guest-address" class="required" placeholder="Nhập địa chỉ của bạn" required>
+                    </div>
+
+                </form>
+                <div id="guest-info-display" class="hidden">
+                    <div class="guest-info">
+                        <div>Email: <span id="g-display-email"></span></div>
+                        <div>Số điện thoại: <span id="g-display-phone"></span></div>
+                        <div>Địa chỉ: <span id="g-display-address"></span></div>
+                    </div>
+                </div>
             </div>
+            
+            <div class="nhap">
+                <label for="special-request">Yêu cầu đặc biệt:</label>
+                <textarea id="special-request" name="special-request" placeholder="Nhập yêu cầu đặc biệt (nếu có)"></textarea>
+            </div>
+            <div class="form-section bill-details">
+                <h3>Chi tiết hóa đơn</h3>
+                
+                <!-- Tổng tiền -->
+                <div class="bill-item">
+                    <span>Tổng tiền vé:</span>
+                    <span id="total-amount">2,000,000 VND</span>
+                </div>
+        
+                <!-- Thuế và phí dịch vụ -->
+                <div class="bill-item">
+                    <span>Thuế và phí dịch vụ:</span>
+                    <span id="tax-service-fee">10%</span>
+                </div>
+        
+                <!-- Mã ưu đãi/khuyến mãi -->
+                <div class="bill-item">
+                    <label for="promo-code">Mã khuyến mãi:</label>
+                    <input type="text" id="promo-code" placeholder="Nhập mã giảm giá">
+                    <button id="apply-code">Áp dụng</button>
+                </div>
+        
+                <!-- Tổng số tiền cần thanh toán -->
+                <div class="bill-item total">
+                    <span>Tổng số tiền cần thanh toán:</span>
+                    <span id="final-amount">2,200,000 VND</span>
+                </div>
+    
+                <!-- Nút Thanh toán -->
+            </div>
+            <div class="continue-section">
+                <button id="pay-button" class="btn-continue" id="continue-btn">Tiếp tục</button>
+            </div>
+        </div> 
+        <div>
+
         </div>
     </div>
-
+    
+    <div id="error-container" class="error-container">
+        <span id="error-message">Vui lòng điền thông tin liên hệ!</span>
+        <button id="close-error-btn" class="close-btn">&times;</button>
+    </div>
     <script src="/MilkyWay/Stuffs/static/javascript/tour-payment-confirmation.js"></script> 
 </body>
 </html>

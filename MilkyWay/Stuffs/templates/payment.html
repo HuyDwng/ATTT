@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xác nhận thông tin thanh toán cho tour</title>
+    <link rel="stylesheet" href="../static/css/payment.css">
+</head>
+<body>
+    <div class="bg_Main">
+        <header class="Pr_Menu">
+            <div class="Menu">
+                <div class="logo"><a href="index.html">Milky<span>Way</span></a></div>
+                <div class="progress-bar-container">
+                    <ul class="progress-bar">
+                        <div class="progress-step">
+                            <div class="circle active-circle">1</div>
+                            <li class="active">Đặt vé</li>
+                            <span class="dash"></span>
+                        </div>
+                        <div class="progress-step">
+                            <div class="circle active-circle">2</div>
+                            <li class="active">Thanh toán</li>
+                            <span class="dash"></span>
+                        </div>
+                        <div class="progress-step">
+                            <div class="circle">3</div>
+                            <li>Ví điện tử</li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            </header>
+    </div>
+    <div class="payment-container">
+        <h1>Bạn muốn thanh toán thế nào?</h1>
+        <form id="paymentForm">
+            <div class="payment-option">
+                <input type="radio" id="chuyenKhoan" name="paymentMethod" value="chuyenKhoan" checked>
+                <label for="chuyenKhoan">Chuyển khoản ngân hàng</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" id="viDienTu" name="paymentMethod" value="viDienTu">
+                <label for="viDienTu">Ví điện tử khác</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" id="atm" name="paymentMethod" value="atm">
+                <label for="atm">Thẻ ATM/Ứng dụng ngân hàng</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" id="theThanhToan" name="paymentMethod" value="theThanhToan">
+                <label for="theThanhToan">Thẻ thanh toán (Visa/MasterCard)</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" id="taiCuaHang" name="paymentMethod" value="taiCuaHang">
+                <label for="taiCuaHang">Thanh toán tại cửa hàng</label>
+            </div>
+
+            <div class="submit-container">
+                <button type="submit">Tiếp tục</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

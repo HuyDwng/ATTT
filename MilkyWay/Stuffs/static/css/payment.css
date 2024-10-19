@@ -1,0 +1,136 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+}
+.bg_Main{
+    padding-bottom: 120px;
+    color: #fff;
+    background-image: url(../pictures/HomeBG.jpg);
+    background-size: cover;
+}
+
+
+.Menu {
+    margin: 0 12% 0 12%; /*base*/
+    padding-top: 30px;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.Pr_Menu hr{
+    margin: 0 13% 0 13%; /*base*/
+}
+.logo a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #00d4ff;
+}
+
+.Menu ul {
+    list-style: none;
+    display: flex;
+}
+
+.Menu ul li {
+    margin-left: 20px;
+}
+
+.Menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding-bottom: 36px;
+    position: relative;
+}
+.Menu ul li a::after{
+    content: "";
+    height: 2px;
+    width: 0;
+    background: #00d4ff;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+}
+.Menu ul li:not(:last-child) a:hover{
+    color: #00d4ff;
+    transition: 0.5s;
+}
+.Menu ul li:not(:last-child) a:hover::after{
+    transition: all 0.5s ease-in-out; /*all Xác định hiệu ứng của quá trình chuyển đổi cho tất cả thuộc tính.*/
+    width: 100%;
+}
+.Menu ul li .btn {
+    background-color: #01badf;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+/*Payment page*/
+.payment-container {
+    width: 66.67%; /* Chiếm 2/3 chiều rộng của trang */
+    max-width: 600px;
+    margin: 50px 0 50px 20px; /* Căn về bên trái*/
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin-bottom: 20px;
+    margin-left: 15px;
+}
+
+label {
+    display: block; /* Đảm bảo label là một khối để dễ căn chỉnh */
+    text-align: left; /* Căn label về phía bên trái */
+    margin-bottom: 10px; /* Khoảng cách giữa label và các thành phần khác */
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    margin: 30px 20px;
+    padding: 10px;
+    background-color: white;
+}
+
+.payment-option input {
+    margin-right: 1rem; /* Khoảng cách giữa input và label */
+}
+
+.payment-option:not(:last-child) {
+    border-bottom: 1px solid #ddd; /* Đường kẻ ngang giữa các lựa chọn */
+}
+
+.submit-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
