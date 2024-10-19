@@ -1,10 +1,10 @@
 body {
     font-family: Arial, sans-serif;
-    color: #fff;
     font-size: 17px;
 }
 .bg_Main{
-    padding-bottom: 100px;
+    padding-bottom: 120px;
+    color: #fff;
     background-image: url(../pictures/HomeBG.jpg);
     background-size: cover;
 }
@@ -105,4 +105,478 @@ body {
     transition: all 0.5s ease-in-out;
     background-color: #03bdaa;
     box-shadow: 10px 10px 10px 0px rgb(46, 46, 46); /*left right blur scale color*/
+}
+
+/*Searching Tour*/
+.search-container {
+    box-shadow: 2px 2px 4px 0px rgb(46, 46, 46); /*left right blur scale color*/
+    background-color: #fff;
+    border-radius: 10px;
+    width: 80%;
+    margin-top: -60px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.Find_Content{
+    width: 100%;
+    display: flex;
+}
+.Find_Content p{
+    font-weight: bold;
+}
+.Find_Content p{
+    color: rgb(31, 31, 31);
+    font-size: 22px;
+}
+.Find_Content p:first-child{
+    margin-right: 20%;
+}
+.Find_Content p:not(:first-child){
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tabs-search {
+    display: flex;
+    gap: 1px;
+    margin-bottom: 20px;
+}
+
+.tabs-search button:first-child{
+    border-top-left-radius: 10px;
+}
+
+.tab {
+    padding: 20.3px 49px;
+    background-color: #00d4ff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.tab:hover{
+    background-color: white;
+    color: #333;
+}
+.tab.active {
+    background-color: white;
+    color: #333;
+}
+.tab-content{
+    padding: 30px;
+}
+.search-form {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.search-form input{
+    padding: 15px 5px 15px 15px;
+    border: 1px solid #ccc;
+    width: 13%;
+}
+.search-form .search-destination{
+    font-size: 15px;
+    width: 30%;
+}
+.Find_budget{
+    display: flex;
+    padding: 40px;
+}
+.Find_budget p{
+    padding: 10px;
+    font-size: 30px;
+    color: #333;
+}
+.Find_budget select{
+    padding: 10px;
+    font-size: 18px;
+    border: #f2eaea;
+}
+.btn-search  {
+    margin-left:auto ;
+    border: none;
+    border-radius: 5px;
+    padding: 20px 25px 20px 25px;
+    width: 15%;
+    background-color: #00d4ff;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 0px rgb(83, 83, 83); /*left right blur scale color*/
+}
+.btn-search:hover{
+    transition: all 0.5s ease-in-out;
+    background-color: #03bdaa;
+    box-shadow: 0px 0px 15px 0px rgb(66, 66, 66); /*left right blur scale color*/
+}
+
+/*plane*/
+.input-FlightsInfo{
+    gap:3%;
+    flex-wrap: wrap;
+    display: flex;
+}
+.trip-type {
+    margin-bottom: 20px;
+}
+.trip-type label{
+    margin-right: 5%;
+}
+.form-FlightsInfo {
+    margin-bottom: 15px;
+}
+
+.form-FlightsInfo label {
+    font-size: 22px;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-FlightsInfo input{
+    font-size: 16px;
+    width: 100%;
+    padding: 13px 25px;
+    border: 1px solid #ccc;
+}
+.form-FlightsInfo select{
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 13px 50px;
+}
+.Location-Search input{
+    padding: 13px 100px 13px 14px;
+}
+.search-btn {
+    margin-left:80%;
+    margin-top: -5%;
+    border: none;
+    border-radius: 5px;
+    padding: 20px 25px 20px 25px;
+    width: 15%;
+    height: 10%;
+    background-color: #00d4ff;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 0px rgb(83, 83, 83); /*left right blur scale color*/
+}
+.search-btn:hover{
+    transition: all 0.5s ease-in-out;
+    background-color: #03bdaa;
+    box-shadow: 0px 0px 15px 0px rgb(66, 66, 66); /*left right blur scale color*/
+}
+
+/*Top Destinations*/
+.destinations{
+    text-align: center;
+    margin-top: 80px;
+    background-color: whitesmoke;
+    width: 100%;
+}
+.title-MainPage{
+    padding-top: 7%;
+    justify-items: center;
+    margin-bottom: 40px;
+}
+.title-MainPage h2{
+    font-size: 30px;
+    color: #535353;
+    padding-bottom: 10px;
+}
+.title-MainPage p{
+    color: #535353;
+}
+.destination-card{
+    width: 100%;
+    justify-items: center;
+}
+.Parent-TopCard{
+    justify-content: center;
+    display: flex;
+    gap: 30px;
+}
+.Parent-TopCard .top-card{
+    position: relative;
+    width: 570px;
+    height: 320px;
+    overflow: hidden; /* Giữ cho ảnh không tràn ra ngoài thẻ */
+}
+.top-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:url(../pictures/HomeBG.jpg);
+    background-size: cover; /* Ảnh bao phủ toàn bộ thẻ */
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.5s ease; /* Hiệu ứng chuyển đổi khi hover */
+}
+
+.top-card:hover::before {
+    transform: scale(1.2); /* Phóng to ảnh khi hover */
+}
+.Destination-Info{
+    position: relative;
+    width: 40%;
+    height: 85%;
+    margin-left:10% ;
+}
+.Destination-Info h3,
+.Destination-Info p {
+    position: absolute;
+    color: #fff;
+    left: 10px;
+    bottom: 10px;
+    margin: 0;
+    padding: 0;
+}
+.Destination-Info h3 {
+    font-size: 25px;
+    margin-bottom: 30px;
+}
+
+.Destination-Info p {
+    line-height: 20px;
+    font-size: 16px;
+}
+.other-card{
+    justify-content: center;
+    margin-top: 30px;
+    display: flex;
+    gap: 30px;
+}
+.other-card .left-card{
+    position: relative;
+    width: 370px;
+    height: 670px;
+    overflow: hidden; /* Giữ cho ảnh không tràn ra ngoài thẻ */
+}
+.left-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:url(../pictures/HomeBG.jpg);
+    background-size: cover; /* Ảnh bao phủ toàn bộ thẻ */
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.5s ease; /* Hiệu ứng chuyển đổi khi hover */
+}
+
+.left-card:hover::before {
+    transform: scale(1.2); /* Phóng to ảnh khi hover */
+}
+.other-card .right-card{
+    width: 770px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.right-card .right-card1{
+    position: relative;
+    width: 370px;
+    height: 320px;
+    overflow: hidden; /* Giữ cho ảnh không tràn ra ngoài thẻ */
+}
+.right-card1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:url(../pictures/HomeBG.jpg);
+    background-size: cover; /* Ảnh bao phủ toàn bộ thẻ */
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.5s ease; /* Hiệu ứng chuyển đổi khi hover */
+}
+
+.right-card1:hover::before {
+    transform: scale(1.2); /* Phóng to ảnh khi hover */
+}
+.right-card .right-card2{
+    position: relative;
+    width: 770px;
+    height: 320px;
+    overflow: hidden; /* Giữ cho ảnh không tràn ra ngoài thẻ */
+}
+.right-card2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:url(../pictures/HomeBG.jpg);
+    background-size: cover; /* Ảnh bao phủ toàn bộ thẻ */
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.5s ease; /* Hiệu ứng chuyển đổi khi hover */
+}
+
+.right-card2:hover::before {
+    transform: scale(1.2); /* Phóng to ảnh khi hover */
+}
+.Discount-Destination{
+    padding-top: 150px;
+    background-color: whitesmoke;
+    width: 100%;
+    height: 700px;
+}
+.Discount-Img{
+    background-image:url(../pictures/HomeBG.jpg);
+    height: 600px;
+    width: 100%; 
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+.Discount-Info{
+    text-align: center;
+}
+
+.Discount-Info .Discount-Content{
+    font-size: 30px;
+    color: #f2eaea;
+    margin-bottom: 25px;
+}
+.Discount-Info .Discount-Time{
+    background-color: #45454594;
+    width:500px;
+    height: 120px;
+    border-radius: 5px;
+}
+.Discount-Info .btn-JoinDiscount{
+    margin-top: 25px;
+}
+.Discount-Info .btn-JoinDiscount button{
+    padding: 20px 37px 20px 37px;
+    color: #fff;
+    background-color: #00d4ff;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 3px 0px rgb(90, 89, 89); /*left right blur scale color*/
+}
+.Discount-Info .btn-JoinDiscount button:hover{
+    transition: all 1s ease; /* Hiệu ứng chuyển đổi khi hover */
+    background-color: #03bdaa;
+    box-shadow: 0px 0px 15px 0px rgb(78, 77, 77); /*left right blur scale color*/
+}
+/*Discount Time*/
+.Discount-Time{
+    margin-left: auto;
+    margin-right: auto;
+}
+.countdown{
+    width: 100%;
+    height: 100%;
+}
+.countdown ul{
+    display: flex;
+    justify-content: center;
+}
+.countdown ul li{
+    color: #f2eaea;
+    list-style-type: none;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-align: center;
+}
+.countdown ul li span{
+    display: block;
+    font-size: 7rem;
+    color: #f41b4b;
+}
+.countdown ul .separator{
+    margin: 0 10px;
+    font-size: 7rem;
+    line-height: 1;
+    color: #f41b4b;
+}
+.countdown ul li:first-child{
+    margin-right: 5rem;
+}
+.special-packages{
+    width: 100%;
+    height:50%;
+    text-align: center;
+    padding-bottom: 130px;
+}
+.package-cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+    margin-left:auto ;
+    justify-content: center;
+}
+.package-card{
+    width: 25%;
+    height: 550px;
+    margin-bottom: 10px;
+    box-shadow:0px 0px 5px 0px rgb(23, 23, 23); /*left right blur scale color*/ ;
+    background-color: white;
+}
+.package-card:hover{
+    transition: all 0.5s ease-in-out; /* Hiệu ứng chuyển đổi khi hover */
+    box-shadow: 0px 0px 10px 0px rgb(78, 77, 77); /*left right blur scale color*/
+}
+.img-packages{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 300px;
+    background-image:url(../pictures/HomeBG.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.packages-info hr{
+    margin-left: 15px;
+    margin-right: 15px;
+    color: #535353;
+}
+.packages-content{
+    margin: 20px;
+    font-weight: bold;
+    font-size: 20px;
+    color: #333333ce;
+    display: flex;
+    gap:75%;
+}
+.detail-info{
+    color: #3333338b;
+    display: flex;
+    flex-wrap: wrap;
+    gap:10px;
+    padding:14px
+}
+.detail-info div{
+    padding-right: 20px;
+    padding-bottom:10px ;
+}
+.detail-info .btn-BookTour button{
+    padding: 10px 20px 10px 20px;
+    color: #fff;
+    background-color: #00d4ff;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0px 0px 3px 0px rgb(117, 116, 116); /*left right blur scale color*/
+}
+.detail-info .btn-BookTour button:hover{
+    transition: all 0.5s ease; /* Hiệu ứng chuyển đổi khi hover */
+    background-color: #03bdaa;
+    box-shadow: 0px 0px 15px 0px rgb(78, 77, 77); /*left right blur scale color*/
 }
