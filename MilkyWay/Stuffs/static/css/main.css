@@ -465,6 +465,7 @@ body {
     color: #fff;
     background-color: #00d4ff;
     border-radius: 6px;
+    border: none;
     cursor: pointer;
     box-shadow: 0px 0px 3px 0px rgb(90, 89, 89); /*left right blur scale color*/
 }
@@ -506,4 +507,76 @@ body {
 }
 .countdown ul li:first-child{
     margin-right: 5rem;
+}
+.special-packages{
+    width: 100%;
+    height:50%;
+    text-align: center;
+    padding-bottom: 130px;
+}
+.package-cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+    margin-left:auto ;
+    justify-content: center;
+}
+.package-card{
+    width: 25%;
+    height: 550px;
+    margin-bottom: 10px;
+    box-shadow:0px 0px 5px 0px rgb(23, 23, 23); /*left right blur scale color*/ ;
+    background-color: white;
+}
+.package-card:hover{
+    transition: all 0.5s ease-in-out; /* Hiệu ứng chuyển đổi khi hover */
+    box-shadow: 0px 0px 10px 0px rgb(78, 77, 77); /*left right blur scale color*/
+}
+.img-packages{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 300px;
+    background-image:url(../pictures/HomeBG.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.packages-info hr{
+    margin-left: 15px;
+    margin-right: 15px;
+    color: #535353;
+}
+.packages-content{
+    margin: 20px;
+    font-weight: bold;
+    font-size: 20px;
+    color: #333333ce;
+    display: flex;
+    gap:75%;
+}
+.detail-info{
+    color: #3333338b;
+    display: flex;
+    flex-wrap: wrap;
+    gap:10px;
+    padding:14px
+}
+.detail-info div{
+    padding-right: 20px;
+    padding-bottom:10px ;
+}
+.detail-info .btn-BookTour button{
+    padding: 10px 20px 10px 20px;
+    color: #fff;
+    background-color: #00d4ff;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0px 0px 3px 0px rgb(117, 116, 116); /*left right blur scale color*/
+}
+.detail-info .btn-BookTour button:hover{
+    transition: all 0.5s ease; /* Hiệu ứng chuyển đổi khi hover */
+    background-color: #03bdaa;
+    box-shadow: 0px 0px 15px 0px rgb(78, 77, 77); /*left right blur scale color*/
 }
