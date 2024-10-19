@@ -2,8 +2,7 @@ body {
     font-family: Arial, sans-serif;
     font-size: 17px;
 }
-
-.bg_Main {
+.bg_Main{
     padding-bottom: 120px;
     color: #fff;
     background-image: url(../pictures/HomeBG.jpg);
@@ -12,21 +11,17 @@ body {
 
 
 .Menu {
-    margin: 0 12% 0 12%;
-    /*base*/
+    margin: 0 12% 0 12%; /*base*/
     padding-top: 30px;
     padding: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
-.Pr_Menu hr {
-    margin: 0 13% 0 13%;
-    /*base*/
+.Pr_Menu hr{
+    margin: 0 13% 0 13%; /*base*/
 }
-
-.logo a {
+.logo a{
     color: #fff;
     text-decoration: none;
     font-size: 24px;
@@ -53,8 +48,7 @@ body {
     padding-bottom: 36px;
     position: relative;
 }
-
-.Menu ul li a::after {
+.Menu ul li a::after{
     content: "";
     height: 2px;
     width: 0;
@@ -63,35 +57,27 @@ body {
     bottom: 0px;
     left: 0;
 }
-
-.Menu ul li:not(:last-child) a:hover {
+.Menu ul li:not(:last-child) a:hover{
     color: #00d4ff;
     transition: 0.5s;
 }
-
-.Menu ul li:not(:last-child) a:hover::after {
-    transition: all 0.5s ease-in-out;
-    /*all Xác định hiệu ứng của quá trình chuyển đổi cho tất cả thuộc tính.*/
+.Menu ul li:not(:last-child) a:hover::after{
+    transition: all 0.5s ease-in-out; /*all Xác định hiệu ứng của quá trình chuyển đổi cho tất cả thuộc tính.*/
     width: 100%;
 }
-
 .Menu ul li .btn {
     background-color: #01badf;
     color: #fff;
     padding: 10px 20px;
     border-radius: 5px;
 }
-
-.Menu ul li .btn:hover {
+.Menu ul li .btn:hover{
     transition: all 0.5s ease-in-out;
     background-color: #03bdaa;
-    box-shadow: 0px 0px 10px 3px rgb(46, 46, 46);
-    /*left right blur scale color*/
+    box-shadow: 0px 0px 10px 3px rgb(46, 46, 46); /*left right blur scale color*/
 }
-
 .PR_Slogan {
-    margin-left: 13%;
-    /*base*/
+    margin-left: 13%; /*base*/
     height: 80vh;
     margin-right: 60%;
     display: flex;
@@ -115,18 +101,15 @@ body {
     cursor: pointer;
     border-radius: 5px;
 }
-
-.PR_Slogan button:hover {
+.PR_Slogan button:hover{
     transition: all 0.5s ease-in-out;
     background-color: #03bdaa;
-    box-shadow: 10px 10px 10px 0px rgb(46, 46, 46);
-    /*left right blur scale color*/
+    box-shadow: 10px 10px 10px 0px rgb(46, 46, 46); /*left right blur scale color*/
 }
 
 /*Searching Tour*/
 .search-container {
-    box-shadow: 2px 2px 4px 0px rgb(46, 46, 46);
-    /*left right blur scale color*/
+    box-shadow: 2px 2px 4px 0px rgb(46, 46, 46); /*left right blur scale color*/
     background-color: #fff;
     border-radius: 10px;
     width: 80%;
@@ -134,26 +117,21 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
-
-.Find_Content {
+.Find_Content{
     width: 100%;
     display: flex;
 }
-
-.Find_Content p {
+.Find_Content p{
     font-weight: bold;
 }
-
-.Find_Content p {
+.Find_Content p{
     color: rgb(31, 31, 31);
     font-size: 22px;
 }
-
-.Find_Content p:first-child {
+.Find_Content p:first-child{
     margin-right: 20%;
 }
-
-.Find_Content p:not(:first-child) {
+.Find_Content p:not(:first-child){
     margin-left: auto;
     margin-right: auto;
 }
@@ -175,21 +153,17 @@ body {
     border: none;
     cursor: pointer;
 }
-
-.tab:hover {
+.tab:hover{
     background-color: white;
     color: #333;
 }
-
 .tab.active {
     background-color: white;
     color: #333;
 }
-
-.tab-content {
+.tab-content{
     padding: 30px;
 }
-
 .search-form {
     display: flex;
     gap: 10px;
@@ -197,36 +171,31 @@ body {
     flex-wrap: wrap;
 }
 
-.search-form input {
+.search-form input{
     padding: 15px 5px 15px 15px;
     border: 1px solid #ccc;
     width: 13%;
 }
-
-.search-form .search-destination {
+.search-form .search-destination{
     font-size: 15px;
     width: 30%;
 }
-
-.Find_budget {
+.Find_budget{
     display: flex;
     padding: 40px;
 }
-
-.Find_budget p {
+.Find_budget p{
     padding: 10px;
     font-size: 30px;
     color: #333;
 }
-
-.Find_budget select {
+.Find_budget select{
     padding: 10px;
     font-size: 18px;
     border: #f2eaea;
 }
-
-.btn-search {
-    margin-left: auto;
+.btn-search  {
+    margin-left:auto ;
     border: none;
     border-radius: 5px;
     padding: 20px 25px 20px 25px;
@@ -234,32 +203,26 @@ body {
     background-color: #00d4ff;
     color: white;
     cursor: pointer;
-    box-shadow: 0px 0px 5px 0px rgb(83, 83, 83);
-    /*left right blur scale color*/
+    box-shadow: 0px 0px 5px 0px rgb(83, 83, 83); /*left right blur scale color*/
 }
-
-.btn-search:hover {
+.btn-search:hover{
     transition: all 0.5s ease-in-out;
     background-color: #03bdaa;
-    box-shadow: 0px 0px 15px 0px rgb(66, 66, 66);
-    /*left right blur scale color*/
+    box-shadow: 0px 0px 15px 0px rgb(66, 66, 66); /*left right blur scale color*/
 }
 
 /*plane*/
-.input-FlightsInfo {
-    gap: 3%;
+.input-FlightsInfo{
+    gap:3%;
     flex-wrap: wrap;
     display: flex;
 }
-
 .trip-type {
     margin-bottom: 20px;
 }
-
-.trip-type label {
+.trip-type label{
     margin-right: 5%;
 }
-
 .form-FlightsInfo {
     margin-bottom: 15px;
 }
@@ -271,25 +234,22 @@ body {
     margin-bottom: 5px;
 }
 
-.form-FlightsInfo input {
+.form-FlightsInfo input{
     font-size: 16px;
     width: 100%;
     padding: 13px 25px;
     border: 1px solid #ccc;
 }
-
-.form-FlightsInfo select {
+.form-FlightsInfo select{
     width: 100%;
     border: 1px solid #ccc;
     padding: 13px 50px;
 }
-
-.Location-Search input {
+.Location-Search input{
     padding: 13px 100px 13px 14px;
 }
-
 .search-btn {
-    margin-left: 80%;
+    margin-left:80%;
     margin-top: -5%;
     border: none;
     border-radius: 5px;
@@ -299,71 +259,49 @@ body {
     background-color: #00d4ff;
     color: white;
     cursor: pointer;
-    box-shadow: 0px 0px 5px 0px rgb(83, 83, 83);
-    /*left right blur scale color*/
+    box-shadow: 0px 0px 5px 0px rgb(83, 83, 83); /*left right blur scale color*/
 }
-
-.search-btn:hover {
+.search-btn:hover{
     transition: all 0.5s ease-in-out;
     background-color: #03bdaa;
-    box-shadow: 0px 0px 15px 0px rgb(66, 66, 66);
-    /*left right blur scale color*/
+    box-shadow: 0px 0px 15px 0px rgb(66, 66, 66); /*left right blur scale color*/
 }
 
 /*Top Destinations*/
-<<<<<<< Updated upstream
 .destinations{
     text-align: center;
-=======
-.destinations {
->>>>>>> Stashed changes
     margin-top: 80px;
     background-color: whitesmoke;
     width: 100%;
 }
-
-.title-MainPage {
+.title-MainPage{
     padding-top: 7%;
     justify-items: center;
     margin-bottom: 40px;
 }
-
-.title-MainPage h2 {
+.title-MainPage h2{
     font-size: 30px;
     color: #535353;
     padding-bottom: 10px;
 }
-
-.title-MainPage p {
+.title-MainPage p{
     color: #535353;
 }
-<<<<<<< Updated upstream
 .destination-card{
     width: 100%;
     justify-items: center;
 }
 .Parent-TopCard{
     justify-content: center;
-=======
-
-.destination-card {
-    justify-items: center;
-}
-
-.Parent-TopCard {
->>>>>>> Stashed changes
     display: flex;
     gap: 30px;
 }
-
-.Parent-TopCard .top-card {
+.Parent-TopCard .top-card{
     position: relative;
     width: 570px;
     height: 320px;
-    overflow: hidden;
-    /* Giữ cho ảnh không tràn ra ngoài thẻ */
+    overflow: hidden; /* Giữ cho ảnh không tràn ra ngoài thẻ */
 }
-
 .top-card::before {
     content: "";
     position: absolute;
@@ -371,27 +309,22 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(../pictures/HomeBG.jpg);
-    background-size: cover;
-    /* Ảnh bao phủ toàn bộ thẻ */
+    background-image:url(../pictures/HomeBG.jpg);
+    background-size: cover; /* Ảnh bao phủ toàn bộ thẻ */
     background-position: center;
     background-repeat: no-repeat;
-    transition: transform 0.5s ease;
-    /* Hiệu ứng chuyển đổi khi hover */
+    transition: transform 0.5s ease; /* Hiệu ứng chuyển đổi khi hover */
 }
 
 .top-card:hover::before {
-    transform: scale(1.2);
-    /* Phóng to ảnh khi hover */
+    transform: scale(1.2); /* Phóng to ảnh khi hover */
 }
-
-.Destination-Info {
+.Destination-Info{
     position: relative;
     width: 40%;
     height: 85%;
-    margin-left: 10%;
+    margin-left:10% ;
 }
-
 .Destination-Info h3,
 .Destination-Info p {
     position: absolute;
@@ -401,7 +334,6 @@ body {
     margin: 0;
     padding: 0;
 }
-
 .Destination-Info h3 {
     font-size: 25px;
     margin-bottom: 30px;
@@ -411,26 +343,18 @@ body {
     line-height: 20px;
     font-size: 16px;
 }
-<<<<<<< Updated upstream
 .other-card{
     justify-content: center;
-=======
-
-.other-card {
->>>>>>> Stashed changes
     margin-top: 30px;
     display: flex;
     gap: 30px;
 }
-
-.other-card .left-card {
+.other-card .left-card{
     position: relative;
     width: 370px;
     height: 670px;
-    overflow: hidden;
-    /* Giữ cho ảnh không tràn ra ngoài thẻ */
+    overflow: hidden; /* Giữ cho ảnh không tràn ra ngoài thẻ */
 }
-
 .left-card::before {
     content: "";
     position: absolute;
@@ -438,35 +362,28 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(../pictures/HomeBG.jpg);
-    background-size: cover;
-    /* Ảnh bao phủ toàn bộ thẻ */
+    background-image:url(../pictures/HomeBG.jpg);
+    background-size: cover; /* Ảnh bao phủ toàn bộ thẻ */
     background-position: center;
     background-repeat: no-repeat;
-    transition: transform 0.5s ease;
-    /* Hiệu ứng chuyển đổi khi hover */
+    transition: transform 0.5s ease; /* Hiệu ứng chuyển đổi khi hover */
 }
 
 .left-card:hover::before {
-    transform: scale(1.2);
-    /* Phóng to ảnh khi hover */
+    transform: scale(1.2); /* Phóng to ảnh khi hover */
 }
-
-.other-card .right-card {
+.other-card .right-card{
     width: 770px;
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
 }
-
-.right-card .right-card1 {
+.right-card .right-card1{
     position: relative;
     width: 370px;
     height: 320px;
-    overflow: hidden;
-    /* Giữ cho ảnh không tràn ra ngoài thẻ */
+    overflow: hidden; /* Giữ cho ảnh không tràn ra ngoài thẻ */
 }
-
 .right-card1::before {
     content: "";
     position: absolute;
@@ -474,28 +391,22 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(../pictures/HomeBG.jpg);
-    background-size: cover;
-    /* Ảnh bao phủ toàn bộ thẻ */
+    background-image:url(../pictures/HomeBG.jpg);
+    background-size: cover; /* Ảnh bao phủ toàn bộ thẻ */
     background-position: center;
     background-repeat: no-repeat;
-    transition: transform 0.5s ease;
-    /* Hiệu ứng chuyển đổi khi hover */
+    transition: transform 0.5s ease; /* Hiệu ứng chuyển đổi khi hover */
 }
 
 .right-card1:hover::before {
-    transform: scale(1.2);
-    /* Phóng to ảnh khi hover */
+    transform: scale(1.2); /* Phóng to ảnh khi hover */
 }
-
-.right-card .right-card2 {
+.right-card .right-card2{
     position: relative;
     width: 770px;
     height: 320px;
-    overflow: hidden;
-    /* Giữ cho ảnh không tràn ra ngoài thẻ */
+    overflow: hidden; /* Giữ cho ảnh không tràn ra ngoài thẻ */
 }
-
 .right-card2::before {
     content: "";
     position: absolute;
@@ -503,129 +414,96 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(../pictures/HomeBG.jpg);
-    background-size: cover;
-    /* Ảnh bao phủ toàn bộ thẻ */
+    background-image:url(../pictures/HomeBG.jpg);
+    background-size: cover; /* Ảnh bao phủ toàn bộ thẻ */
     background-position: center;
     background-repeat: no-repeat;
-    transition: transform 0.5s ease;
-    /* Hiệu ứng chuyển đổi khi hover */
+    transition: transform 0.5s ease; /* Hiệu ứng chuyển đổi khi hover */
 }
 
 .right-card2:hover::before {
-    transform: scale(1.2);
-    /* Phóng to ảnh khi hover */
+    transform: scale(1.2); /* Phóng to ảnh khi hover */
 }
-
-.Discount-Destination {
+.Discount-Destination{
     padding-top: 150px;
     background-color: whitesmoke;
     width: 100%;
     height: 700px;
 }
-
-.Discount-Img {
-    background-image: url(../pictures/HomeBG.jpg);
+.Discount-Img{
+    background-image:url(../pictures/HomeBG.jpg);
     height: 600px;
-    width: 100%;
+    width: 100%; 
     background-size: cover;
     background-position: center;
     object-fit: cover;
     background-attachment: fixed;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
 }
-<<<<<<< Updated upstream
 .Discount-Info{
     text-align: center;
-=======
-
-.Discount-Info {
-    justify-items: center;
->>>>>>> Stashed changes
 }
 
-.Discount-Info .Discount-Content {
+.Discount-Info .Discount-Content{
     font-size: 30px;
     color: #f2eaea;
     margin-bottom: 25px;
 }
-
-.Discount-Info .Discount-Time {
+.Discount-Info .Discount-Time{
     background-color: #45454594;
-    width: 500px;
+    width:500px;
     height: 120px;
     border-radius: 5px;
 }
-
-.Discount-Info .btn-JoinDiscount {
+.Discount-Info .btn-JoinDiscount{
     margin-top: 25px;
-<<<<<<< Updated upstream
-=======
-    /* padding: 20px 25px 20px 25px; */
-
->>>>>>> Stashed changes
 }
-
-.Discount-Info .btn-JoinDiscount button {
+.Discount-Info .btn-JoinDiscount button{
     padding: 20px 37px 20px 37px;
     color: #fff;
     background-color: #00d4ff;
     border-radius: 6px;
     cursor: pointer;
-    box-shadow: 0px 0px 3px 0px rgb(90, 89, 89);
-    /*left right blur scale color*/
+    box-shadow: 0px 0px 3px 0px rgb(90, 89, 89); /*left right blur scale color*/
 }
-
-.Discount-Info .btn-JoinDiscount button:hover {
-    transition: all 1s ease;
-    /* Hiệu ứng chuyển đổi khi hover */
+.Discount-Info .btn-JoinDiscount button:hover{
+    transition: all 1s ease; /* Hiệu ứng chuyển đổi khi hover */
     background-color: #03bdaa;
-    box-shadow: 0px 0px 15px 0px rgb(78, 77, 77);
-    /*left right blur scale color*/
+    box-shadow: 0px 0px 15px 0px rgb(78, 77, 77); /*left right blur scale color*/
 }
-
 /*Discount Time*/
-<<<<<<< Updated upstream
 .Discount-Time{
     margin-left: auto;
     margin-right: auto;
 }
 .countdown{
-=======
-.countdown {
->>>>>>> Stashed changes
     width: 100%;
     height: 100%;
 }
-
-.countdown ul {
+.countdown ul{
     display: flex;
     justify-content: center;
 }
-
-.countdown ul li {
+.countdown ul li{
     color: #f2eaea;
     list-style-type: none;
     font-size: 16px;
     text-transform: uppercase;
     text-align: center;
 }
-
-.countdown ul li span {
+.countdown ul li span{
     display: block;
     font-size: 7rem;
     color: #f41b4b;
 }
-
-.countdown ul .separator {
+.countdown ul .separator{
     margin: 0 10px;
     font-size: 7rem;
     line-height: 1;
     color: #f41b4b;
 }
-
-.countdown ul li:first-child {
+.countdown ul li:first-child{
     margin-right: 5rem;
 }
