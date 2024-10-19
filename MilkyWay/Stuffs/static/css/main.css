@@ -139,8 +139,11 @@ body {
 .tabs-search {
     display: flex;
     gap: 1px;
-    /* justify-content: left; */
     margin-bottom: 20px;
+}
+
+.tabs-search button:first-child{
+    border-top-left-radius: 10px;
 }
 
 .tab {
