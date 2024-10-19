@@ -4,7 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản lý tour</title>
+    <title>Quản lý tour du lịch</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../static/css/tour_mng/tour_styles.css">
     <link rel="icon" href="../../static/pictures/logo.jpg">
 </head>
@@ -16,11 +21,10 @@
                 <h1>Quản Lý Tour Du Lịch</h1>
             </div>
             <div class="sub_head_div">
-                <a class="logout_btn" href="#">Đăng xuất</a>
+                <a class="logout_btn btn-hover" href="#">Đăng xuất</a>
                 <div class="dropdown">
                     <button class="dropbtn">Menu</button>
                     <div class="dropdown-content">
-                        <a href="#">Chat với khách hàng</a>
                         <a href="#">Xác nhận tour</a>
                     </div>
                 </div>
@@ -36,7 +40,8 @@
                         <th>Địa Điểm</th>
                         <th>Ngày Đi</th>
                         <th>Ngày Về</th>
-                        <th>Số Thành Viên</th>
+                        <th>Tổng Số Vé</th>
+                        <th>Số Vé Còn Lại</th>
                         <th>Giá Tiền</th>
                         <th>Hành Động</th>
                     </tr>
@@ -46,6 +51,7 @@
                         <td>Nghệ An</td>
                         <td>15/11/2024</td>
                         <td>20/11/2024</td>
+                        <td>25</td>
                         <td>25</td>
                         <td>10,000,000 VND</td>
                         <td>
@@ -60,6 +66,7 @@
                         <td>15/11/2024</td>
                         <td>20/11/2024</td>
                         <td>25</td>
+                        <td>25</td>
                         <td>10,000,000 VND</td>
                         <td> <a class="edit-btn" href="../../templates/tour_management/tour_edit.html"
                                 target="_blank">Sửa</a>
@@ -71,6 +78,7 @@
                         <td>Cao Bằng</td>
                         <td>15/11/2024</td>
                         <td>20/11/2024</td>
+                        <td>25</td>
                         <td>25</td>
                         <td>10,000,000 VND</td>
                         <td>
@@ -85,6 +93,7 @@
                         <td>15/11/2024</td>
                         <td>20/11/2024</td>
                         <td>25</td>
+                        <td>25</td>
                         <td>10,000,000 VND</td>
                         <td>
                             <a class="edit-btn" href="../../templates/tour_management/tour_edit.html"
@@ -97,6 +106,7 @@
                         <td>Đồng Nai</td>
                         <td>15/11/2024</td>
                         <td>20/11/2024</td>
+                        <td>25</td>
                         <td>25</td>
                         <td>10,000,000 VND</td>
                         <td>
@@ -111,6 +121,7 @@
                         <td>15/11/2024</td>
                         <td>20/11/2024</td>
                         <td>25</td>
+                        <td>25</td>
                         <td>10,000,000 VND</td>
                         <td>
                             <a class="edit-btn" href="../../templates/tour_management/tour_edit.html"
@@ -120,9 +131,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Đà nẵng</td>
+                        <td>Đà Nẵng</td>
                         <td>15/11/2024</td>
                         <td>20/11/2024</td>
+                        <td>25</td>
                         <td>25</td>
                         <td>10,000,000 VND</td>
                         <td>
@@ -137,6 +149,7 @@
                         <td>15/11/2024</td>
                         <td>20/11/2024</td>
                         <td>25</td>
+                        <td>25</td>
                         <td>10,000,000 VND</td>
                         <td>
                             <a class="edit-btn" href="../../templates/tour_management/tour_edit.html"
@@ -149,6 +162,7 @@
                         <td>Đà Lạt</td>
                         <td>15/11/2024</td>
                         <td>20/11/2024</td>
+                        <td>25</td>
                         <td>25</td>
                         <td>10,000,000 VND</td>
                         <td>
@@ -163,13 +177,16 @@
         </div>
     </div>
     <!-- Modal Xác Nhận Xóa -->
+    <!-- Modal Xác Nhận Xóa -->
     <div id="confirmModal" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
             <h2>Xác Nhận Xóa</h2>
             <p>Bạn có chắc chắn muốn xóa tour này không?</p>
-            <button id="confirmDelete" class="modal-button">Xóa</button>
-            <button id="cancelDelete" class="modal-button">Hủy</button>
+            <div class="modal-actions">
+                <button id="confirmDelete" class="modal-button confirm">Xóa</button>
+                <button id="cancelDelete" class="modal-button cancel">Hủy</button>
+            </div>
         </div>
     </div>
     <script src="../../static/javascript/tour_scpt/tour_mng.js"></script>
