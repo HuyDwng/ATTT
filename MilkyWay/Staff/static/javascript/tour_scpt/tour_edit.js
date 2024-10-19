@@ -64,7 +64,7 @@ function updateSectionsAfterRemoval(removedSectionId) {
 
         // Cập nhật id và tiêu đề cho section
         section.setAttribute('id', `tour_section_${currentSectionId}`);
-        section.querySelector('.form-section-title').textContent = `Khu Vực ${currentSectionId}`;
+        section.querySelector('.form-section-title').textContent = `Địa điểm ${currentSectionId}`;
         section.querySelector('label[for^="tour_image"]').setAttribute('for', `tour_image_${currentSectionId}`);
         section.querySelector('input[type="file"]').setAttribute('id', `tour_image_${currentSectionId}`);
         section.querySelector('input[type="file"]').setAttribute('name', `tour_image_${currentSectionId}`);
