@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica, sans-serif;
+}
+
+body {
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #99ccff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.logo {
+    width: 150px;
+}
+
+.nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+}
+
+.login-buttons {
+    display: flex;
+}
+
+.login, .register {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: #3092fb;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.hero {
+    position: relative;
+    text-align: center;
+    color: white;
+    
+}
+
+.hero-image {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
+.search-bar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    border-radius: 30px;
+}
+
+.hero-title {
+    font-size: 40px;
+}
+
+.hero-subtitle {
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+.search-input {
+    padding: 10px;
+    width: 500px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    border-radius: 30px;
+}
+
+.search-buttons button {
+    margin: 10px 5px;
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: #3092fb;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.guide {
+    padding: 40px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.section-description {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.region-buttons button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.city-cards {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+}
+
+.city-card {
+    position: relative;
+    width: 22%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.city-card:hover {
+    transform: scale(1.05);
+}
+
+.city-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.city-name {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+/* Category Buttons */
+.category-buttons {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.category {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.category.active, .category:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Destination Cards */
+.destination-cards {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+}
+
+.destination-card {
+    position: relative;
+    width: 22%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.destination-card:hover {
+    transform: scale(1.05);
+}
+
+.destination-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.destination-details {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.region {
+    font-size: 16px;
+    display: block;
+}
+
+.country {
+    font-size: 24px;
+    font-weight: bold;
+}
