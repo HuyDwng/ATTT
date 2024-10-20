@@ -98,6 +98,60 @@ form {
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.35);
 }
 
+/* =================Details-content================ */
+details {
+    position: relative;
+}
+
+summary {
+    cursor: pointer;
+    font-weight: bold;
+    list-style: none;
+}
+
+summary::marker {
+    display: none;
+    /* Ẩn dấu mũi tên mặc định */
+}
+
+/* Nội dung modal */
+details[open]::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+details div {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    z-index: 20;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.close-btn:hover {
+    color: red;
+}
+
 /*========================HOVER==================*/
 
 .btn-link:hover {

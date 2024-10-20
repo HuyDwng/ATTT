@@ -62,5 +62,41 @@ function formatNumber(number){
     return number
 }
 
+// scroll navbar
+var menu = document.getElementById("Menu");
+
+//change title menu
+let sections = document.querySelectorAll('body > section');
+let navLinks = document.querySelectorAll('header ul a');
+window.onscroll = () =>{
+    //change title menu
+    sections.forEach(sec => {
+        let top = window.scrollY;
+        let offset = sec.offsetTop -150;
+        let height = sec.offsetHeight;
+        let id = sec.getAttribute('id');
+
+        if(top >= offset && top < offset + height){
+            navLinks.forEach(links => {
+                links.classList.remove('active-menu');
+                document.querySelector('header ul a[href*=' + id + ']').classList.add('active-menu');
+            })
+        }
+    });
+    // scroll navbar
+    console.info(document.documentElement.scrollTop);
+    if (document.documentElement.scrollTop > 100) {
+        menu.style.background = "black"; // Đặt nền đen khi cuộn trang
+    } else {
+        menu.style.background = "transparent"; // Làm nền trong suốt khi quay về đầu trang
+    }
+}
+
+
+
+
+
+
+
 //run function
 CountDownTimer()
