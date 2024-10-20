@@ -88,3 +88,20 @@
   .data-detail{
     display: flex;
   }
+  .accordion-button::after {
+    font-family: 'FontAwesome';
+    float: right;
+    color: #000;
+}
+.title{
+    margin-top: 15px;
+    margin-left: 7%
+}
+.line{
+    display: inline-flex;
+    padding: 0rem .03125rem;
+    margin: 3px 1rem;
+    height: 1rem;
+    background-color: black;
+    width: 1px;
+}

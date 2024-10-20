@@ -12,8 +12,26 @@
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 	
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="../static/javascript/hotel-detail.js"></script>
+
 	</head>
 	<body>
+		<!--Title-->
+		<div class="title">
+			<h6 class="display-6 text-capitalize fw-bolder">Chuyến du lịch Phú Quốc</h6>
+			<div class="container-star p-2">
+				<div class"star">
+					<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+					<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+					<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+					<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+					<i class="fa-regular fa-star-half-stroke" style="color: #FFD43B;"></i>
+				</div>
+				<p class="px-2">4.7</p>	
+				<span class="line"></span>
+				<p>Phú Quốc</p>
+			</div>
+
+		</div>
         <!--Data-->
         <div class="container-data">
             <div class="image">
@@ -79,6 +97,50 @@
                 
             </div>
             <hr>
+			<div class="container mt-5">
+				<div class="accordion" id="accordionExample">
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingOne">
+							<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+								Nội dung 1
+							</button>
+						</h2>
+						<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+							<div class="accordion-body">
+								Đây là nội dung của phần 1.
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingTwo">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+								Nội dung 2
+							</button>
+						</h2>
+						<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+							<div class="accordion-body">
+								Đây là nội dung của phần 2.
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingThree">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+								Nội dung 3
+							</button>
+						</h2>
+						<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+							<div class="accordion-body">
+								Đây là nội dung của phần 3.
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<hr>
+			<h6 class="fs-3 text-uppercase mt-5 fw-bolder center">Đánh giá</h6>
+			<hr>
 			<h5 class="fs-3 text-uppercase mt-5 fw-bolder">Xem thêm</h5>
 			<div class="row gy-4">
 				<div class="col-lg-4 pic-product">
