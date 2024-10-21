@@ -166,3 +166,76 @@ details div {
 
 
 /*================OFF-CANVAS=================*/
+.offcanvas {
+    transition: ease-in-out 0.7s;
+    width: 20%;
+}
+
+.offcanvas-header {
+    height: 25%;
+    background-image: url(../../pictures/HomeBG.jpg);
+    background-size: cover;
+    justify-content: left;
+    position: relative;
+}
+
+.offcanvas-header .btn-close {
+    position: absolute;
+    background-color: #ffffff;
+    right: 1rem;
+    top: 1rem;
+}
+
+.offcanvas-header span {
+    font-size: 2rem;
+}
+
+.offcanvas-header h1 {
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 400;
+    position: absolute;
+}
+
+.staff-name {
+    bottom: 20%
+}
+
+.staff-mail {
+    bottom: 10%;
+}
+
+.offcanvas-body a {
+
+    color: #676464;
+    width: 100%;
+    font-size: 1rem;
+    padding: 1rem 0 1rem 1rem;
+}
+
+.offcanvas-body a:hover {
+    background-color: #2c627c;
+    color: #ffffff;
+    transition: ease-in-out 0.3s;
+}
+
+.offcanvas-body {
+    padding: 0;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.logout-btn {
+    color: #ffffff;
+    position: absolute;
+    font-size: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+}
+
+.logout-btn:hover {
+    color: #00d4ff;
+}
