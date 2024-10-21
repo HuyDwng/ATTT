@@ -1,5 +1,5 @@
 :root {
-    --main_color: #6dbfe2;
+    --main_color: #38809f;
 }
 
 #main::-webkit-scrollbar {
@@ -245,10 +245,7 @@ th {
     margin: 0.3rem;
 }
 
-.btn-primary {
-    background-color: var(--main_color);
-    border: none;
-}
+
 
 .more-info-btn a {
     text-decoration: none;
@@ -372,4 +369,92 @@ a {
 .modal-button:hover {
     background-color: #5ba4c6;
     transition-duration: 0.5s;
+}
+
+.offcanvas {
+    transition: 0.7s ease-in-out;
+    width: 20%;
+}
+
+.offcanvas-title {
+    color: #2c627c;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: var(--main_color);
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 2rem;
+    transition: 0.5s ease;
+    margin: 1rem;
+}
+
+.logout-btn:hover {
+    padding: 0.5rem;
+    background-color: #ed3d31;
+    color: #f2f2f2;
+    transition: ease-in-out 0.3s;
+    box-shadow: 3px 3px 10px rgb(220, 9, 9);
+}
+
+.logout-btn {
+    padding: 0.5rem;
+    background-color: #d3392e;
+    border-radius: 0.5rem;
+}
+
+.offcanvas-body {
+    padding: 0;
+}
+
+.offcanvas-header {
+    padding: 0 0rem 0 1rem;
+    height: 25%;
+    background-image: url(../../pictures/HomeBG.jpg);
+    background-repeat: none;
+    background-size: cover;
+    justify-content: left;
+    position: relative;
+
+}
+
+.offcanvas-header h1 {
+    font-size: 0.8rem;
+}
+
+.staff-name {
+    position: absolute;
+    bottom: 20%;
+}
+
+.staff-mail {
+    position: absolute;
+    bottom: 10%;
+}
+
+.offcanvas-header span {
+    font-size: 2rem;
+}
+
+
+.btn-close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    background-color: #ffffff;
+
+}
+
+.offcanvas-body a {
+    color: #676464;
+    font-size: 1rem;
+    padding: 1rem 0 1rem 2rem;
+    width: 100%;
+}
+
+.offcanvas-body a:hover {
+    color: #f2f2f2;
+    background-color: #2c627c;
+    transition: ease-in-out 0.2s;
 }
