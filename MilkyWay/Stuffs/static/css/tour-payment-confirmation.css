@@ -2,25 +2,6 @@
     --main_color: #6dbfe2;
 }
 
-#header_div {
-    background-color: var(--main_color);
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.sub_head_div {
-    display: flex;
-    align-items: center;
-    margin-right: 5%;
-}
-
-h1 {
-    color: #f2f2f2;
-    font-size: 3rem;
-}
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -28,29 +9,240 @@ body {
     background-color: #f4f4f4;
 }
 
+.bg_Main{
+    color: #fff;
+    background-image: url(../pictures/HomeBG.jpg);
+    background-size: cover;
+}
+
+.heading {
+    color: rgb(3, 18, 26); /* Màu chữ */
+    font-size: 24px; /* Kích thước chữ */
+    font-weight: 700; /* Độ đậm chữ */
+    line-height: 28px; /* Chiều cao dòng */
+    margin-top: 12px; /* Khoảng cách trên */
+    margin-bottom: 12px; /* Khoảng cách dưới */
+}
+
+.Menu {
+    margin: 0 12% 0 12%; /*base*/
+    padding-top: 30px;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.Pr_Menu hr{
+    margin: 0 13% 0 13%; /*base*/
+}
+.logo a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #00d4ff;
+}
+
+/* Styling for the progress bar */
+.progress-bar-container {
+    display: flex;
+    justify-content: center;
+}
+
+.progress-bar {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+}
+
+.progress-step {
+    display: flex;
+    align-items: center;
+}
+
+.circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ddd; /* Màu xám cho các bước chưa hoàn thành */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.active-circle {
+    background-color: #4CAF50; /* Màu xanh cho bước hiện tại */
+    color: white;
+}
+
+li {
+    font-size: 16px;
+    color: white;
+}
+
+.active {
+    font-weight: bold;
+    color: #4CAF50; /* Màu xanh cho bước hiện tại */
+}
+
+.dash {
+    width: 30px;
+    height: 2px;
+    background-color: white ; /* Dấu gạch ngang màu trắng cho các bước chưa hoàn thành */
+    margin: 0 10px;
+}
+
+.progress-step .active + .dash {
+    background-color: #4CAF50; /* Dấu gạch ngang màu xanh cho bước hiện tại */
+}
+
+/*Information*/
+.trang{
+    display: flex;
+    flex-direction: column; /* Sắp xếp theo chiều dọc */
+    width: 66.67%; /* Chiếm 2/3 bề rộng của trang */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-self: center; /* Căn giữa theo chiều dọc */
+    flex-wrap: wrap; /* Cho phép xuống dòng */
+    align-items: center; /* Đảm bảo các phần tử con chiếm toàn bộ chiều rộng */
+    margin: 0 auto; /* Căn giữa div theo chiều ngang */
+    padding: 20px; /* Thêm padding cho nội dung bên trong */
+}
 .container {
     display: flex;
     flex-wrap: wrap; /* Cho phép xuống dòng */
     justify-content: space-between;
-    margin: 20px auto;
-    max-width: 1200px;
+    max-width: 960px;
+
+    width: 66.67%; /* Chiếm 2/3 bề rộng của trang */
+    flex-direction: column; /* Sắp xếp theo chiều dọc */
+    align-items: stretch; /* Đảm bảo các phần tử con chiếm toàn bộ chiều rộng */
+}
+
+form {
+    padding: 20px; /* Khoảng cách trong của phần form */
 }
 
 .form-section {
-    box-sizing: border-box;
     border: 2px solid #007BFF;
-    border-radius: 8px;
+
+    border-radius: 8px; /* Bo góc cho toàn bộ phần */
+    overflow: hidden; /* Để đảm bảo không có phần nào ra ngoài khung */
+    background-color: white; /* Màu nền cho toàn bộ phần */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Đổ bóng cho phần */
+}
+
+/* Lưu thông tin liên hệ */
+.button-section {
+    width: 25%; /* Chiếm 25% chiều rộng cho nút Lưu */
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: center; /* Căn giữa theo chiều ngang */
     padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    flex: 1 1 calc(33.333% - 20px); /* Mỗi ô chiếm 1/3 chiều rộng, trừ khoảng cách */
-    margin: 10px; /* Thêm khoảng cách giữa các ô */
 }
 
-.btn-luu {
-    margin-top: 15px; /* Thay đổi giá trị này để điều chỉnh khoảng cách */
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+#contact-info-header{
+    margin: 0 20px;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+}
+
+.contact-info div {
+    width: 48%; /* Đảm bảo mỗi phần chiếm 50% chiều rộng */
+}
+
+.border-bottom {
+    border-bottom: 1px solid gray;
+    margin: 10px 0;
+}
+
+.btn-save {
+    background: none;
+    color: var(--main_color);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-save:hover {
+    color: black; /* Màu khi hover */
+}
+
+.btn-edit {
+    background: none;
+    color: var(--main_color);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-edit:hover {
+    color: black; /* Màu khi hover */
+}
+
+
+/*Lưu thông tin khách hàng*/
+#guest-info-header{
+    margin: 0 20px;
+}
+
+.guest-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+}
+
+.guest-info div {
+    width: 48%; /* Đảm bảo mỗi phần chiếm 50% chiều rộng */
+}
+
+/* Ẩn form khi đã lưu */
+/*customer*/
+.form-section.customer form {
+    display: none; /* Ẩn form khi ban đầu */
+}
+
+.form-section.customer form.visible {
+    display: block; /* Hiển thị form khi có class 'visible' */
+}
+/*guest*/
+
+.form-section.tour-info form.visible {
+    display: block; /* Hiển thị form khi có class 'visible' */
+}
+
+.form-section.tour-info form {
+    display: none; /* Ẩn form khi ban đầu */
+}
+
+.hidden {
+    display: none; /* Ẩn các phần tử khác */
+}
+
+
+
+
+
+/*Ô nhập thông tin*/
 .nhap {
     display: flex;
     align-items: center;
@@ -62,7 +254,21 @@ body {
     margin-right: 10px;
 }
 
-input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"], select, textarea {
+.nhap-group {
+    display: flex; /* Sử dụng Flexbox để đặt các trường trên cùng một hàng */
+    justify-content: space-between; /* Khoảng cách đều giữa các phần tử con */
+}
+
+.nhap {
+    flex: 1; /* Mỗi phần tử con sẽ chiếm 50% chiều rộng */
+    margin-right: 10px; /* Khoảng cách bên phải giữa các trường */
+}
+
+.nhap:last-child {
+    margin-right: 0; /* Bỏ khoảng cách bên phải cho phần tử cuối cùng */
+}
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="number"], select, textarea {
     flex: 1;
     padding: 8px;
     border: 1px solid #ccc;
@@ -82,25 +288,42 @@ input[type="submit"]:hover {
     background-color: #0056b3;
 }
 
-.g-num{
-    flex-direction: column; /* Thay đổi thành cột để phần tử nằm chồng lên nhau */
-    align-items: flex-start; /* Đảm bảo các phần tử bên trái */
-    margin-bottom: 10px; /* Khoảng cách giữa các ô */
+input.required {
+    border: 1px solid #ccc; /* Màu mặc định */
 }
 
-.warning-message {
-    margin-top: 5px; /* Khoảng cách trên để tách span ra khỏi input */
+input.required.error {
+    border: 1px solid red; /* Màu đỏ khi có lỗi */
 }
 
-#seat-warning {
-    display: none; /* Ẩn cảnh báo ban đầu */
-    font-size: 0.9em; /* Kích thước chữ nhỏ hơn */
-    color: red; /* Màu chữ để nổi bật */
+/* Lựa chọn là đặt giúp hoặc là bản thân là người đi tour */
+.radio-group {
+    display: flex; /* Sử dụng Flexbox cho nhóm radio button */
+    justify-content: space-between; /* Căn chỉnh không gian giữa các radio button */
+    background-color: #f0f0f0; /* Màu xám cho vùng radio button */
+    padding: 20px; /* Khoảng cách trong của vùng radio button */
 }
+
+.radio-option {
+    flex: 1; /* Mỗi radio option chiếm 50% chiều rộng */
+    text-align: center; /* Căn giữa nội dung bên trong */
+}
+
+/* Để đảm bảo khung bo góc cho radio group */
+.radio-group label {
+    display: block; /* Để mỗi label chiếm toàn bộ chiều rộng */
+}
+
+.radio-option input {
+    margin-right: 5px; /* Khoảng cách giữa radio button và nhãn */
+}
+
+/* Guest information */
+
 
 /* Khi màn hình nhỏ hơn 768px (điện thoại) */
 @media (max-width: 768px) {
-    .container {
+    .trang {
         flex-direction: column; /* Xếp chồng các div lên nhau */
     }
 
@@ -141,43 +364,74 @@ input[type="submit"]:hover {
     width: 150px;
 }
 
-.bill-item button {
-    padding: 5px 10px;
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.bill-item button:hover {
-    background-color: #0056b3;
-}
-
 .bill-item.total {
     font-weight: bold;
     font-size: 1.2em;
     margin-top: 20px;
 }
 
-/* Nút thanh toán*/
-/* Chỉ căn giữa nút thanh toán */
-.bill-item.button-container {
-    justify-content: center; /* Căn giữa nội dung */
+/* Nút tiếp tục để chuyển qua trang tiếp theo */
+.continue-section {
+    display: flex; /* Sử dụng flexbox để căn chỉnh */
+    justify-content: flex-end; /* Đặt các phần tử con ở góc phải */
+    margin-top: 20px; /* Khoảng cách phía trên */
 }
 
-.btn-pay {
-    padding: 10px 20px;
-    background-color: #28a745;
+.btn-continue {
+    background-color: #FFA500; /* Màu nền cam */
+    color: white; /* Màu chữ trắng */
+    padding: 15px 32px; /* Padding cho nút */
+    text-align: center; /* Căn giữa chữ trong nút */
+    text-decoration: none; /* Không có gạch chân */
+    display: inline-block; /* Hiển thị inline-block */
+    font-size: 16px; /* Kích thước chữ */
+    margin: 4px 2px; /* Khoảng cách xung quanh */
+    border: none; /* Không có viền */
+    border-radius: 4px; /* Bo góc cho nút */
+    cursor: pointer; /* Hiển thị con trỏ khi hover */
+    transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển màu nền và màu chữ */
+
+    width: 30%;
+}
+
+.btn-continue:hover {
+    background-color: #FF8C00; /* Màu nền cam đậm khi hover */
+}
+
+.btn-continue:active {
+    background-color: #FF8C00; /* Giữ màu nền cam đậm khi click */
+    color: #FFA500; /* Đổi màu chữ sang cam */
+    text-shadow: 0 0 5px white, 0 0 10px white; /* Tạo hiệu ứng ánh sáng cho chữ */
+}
+
+/* Hộp thoại cảnh báo khi chưa điền đủ thông tin */
+.error-container {
+    position: fixed;
+    bottom: 20px; /* Đặt khối ở góc phải dưới */
+    right: 20px;
+    background-color: #f44336; /* Màu đỏ */
     color: white;
-    border: none;
+    padding: 15px;
     border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    width: 150px; /* Đặt độ rộng của nút */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none; /* Mặc định là ẩn */
+    z-index: 1000; /* Đảm bảo luôn hiển thị trên các phần tử khác */
+    width: 300px;
     text-align: center;
 }
 
-.btn-pay:hover {
-    background-color: #218838;
+.error-container .close-btn {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+.error-container .close-btn:hover {
+    color: #ffcccb; /* Thay đổi màu khi hover */
 }

@@ -1,3 +1,6 @@
+*{
+    scroll-behavior: smooth;
+}
 body {
     font-family: Arial, sans-serif;
     font-size: 17px;
@@ -9,10 +12,15 @@ body {
     background-size: cover;
 }
 
-
+.Pr_Menu{
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
 .Menu {
     margin: 0 12% 0 12%; /*base*/
-    padding-top: 30px;
     padding: 30px;
     display: flex;
     justify-content: space-between;
@@ -57,6 +65,21 @@ body {
     bottom: 0px;
     left: 0;
 }
+.Menu ul li a.active-menu{
+    color: #00d4ff;
+    transition: 0.5s;
+}
+.Menu ul li a.active-menu::after{
+    transition: all 0.5s ease-in-out; /*all Xác định hiệu ứng của quá trình chuyển đổi cho tất cả thuộc tính.*/
+    content: "";
+    height: 2px;
+    width: 100%;
+    background: #00d4ff;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+}
+
 .Menu ul li:not(:last-child) a:hover{
     color: #00d4ff;
     transition: 0.5s;
@@ -78,7 +101,7 @@ body {
 }
 .PR_Slogan {
     margin-left: 13%; /*base*/
-    height: 80vh;
+    height: 93vh;
     margin-right: 60%;
     display: flex;
     justify-content: left;
