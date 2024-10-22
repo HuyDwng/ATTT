@@ -7,3 +7,18 @@ python manage.py migrate
 Chú ý: 
     + Save tất cả file trước khi chạy
     + Sửa code ==> Ctrl + C để dừng chương trình đang thực thi
+
+
+* Thiết lập 1 trang con trên django
+B1: Vào file view.py tạo các hàm chạy file html (coi file view.py ở folder Log-In)
+Lưu ý: không đặt tên hàm bằng dấu "-"
+B2: Tạo file "urls.py" sau đó tạo các url liên kết đến trang html. VD: path("homepage", views.index, name="homepage") 
+vị trí 1: tên đường dẫn, vị trí 2: tên file html, vị trí 3: đặt trùng tên đường dẫn
+B3: Vào folder MilkyWay tìm file "urls.py" tạo 1 đường dẫn vào trong urlpatterns. VD: path("stuffs", include("Stuffs.urls"))
+vị trí 1: tên đường dẫn, vị trí 2: tên folder chứa html muốn chạy + .urls
+
+*Gắn link file css, js: 
+<link rel="stylesheet" href="{% static 'footer.css' %}">
+<script src="{% static 'js/log-in.js' %}"></script>
+Chỗ nào xài background-image: url.... ==> chuyển sang html 
+<body style="background-image: url('{% static "images/bg_login.jpg"%}');">
