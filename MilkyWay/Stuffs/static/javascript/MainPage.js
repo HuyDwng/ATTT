@@ -65,6 +65,8 @@ function formatNumber(number){
 // scroll navbar
 var menu = document.getElementById("Menu");
 
+//scroll top
+var gototop = document.getElementById("Gototop");
 //change title menu
 let sections = document.querySelectorAll('body > section');
 let navLinks = document.querySelectorAll('header ul a');
@@ -86,10 +88,27 @@ window.onscroll = () =>{
     // scroll navbar
     console.info(document.documentElement.scrollTop);
     if (document.documentElement.scrollTop > 100) {
-        menu.style.background = "black"; // Đặt nền đen khi cuộn trang
+        menu.style.background = "rgba(38, 38, 38, 0.9)"; // Đặt nền đen khi cuộn trang
     } else {
         menu.style.background = "transparent"; // Làm nền trong suốt khi quay về đầu trang
     }
+
+
+//scroll top
+    console.info(document.documentElement.scrollTop);
+    if(document.documentElement.scrollTop > 100){
+        gototop.style.display = "block";
+    }
+    else{
+       gototop.style.display = "none";
+    }
+}
+function goToTop(){
+   var x= setInterval(function(){
+       document.documentElement.scrollTop-=40;
+       if(document.documentElement.scrollTop<=0)
+       clearInterval(x);
+   },1)
 }
 
 
@@ -100,3 +119,4 @@ window.onscroll = () =>{
 
 //run function
 CountDownTimer()
+goToTop()
