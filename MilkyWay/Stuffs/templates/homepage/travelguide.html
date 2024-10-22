@@ -1,0 +1,192 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour Booking Guides</title>
+    <link rel="stylesheet" href="/MilkyWay/Stuffs/static/css/travelguide.css">
+    <link rel="stylesheet" href="/MilkyWay/Stuffs/static/css/footer.css">
+   
+
+</head>
+<body>
+    <header class="header">
+        
+        <nav class="nav">
+            <a href="#">Home</a>
+            <a href="#">Destination</a>
+            <a href="#">Packages</a>
+            <a href="#">Special Offers</a>
+            <a href="#">Blog</a>
+            <a href="#">Subscription</a>
+        </nav>
+        <div class="login-buttons">
+            <button class="login">Đăng Nhập</button>
+            <button class="register">Đăng ký</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <img src="image/bali.jpg" alt="Bali, Indonesia" class="hero-image">
+        <div class="search-bar">
+            <h1 class="hero-title">Tour Booking Guides</h1>
+            <p class="hero-subtitle">Hãy tìm nơi bạn hứng thú!</p>
+            <input type="text" class="search-input" placeholder="Nhập địa điểm cần tìm">
+            <div class="search-buttons">
+                <button class="take-me-somewhere">Tìm cho tôi một số nơi</button>
+                <button class="see-all">Tất cả điểm đến</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="guide">
+        <h2 class="section-title">Cẩm nang du lịch từ A - Z</h2>
+        <p class="section-description">Cẩm nang du lịch cho chuyến đi hoàn hảo</p>
+        <div class="region-buttons">
+            <button>Việt Nam</button>
+            <button>Châu Á</button>
+            <button>Châu Âu</button>
+            <button>Châu Úc</button>
+            <button>Châu Mỹ</button>
+            <button>Châu Phi</button>
+        </div>
+        
+    </section>
+    <section class="city-cards">
+        <div class="city-card">
+            <a href="saigonguide.html"><img src="image/saigon.jpg" alt="Sài Gòn" class="city-image"></a>
+            <div class="city-name">Sài Gòn</div>
+        </div>
+        <div class="city-card">
+            <a href="danangguide.html"><img src="image/danang.jpg" alt="Đà Nẵng" class="city-image"></a>
+            <div class="city-name">Đà Nẵng</div>
+        </div>
+        <div class="city-card">
+            <a href="hanoiguide.html"><img src="image/hanoi.jpg" alt="Hà Nội" class="city-image"></a>
+            <div class="city-name">Hà Nội</div>
+        </div>
+        <div class="city-card">
+            <img src="image/sapa.jpg" alt="SaPa" class="city-image">
+        </div>
+    </section>
+    <section class="category-buttons">
+        <button class="category active">Điểm đến phổ biến</button>
+        <button class="category">Trải nghiệm văn hóa</button>
+        <button class="category">Du lịch ẩm thực</button>
+        <button class="category">Du lịch theo nhóm</button>
+        <button class="category">Điểm tham quan nổi tiếng</button>
+        <button class="category">Khám phá thiên nhiên</button>
+    </section>
+    
+    <section class="destination-cards">
+        <div class="destination-card">
+            <img src="image/japan.jpg" alt="Nhật Bản" class="destination-image">
+            <div class="destination-details">
+                <span class="region">Châu Á</span>
+                <span class="country">Nhật Bản</span>
+            </div>
+        </div>
+        <div class="destination-card">
+            <img src="image/south-korea.jpg" alt="Hàn Quốc" class="destination-image">
+            <div class="destination-details">
+                <span class="region">Châu Á</span>
+                <span class="country">Hàn Quốc</span>
+            </div>
+        </div>
+        <div class="destination-card">
+            <img src="image/turkey.jpg" alt="Thổ Nhĩ Kỳ" class="destination-image">
+            <div class="destination-details">
+                <span class="region">Châu Á</span>
+                <span class="country">Thổ Nhĩ Kỳ</span>
+            </div>
+        </div>
+        <div class="destination-card">
+            <img src="image/france.jpg" alt="Pháp" class="destination-image">
+            <div class="destination-details">
+                <span class="region">Châu Âu</span>
+                <span class="country">Pháp</span>
+            </div>
+        </div>
+    </section>
+    
+    <footer  class="footer-copyright">
+        <div class="f-container">
+            <div class="footer-content">
+                <div class="f-row">
+
+                    <div class="col-sm-3">
+                        <div class="single-footer-item">
+                            <div class="footer-logo">
+                                <a href="index.html">
+                                    tour<span>Nest</span>
+                                </a>
+                                <p>
+                                    best travel agency
+                                </p>
+                            </div>
+                        </div><!--/.single-footer-item-->
+                    </div><!--/.col-->
+
+                    <div class="col-sm-3">
+                        <div class="single-footer-item">
+                            <h2>link</h2>
+                            <div class="single-footer-txt">
+                                <p><a href="#">home</a></p>
+                                <p><a href="#">destination</a></p>
+                                <p><a href="#">spacial packages</a></p>
+                                <p><a href="#">special offers</a></p>
+                                <p><a href="#">blog</a></p>
+                                <p><a href="#">contacts</a></p>
+                            </div><!--/.single-footer-txt-->
+                        </div><!--/.single-footer-item-->
+
+                    </div><!--/.col-->
+
+                    <div class="col-sm-3">
+                        <div class="single-footer-item">
+                            <h2>popular destination</h2>
+                            <div class="single-footer-txt">
+                                <p><a href="#">china</a></p>
+                                <p><a href="#">venezuela</a></p>
+                                <p><a href="#">brazil</a></p>
+                                <p><a href="#">australia</a></p>
+                                <p><a href="#">london</a></p>
+                            </div><!--/.single-footer-txt-->
+                        </div><!--/.single-footer-item-->
+                    </div><!--/.col-->
+
+                    <div class="col-sm-3">
+                        <div class="single-footer-item text-center">
+                            <h2 class="text-left">contacts</h2>
+                            <div class="single-footer-txt text-left">
+                                <p>+1 (300) 1234 6543</p>
+                                <p class="foot-email"><a href="#">info@tnest.com</a></p>
+                                <p>North Warnner Park 336/A</p>
+                                <p>Newyork, USA</p>
+                            </div><!--/.single-footer-txt-->
+                        </div><!--/.single-footer-item-->
+                    </div><!--/.col-->
+
+                </div><!--/.row-->
+
+            </div><!--/.footer-content-->
+            <hr>
+            <div class="foot-icons ">
+                <ul class="footer-social-links list-inline list-unstyled">
+                    <li><a href="#" target="_blank" class="foot-icon-bg-1"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li><a href="#" target="_blank" class="foot-icon-bg-2"><i class="fa-solid fa-x"></i></a></li>
+                    <li><a href="#" target="_blank" class="foot-icon-bg-3"><i class="fa-brands fa-instagram"></i></a></li>
+                </ul>
+                <p>&copy; 2017 <a href="https://www.themesine.com">ThemeSINE</a>. All Right Reserved</p>
+
+            </div><!--/.foot-icons-->
+            <div id="scroll-Top">
+                <i class="fa fa-angle-double-up return-to-top" id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
+            </div><!--/.scroll-Top-->
+        </div><!-- /.container-->
+
+    </footer><!-- /.footer-copyright-->
+    <!-- footer-copyright end -->
+</body>
+</html>

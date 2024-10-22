@@ -3,10 +3,9 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from google.oauth2 import id_token
 from google.auth.transport import requests
-
+import os
 
 # Create your views here.
-from django.shortcuts import render
 
 @csrf_exempt
 def login(request):
@@ -18,7 +17,7 @@ def signup(request):
 
 def forget(request):
     return render(request, 'log_in/forget-password.html') 
-import os
+
 
 
 

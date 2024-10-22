@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 	<head>
@@ -6,55 +7,142 @@
 		<title></title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="../static/css/hotel.css">
+		<link rel="stylesheet" href="../static/css/hotel-detail.css">
 		<link rel="stylesheet" href="../static/css/footer.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 	
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="../static/javascript/hotel-detail.js"></script>
+
 	</head>
 	<body>
-		<!--Slide-->
-		<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-			<div class="carousel-indicators">
-			  <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-			  <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-			  <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+		<!--Title-->
+		<div class="title">
+			<h6 class="display-6 text-capitalize fw-bolder">Chuyến du lịch Phú Quốc</h6>
+			<div class="container-star p-2">
+				<div class"star">
+					<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+					<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+					<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+					<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+					<i class="fa-regular fa-star-half-stroke" style="color: #FFD43B;"></i>
+				</div>
+				<p class="px-2">4.7</p>	
+				<span class="line"></span>
+				<p>Phú Quốc</p>
 			</div>
-			<div class="carousel-inner">
-			  <div class="carousel-item active c-item" data-bs-interval="2000">
-				<img src="../static/pictures/HomeBG.jpg" class="d-block w-100 c-img" alt="pic">
-				<div class="carousel-caption top-0 mt-4 d-none d-md-block">
-				  <h5 class="fs-3 mt-5 text-uppercase">First slide label</h5>
-				  <p class="display-1 text-capitalize fw-bolder">Tour Booking</p>
-				</div>
-			  </div>
-			  <div class="carousel-item c-item" data-bs-interval="2000">
-				<img src="../static/pictures/bg_login.jpg" class="d-block w-100 c-img" alt="pic">
-				<div class="carousel-caption top-0 mt-4 d-none d-md-block">
-					<h5 class="fs-3 mt-5 text-uppercase">First slide label</h5>
-					<p class="display-1 text-capitalize fw-bolder">Tour Booking</p>
-				</div>
-			  </div>
-			  <div class="carousel-item c-item">
-				<img src="../static/pictures/DaNang.jpg" class="d-block w-100 c-img" alt="...">
-				<div class="carousel-caption top-0 mt-4 d-none d-md-block">
-					<h5 class="fs-3 mt-5 text-uppercase">First slide label</h5>
-					<p class="display-1 text-capitalize fw-bolder">Tour Booking</p>
-				</div>
-			  </div>
-			</div>
-			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-			  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			  <span class="visually-hidden">Previous</span>
-			</button>
-			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-			  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-			  <span class="visually-hidden">Next</span>
-			</button>
-		  </div>
+
+		</div>
+        <!--Data-->
+        <div class="container-data">
+            <div class="image">
+                <img src="../static/pictures/DaNang.jpg" class="d-block mt-4 w-100" alt="">
+            </div>
+            <div class="list-img mt-4">
+                <div class="img-item">
+                    <img src="../static/pictures/DaNang.jpg" class="d-block w-100" alt="">
+                </div>
+                <div class="img-item mt-2 filter">
+                    <img src="../static/pictures/DaNang.jpg" class="d-block w-100" alt="">
+                </div>
+                <div class="img-item mt-2 filter">
+                    <img src="../static/pictures/HaLong.jpg" class="d-block w-100" alt="">  
+                </div>
+                <div class="img-item mt-2 filter">
+                    <img src="../static/pictures/DaNang.jpg" class="d-block w-100" alt="">
+                </div>
+                <div class="img-item mt-2 filter">
+                    <img src="../static/pictures/DaNang.jpg" class="d-block w-100" alt="">
+                </div>
+            </div>
+            <div class="card info">
+                <h5 class="text-primary p-2">Phu Quoc</h5>
+				<h6 class="px-2">Chuyến du lịch 3 ngày 2 đêm tại Phú Quốc</h6>
+                <div class="container-star p-2">
+                    <div class"star">
+                        <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                        <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                        <i class="fa-regular fa-star-half-stroke" style="color: #FFD43B;"></i>
+                    </div>
+                    <p class="px-2">4.7</p>
+                </div>
+                <div class="counter-container">
+                    <div class="counter">
+                      <label>Số lượng vé (0-100)</label>
+                      <button class="button decrement" onclick="decrease('adult')">-</button>
+                      <span id="adult">0</span>
+                      <button class="button increment" onclick="increase('adult')">+</button>
+                    </div>
+                  </div>
+                  
+                <h6 class="px-2">400.000 VND</h6>
+                <div class="container p-2 center">
+                    <button class="btn btn-success">Đặt tour</button>
+                </div>
+            </div>
+        </div>
+
 		  <!--Product-->
 		  <div class="container">
-			<h5 class="fs-3 text-uppercase mt-5 fw-bolder">Phân loại theo tìm kiếm</h5>
+            <hr>
+            <div class="data-detail">
+                <i class="fa-regular fa-clock pt-1" style="color: #74C0FC;"></i>
+                <h6 class="px-2">3 ngày 2 đêm</h6>
+            </div>
+            <hr>
+            <div class="main-content">
+                <h5 class="text-primary p-2">OverView</h5>
+				<h6 class="px-2">Trải nghiệm 3 ngày 2 đêm tại Phú Quốc với các hoạt động đầy hấp dẫn</h6>
+                
+            </div>
+            <hr>
+			<div class="container mt-5">
+				<div class="accordion" id="accordionExample">
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingOne">
+							<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+								Nội dung 1
+							</button>
+						</h2>
+						<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+							<div class="accordion-body">
+								Đây là nội dung của phần 1.
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingTwo">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+								Nội dung 2
+							</button>
+						</h2>
+						<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+							<div class="accordion-body">
+								Đây là nội dung của phần 2.
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingThree">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+								Nội dung 3
+							</button>
+						</h2>
+						<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+							<div class="accordion-body">
+								Đây là nội dung của phần 3.
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<hr>
+			<h6 class="fs-3 text-uppercase mt-5 fw-bolder center">Đánh giá</h6>
+			<hr>
+			<h5 class="fs-3 text-uppercase mt-5 fw-bolder">Xem thêm</h5>
 			<div class="row gy-4">
 				<div class="col-lg-4 pic-product">
 					<div class="image-container">
