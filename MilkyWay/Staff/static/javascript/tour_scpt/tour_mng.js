@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // Sử dụng path.join để tạo đường dẫn tương đối
-const filePath = '../../static/data/tour_data/tour_data.json'
+const filePath = 'tour_data.json'
 
 fetch(filePath)
     .then(response => {
