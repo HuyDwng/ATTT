@@ -65,15 +65,15 @@ function generateHTMLTable(transactions) {
 // Hàm chuyển đổi định dạng ngày từ dd/mm/yyyy sang yyyy-mm-dd
 function convertDateFormat(dateString) {
     if (!dateString) return ''; // Nếu không có giá trị, trả về chuỗi rỗng
-    const [day, month, year] = dateString.split('/');
-    return `${day}-${month}-${year}`; // Chuyển đổi thành yyyy-mm-dd
+    const [year, month, day] = dateString.split('-');
+    return `${day}/${month}/${year}`; // Chuyển đổi thành dd/mm/yyyy
 }
 
 // Sự kiện lọc giao dịch
 document.querySelector('form').addEventListener('submit', function (event) {
     event.preventDefault(); // Ngăn chặn form gửi đi
 
-    const transactionId = document.getElementById('transaction-id').value.trim();
+    const transactionId = document.getElementById('transaction-id').value.toLowerCase().trim();
     const transactionDate = convertDateFormat(document.getElementById('transaction-date').value); // Chuyển đổi ngày
     const transactionStatus = document.getElementById('transaction-status').value;
     const paymentMethod = document.getElementById('payment-method').value;
@@ -81,7 +81,7 @@ document.querySelector('form').addEventListener('submit', function (event) {
     // Lọc giao dịch dựa trên các điều kiện
     const filteredTransactions = transactions.filter(transaction => {
         return (
-            (transactionId === '' || transaction.transaction_id.includes(transactionId)) &&
+            (transactionId === '' || transaction.transaction_id.toLowerCase().includes(transactionId)) &&
             (transactionDate === '' || transaction.transaction_date === transactionDate) &&
             (transactionStatus === '' || transaction.transaction_status === transactionStatus) &&
             (paymentMethod === '' || transaction.payment_method === paymentMethod)
