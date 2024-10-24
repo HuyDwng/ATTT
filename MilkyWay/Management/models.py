@@ -15,7 +15,7 @@ class Users(models.Model):
         ('admin', 'Admin'),
     ]
     role = models.CharField(max_length=10, choices=ROLES, default='customer')  # Phân quyền
-    phone_number = models.CharField(max_length=15)  # Số điện thoại
+    phone_number = models.IntegerField()  # Số điện thoại
     date_joined = models.DateTimeField(auto_now_add=True)
     is_actived = models.BooleanField(default=True)
 

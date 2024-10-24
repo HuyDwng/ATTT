@@ -5,7 +5,7 @@ body {
 .bg_Main{
     padding-bottom: 120px;
     color: #fff;
-    background-image: url(../pictures/HomeBG.jpg);
+    background-image: url(../images/HomeBG.jpg);
     background-size: cover;
 }
 
