@@ -93,7 +93,7 @@ body {
 
 .sidebar a.active span {
     color: var(--color-primary);
-    margin-left: calc(1rem - 3px);
+    margin-left: calc(1.5rem - 3px);
 }
 .main-content {
     flex-grow: 1;
