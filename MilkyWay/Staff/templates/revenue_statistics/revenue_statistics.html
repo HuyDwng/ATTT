@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thống kê doanh thu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="../../static/pictures/logo.jpg">
+    <link rel="stylesheet" href="../../static/css/revenue_statistics/revenue_statistics.css">
+
+</head>
+
+<body>
+    <div>
+
+        <nav class="navbar navbar-expand-sm navbar-dark custom-bg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="javascript:void(0)">Thống kê doanh thu</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mynavbar">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0)">Thống kê</a>
+                        </li>
+                    </ul>
+                </div>
+                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+        <!-- Offcanvas Sidebar -->
+        <div class="offcanvas offcanvas-start" id="demo">
+            <div class="offcanvas-header">
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+                <a href="#" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i></a>
+                <span class="offcanvas-title" id="offcanvas-title-1" style="color:#ffffff;">Milky</span>
+                <span class="offcanvas-title" id="offcanvas-title-2" style="color:#00d4ff"> Way</span>
+                <h1 class="staff-name">Trần Hữu Hậu</h1>
+                <h1 class="staff-mail">hauvtct@gmail.com</h1>
+
+            </div>
+            <div class="offcanvas-body">
+                <a href="../tour_management/tour_mng.html" target="_blank">
+                    Quản lý tour du lịch
+                </a><br>
+                <a href="#" target="_blank">
+                    Trang thứ 2
+                </a><br>
+                <a href="#" target="_blank">
+                    Trang thứ 3
+                </a><br>
+            </div>
+        </div>
+
+        <!-- Button to open the offcanvas sidebar -->
+
+
+        <!-- Form lọc doanh thu -->
+        <form>
+            <h2>Lọc doanh thu</h2>
+            <hr>
+            <div class="row mb-3">
+                <!-- Lọc theo mã tour -->
+                <div class="col-md-3">
+                    <label for="tour_id" class="form-label">Mã tour</label>
+                    <input type="text" class="form-control" id="tour-id" placeholder="Mã" autocomplete="off">
+                </div>
+
+                <!-- Lọc theo tên tour -->
+                <div class="col-md-3">
+                    <label for="tour_name" class="form-label">Tên tour</label>
+                    <input type="text" class="form-control" id="tour-name" placeholder="Tên" autocomplete="off">
+                </div>
+
+                <!-- Lọc theo số lượt đăng ký tour -->
+                <div class="col-md-3 slide-container">
+                    <label for="books" class="form-label">Lượt đăng ký</label>
+                    <input type="range" min="0" max="100" step="5" value="0" id="books-slider"
+                        placeholder="Số lượt đăng ký">
+                    <span id="slider-value">0</span>
+
+                </div>
+
+                <!-- Lọc theo doanh thu -->
+                <div class="col-md-3">
+                    <label for="payment-method" class="form-label">Doanh thu</label>
+                    <select class="form-select" id="revenue-selects">
+                        <option value="op1">&lt50tr</option>
+                        <option value="op2">50tr - 100tr</option>
+                        <option value="op3">100tr - 200tr</option>
+                        <option value="op4">&gt200tr</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Nút lọc -->
+            <div class="d-flex justify-content-left">
+                <button type="submit" class="btn btn-primary btn-hover">Lọc</button>
+                <button type="button" class="btn btn-secondary" id="reset-button">Reset</button>
+            </div>
+        </form>
+
+        <p class="sub-title mt-4">Danh sách thống kê</p>
+        <div id='show'>
+
+        </div>
+        <div class="container mt-3">
+            <div class="inner">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Mã tour</th>
+                            <th>Tên tour</th>
+                            <th>Lượt đăng ký</th>
+                            <th>Doanh thu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="../../static/javascript/revenue_statistics/revenue_statistics.js"></script>
+</body>
+
+</html>
