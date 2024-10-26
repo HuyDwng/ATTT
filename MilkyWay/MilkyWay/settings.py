@@ -57,7 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-
+    'Management',
 ]
 
 
@@ -77,7 +77,13 @@ ROOT_URLCONF = 'MilkyWay.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'Log-In/templates')],
+        'DIRS': [ 
+            BASE_DIR / 'HomePage/templates',
+            BASE_DIR / 'Stuffs/templates',
+            BASE_DIR / 'Log-In/templates',
+            BASE_DIR / 'Management/templates',
+            BASE_DIR / 'Staff/templates',
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

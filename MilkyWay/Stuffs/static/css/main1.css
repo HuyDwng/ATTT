@@ -1,8 +1,89 @@
 
 /*-------------------------------------
-        11. Blog
+        10.  Slide
 --------------------------------------*/
-.blog{
+
+.tes-title {
+   margin-top: 100px;
+   text-align: center;
+}
+
+.slider {
+    margin-left: 300px;
+    margin-top: 66px;
+    width: 60%;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: white;
+}
+
+.slides {
+    display: flex;
+    width: 300%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.testimonial-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+/* Hide the radio inputs */
+input[type="radio"] {
+    display: none;
+}
+
+/* Navigation dots */
+.navigation {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.nav-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 5px;
+    background-color: #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Slide navigation */
+#slide1:checked ~ .slides {
+    transform: translateX(0%);
+}
+
+#slide2:checked ~ .slides {
+    transform: translateX(-33.33%);
+}
+
+#slide3:checked ~ .slides {
+    transform: translateX(-66.66%);
+}
+
+/* Active dot color */
+#slide1:checked ~ .navigation label[for="slide1"],
+#slide2:checked ~ .navigation label[for="slide2"],
+#slide3:checked ~ .navigation label[for="slide3"] {
+    background-color: #3498db;
+}
+
+/*-------------------------------------
+        Blog
+--------------------------------------*/
+.blogg{
     background: #fff;
     padding: 115px 0 92px;
 }

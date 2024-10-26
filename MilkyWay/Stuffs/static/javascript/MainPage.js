@@ -62,5 +62,61 @@ function formatNumber(number){
     return number
 }
 
+// scroll navbar
+var menu = document.getElementById("Menu");
+
+//scroll top
+var gototop = document.getElementById("Gototop");
+//change title menu
+let sections = document.querySelectorAll('body > section');
+let navLinks = document.querySelectorAll('header ul a');
+window.onscroll = () =>{
+    //change title menu
+    sections.forEach(sec => {
+        let top = window.scrollY;
+        let offset = sec.offsetTop -150;
+        let height = sec.offsetHeight;
+        let id = sec.getAttribute('id');
+
+        if(top >= offset && top < offset + height){
+            navLinks.forEach(links => {
+                links.classList.remove('active-menu');
+                document.querySelector('header ul a[href*=' + id + ']').classList.add('active-menu');
+            })
+        }
+    });
+    // scroll navbar
+    console.info(document.documentElement.scrollTop);
+    if (document.documentElement.scrollTop > 100) {
+        menu.style.background = "rgba(38, 38, 38, 0.9)"; // Đặt nền đen khi cuộn trang
+    } else {
+        menu.style.background = "transparent"; // Làm nền trong suốt khi quay về đầu trang
+    }
+
+
+//scroll top
+    console.info(document.documentElement.scrollTop);
+    if(document.documentElement.scrollTop > 100){
+        gototop.style.display = "block";
+    }
+    else{
+       gototop.style.display = "none";
+    }
+}
+function goToTop(){
+   var x= setInterval(function(){
+       document.documentElement.scrollTop-=40;
+       if(document.documentElement.scrollTop<=0)
+       clearInterval(x);
+   },1)
+}
+
+
+
+
+
+
+
 //run function
 CountDownTimer()
+goToTop()

@@ -5,30 +5,40 @@ body {
 .bg_Main{
     padding-bottom: 120px;
     color: #fff;
-    background-image: url(../pictures/HomeBG.jpg);
+    background-image: url(../images/HomeBG.jpg);
     background-size: cover;
 }
 
-
+.Pr_Menu{
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
 .Menu {
     margin: 0 12% 0 12%; /*base*/
-    padding-top: 30px;
-    padding: 30px;
+    padding: 30px 30px 12px 30px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
 }
 .Pr_Menu hr{
     margin: 0 13% 0 13%; /*base*/
 }
-.logo a{
+.logo-menu a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px !important; 
+    font-weight: bold;
+}
+.logo-menu a:hover{
     color: #fff;
     text-decoration: none;
     font-size: 24px;
     font-weight: bold;
 }
-
-.logo span {
+.logo-menu span {
     color: #00d4ff;
 }
 
@@ -42,11 +52,15 @@ body {
 }
 
 .Menu ul li a {
+    font-size: 17px;
     color: #fff;
     text-decoration: none;
     font-weight: bold;
-    padding-bottom: 36px;
+    padding-bottom: 33px;
     position: relative;
+}
+.Menu ul li:not(:last-child){
+    margin-top: 4px;
 }
 .Menu ul li a::after{
     content: "";
@@ -57,6 +71,21 @@ body {
     bottom: 0px;
     left: 0;
 }
+.Menu ul li a.active-menu{
+    color: #00d4ff;
+    transition: 0.5s;
+}
+.Menu ul li a.active-menu::after{
+    transition: all 0.5s ease-in-out; /*all Xác định hiệu ứng của quá trình chuyển đổi cho tất cả thuộc tính.*/
+    content: "";
+    height: 2px;
+    width: 100%;
+    background: #00d4ff;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+}
+
 .Menu ul li:not(:last-child) a:hover{
     color: #00d4ff;
     transition: 0.5s;
@@ -66,9 +95,9 @@ body {
     width: 100%;
 }
 .Menu ul li .btn {
-    background-color: #01badf;
+    background-color:#01badf;
     color: #fff;
-    padding: 10px 20px;
+    padding: 5px 20px 5px 20px;
     border-radius: 5px;
 }
 .Menu ul li .btn:hover{
@@ -78,7 +107,7 @@ body {
 }
 .PR_Slogan {
     margin-left: 13%; /*base*/
-    height: 80vh;
+    height: 93vh;
     margin-right: 60%;
     display: flex;
     justify-content: left;
@@ -92,14 +121,17 @@ body {
     margin-bottom: 20px;
 }
 
-.PR_Slogan button {
+.PR_Slogan button{
     padding: 15px 30px;
     background-color: #00d4ff;
-    border: none;
     color: white;
+    border: none;
     font-size: 18px;
     cursor: pointer;
     border-radius: 5px;
+}
+.PR_Slogan button a{
+    text-decoration: none;
 }
 .PR_Slogan button:hover{
     transition: all 0.5s ease-in-out;
@@ -194,15 +226,17 @@ body {
     font-size: 18px;
     border: #f2eaea;
 }
-.btn-search  {
+.Find_budget a{
     margin-left:auto ;
+}
+.btn-search  {
     border: none;
     border-radius: 5px;
     padding: 20px 25px 20px 25px;
-    width: 15%;
-    background-color: #00d4ff;
+    width: 100%;
     color: white;
     cursor: pointer;
+    background-color: #00d4ff;
     box-shadow: 0px 0px 5px 0px rgb(83, 83, 83); /*left right blur scale color*/
 }
 .btn-search:hover{

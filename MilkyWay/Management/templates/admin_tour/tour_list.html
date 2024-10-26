@@ -7,18 +7,23 @@
     <title>Giao Diện Quản Trị</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <!-- Custom Styles -->
-    <link href="css/styles.css" rel="stylesheet">
+    <link href="../../static/css/styles.css" rel="stylesheet">
     <!-- Bootstrap Styles-->
-    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="../../static/css/bootstrap.css" rel="stylesheet" />
     <!-- FontAwesome Styles-->
-    <link href="css/font-awesome.css" rel="stylesheet" />
-    <script src=""></script>
+    <link href="../../static/css/font-awesome.css" rel="stylesheet" />
+    <script src="../../static/js/jquery-3.7.1.min.js"></script>
+    <script src="../../static/js/bootstrap.min.js"></script>
+    <script src="../../static/js/custom.js"></script>
+    <script src="https://kit.fontawesome.com/99c4f82c90.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
 
     <div class="header">
-        <a class="brand" href="tour_list.html"><strong><i class="icon fa fa-plane"></i> TOUR DU LỊCH</strong></a>
+        <a class="navbar-brand" href="tour_list.html"><strong><i class="fa-solid fa-plane-departure"></i> TOUR DU
+                LỊCH</strong></a>
         <div class="options">
             Chào mừng, Admin | <a href="#">Đổi mật khẩu</a> | <a href="#">Đăng xuất</a>
         </div>
@@ -28,23 +33,46 @@
         <div class="sidebar">
             <h3>QUẢN LÝ TÀI KHOẢN</h3>
             <ul>
-                <li><a href="create_group.html">Nhóm</a></li>
-                <li><a href="create_user.html">Người dùng</a></li>
+                <li>
+                    <div><i class="fa-solid fa-users"></i> Group<span class="fa arrow"></span></div>
+                    <ul class="nav-second-level">
+                        <li>
+                            <a href="create_group.html"><span><i class="fa-solid fa-plus"></i> Tạo group</span></a>
+                        </li>
+                        <li>
+                            <a href="group_management.html"><span><i class="fa-solid fa-people-roof"></i> Quản lý group</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <div><i class="fa-solid fa-user"></i> User<span class="fa arrow"></span></div>
+                    <ul class="nav-second-level">
+                        <li>
+                            <a href="create_user.html"><span><i class="fa-solid fa-user-plus"></i> Tạo user</span></a>
+                        </li>
+                        <li>
+                            <a href="user_management.html"><span><i class="fa-solid fa-user-pen"></i> Quản lý user</span></a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
             <h3>QUẢN LÝ TOUR</h3>
             <ul>
-                <li><a href="#">Các tour hiện tại</a></li>
-                <li><a href="#">Các tour đã tổ chức</a></li>
+                <li><a href="tour_management.html"><span>Các tour hiện tại</span></a></li>
+                <li><a href="organized_tour.html"><span>Các tour đã tổ chức</span></a></li>
             </ul>
             <h3>QUẢN LÝ GIAO DỊCH</h3>
             <ul>
-                <li><a href="#">Danh mục</a></li>
+                <li><a href="#"><span>Danh mục</span></a></li>
             </ul>
         </div>
 
         <div class="main-content">
             <div id="page-inner">
-
+                <div class = "date">
+                    <input type="date">
+                </div>
                 <div class="row">
                     <div class="col-md-3 col-sm-12 col-xs-12">
                         <div class="board">
@@ -119,7 +147,7 @@
                         <div class="panel panel-default chartJs">
                             <div class="panel-heading">
                                 <div class="card-title">
-                                    <div class="title">Line Chart</div>
+                                    <div class="title">Biểu đồ đường</div>
                                 </div>
                             </div>
                             <div class="panel-body">
@@ -131,7 +159,7 @@
                         <div class="panel panel-default chartJs">
                             <div class="panel-heading">
                                 <div class="card-title">
-                                    <div class="title">Bar Chart</div>
+                                    <div class="title">Biểu đồ cột</div>
                                 </div>
                             </div>
                             <div class="panel-body">
@@ -141,6 +169,50 @@
                     </div>
                 </div>
 
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-body easypiechart-panel">
+                            <h4>Lợi nhuận</h4>
+                            <div class="easypiechart" id="easypiechart-blue" data-percent="82"><span
+                                    class="percent">82%</span>
+                            
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-body easypiechart-panel">
+                            <h4>Lượt bán</h4>
+                            <div class="easypiechart" id="easypiechart-orange" data-percent="55"><span
+                                    class="percent">55%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-body easypiechart-panel">
+                            <h4>Lượng khách</h4>
+                            <div class="easypiechart" id="easypiechart-teal" data-percent="84"><span
+                                    class="percent">84%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-body easypiechart-panel">
+                            <h4>Lượt vào</h4>
+                            <div class="easypiechart" id="easypiechart-red" data-percent="46"><span
+                                    class="percent">46%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

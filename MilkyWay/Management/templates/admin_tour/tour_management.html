@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giao Diện Quản Trị</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link href="../../static/css/styles.css" rel="stylesheet">
+    <!-- Bootstrap Styles-->
+    <link href="../../static/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="../../static/css/font-awesome.css" rel="stylesheet" />
+    <script src="../../static/js/jquery-3.7.1.min.js"></script>
+    <script src="../../static/js/bootstrap.min.js"></script>
+    <script src="../../static/js/custom.js"></script>
+    <script src="https://kit.fontawesome.com/99c4f82c90.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <div class="header">
+        <a class="navbar-brand" href="tour_list.html"><strong><i class="fa-solid fa-plane-departure"></i> TOUR DU
+                LỊCH</strong></a>
+        <div class="options">
+            Chào mừng, Admin | <a href="#">Đổi mật khẩu</a> | <a href="#">Đăng xuất</a>
+        </div>
+    </div>
+
+    <div class="containe">
+        <div class="sidebar">
+            <h3>QUẢN LÝ TÀI KHOẢN</h3>
+            <ul>
+                <li>
+                    <div><i class="fa-solid fa-users"></i> Group<span class="fa arrow"></span></div>
+                    <ul class="nav-second-level">
+                        <li>
+                            <a href="create_group.html" class = "active"><span><i class="fa-solid fa-plus"></i> Tạo group</span></a>
+                        </li>
+                        <li>
+                            <a href="group_management.html"><span><i class="fa-solid fa-people-roof"></i> Quản lý group</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <div><i class="fa-solid fa-user"></i> User<span class="fa arrow"></span></div>
+                    <ul class="nav-second-level">
+                        <li>
+                            <a href="create_user.html"><span><i class="fa-solid fa-user-plus"></i> Tạo user</span></a>
+                        </li>
+                        <li>
+                            <a href="user_management.html"><span><i class="fa-solid fa-user-pen"></i> Quản lý user</span></a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <h3>QUẢN LÝ TOUR</h3>
+            <ul>
+                <li><a href="tour_management.html"><span>Các tour hiện tại</span></a></li>
+                <li><a href="organized_tour.html"><span>Các tour đã tổ chức</span></a></li>
+            </ul>
+            <h3>QUẢN LÝ GIAO DỊCH</h3>
+            <ul>
+                <li><a href="#"><span>Danh mục</span></a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <h2 class="text-center">Quản Lý Tour Du Lịch</h2>
+
+        <div class="row">
+            <div class="col-md-12 text-right mb-3">
+                <button class="btn btn-custom" data-toggle="modal" data-target="#addTourModal"><i class="fa fa-plus"></i> Thêm Tour</button>
+            </div>
+        </div>
+
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID Tour</th>
+                    <th>Tên Tour</th>
+                    <th>Điểm Khởi Hành</th>
+                    <th>Điểm Đến</th>
+                    <th>Giá Tour</th>
+                    <th>Thời Gian</th>
+                    <th>Hành Động</th>
+                </tr>
+            </thead>
+            <tbody id="tourList">
+                <!-- Danh sách các tour sẽ được hiển thị tại đây -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal Thêm Tour -->
+    <div class="modal fade" id="addTourModal" tabindex="-1" role="dialog" aria-labelledby="addTourLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addTourLabel">Thêm Tour Mới</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="addTourForm">
+                        <div class="form-group">
+                            <label for="tourName">Tên Tour</label>
+                            <input type="text" class="form-control" id="tourName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="startLocation">Điểm Khởi Hành</label>
+                            <input type="text" class="form-control" id="startLocation" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="endLocation">Điểm Đến</label>
+                            <input type="text" class="form-control" id="endLocation" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Giá Tour</label>
+                            <input type="number" class="form-control" id="price" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="duration">Thời Gian</label>
+                            <input type="date" class="form-control" id="duration" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Thêm</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Hàm thêm tour mới
+        document.getElementById("addTourForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            const name = document.getElementById("tourName").value;
+            const start = document.getElementById("startLocation").value;
+            const end = document.getElementById("endLocation").value;
+            const price = document.getElementById("price").value;
+            const duration = document.getElementById("duration").value;
+
+            const newTour = { name, start, end, price, duration };
+            tourData.push(newTour);
+            displayTours();
+            $('#addTourModal').modal('hide');
+            document.getElementById("addTourForm").reset(); // Reset form
+        });
+
+        // Hàm xóa tour
+        function deleteTour(index) {
+            tourData.splice(index, 1); // Xóa phần tử từ mảng
+            displayTours();
+        }
+
+        // Hàm sửa tour
+        function editTour(index) {
+            const tour = tourData[index];
+            document.getElementById("tourName").value = tour.name;
+            document.getElementById("startLocation").value = tour.start;
+            document.getElementById("endLocation").value = tour.end;
+            document.getElementById("price").value = tour.price;
+            document.getElementById("duration").value = tour.duration;
+            $('#addTourModal').modal('show');
+
+            // Xóa tour cũ sau khi sửa
+            tourData.splice(index, 1);
+        }
+
+        // Hiển thị danh sách tour mặc định
+        displayTours();
+    </script>
+</body>
+
+</html>

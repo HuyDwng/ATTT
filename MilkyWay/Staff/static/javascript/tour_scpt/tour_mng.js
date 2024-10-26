@@ -45,3 +45,48 @@ window.addEventListener('click', function (event) {
 document.addEventListener('DOMContentLoaded', function () {
     attachDeleteListeners();
 });
+
+
+/*===========================================Lấy dữ liệu==================================== */
+
+
+
+// Sử dụng path.join để tạo đường dẫn tương đối
+const filePath = 'tour_data.json'
+
+fetch(filePath)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(tours => {
+        const htmlContent = generateHTMLTable(tours);
+        document.querySelector('tbody').innerHTML = htmlContent; // Thêm HTML vào tbody
+    })
+    .catch(error => console.error('There has been a problem with your fetch operation:', error));
+
+// Hàm tạo HTML
+function generateHTMLTable(tours) {
+    let html = '';
+
+    tours.forEach(tour => {
+        html += `
+        <tr>
+            <td>${tour.tour_name}</td>
+            <td>${tour.departure_date}</td>
+            <td>${tour.return_date}</td>
+            <td>${tour.total_tickets}</td>
+            <td>${tour.remaining_tickets}</td>
+            <td>${tour.price} VND</td>
+            <td>
+                <a class="edit-btn" href="../../templates/tour_management/tour_edit.html" target="_blank">Sửa</a>
+                <button class="delete-btn">Xóa</button>
+                <a class="more-info-btn" href="#">Xem chi tiết</a>
+            </td>
+        </tr>`;
+    });
+
+    return html;
+}
