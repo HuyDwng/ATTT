@@ -22,3 +22,4 @@ vị trí 1: tên đường dẫn, vị trí 2: tên folder chứa html muốn c
 <script src="{% static 'js/log-in.js' %}"></script>
 Chỗ nào xài background-image: url.... ==> chuyển sang html 
 <body style="background-image: url('{% static "images/bg_login.jpg"%}');">
+đầu file html thêm vào đầu trang dòng này   {% load static %}
