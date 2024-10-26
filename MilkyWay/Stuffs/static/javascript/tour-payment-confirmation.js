@@ -1,37 +1,4 @@
-document.getElementById('pay-button').addEventListener('click', function() {
-    // Chuyển hướng sang trang thanh toán (thay 'payment.html' bằng URL của trang thanh toán)
-    window.location.href = 'payment.html';
-});
-
 /*Lưu thông tin liên hệ*/
-/*const savedNames = []; // Mảng lưu trữ các tên đã lưu
-
-document.getElementById("save-button").addEventListener("click", function() {
-    const name = document.getElementById("name").value;
-    
-    if (name) {
-        savedNames.push(name); // Thêm tên vào danh sách
-
-        // Đổi tiêu đề về tên đã lưu
-        document.getElementById("contact-info-header").innerText = name;
-
-        // Ẩn form và đổi chữ nút
-        document.getElementById("contact-form").classList.add("hidden"); 
-        this.innerText = "Chỉnh sửa chi tiết"; 
-
-        // Thêm sự kiện cho nút "Chỉnh sửa chi tiết"
-        this.removeEventListener("click", arguments.callee);
-        this.addEventListener("click", function() {
-            document.getElementById("contact-form").classList.remove("hidden");
-            document.getElementById("contact-info-header").innerText = "Thông tin liên hệ (Nhận vé/phiếu thanh toán)"; 
-            this.innerText = "Lưu"; 
-        });
-    } else {
-        alert("Vui lòng nhập họ tên trước khi lưu.");
-    }
-});*/
-
-
 let currentName = ""; // Biến lưu trữ tên hiện tại
 let currentEmail = "";
 let currentPhone = "";
@@ -193,10 +160,13 @@ setupSaveButton2();
 
 
 
-
-
-/*Xử lý khi kiểm trang thông tin có được điền đầy đủ hay chưa */
-document.getElementById('continue-btn').addEventListener('click', function(event) {
+/* Chuyển hướng qua trang thanh toán */
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('confirmation-popup').classList.add('disapear');
+    document.getElementById('error-container').style.display = 'none';
+});
+// Xử lý khi kiểm tra thông tin có được điền đầy đủ hay chưa
+document.getElementById('pay-button').addEventListener('click', function(event) {
     // Lấy tất cả các ô input bắt buộc
     const requiredInputs = document.querySelectorAll('input.required');
     let allFilled = true;
@@ -216,17 +186,120 @@ document.getElementById('continue-btn').addEventListener('click', function(event
         }
     });
 
-    if (!allFilled) {
-        // Hiện thông báo nếu không đủ thông tin
+    // Kiểm tra tính hợp lệ của cả hai form
+    var isFormValid = document.getElementById('contact-form').checkValidity() && 
+                      document.getElementById('guest-inform-form').checkValidity();
+
+    if (!allFilled || !isFormValid) {
+        // Hiện thông báo lỗi nếu không đủ thông tin
         errorContainer.style.display = 'block'; // Hiện khung thông báo
     } else {
         errorContainer.style.display = 'none'; // Ẩn khung thông báo nếu đủ thông tin
-        // Chuyển hướng sang trang tiếp theo hoặc thực hiện hành động nào đó
-        // window.location.href = 'next-page.html'; // Bỏ chú thích để sử dụng
+        // Hiển thị khối xác nhận
+        document.getElementById('confirmation-popup').classList.remove('disapear');
     }
 });
 
-// Đóng thông báo khi nhấn nút "Đóng"
+// Đóng thông báo lỗi
 document.getElementById('close-error-btn').addEventListener('click', function() {
     document.getElementById('error-container').style.display = "none";
 });
+
+// Sự kiện khi nhấn nút "Kiểm tra lại"
+document.getElementById('check-again-btn').addEventListener('click', function() {
+    // Ẩn khối xác nhận và quay lại chỉnh sửa thông tin
+    document.getElementById('confirmation-popup').classList.add('disapear');
+});
+
+// Sự kiện khi nhấn nút "Tiếp tục"
+document.getElementById('proceed-btn').addEventListener('click', function() {
+    // Chuyển sang trang thanh toán
+    window.location.href = "payment.html"; // Trang bạn muốn chuyển tới
+});
+
+
+/* Lựa chọn khách hay đặt hộ */
+// Lấy các phần tử cần thao tác
+const customerRadio = document.querySelector('input[value="khach"]');
+const contactForm = document.getElementById('contact-form');
+const guestForm = document.getElementById('guest-inform-form');
+const saveButton = document.getElementById('save-button');
+const gSaveButton = document.getElementById('g-save-button');
+
+// JSON object to store customer information
+let customerInfo = {};
+
+// Function to copy contact info to guest info
+function copyContactInfo() {
+    // Lấy giá trị từ form liên hệ
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('sdt').value;
+    const address = document.getElementById('address').value;
+
+    // Điền thông tin liên hệ vào form khách, trừ danh xưng
+    document.getElementById('guest-name').value = name;
+    document.getElementById('guest-email').value = email;
+    document.getElementById('guest-phone').value = phone;
+    document.getElementById('guest-address').value = address;
+
+    // Lưu thông tin vào đối tượng JSON
+    customerInfo = {
+        name: name,
+        email: email,
+        phone: phone,
+        address: address,
+        salutation: document.getElementById('salutation').value // Danh xưng sẽ được chọn riêng
+    };
+
+    console.log("Customer Info Saved: ", customerInfo);
+}
+
+// Function to save contact info
+function saveContactInfo() {
+    const contactFormInputs = contactForm.querySelectorAll('input');
+    let isValid = true;
+    
+    // Check if all inputs are filled
+    contactFormInputs.forEach(input => {
+        if (!input.value) {
+            isValid = false;
+        }
+    });
+
+    if (isValid) {
+        saveButton.classList.add('hidden'); // Ẩn nút Lưu sau khi lưu thông tin
+        console.log("Contact information saved.");
+    } else {
+        console.log("Please fill all contact information.");
+    }
+}
+
+// Function to save guest info
+function saveGuestInfo() {
+    const guestFormInputs = guestForm.querySelectorAll('input');
+    let isValid = true;
+    
+    // Check if all inputs are filled
+    guestFormInputs.forEach(input => {
+        if (!input.value) {
+            isValid = false;
+        }
+    });
+
+    if (isValid) {
+        gSaveButton.classList.add('hidden'); // Ẩn nút Lưu sau khi lưu thông tin
+        console.log("Guest information saved.");
+    } else {
+        console.log("Please fill all guest information.");
+    }
+}
+
+// Event listener when user selects "Tôi là khách"
+customerRadio.addEventListener('click', function() {
+    copyContactInfo();
+});
+
+// Event listeners for saving forms
+saveButton.addEventListener('click', saveContactInfo);
+gSaveButton.addEventListener('click', saveGuestInfo);

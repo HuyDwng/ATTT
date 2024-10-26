@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xác nhận thông tin thanh toán cho tour</title>
     <link rel="stylesheet" href="../static/css/tour-payment-confirmation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <div class="bg_Main">
@@ -171,14 +172,33 @@
                     <span id="final-amount">2,200,000 VND</span>
                 </div>
     
-                <!-- Nút Thanh toán -->
             </div>
+            
             <div class="continue-section">
                 <button id="pay-button" class="btn-continue" id="continue-btn">Tiếp tục</button>
             </div>
         </div> 
-        <div>
 
+        <div class="empty">
+        </div>
+        <div class="summary">
+            <h3><i class="fas fa-ticket-alt"></i> Tóm tắt đặt chỗ</h3>
+            <p><b>Tour:</b> Tour ngắm hoàng hôn và câu cá - Tour ghép</p>
+            <p><b>Ngày tham quan:</b> CN, 3 thg 11 2024</p>
+            <p><b>Người lớn:</b> 1</p>
+            <p><b>Trạng thái vé:</b> Có hiệu lực vào 03 thg 11 2024</p>
+            <p><b>Hoàn tiền:</b> Có thể hoàn tiền cho đến 31 thg 10 2024</p>
+        </div>
+    </div>
+
+    <div id="confirmation-popup" class="confirmation-popup ">
+        <div class="popup-content" >
+            <h2>Tất cả thông tin đặt chỗ của bạn đều đã chính xác?</h2>
+            <p>Bạn sẽ không thể thay đổi thông tin đặt chỗ sau khi tiến hành thanh toán. Bạn có muốn tiếp tục?</p>
+            <div class="popup-buttons">
+                <button id="check-again-btn" class="btn-check">Kiểm tra lại</button>
+                <button id="proceed-btn" class="btn-cont">Tiếp tục</button>
+            </div>
         </div>
     </div>
     
@@ -186,6 +206,7 @@
         <span id="error-message">Vui lòng điền thông tin liên hệ!</span>
         <button id="close-error-btn" class="close-btn">&times;</button>
     </div>
-    <script src="/MilkyWay/Stuffs/static/javascript/tour-payment-confirmation.js"></script> 
+    <script src="../static/javascript/tour-payment-confirmation.js"></script> 
+    
 </body>
 </html>
