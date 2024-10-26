@@ -23,7 +23,6 @@ body {
 .sidebar {
     background-color: #333333;
     width: 250px;
-    height: 100vh;
     padding: 15px;
     position: relative;
     display: flex;
@@ -265,6 +264,13 @@ body {
 	width: 120px;
 }
 
+table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+    color: #ddd;
+}
+
 #easypiechart-blue .percent { color: #30a5ff;}
 #easypiechart-teal .percent { color: #1ebfae;}
 #easypiechart-orange .percent { color: #ffb53e;}
@@ -317,6 +323,7 @@ label#checkbox-1{
     color: var(--color-dark);
     text-align: center;
     width: 100%;
+    cursor: pointer;
 }
 
 .main-content div{
