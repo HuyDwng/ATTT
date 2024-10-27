@@ -148,6 +148,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'Log-In/static'),
     os.path.join(BASE_DIR, 'Management/static'),
+    os.path.join(BASE_DIR, 'Stuffs/static'),
+    os.path.join(BASE_DIR, 'Staff/static'),
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
