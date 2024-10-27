@@ -26,19 +26,19 @@ body {
 .Pr_Menu hr{
     margin: 0 13% 0 13%; /*base*/
 }
-.logo-menu a{
+.logo a{
     color: #fff;
     text-decoration: none;
     font-size: 24px !important; 
     font-weight: bold;
 }
-.logo-menu a:hover{
+.logo a:hover{
     color: #fff;
     text-decoration: none;
     font-size: 24px;
     font-weight: bold;
 }
-.logo-menu span {
+.logo span {
     color: #00d4ff;
 }
 
@@ -214,7 +214,7 @@ body {
 }
 .Find_budget{
     display: flex;
-    padding: 40px;
+    padding: 10px;
 }
 .Find_budget p{
     padding: 10px;
@@ -222,18 +222,19 @@ body {
     color: #333;
 }
 .Find_budget select{
-    padding: 10px;
+    padding: 5px 10px 10px 10px;
     font-size: 18px;
     border: #f2eaea;
 }
 .Find_budget a{
     margin-left:auto ;
 }
-.btn-search  {
+.Find_budget .btn-search  {
     border: none;
     border-radius: 5px;
-    padding: 20px 25px 20px 25px;
-    width: 100%;
+    margin-left: 60%;
+    height: 60px;
+    width: 15%;
     color: white;
     cursor: pointer;
     background-color: #00d4ff;
