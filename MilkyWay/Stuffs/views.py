@@ -3,18 +3,18 @@ import os
 
 # Create your views here.
 def index(request):
-    return render(request, 'homepage/index.html')
+    return render(request, 'index.html')
 
 def payment(request):
-    return render(request, 'homepage/payment.html') 
+    return render(request, 'payment.html') 
 
 def hotel(request):
-    return render(request, 'homepage/hotel.html') 
+    return render(request, 'hotel.html') 
 
 def confirm_payment(request):
-    return render(request, 'homepage/payment_confirm.html')
+    return render(request, 'payment_confirm.html')
 
 def guide(request):
-    return render(request, 'homepage/saigonguide.html') 
+    return render(request, 'saigonguide.html') 
 
 
