@@ -53,7 +53,7 @@ class Tour(models.Model):
     end_date = models.DateField()  # Ngày kết thúc
     price = models.DecimalField(max_digits=10, decimal_places=2)  # Giá tour
     available_seats = models.IntegerField()  # Số lượng chỗ trống
-    remaining_seats = models.IntegerField(null=True)
+    remaining_seats = models.IntegerField(null=True) # Số lượng chỗ còn lại
     images = models.ImageField(upload_to=user_directory_path, default=None)
 
 
