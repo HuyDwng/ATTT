@@ -15,7 +15,12 @@ from Management.models import Users, Tour, Tickets, Booking, Payment, Review
 
 def register(request):
     tour = Tour.objects.all()
-    context = {'tour': tour}
+    user = Users.objects.all()
+    ticket = Tickets.objects.all()
+    booking = Booking.objects.all()
+    payment = Payment.objects.all()
+    review = Review.objects.all()
+    context = {'tour': tour, 'user':user, 'ticket':ticket, 'booking':booking, 'payment':payment, 'review':review}
     if request.method == 'POST':
         # Lấy dữ liệu từ form
         username = request.POST['username']

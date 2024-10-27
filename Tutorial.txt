@@ -17,9 +17,10 @@ vị trí 1: tên đường dẫn, vị trí 2: tên file html, vị trí 3: đ�
 B3: Vào folder MilkyWay tìm file "urls.py" tạo 1 đường dẫn vào trong urlpatterns. VD: path("stuffs", include("Stuffs.urls"))
 vị trí 1: tên đường dẫn, vị trí 2: tên folder chứa html muốn chạy + .urls
 
-*Gắn link file css, js: 
+*Gắn link file css, js, href: 
 <link rel="stylesheet" href="{% static 'footer.css' %}">
 <script src="{% static 'js/log-in.js' %}"></script>
 Chỗ nào xài background-image: url.... ==> chuyển sang html 
 <body style="background-image: url('{% static "images/bg_login.jpg"%}');">
 đầu file html thêm vào đầu trang dòng này   {% load static %}
+<p class="sign-up">Bạn chưa có tài khoản<a href="{% url 'sign-up' %}">Đăng kí</a></p>
