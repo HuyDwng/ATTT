@@ -39,7 +39,7 @@ document.getElementById("paymentForm").addEventListener("submit", function (e) {
 
 /* Xử lý sự kiện đếm ngược thời gian */
 // Thiết lập thời gian đếm ngược (ví dụ 10 phút)
-let countdownTime = 5; // Thời gian đếm ngược tính bằng giây
+let countdownTime = 900; // Thời gian đếm ngược tính bằng giây
 let countdownInterval;
 
 // Hàm hiển thị thời gian đếm ngược
