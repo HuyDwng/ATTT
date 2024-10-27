@@ -15,9 +15,10 @@
         <div id="form">
             <form  id="form-login" method="POST" action="{% url 'register' %}">
                 {%for t in tour%}
-                <h1>{{t.name}}</h1>
+                    <h1>{{t.name}}</h1>
+                    <img src="{% static "images/Screenshot_2024-10-20_141441_MNvLvY3.png"%}"/>
+                    <img src="{{t.ImageURL}}"/>
                 {%endfor%}
-
                 {% csrf_token %}
                     <h1 class=heading>Đăng kí</h1>
                     <div class="form-group">

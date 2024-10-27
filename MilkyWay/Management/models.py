@@ -1,4 +1,6 @@
 from django.db import models
+import os
+from datetime import datetime
 
 # Create your models here.
 #Tạo bảng, các trường dữ liệu (database)
@@ -22,7 +24,27 @@ class Users(models.Model):
     def __str__(self):
         return self.username
     
+
+def user_directory_path(instance, filename):
+    user_tour = instance.user_tour
+    # Lấy ngày hiện tại
+    today = datetime.today()
+    date_str = today.strftime("%Y%m%d")  # Định dạng ngày thành YYYYMMDD
+
+    # Đếm số lượng file được tải lên ngày hôm nay
+    # Điều này sẽ đếm tất cả các file cùng ngày với username đó
+    existing_files_count = Tour.objects.filter(
+        images__contains=f"{user_tour}_{date_str}"
+    ).count()
+
+    # Tạo tên file với username, ngày và số thứ tự
+    new_filename = f"{user_tour}_{date_str}_{existing_files_count + 1}{os.path.splitext(filename)[1]}"
+
+    # Trả về đường dẫn đầy đủ cho file
+    return os.path.join("", new_filename)
+
 class Tour(models.Model):
+    user_tour = models.CharField(max_length=255, default='user')
     name = models.CharField(max_length=255)  # Tên tour
     description = models.TextField()  # Mô tả tour
     start_location = models.CharField(max_length=255)  # Nơi bắt đầu
@@ -31,14 +53,15 @@ class Tour(models.Model):
     end_date = models.DateField()  # Ngày kết thúc
     price = models.DecimalField(max_digits=10, decimal_places=2)  # Giá tour
     available_seats = models.IntegerField()  # Số lượng chỗ trống
-    images = models.ImageField(default=None)
+    images = models.ImageField(upload_to=user_directory_path, default=None)
+
 
     def __str__(self):
         return self.name
     @property
     def ImageURL(self):
         try:
-            url = self.images.url
+            url = "/static" + self.images.url
         except:
             url=''
         return url
