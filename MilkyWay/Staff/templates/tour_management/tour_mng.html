@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -13,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../../static/css/tour_mng/tour_styles.css">
+    <link rel="stylesheet" href="{% static 'css/tour_mng/tour_styles.css' %}">
     <link rel="icon" href="../../static/pictures/logo.jpg">
 </head>
 
@@ -37,7 +38,7 @@
                     </div>
 
                     <div class="offcanvas-body">
-                        <a href="../payment_mng/payment_mng.html" target="_blank">
+                        <a href="{% url 'payment' %}" target="_blank">
                             Quản lý thanh toán
                         </a><br>
                         <a href="#" target="_blank">
@@ -58,7 +59,7 @@
             </div>
         </div>
 
-        <a class="add-tour" href="add_tour.html" target="_blank">Thêm Tour Mới</a>
+        <a class="add-tour" href="{% url 'add_tour' %}" target="_blank">Thêm Tour Mới</a>
 
         <div id="main">
 
@@ -94,7 +95,7 @@
             </div>
         </div>
     </div>
-    <script src="../../static/javascript/tour_scpt/tour_mng.js"></script>
+    <script src="{% static 'javascript/tour_scpt/tour_mng.js' %}"></script>
 </body>
 
 </html>

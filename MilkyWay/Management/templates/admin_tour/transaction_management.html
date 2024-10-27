@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giao Diện Quản Trị</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link href="../../static/css/styles.css" rel="stylesheet">
+    <!-- Bootstrap Styles-->
+    <link href="../../static/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="../../static/css/font-awesome.css" rel="stylesheet" />
+    <script src="../../static/js/jquery-3.7.1.min.js"></script>
+    <script src="../../static/js/bootstrap.min.js"></script>
+    <script src="../../static/js/custom.js"></script>
+    <script src="https://kit.fontawesome.com/99c4f82c90.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <div class="header">
+        <a class="navbar-brand" href="tour_list.html"><strong><i class="fa-solid fa-plane-departure"></i> TOUR DU
+                LỊCH</strong></a>
+        <div class="options">
+            Chào mừng, Admin | <a href="#">Đổi mật khẩu</a> | <a href="#">Đăng xuất</a>
+        </div>
+    </div>
+
+    <div class="containe">
+        <div class="sidebar">
+            <h3>QUẢN LÝ TÀI KHOẢN</h3>
+            <ul>
+                <li>
+                    <div><i class="fa-solid fa-users"></i> Group<span class="fa arrow"></span></div>
+                    <ul class="nav-second-level">
+                        <li>
+                            <a href="create_group.html" class = "active"><span><i class="fa-solid fa-plus"></i> Tạo group</span></a>
+                        </li>
+                        <li>
+                            <a href="group_management.html"><span><i class="fa-solid fa-people-roof"></i> Quản lý group</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <div><i class="fa-solid fa-user"></i> User<span class="fa arrow"></span></div>
+                    <ul class="nav-second-level">
+                        <li>
+                            <a href="create_user.html"><span><i class="fa-solid fa-user-plus"></i> Tạo user</span></a>
+                        </li>
+                        <li>
+                            <a href="user_management.html"><span><i class="fa-solid fa-user-pen"></i> Quản lý user</span></a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <h3>QUẢN LÝ TOUR</h3>
+            <ul>
+                <li><a href="tour_management.html"><span>Các tour hiện tại</span></a></li>
+                <li><a href="organized_tour.html"><span>Các tour đã tổ chức</span></a></li>
+            </ul>
+            <h3>QUẢN LÝ GIAO DỊCH</h3>
+            <ul>
+                <li><a href="transaction_management.html"><span>Danh mục</span></a></li>
+            </ul>
+        </div>
+<div class="main-content">
+    <h3>Danh Sách Giao Dịch</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên Giao Dịch</th>
+                <th>Ngày Thực Hiện</th>
+                <th>Số Tiền</th>
+                <th>Loại Giao Dịch</th>
+                <th>Trạng Thái</th>
+                <th>Hành Động</th>
+            </tr>
+        </thead>
+        <tbody id="transactionList">
+            <!-- Các giao dịch sẽ được hiển thị ở đây -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+    // Dữ liệu mẫu các giao dịch
+    const transactions = [
+        { id: 1, name: "Thanh toán Tour Đà Nẵng", date: "2024-10-01", amount: "5,000,000 VND", type: "Thanh toán", status: "Hoàn tất" },
+        { id: 2, name: "Hoàn trả tiền Tour Huế", date: "2024-09-15", amount: "4,000,000 VND", type: "Hoàn trả", status: "Hoàn tất" },
+        { id: 3, name: "Đặt cọc Tour Sa Pa", date: "2024-09-20", amount: "2,000,000 VND", type: "Đặt cọc", status: "Đang xử lý" },
+    ];
+
+    // Hàm render danh sách giao dịch
+    function renderTransactions() {
+        const transactionList = document.getElementById("transactionList");
+        transactionList.innerHTML = ""; // Xóa các giao dịch cũ
+
+        transactions.forEach((transaction, index) => {
+            const row = `
+                <tr>
+                    <td>${transaction.id}</td>
+                    <td>${transaction.name}</td>
+                    <td>${transaction.date}</td>
+                    <td>${transaction.amount}</td>
+                    <td>${transaction.type}</td>
+                    <td>${transaction.status}</td>
+                    <td>
+                        <div class="action-btns">
+                            <button class="btn btn-info btn-sm" onclick="viewTransaction(${transaction.id})">Xem</button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteTransaction(${transaction.id})">Xóa</button>
+                        </div>
+                    </td>
+                </tr>
+            `;
+            transactionList.insertAdjacentHTML("beforeend", row);
+        });
+    }
+
+    // Hàm xử lý khi nhấn "Xem"
+    function viewTransaction(id) {
+        const transaction = transactions.find(t => t.id === id);
+        alert(`Chi tiết giao dịch:\nTên: ${transaction.name}\nNgày: ${transaction.date}\nSố tiền: ${transaction.amount}\nLoại: ${transaction.type}\nTrạng thái: ${transaction.status}`);
+    }
+
+    // Hàm xử lý khi nhấn "Xóa"
+    function deleteTransaction(id) {
+        const confirmDelete = confirm("Bạn có chắc chắn muốn xóa giao dịch này?");
+        if (confirmDelete) {
+            const index = transactions.findIndex(t => t.id === id);
+            if (index !== -1) {
+                transactions.splice(index, 1); // Xóa giao dịch khỏi mảng
+                renderTransactions(); // Cập nhật lại danh sách
+            }
+        }
+    }
+
+    // Render danh sách giao dịch khi tải trang
+    document.addEventListener("DOMContentLoaded", renderTransactions);
+</script>
+
+</body>
+</html>

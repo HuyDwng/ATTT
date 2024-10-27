@@ -80,7 +80,34 @@ function handleImageUpload(fileInput, imagePreview, removeImageBtn, dropZone) {
 function removeTourSection(section) {
     section.remove();
     sectionCount--;
+
+    const tourSectionsContainer = document.getElementById('tour_sections_container');
+    const remainingSections = tourSectionsContainer.querySelectorAll('.form-section');
+
+    // Cập nhật lại số thứ tự cho các section còn lại
+    remainingSections.forEach((section, index) => {
+        const currentSectionId = index + 1; // Đánh số từ 1 trở đi
+
+        // Cập nhật id và tiêu đề cho section
+        section.setAttribute('id', `tour_section_${currentSectionId}`);
+        section.querySelector('.form-section-title').textContent = `Địa điểm ${currentSectionId}`;
+
+        // Cập nhật lại id và for cho input, textarea và nhãn
+        const fileInput = section.querySelector('input[type="file"]');
+        const itineraryLabel = section.querySelector('label[for^="itinerary"]');
+        const itineraryTextarea = section.querySelector('textarea');
+
+        section.querySelector('.image-drop-zone').setAttribute('id', `drop_zone_${currentSectionId}`);
+
+        fileInput.setAttribute('id', `tour_image_${currentSectionId}`);
+        fileInput.setAttribute('name', `tour_image_${currentSectionId}`);
+
+        itineraryLabel.setAttribute('for', `itinerary_${currentSectionId}`);
+        itineraryTextarea.setAttribute('id', `itinerary_${currentSectionId}`);
+        itineraryTextarea.setAttribute('name', `itinerary_${currentSectionId}`);
+    });
 }
+
 
 // Gắn sự kiện click vào nút "Thêm Khu Vực"
 document.getElementById('add_section_btn').addEventListener('click', addTourSection);
