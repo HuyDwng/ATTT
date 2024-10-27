@@ -52,6 +52,8 @@
 			  <span class="visually-hidden">Next</span>
 			</button>
 		  </div>
+
+		  {% block content %}
 		  <!--Product-->
 		  <div class="container">
 			<h5 class="fs-3 text-uppercase mt-5 fw-bolder">Phân loại theo tìm kiếm</h5>
@@ -202,6 +204,8 @@
 			<li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
 			<li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
 		  </ul>
+		{% endblock content%}
+		{% block content_detail %} {% endblock content_detail%}
 		  <!--footer-->
 		    <!-- footer-copyright start -->
 		<footer  class="footer-copyright">

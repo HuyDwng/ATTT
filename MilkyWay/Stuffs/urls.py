@@ -7,4 +7,6 @@ urlpatterns = [
     path("payment", views.payment, name="payment"),
     path('guide', views.guide, name='guide'),
     path('confirm-payment', views.confirm_payment, name='confirm-payment'),
+    path('tour', views.tour, name='tour'),
+    path('tour_detail', views.tour_detail, name='tour_detail'),
 ]

@@ -17,4 +17,8 @@ def confirm_payment(request):
 def guide(request):
     return render(request, 'saigonguide.html') 
 
+def tour(request):
+    return render(request, 'tour.html') 
 
+def tour_detail(request):
+    return render(request, 'tour-detail.html') 

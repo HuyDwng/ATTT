@@ -57,7 +57,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'Management','Staff'
+    'Management',
+    'Staff'
 ]
 
 
@@ -78,7 +79,6 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [ 
-            BASE_DIR / 'HomePage/templates',
             BASE_DIR / 'Stuffs/templates',
             BASE_DIR / 'Log-In/templates',
             BASE_DIR / 'Management/templates',
@@ -157,4 +157,4 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL ='/images/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'Log-In/static/images')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'Management/static/images')

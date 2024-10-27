@@ -1,3 +1,4 @@
+{% extends "tour.html" %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="vi">
@@ -11,6 +12,7 @@
 
 </head>
 <body>
+    {% block content_detail %}
     <header class="header">
         
         <nav class="nav">
@@ -110,7 +112,7 @@
             </div>
         </div>
     </section>
-    
+    {% endblock content_detail %}
     <footer  class="footer-copyright">
         <div class="f-container">
             <div class="footer-content">
