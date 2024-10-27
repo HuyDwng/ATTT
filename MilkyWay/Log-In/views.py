@@ -8,12 +8,14 @@ import os
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
-from Management.models import Users 
+from Management.models import Users, Tour, Tickets, Booking, Payment, Review 
 
 # Create your views here.
 
 
 def register(request):
+    tour = Tour.objects.all()
+    context = {'tour': tour}
     if request.method == 'POST':
         # Lấy dữ liệu từ form
         username = request.POST['username']
@@ -42,7 +44,7 @@ def register(request):
                     return redirect('login')
             else:
                 messages.error(request, "Mật khẩu không khớp")
-    return render(request, 'log_in/sign-up.html')
+    return render(request, 'log_in/sign-up.html', context)
 
 
 @csrf_exempt

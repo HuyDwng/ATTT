@@ -7,7 +7,7 @@ from Staff import views as Staff
 urlpatterns = [
     path("", include("HomePage.urls")),
     path("log-in", include("Log-In.urls")),
-    path("stuffs", include("Stuffs.urls")),
+    path("stuffs/", include("Stuffs.urls")),
     path("admin/", admin.site.urls),
     path("staff/", include("Staff.urls"))
 ]

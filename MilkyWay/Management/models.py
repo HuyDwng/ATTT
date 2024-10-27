@@ -31,11 +31,19 @@ class Tour(models.Model):
     end_date = models.DateField()  # Ngày kết thúc
     price = models.DecimalField(max_digits=10, decimal_places=2)  # Giá tour
     available_seats = models.IntegerField()  # Số lượng chỗ trống
-    images = models.ImageField()
+    images = models.ImageField(default=None)
 
     def __str__(self):
         return self.name
-    
+    @property
+    def ImageURL(self):
+        try:
+            url = self.images.url
+        except:
+            url=''
+        return url
+
+
 class Booking(models.Model):
     STATUS_CHOICES = [
         ('booked', 'Booked'),

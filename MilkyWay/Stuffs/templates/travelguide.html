@@ -7,16 +7,16 @@
     <title>Tour Booking Guides</title>
     <link rel="stylesheet" href="/MilkyWay/Stuffs/static/css/travelguide.css">
     <link rel="stylesheet" href="/MilkyWay/Stuffs/static/css/footer.css">
-   
+    <script src="../static/javascript/travelguide.js"></script>
 
 </head>
 <body>
     <header class="header">
         
         <nav class="nav">
-            <a href="#">Home</a>
-            <a href="#">Destination</a>
-            <a href="#">Packages</a>
+            <a href="#home">Home</a>
+            <a href="#destination">Destination</a>
+            <a href="#package">Packages</a>
             <a href="#">Special Offers</a>
             <a href="#">Blog</a>
             <a href="#">Subscription</a>
@@ -28,7 +28,7 @@
     </header>
 
     <section class="hero">
-        <img src="image/bali.jpg" alt="Bali, Indonesia" class="hero-image">
+        <img src="../static/images/bali.jpg" alt="Bali, Indonesia" class="hero-image">
         <div class="search-bar">
             <h1 class="hero-title">Tour Booking Guides</h1>
             <p class="hero-subtitle">Hãy tìm nơi bạn hứng thú!</p>
@@ -44,34 +44,35 @@
         <h2 class="section-title">Cẩm nang du lịch từ A - Z</h2>
         <p class="section-description">Cẩm nang du lịch cho chuyến đi hoàn hảo</p>
         <div class="region-buttons">
-            <button>Việt Nam</button>
-            <button>Châu Á</button>
-            <button>Châu Âu</button>
-            <button>Châu Úc</button>
-            <button>Châu Mỹ</button>
-            <button>Châu Phi</button>
+            <button class = "country">Việt Nam</button>
+            <button class = "country">Châu Á</button>
+            <button class = "country">Châu Âu</button>
+            <button class = "country">Châu Úc</button>
+            <button class = "country">Châu Mỹ</button>
+            <button class = "country">Châu Phi</button>
         </div>
         
     </section>
     <section class="city-cards">
         <div class="city-card">
-            <a href="saigonguide.html"><img src="image/saigon.jpg" alt="Sài Gòn" class="city-image"></a>
+            <a href="saigonguide.html"><img src="../static/images/saigon.jpg" alt="Sài Gòn" class="city-image"></a>
             <div class="city-name">Sài Gòn</div>
         </div>
         <div class="city-card">
-            <a href="danangguide.html"><img src="image/danang.jpg" alt="Đà Nẵng" class="city-image"></a>
+            <a href="danangguide.html"><img src="../static/images/danang.jpg" alt="Đà Nẵng" class="city-image"></a>
             <div class="city-name">Đà Nẵng</div>
         </div>
         <div class="city-card">
-            <a href="hanoiguide.html"><img src="image/hanoi.jpg" alt="Hà Nội" class="city-image"></a>
+            <a href="hanoi.html"><img src="../static/images/hanoi.jpg" alt="Hà Nội" class="city-image"></a>
             <div class="city-name">Hà Nội</div>
         </div>
         <div class="city-card">
-            <img src="image/sapa.jpg" alt="SaPa" class="city-image">
+            <a href="sapaguide.html"><img src="../static/images/sapa.jpg" alt="SaPa" class="city-image"></a>
+            <img src="../static/images/sapa.jpg" alt="SaPa" class="city-image">
         </div>
     </section>
     <section class="category-buttons">
-        <button class="category active">Điểm đến phổ biến</button>
+        <button class="category">Điểm đến phổ biến</button>
         <button class="category">Trải nghiệm văn hóa</button>
         <button class="category">Du lịch ẩm thực</button>
         <button class="category">Du lịch theo nhóm</button>
@@ -81,28 +82,28 @@
     
     <section class="destination-cards">
         <div class="destination-card">
-            <img src="image/japan.jpg" alt="Nhật Bản" class="destination-image">
+            <img src="../static/images/japan.jpg" alt="Nhật Bản" class="destination-image">
             <div class="destination-details">
                 <span class="region">Châu Á</span>
                 <span class="country">Nhật Bản</span>
             </div>
         </div>
         <div class="destination-card">
-            <img src="image/south-korea.jpg" alt="Hàn Quốc" class="destination-image">
+            <img src="../static/images/south-korea.jpg" alt="Hàn Quốc" class="destination-image">
             <div class="destination-details">
                 <span class="region">Châu Á</span>
                 <span class="country">Hàn Quốc</span>
             </div>
         </div>
         <div class="destination-card">
-            <img src="image/turkey.jpg" alt="Thổ Nhĩ Kỳ" class="destination-image">
+            <img src="../static/images/turkey.jpg" alt="Thổ Nhĩ Kỳ" class="destination-image">
             <div class="destination-details">
                 <span class="region">Châu Á</span>
                 <span class="country">Thổ Nhĩ Kỳ</span>
             </div>
         </div>
         <div class="destination-card">
-            <img src="image/france.jpg" alt="Pháp" class="destination-image">
+            <img src="../static/images/france.jpg" alt="Pháp" class="destination-image">
             <div class="destination-details">
                 <span class="region">Châu Âu</span>
                 <span class="country">Pháp</span>

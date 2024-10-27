@@ -18,6 +18,9 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 5px;
     border-radius: 10px;
+    /* position: fixed;
+    z-index: 9;
+    width: 100%; */
 }
 
 .logo {
@@ -110,16 +113,7 @@ body {
     margin-bottom: 20px;
 }
 
-.region-buttons button {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
+
 .city-cards {
     display: flex;
     justify-content: space-between;
@@ -220,4 +214,26 @@ body {
 .country {
     font-size: 24px;
     font-weight: bold;
+    background-color: #aaa7a7;
+    color:rgba(0, 0, 0, 0.7);
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 20px;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+
 }
+.region-buttons {
+    width: 100%;
+}
+.country.active{
+    background-color: #007bff;
+}
+
+.country:hover{
+    background-color: #4b9ef7;
+}
+
+
