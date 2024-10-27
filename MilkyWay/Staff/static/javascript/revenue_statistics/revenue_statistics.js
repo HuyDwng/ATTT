@@ -51,24 +51,15 @@ document.querySelector('form').addEventListener('submit', function (event) {
     const tourName = document.getElementById('tour-name').value.toLowerCase().trim();
     const booksValue = document.getElementById('books-slider').value;
     const totalRevenue = document.getElementById('revenue-selects').value;
-    // const 
-    // Lọc giao dịch dựa trên các điều kiện
-
-    // revenue.forEach(revenue => {
-    //     if (revenue.books_value < booksValue) document.getElementById('tour-id').value++;
-    // });
-    // displayRevenue(filteredRevenue);
 
     let filteredRevenue = revenue.filter(revenue => {
         return (
             (tourId === '' || revenue.tour_id_data.toLowerCase().trim().includes(tourId)) &&
             (tourName === '' || revenue.tour_name_data.toLowerCase().trim().includes(tourName)) &&
-            (booksValue === 0 || revenue.books_value < booksValue)
+            (booksValue == 0 || revenue.books_value < booksValue)
         );
     });
-
     filteredRevenue = filterDataByRevenue(totalRevenue, filteredRevenue);
-
     displayRevenue(filteredRevenue); // Hiển thị thống kê đã lọc
 
 });
