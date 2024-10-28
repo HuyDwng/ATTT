@@ -58,13 +58,7 @@ class Tour(models.Model):
 
     def __str__(self):
         return self.name
-    @property
-    def ImageURL(self):
-        try:
-            url = "/static" + self.images.url
-        except:
-            url=''
-        return url
+   
 
 class Booking(models.Model):
     STATUS_CHOICES = [
@@ -83,11 +77,21 @@ class Booking(models.Model):
         return f"Booking by {self.user} for {self.tour} with id {self.id}"
     
 class Payment(models.Model):
+    STATUS_CHOICES = [
+        ('successful', 'Successful'),
+        ('unpaid', 'Unpaid'),
+    ]  
+    STATUS_METHOD = [
+        ('transfer', 'Transfer'),
+        ('cash','Cash'),
+        ('credit-card','Credit-card'),
+        ('e-wallet','E-wallet')
+    ]
     booking = models.OneToOneField(Booking, on_delete=models.CASCADE)  # Đơn đặt vé
     amount = models.DecimalField(max_digits=10, decimal_places=2)  # Số tiền thanh toán
     payment_date = models.DateTimeField(auto_now_add=True)  # Ngày thanh toán
-    payment_method = models.CharField(max_length=50)  # Phương thức thanh toán
-
+    payment_method = models.CharField(max_length=15, choices=STATUS_METHOD, default="cash")  # Phương thức thanh toán
+    payment_state = models.CharField(max_length=15, choices=STATUS_CHOICES, default="unpaid") 
     def __str__(self):
         return f"Payment for {self.booking} on {self.payment_date} with id {self.id}"
     
@@ -122,3 +126,14 @@ class Images(models.Model):
     images = models.ImageField(upload_to=user_directory_path, default=None)
     position = models.IntegerField()
 
+    @property
+    def ImageURL(self):
+        try:
+            url = "/static" + self.images.url
+        except:
+            url=''
+        return url
+
+    def __str__(self):
+        return f"{self.tour.name}_image{self.position}" 
+    
