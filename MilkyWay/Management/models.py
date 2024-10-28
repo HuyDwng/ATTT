@@ -26,16 +26,17 @@ class Users(models.Model):
     
 
 def user_directory_path(instance, filename):
-    user_tour = instance.user_tour
+    tour = instance.tour
+    user_tour = tour.user_tour
     # Lấy ngày hiện tại
     today = datetime.today()
     date_str = today.strftime("%Y%m%d")  # Định dạng ngày thành YYYYMMDD
 
     # Đếm số lượng file được tải lên ngày hôm nay
     # Điều này sẽ đếm tất cả các file cùng ngày với username đó
-    existing_files_count = Tour.objects.filter(
-        images__contains=f"{user_tour}_{date_str}"
-    ).count()
+    existing_files_count = Images.objects.filter(
+        tour=tour
+    ).filter(images__icontains=f"{user_tour}_{date_str}").count()
 
     # Tạo tên file với username, ngày và số thứ tự
     new_filename = f"{user_tour}_{date_str}_{existing_files_count + 1}{os.path.splitext(filename)[1]}"
@@ -54,8 +55,6 @@ class Tour(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)  # Giá tour
     available_seats = models.IntegerField()  # Số lượng chỗ trống
     remaining_seats = models.IntegerField(null=True) # Số lượng chỗ còn lại
-    images = models.ImageField(upload_to=user_directory_path, default=None)
-
 
     def __str__(self):
         return self.name
@@ -66,7 +65,6 @@ class Tour(models.Model):
         except:
             url=''
         return url
-
 
 class Booking(models.Model):
     STATUS_CHOICES = [
@@ -116,3 +114,11 @@ class Tickets(models.Model):
 
     def __str__(self):
         return f"ID ticket {self.id}"
+
+        return url
+    
+class Images(models.Model):
+    tour = models.ForeignKey(Tour, on_delete=models.CASCADE, null=True, blank=True)
+    images = models.ImageField(upload_to=user_directory_path, default=None)
+    position = models.IntegerField()
+
