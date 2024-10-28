@@ -92,3 +92,13 @@ def get_tour_edit(request):
     review = Review.objects.all()
     context = {'tour': tour, 'user':user, 'ticket':ticket, 'booking':booking, 'payment':payment, 'review':review}
     return render(request,'tour_management/tour_edit.html', context)
+
+def get_revenue_statistics(request):
+    tour = Tour.objects.all()
+    user = Users.objects.all()
+    ticket = Tickets.objects.all()
+    booking = Booking.objects.all()
+    payment = Payment.objects.all()
+    review = Review.objects.all()
+    context = {'tour': tour, 'user':user, 'ticket':ticket, 'booking':booking, 'payment':payment, 'review':review}
+    return render(request,'revenue_statistics/revenue_statistics.html',context)

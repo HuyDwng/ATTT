@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,8 +14,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="icon" href="../../static/pictures/logo.jpg">
-    <link rel="stylesheet" href="../../static/css/revenue_statistics/revenue_statistics.css">
+    <link rel="icon" href="{% static 'pictures/logo.jpg' %}">
+    <link rel="stylesheet" href="{% static 'css/revenue_statistics/revenue_statistics.css' %}">
 
 </head>
 
@@ -51,7 +52,7 @@
 
             </div>
             <div class="offcanvas-body">
-                <a href="../tour_management/tour_mng.html" target="_blank">
+                <a href="{% url 'tour_management' %}" target="_blank">
                     Quản lý tour du lịch
                 </a><br>
                 <a href="#" target="_blank">
@@ -133,7 +134,7 @@
             </div>
         </div>
     </div>
-    <script src="../../static/javascript/revenue_statistics/revenue_statistics.js"></script>
+    <script src="{% static 'javascript/revenue_statistics/revenue_statistics.js' %}"></script>
 </body>
 
 </html>
