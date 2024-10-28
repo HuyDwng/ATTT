@@ -55,11 +55,32 @@
                 <p class="sign-up">Bạn chưa có tài khoản<a href="{% url 'sign-up' %}">Đăng kí</a></p>
         </form>
     </div>
-
-
-    
     </div>
-    
+           <!-- Modal Box -->
+           <div id="errorModal" class="box-modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Thông báo lỗi</h2>
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>  
+        
+        </div>
+        <script>
+            // Hiển thị modal nếu có thông báo lỗi
+            {% if messages %}
+                document.getElementById("errorModal").style.display = "block";
+            {% endif %}
+        
+            // Đóng modal khi người dùng nhấn nút 'X'
+            document.querySelector(".close").onclick = function() {
+                document.getElementById("errorModal").style.display = "none";
+            };
+        </script>
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js">

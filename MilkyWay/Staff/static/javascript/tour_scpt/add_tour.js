@@ -10,11 +10,12 @@ function addTourSection() {
         newSection.setAttribute('id', `tour_section_${sectionCount}`);
 
         newSection.innerHTML = `
+        <form method="POST" enctype="multipart/form-data">
             <h2 class="form-section-title">Địa Điểm ${sectionCount}</h2>
             <div class="image-drop-zone" id="drop_zone_${sectionCount}">
                 Kéo thả hình ảnh vào đây hoặc chọn hình ảnh
             </div>
-            <input type="file" id="tour_image_${sectionCount}" name="tour_image_${sectionCount}" accept="image/*" style="display:none;" required>
+            <input type="file" class="tour_image" id="tour_image_${sectionCount}" multiple name="tour_image_${sectionCount}" accept="image/*" style="display:none;" required>
             <img id="image_preview_${sectionCount}" class="image-preview" style="display:none;">
             <button type="button" class="remove-image-btn" style="display:none;">Xóa Hình Ảnh</button><br>
             <label for="itinerary_${sectionCount}">Mô Tả Địa Điểm ${sectionCount}:</label>
