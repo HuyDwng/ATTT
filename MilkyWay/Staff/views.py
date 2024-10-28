@@ -1,4 +1,3 @@
-
 from django.shortcuts import render,redirect
 from Management.models import Users, Tour, Tickets, Booking, Payment, Review 
 from django.shortcuts import render, redirect
@@ -45,7 +44,7 @@ def get_add_tour(request):
             itinerary = request.POST.get(f'itinerary_{i}')
             if itinerary:
                 descriptions.append(itinerary)
-        description = '*'.join(descriptions)  # Combine with '*' separator
+        description = ''.join(descriptions)  # Combine with '' separator
 
         # Save Tour instance
         tour = Tour(
