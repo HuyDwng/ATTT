@@ -39,11 +39,9 @@
                 <label for="destination">Địa Điểm Du Lịch:</label><br>
                 <input type="text" id="destination" name="destination" autocomplete="off" required><br>
 
-                <!-- Thêm trường nhập ngày khởi hành -->
                 <label for="start_date">Ngày Khởi Hành:</label><br>
                 <input type="date" id="start_date" name="start_date" required><br>
 
-                <!-- Thêm trường nhập ngày kết thúc -->
                 <label for="end_date">Ngày Kết Thúc:</label><br>
                 <input type="date" id="end_date" name="end_date" required><br>
 
@@ -58,25 +56,39 @@
 
                 <!-- Thêm phần upload hình ảnh -->
                 <label for="tour_image">Hình Ảnh Tour:</label><br>
-                <input type="file" id="tour_image" name="tour_image" accept="image/*" required><br>
-
-
+                <input type="file" id="tour_image" name="tour_image" accept="image/*" required multiple><br>
             </div>
 
-
-            <div id="tour_sections_container"></div>
-            <!-- Nút để thêm khu vực -->
-            <button type="button" id="add_section_btn" class="add-section-btn">Thêm Địa Điểm</button>
-
+            <!-- Phần mô tả địa điểm (tối đa 4 phần, sẽ hiển thị khi có hình ảnh) -->
+            <div id="tour_sections_container">
+                {% for i in range %}
+                <div class="form-section" id="description_section_{{ i }}" style="display: none;">
+                    <h2 class="form-section-title">Mô Tả Địa Điểm {{ i }}</h2>
+                    <textarea id="itinerary_{{ i }}" name="itinerary_{{ i }}" required></textarea>
+                </div>
+                {% endfor %}
+            </div>
 
             <!-- Nút submit -->
             <button type="submit" class="submit-btn btn btn-primary btn-hover">Thêm Tour</button>
+
         </form>
     </div>
 
+    <script>
+        document.getElementById("tour_image").addEventListener("change", function (event) {
+            const sections = document.querySelectorAll("#tour_sections_container .form-section");
 
-    <!-- Liên kết file JavaScript -->
-    <script src="{% static 'javascript/tour_scpt/add_tour.js' %}"></script>
+            // Hiển thị từng phần mô tả địa điểm tương ứng với số hình ảnh được tải lên (tối đa 4)
+            for (let i = 0; i < sections.length; i++) {
+                if (i < event.target.files.length) {
+                    sections[i].style.display = "block";
+                } else {
+                    sections[i].style.display = "none";
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
