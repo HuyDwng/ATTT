@@ -103,6 +103,7 @@ function removeTourSection(section) {
         fileInput.setAttribute('name', `tour_image_${currentSectionId}`);
 
         itineraryLabel.setAttribute('for', `itinerary_${currentSectionId}`);
+        itineraryLabel.textContent = `Mô tả địa điểm ${currentSectionId}`;
         itineraryTextarea.setAttribute('id', `itinerary_${currentSectionId}`);
         itineraryTextarea.setAttribute('name', `itinerary_${currentSectionId}`);
     });

@@ -75,15 +75,32 @@
                         <th>Hành Động</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <!--Phần dữ liệu đọc từ js-->
+                <tbody id="tour-data">
+                    {%for i in tour %}
+                    <tr>
+                        <td>{{i.name}}</td>
+                        <td>{{i.start_date}}</td>
+                        <td>{{i.end_date}}</td>
+                        <td>{{i.available_seats}}</td>
+                        <td>{{i.remaining_seats}}</td>
+                        <td>{{i.price}}</td>
+                        <td>
+                            <a class="edit-btn" href="../../templates/tour_management/tour_edit.html"
+                                target="_blank">Sửa</a>
+                            <button class="delete-btn">Xóa</button>
+                            <a class="more-info-btn" href="#">Xem chi tiết</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
                 </tbody>
             </table>
 
         </div>
     </div>
+
     <!-- Modal Xác Nhận Xóa -->
-    <!-- Modal Xác Nhận Xóa -->
+
     <div id="confirmModal" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
