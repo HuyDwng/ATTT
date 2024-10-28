@@ -21,71 +21,52 @@
         <h1>Thêm Thông Tin Tour Du Lịch</h1>
         <form id="tour_form" action="{% url 'add_tour' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
+            <!-- Thông Tin Tour -->
             <div class="form-section">
-                <h2 class="form-section-title-main">Thông Tin Tour</h2>
+                <label for="tour_name">Tên Tour:</label>
+                <input type="text" id="tour_name" name="tour_name" autocomplete="off" required autocomplete="none">
+                <label for="tour_code">Tên người thêm Tour:</label>
+                <input type="text" id="tour_code" name="tour_code" autocomplete="off" required>
+                <label for="start_location">Địa Điểm Khởi Hành:</label>
+                <input type="text" id="start_location" name="start_location" autocomplete="off" required>
+                <label for="destination">Địa Điểm Du Lịch:</label>
+                <input type="text" id="destination" name="destination" autocomplete="off" required>
+                <label for="start_date">Ngày Khởi Hành:</label>
+                <input type="date" id="start_date" name="start_date" required>
+                <label for="end_date">Ngày Kết Thúc:</label>
+                <input type="date" id="end_date" name="end_date" required>
+                <label for="tour_price">Giá Tiền (VND):</label>
+                <input type="number" id="tour_price" name="tour_price" autocomplete="off" required>
+                <label for="passenger_count">Số Lượng Hành Khách:</label>
+                <input type="number" id="passenger_count" name="passenger_count" autocomplete="off" required>
+                <label for="remaining_count">Số Lượng Còn Lại:</label>
+                <input type="number" id="remaining_count" name="remaining_count" autocomplete="off" required>
 
-                <label for="tour_name">Tên Tour:</label><br>
-                <input type="text" id="tour_name" name="tour_name" autocomplete="off" required><br>
-
-                <label for="user_tour">Tên người thêm Tour:</label><br>
-                <input type="text" id="tour_code" name="tour_code" autocomplete="off" required><br>
-
-                <label for="description">Mô tả tour:</label><br>
-                <textarea name="description" id="description" autocomplete="off"></textarea>
-
-                <label for="start_location">Địa Điểm Khởi Hành:</label><br>
-                <input type="text" id="start_location" name="start_location" autocomplete="off" required><br>
-
-                <label for="destination">Địa Điểm Du Lịch:</label><br>
-                <input type="text" id="destination" name="destination" autocomplete="off" required><br>
-
-                <label for="start_date">Ngày Khởi Hành:</label><br>
-                <input type="date" id="start_date" name="start_date" required><br>
-
-                <label for="end_date">Ngày Kết Thúc:</label><br>
-                <input type="date" id="end_date" name="end_date" required><br>
-
-                <label for="tour_price">Giá Tiền (VND):</label><br>
-                <input type="number" id="tour_price" name="tour_price" autocomplete="off" required><br>
-
-                <label for="passenger_count">Số Lượng Hành Khách:</label><br>
-                <input type="number" id="passenger_count" name="passenger_count" autocomplete="off" required><br>
-
-                <label for="remaining_count">Số Lượng Còn Lại:</label><br>
-                <input type="number" id="remaining_count" name="remaining_count" autocomplete="off" required><br>
-
-                <!-- Thêm phần upload hình ảnh -->
-                <label for="tour_image">Hình Ảnh Tour:</label><br>
-                <input type="file" id="tour_image" name="tour_image" accept="image/*" required multiple><br>
+                <!-- Upload Hình Ảnh Tour -->
+                <label for="tour_image">Hình Ảnh Tour:</label>
+                <input type="file" id="tour_image" name="tour_image" accept="image/*" multiple required>
             </div>
 
-            <!-- Phần mô tả địa điểm (tối đa 4 phần, sẽ hiển thị khi có hình ảnh) -->
+            <!-- Mô Tả Địa Điểm -->
             <div id="tour_sections_container">
-              
+                {% for i in range %}
                 <div class="form-section" id="description_section_{{ i }}" style="display: none;">
-                    <h2 class="form-section-title">Mô Tả Địa Điểm {{ i }}</h2>
-                    <textarea id="itinerary_{{ i }}" name="itinerary_{{ i }}" required></textarea>
+                    <label for="itinerary_{{ i }}">Mô Tả Địa Điểm {{ i }}:</label>
+                    <textarea id="itinerary_{{ i }}" name="itinerary_{{ i }}"></textarea>
                 </div>
-             
+                {% endfor %}
             </div>
 
             <!-- Nút submit -->
             <button type="submit" class="submit-btn btn btn-primary btn-hover">Thêm Tour</button>
-
         </form>
     </div>
 
     <script>
         document.getElementById("tour_image").addEventListener("change", function (event) {
             const sections = document.querySelectorAll("#tour_sections_container .form-section");
-
-            // Hiển thị từng phần mô tả địa điểm tương ứng với số hình ảnh được tải lên (tối đa 4)
             for (let i = 0; i < sections.length; i++) {
-                if (i < event.target.files.length) {
-                    sections[i].style.display = "block";
-                } else {
-                    sections[i].style.display = "none";
-                }
+                sections[i].style.display = i < event.target.files.length ? "block" : "none";
             }
         });
     </script>
