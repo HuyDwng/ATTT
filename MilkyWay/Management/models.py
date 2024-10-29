@@ -113,7 +113,7 @@ class Tickets(models.Model):
     ]  
     ticket_code = models.IntegerField()
     issued_date = models.DateTimeField()
-    quanlity = models.IntegerField(default=0)
+    quantity = models.IntegerField(default=0)
     ticket_status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='issued')  # Trạng thái vé
 
     def __str__(self):
