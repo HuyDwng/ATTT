@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Milky Way</title>
-    <!-- Load static-->
-    <link rel = "icon" href = "../static/pictures/logo.jpg">
+    <link rel = "icon" href = "{% static 'images/logo.jpg' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
@@ -250,16 +249,15 @@
                     <p>Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.</p>
                 </div>
                 <div class="package-cards">
-                    {% for i in tour%}
                     <div class="package-card">
                         <div class="packages-info">
                             <div class="img-packages"></div>
                             <div class="packages-content">
                                 <div class="country">
-                                    <p>{{i.name}}</p>
+                                    <p>Italy</p>
                                 </div>
                                 <div class="price">
-                                    <p>{{i.price}}</p>
+                                    <p>$499</p>
                                 </div>
                             </div>
                             <hr>
@@ -282,8 +280,161 @@
                             </div>
                         </div>
                     </div>
-                    {% endfor %}
-
+                    <div class="package-card">
+                        <div class="packages-info">
+                            <div class="img-packages"></div>
+                            <div class="packages-content">
+                                <div class="country">
+                                    <p>Italy</p>
+                                </div>
+                                <div class="price">
+                                    <p>$499</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="detail-info">
+                                <div>5 daays 6 nights</div>
+                                <div>5 star accomodation</div>
+                                <div>transportation</div>
+                                <div>food facilities</div>
+                                <div>
+                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                </div>
+                                <div>2544 review</div>
+                                <div class="btn-BookTour">
+                                    <button>Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="package-card">
+                        <div class="packages-info">
+                            <div class="img-packages"></div>
+                            <div class="packages-content">
+                                <div class="country">
+                                    <p>Italy</p>
+                                </div>
+                                <div class="price">
+                                    <p>$499</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="detail-info">
+                                <div>5 daays 6 nights</div>
+                                <div>5 star accomodation</div>
+                                <div>transportation</div>
+                                <div>food facilities</div>
+                                <div>
+                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                </div>
+                                <div>2544 review</div>
+                                <div class="btn-BookTour">
+                                    <button>Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="package-card">
+                        <div class="packages-info">
+                            <div class="img-packages"></div>
+                            <div class="packages-content">
+                                <div class="country">
+                                    <p>Italy</p>
+                                </div>
+                                <div class="price">
+                                    <p>$499</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="detail-info">
+                                <div>5 daays 6 nights</div>
+                                <div>5 star accomodation</div>
+                                <div>transportation</div>
+                                <div>food facilities</div>
+                                <div>
+                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                </div>
+                                <div>2544 review</div>
+                                <div class="btn-BookTour">
+                                    <button>Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="package-card">
+                        <div class="packages-info">
+                            <div class="img-packages"></div>
+                            <div class="packages-content">
+                                <div class="country">
+                                    <p>Italy</p>
+                                </div>
+                                <div class="price">
+                                    <p>$499</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="detail-info">
+                                <div>5 daays 6 nights</div>
+                                <div>5 star accomodation</div>
+                                <div>transportation</div>
+                                <div>food facilities</div>
+                                <div>
+                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                </div>
+                                <div>2544 review</div>
+                                <div class="btn-BookTour">
+                                    <button>Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="package-card">
+                        <div class="packages-info">
+                            <div class="img-packages"></div>
+                            <div class="packages-content">
+                                <div class="country">
+                                    <p>Italy</p>
+                                </div>
+                                <div class="price">
+                                    <p>$499</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="detail-info">
+                                <div>5 daays 6 nights</div>
+                                <div>5 star accomodation</div>
+                                <div>transportation</div>
+                                <div>food facilities</div>
+                                <div>
+                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                </div>
+                                <div>2544 review</div>
+                                <div class="btn-BookTour">
+                                    <button>Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
         </section>
     </section>
@@ -517,8 +668,9 @@
                 </div><!-- /.container-->
 
             </footer><!-- /.footer-copyright-->
-		    <!-- footer-copyright end -->
         </section>
+	<!-- footer-copyright end -->
+        
     <!--JavaScript-->
     <script src="{% static 'javascript/MainPage.js' %}"></script>
 </body>
