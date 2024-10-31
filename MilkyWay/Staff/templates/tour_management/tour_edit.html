@@ -10,49 +10,86 @@
     <link rel="icon" href="../../static/pictures/logo.jpg">
 </head>
 
+
 <body>
 
     <div class="container">
-        <h1>Chỉnh Sửa Thông Tin Tour Du Lịch</h1>
-        <form id="tour_form" action="/submit-tour" method="POST" enctype="multipart/form-data">
+        <h1>Thêm Thông Tin Tour Du Lịch</h1>
+        <form id="tour_form" action="{% url 'tour_edit' tour.id %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- Thông Tin Tour -->
             <div class="form-section">
-                <h2 class="form-section-title-main">Thông Tin Tour</h2>
+                <label for="tour_name">Tên Tour:</label>
+                <input type="text" id="tour_name" name="tour_name" autocomplete="off" required value="{{tour.name}}">
+                <label for="tour_code">Tên người thêm Tour:</label>
+                <input type="text" id="tour_code" name="tour_code" autocomplete="off" required
+                    value="{{tour.user_tour}}">
+                <label for="start_location">Địa Điểm Khởi Hành:</label>
+                <input type="text" id="start_location" name="start_location" autocomplete="off" required
+                    value="{{tour.start_location}}">
+                <label for="destination">Địa Điểm Du Lịch:</label>
+                <input type="text" id="destination" name="destination" autocomplete="off" required
+                    value="{{tour.destination}}">
+                <label for="start_date">Ngày Khởi Hành:</label>
+                <input type="date" id="start_date" name="start_date" required value="{{tour.start_date}}">
+                <label for="end_date">Ngày Kết Thúc:</label>
+                <input type="date" id="end_date" name="end_date" required value="{{tour.end_date}}">
+                <label for="tour_price">Giá Tiền (VND):</label>
+                <input type="number" id="tour_price" name="tour_price" autocomplete="off" required
+                    value="{{tour.price}}">
+                <label for="passenger_count">Số Lượng Hành Khách:</label>
+                <input type="number" id="passenger_count" name="passenger_count" autocomplete="off" required
+                    value="{{tour.available_seats}}">
+                <label for="remaining_count">Số Lượng Còn Lại:</label>
+                <input type="number" id="remaining_count" name="remaining_count" autocomplete="off" required
+                    value="{{tour.remaining_seats}}">
 
-                <label for="tour_name">Tên Tour:</label><br>
-                <input type="text" id="tour_name" name="tour_name" autocomplete="off" required><br>
+                <!-- Upload Hình Ảnh Tour -->
+                <div class="image-gallery">
+                    <h2>Hình Ảnh Tour</h2>
+                    {% for image in images %}
+                    <div class="image-item">
+                        <img src="{{ image.ImageURL }}" alt="Hình ảnh {{ image.position }}" />
+                        <form action="{% url 'delete_image' image.id %}" method="POST" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Xóa</button>
+                        </form>
+                    </div>
+                    {% empty %}
+                    <p>Không có hình ảnh nào cho tour này.</p>
+                    {% endfor %}
+                </div>
+                <form id="add_image_form" action="{% url 'add_images' tour.id %}" method="POST"
+                    enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <label for="tour_images">Thêm Hình Ảnh Mới:</label>
+                    <input type="file" id="tour_images" name="tour_images" accept="image/*" multiple required>
+                    <button type="submit" class="btn btn-success">Thêm Hình Ảnh</button>
+                </form>
 
-                <label for="tour_code">Mã Tour:</label><br>
-                <input type="text" id="tour_code" name="tour_code" autocomplete="off" required><br>
+                <!-- Mô Tả Địa Điểm -->
+                <div id="tour_sections_container">
+                    {% for i in range %}
+                    <div class="form-section" id="description_section_{{ i }}" style="display: none;">
+                        <label for="itinerary_{{ i }}">Mô Tả Địa Điểm {{ i }}:</label>
+                        <textarea id="itinerary_{{ i }}" name="itinerary_{{ i }}"></textarea>
+                    </div>
+                    {% endfor %}
+                </div>
 
-                <label for="passenger_count">Số Lượng Hành Khách:</label><br>
-                <input type="number" id="passenger_count" name="passenger_count" autocomplete="off" required><br>
-
-                <label for="tour_price">Giá Tiền (VND):</label><br>
-                <input type="number" id="tour_price" name="tour_price" autocomplete="off" required><br>
-
-                <label for="tour_location">Địa Điểm Du Lịch:</label><br>
-                <input type="text" id="tour_location" name="tour_location" autocomplete="off" required><br>
-
-                <label for="tour-guide">Mã hướng dẫn viên:</label><br>
-                <input type="text" id="tour-guide" name="tour-guide" autocomplete="off" required><br>
-
-            </div>
-
-            <!-- Container để chứa các khu vực -->
-            <div id="tour_sections_container"></div>
-
-            <!-- Nút để thêm khu vực -->
-            <button type="button" id="add_section_btn" class="add-section-btn">Thêm Địa Điểm</button>
-
-
-            <!-- Nút submit -->
-            <button type="submit" class="submit-btn btn btn-primary btn-hover">Thêm Tour</button>
+                <!-- Nút submit -->
+                <button type="submit" class="submit-btn btn btn-primary btn-hover">Chỉnh sửa</button>
         </form>
     </div>
 
-
-    <!-- Liên kết file JavaScript -->
-    <script src="{% static 'javascript/tour_scpt/tour_edit.js' %}"></script>
+    <script>
+        document.getElementById("tour_image").addEventListener("change", function (event) {
+            const sections = document.querySelectorAll("#tour_sections_container .form-section");
+            for (let i = 0; i < sections.length; i++) {
+                sections[i].style.display = i < event.target.files.length ? "block" : "none";
+            }
+        });
+    </script>
 </body>
 
 </html>
