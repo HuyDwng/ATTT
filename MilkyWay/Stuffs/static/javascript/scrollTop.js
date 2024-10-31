@@ -1,4 +1,5 @@
 var gototop = document.getElementById("Gototop");
+
  window.onscroll= function(){
     console.info(document.documentElement.scrollTop);
      if(document.documentElement.scrollTop > 100){

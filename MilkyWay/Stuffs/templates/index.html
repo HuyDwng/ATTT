@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Milky Way</title>
-    <!-- Load static-->
-    <link rel = "icon" href = "../static/pictures/logo.jpg">
+    <link rel = "icon" href = "{% static 'images/logo.jpg' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
@@ -291,6 +290,7 @@
     <section id = "client-review">
         <div class="tes-title">
             <h2>
+                
                 Client Review
             </h2>
             <p>
@@ -516,8 +516,9 @@
                 </div><!-- /.container-->
 
             </footer><!-- /.footer-copyright-->
-		    <!-- footer-copyright end -->
         </section>
+	<!-- footer-copyright end -->
+        
     <!--JavaScript-->
     <script src="{% static 'javascript/MainPage.js' %}"></script>
 </body>

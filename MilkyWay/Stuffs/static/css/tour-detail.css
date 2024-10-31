@@ -33,9 +33,12 @@
     width: 100%;
 }
 .info{
-    margin: 5% 2%;
+    padding: 0 30px;
+    padding-bottom: 10px;
+    margin: 25px 70px;
     border-radius: 16px;
     box-shadow: 0px 0px 3px 1px;
+    height: 80%;
 }
 .img-item {
     border: 1px solid black;
@@ -44,7 +47,7 @@
 .list-img{
     display: inline-flex;
     flex-direction: column;
-    width: 10%;
+    width: 9.93%;
     position: relative;
 }
 .filter{
@@ -87,6 +90,7 @@
   
   .data-detail{
     display: flex;
+    margin-left: 10px;
   }
   .accordion-button::after {
     font-family: 'FontAwesome';
@@ -104,4 +108,8 @@
     height: 1rem;
     background-color: black;
     width: 1px;
+}
+
+.card-title {
+    margin-top: 10px;
 }

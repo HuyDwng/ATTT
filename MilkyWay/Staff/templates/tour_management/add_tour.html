@@ -48,13 +48,10 @@
             </div>
 
             <!-- Mô Tả Địa Điểm -->
+
             <div id="tour_sections_container">
-                {% for i in range %}
-                <div class="form-section" id="description_section_{{ i }}" style="display: none;">
-                    <label for="itinerary_{{ i }}">Mô Tả Địa Điểm {{ i }}:</label>
-                    <textarea id="itinerary_{{ i }}" name="itinerary_{{ i }}"></textarea>
-                </div>
-                {% endfor %}
+                <!-- Nút "Thêm địa điểm" để hiển thị khung mô tả mới -->
+                <button type="button" id="add_location_btn" class="btn btn-secondary">Thêm địa điểm</button>
             </div>
 
             <!-- Nút submit -->
@@ -63,11 +60,20 @@
     </div>
 
     <script>
-        document.getElementById("tour_image").addEventListener("change", function (event) {
-            const sections = document.querySelectorAll("#tour_sections_container .form-section");
-            for (let i = 0; i < sections.length; i++) {
-                sections[i].style.display = i < event.target.files.length ? "block" : "none";
-            }
+        let locationIndex = 1;
+        document.getElementById("add_location_btn").addEventListener("click", function () {
+            const container = document.getElementById("tour_sections_container");
+
+            // Tạo phần nhập mới cho mô tả địa điểm
+            const section = document.createElement("div");
+            section.classList.add("form-section");
+            section.innerHTML = `
+        <label for="itinerary_${locationIndex}">Mô Tả Địa Điểm ${locationIndex}:</label>
+        <textarea id="itinerary_${locationIndex}" name="itinerary_${locationIndex}"></textarea>`;
+
+            // Chèn trước nút "Thêm địa điểm"
+            container.insertBefore(section, document.getElementById("add_location_btn"));
+            locationIndex++;
         });
     </script>
 </body>
