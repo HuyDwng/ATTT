@@ -142,7 +142,7 @@
 
 
 
-                            <td>
+                            <td class="total-payment">
                                 {% for t in tour %}
                                 {% if t.name|lower == i.tour|lower %}
                                 {% for tick in ticket %}
@@ -167,7 +167,7 @@
                                             <li>Tên khách hàng: {{i.user}}</li>
                                             <li>Tên tour: {{i.tour}}</li>
                                             <li>Ngày giao dịch: {{i.booking_date}}</li>
-                                            <li>Tổng số tiền:</li>
+                                            <li id="total-payment-li">Tổng số tiền: </li>
                                             <li>Trạng thái: {{i.payment_method}}</li>
                                             <li>Phương thức: {{i.ticket_code}}</li>
                                         </ul>
@@ -184,7 +184,7 @@
             </div>
         </div>
     </div>
-    <!-- <script src="{% static 'javascript/payment_mng/payment_mng.js' %}"></script> -->
+    <script src="{% static 'javascript/payment_mng/payment_mng.js' %}"></script>
 </body>
 
 </html>

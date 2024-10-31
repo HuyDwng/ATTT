@@ -102,3 +102,20 @@ document.getElementById('reset-button').addEventListener('click', function () {
     // Hiển thị lại tất cả giao dịch
     displayTransactions(transactions); // 'transactions' là mảng gốc
 });
+
+// Lấy tổng tiền thanh toán vào thông tin chi tiết
+document.addEventListener('DOMContentLoaded', function () {
+    const detailsElements = document.querySelectorAll('details');
+
+    detailsElements.forEach((details) => {
+        details.querySelector('summary').addEventListener('click', function () {
+            const row = details.closest('tr'); // Lấy hàng tương ứng
+            const totalPayment = row.querySelector('.total-payment').innerHTML; // Lấy nội dung total-payment
+            const itemElement = row.querySelector('#total-payment-li'); // Lấy phần tử có id="item"
+
+            if (itemElement) {
+                itemElement.innerHTML += totalPayment; // Thêm nội dung total-payment vào item
+            }
+        });
+    });
+});
