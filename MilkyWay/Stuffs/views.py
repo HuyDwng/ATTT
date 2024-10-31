@@ -72,3 +72,23 @@ def tour_detail(request):
     review = Review.objects.all()
     context = {'tour': tour, 'user':user, 'ticket':ticket, 'booking':booking, 'payment':payment, 'review':review}
     return render(request, 'tour-detail.html', context) 
+
+def turkeyguide(request):
+    tour = Tour.objects.all()
+    user = Users.objects.all()
+    ticket = Tickets.objects.all()
+    booking = Booking.objects.all()
+    payment = Payment.objects.all()
+    review = Review.objects.all()
+    context = {'tour': tour, 'user':user, 'ticket':ticket, 'booking':booking, 'payment':payment, 'review':review}
+    return render(request, 'turkeyguide.html', context)
+
+def saigonguide(request):
+    tour = Tour.objects.all()
+    user = Users.objects.all()
+    ticket = Tickets.objects.all()
+    booking = Booking.objects.all()
+    payment = Payment.objects.all()
+    review = Review.objects.all()
+    context = {'tour': tour, 'user':user, 'ticket':ticket, 'booking':booking, 'payment':payment, 'review':review}
+    return render(request, 'saigonguide.html', context)
