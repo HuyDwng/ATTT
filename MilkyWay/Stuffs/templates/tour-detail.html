@@ -23,18 +23,7 @@
 		<!--Title-->
 		<div class="title">
 			<h6 class="display-6 text-capitalize fw-bolder">Chuyến du lịch Phú Quốc</h6>
-			<div class="container-star p-2">
-				<div class"star">
-					<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-					<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-					<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-					<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-					<i class="fa-regular fa-star-half-stroke" style="color: #FFD43B;"></i>
-				</div>
-				<p class="px-2">4.7</p>	
-				<span class="line"></span>
-				<p>Phú Quốc</p>
-			</div>
+			
 
 		</div>
         <!--Data-->
@@ -60,232 +49,146 @@
                 </div>
             </div>
             <div class="card info">
-                <h5 class="text-primary p-2 card-title">Phú Quốc</h5>
-				<h6 class="px-2">Chuyến du lịch 3 ngày 2 đêm</h6>
-                <div class="container-star p-2">
-                    <div class"star">
-                        <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                        <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                        <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                        <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                        <i class="fa-regular fa-star-half-stroke" style="color: #FFD43B;"></i>
-                    </div>
-                    <p class="px-2">4.7</p>
-                </div>
-                <div class="counter-container">
-                    <div class="counter">
-                      <label>Số lượng vé (0-100)</label>
-                      <button class="button decrement" onclick="decrease('adult')">-</button>
-                      <span id="adult">0</span>
-                      <button class="button increment" onclick="increase('adult')">+</button>
-                    </div>
-                  </div>
-                  
-                <h6 class="px-2">400.000 VND</h6>
+                <h5 class="text-primary p-2 card-title">Giá:</h5>
+				<h3 class="px-2">400.000 VND</h3>
+                <h6 class="px-2">Khởi hành: {{ i.destination }}</h6>
+				<h6 class="px-2">Ngày khởi hành: </h6>
+				<h6 class="px-2">Thời gian: </h6>
+                <h6 class="px-2">Số chỗ còn: </h6>
                 <div class="container p-2 center">
                     <button class="btn btn-success">Đặt tour</button>
                 </div>
             </div>
         </div>
-
 		  <!--Product-->
 		  <div class="container">
             <hr>
-            <div class="data-detail">
-                <i class="fa-regular fa-clock pt-1" style="color: #74C0FC;"></i>
-                <h6 class="px-2">3 ngày 2 đêm</h6>
-            </div>
-            <hr>
             <div class="main-content">
-                <h5 class="text-primary p-2">OverView</h5>
+                <h5 class="text-primary p-2">Mô Tả</h5>
 				<h6 class="px-2">Trải nghiệm 3 ngày 2 đêm tại Phú Quốc với các hoạt động đầy hấp dẫn</h6>
                 
             </div>
             <hr>
-			<div class="container mt-5">
-				<div class="accordion" id="accordionExample">
+			<div class="main-content">
+                <h5 class="text-primary p-2">Lịch Trình</h5>
+				<h6 class="px-2">Trải nghiệm 3 ngày 2 đêm tại Phú Quốc với các hoạt động đầy hấp dẫn</h6>
+            </div>
+			<hr> 
+			<div class="main-content">
+                <h5 class="text-primary p-2">Lưu ý</h5>
+				<div class="accordion">
 					<div class="accordion-item">
-						<h2 class="accordion-header" id="headingOne">
-							<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-								Nội dung 1
-							</button>
-						</h2>
-						<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-							<div class="accordion-body">
-								Đây là nội dung của phần 1.
-							</div>
+						<div class="accordion-header" onclick="toggleAccordion(this)"> Các điều kiện hủy tour đối với ngày thường <i  class="fa-solid fa-sort-down"></i></div>
+						<div class="accordion-content">
+							<p>- Nếu hủy hoặc chuyển sang các tuyến du lịch khác trước ngày khởi hành 20: Không mất chi phí.<br>
+								- Nếu hủy hoặc chuyển sang các chuyến du lịch khác từ 15-19 ngày trước ngày khởi hành: Chi phí chuyển/ huỷ tour là 50% tiền cọc tour.<br>
+								- Nếu hủy hoặc chuyển sang các chuyến du lịch khác từ 12-14 ngày trước ngày khởi: Chi phí chuyển/huỷ tour là 100% tiền cọc tour.<br>
+								- Nếu hủy chuyến du lịch ngay sau khi Đại Sứ Quán, Lãnh Sự Quán đã cấp visa: Chi phí huỷ tour là 100% tiền cọc tour.<br>
+								- Nếu hủy chuyến du lịch trong vòng từ 08-11 ngày trước ngày khởi hành: Chi phí huỷ tour là 50% trên giá tour du lịch.<br>
+								- Nếu hủy chuyến du lịch trong vòng từ 05-07 ngày trước ngày khởi hành: Chi phí huỷ tour là 70% trên giá tour du lịch.<br>
+								- Nếu hủy chuyến du lịch trong vòng từ 02-04 ngày trước ngày khởi hành: Chi phí huỷ tour là 90% trên giá vé du lịch.<br>
+								- Nếu hủy chuyến du lịch trong vòng 1 ngày trước ngày khởi hành: Chi phí huỷ tour là 100% trên giá vé du lịch.
+							</p>
 						</div>
 					</div>
 					<div class="accordion-item">
-						<h2 class="accordion-header" id="headingTwo">
-							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-								Nội dung 2
-							</button>
-						</h2>
-						<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-							<div class="accordion-body">
-								Đây là nội dung của phần 2.
-							</div>
+						<div class="accordion-header" onclick="toggleAccordion(this)">Các điều kiện hủy tour đối với ngày lễ, Tết <i class="fa-solid fa-sort-down"></i></div>
+						<div class="accordion-content">
+							<p>- Nếu hủy hoặc chuyển sang các tuyến du lịch khác trước ngày khởi hành 30 ngày: Không mất chi phí.<br>
+								- Nếu hủy hoặc chuyển sang các chuyến du lịch khác từ 25-29 ngày trước ngày khởi hành: Chi phí chuyển/huỷ tour là 50% tiền cọc tour.<br>
+								- Nếu hủy hoặc chuyển sang các chuyến du lịch khác từ 20-24 ngày trước ngày khởi hành: Chi phí chuyển/huỷ tour là 100% tiền cọc tour.<br>
+								- Nếu hủy chuyến du lịch ngay sau khi Đại Sứ Quán, Lãnh Sự Quán đã cấp visa: Chi phí huỷ tour là 100% tiền cọc tour.<br>
+								- Nếu hủy chuyến du lịch trong vòng từ 17-19 ngày trước ngày khởi hành: Chi phí huỷ tour là 50% trên giá tour du lịch.<br>
+								- Nếu hủy chuyến du lịch trong vòng từ 08-16 ngày trước ngày khởi: Chi phí huỷ tour là 70% trên giá tour du lịch.<br>
+								- Nếu hủy chuyến du lịch trong vòng từ 02-07 ngày trước ngày khởi: Chi phí huỷ tour là 90% trên giá vé du lịch.<br>
+								- Nếu hủy chuyến du lịch trong vòng 1 ngày trước ngày khởi hành : Chi phí huỷ tour là 100% trên giá vé du lịch.<br>
+								* Thời gian hủy tour được tính cho ngày làm việc, không tính thứ bảy, chủ nhật và các ngày Lễ, Tết.
+							</p>
 						</div>
 					</div>
 					<div class="accordion-item">
-						<h2 class="accordion-header" id="headingThree">
-							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-								Nội dung 3
-							</button>
-						</h2>
-						<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-							<div class="accordion-body">
-								Đây là nội dung của phần 3.
-							</div>
+						<div class="accordion-header" onclick="toggleAccordion(this)">Điều kiện thanh toán <i class="fa-solid fa-sort-down"></i></div>
+						<div class="accordion-content">
+							<p>- Quý khách nộp hồ sơ và đặt cọc 50% chi phí dịch vụ và 100% chi phí phát sinh (nếu có) ngay khi đặt chỗ.<br>
+								- Quý khách thanh toán hết số tiền còn lại trước ngày khởi hành 10 ngày làm việc
+							</p>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<div class="accordion-header" onclick="toggleAccordion(this)">Điều kiện đăng ký <i class="fa-solid fa-sort-down"></i></div>
+						<div class="accordion-content">
+							<p>- Hộ chiếu gốc của Quý khách còn hạn tối thiểu 06 tháng tính từ ngày về Việt Nam. Đồng thời, hộ chiếu phải còn tối thiểu ít nhất 3 trang trắng.<br>
+								- Giá trẻ em áp dụng từ 2 tuổi cho đến dưới 12 tuổi.<br>
+								- Khi đến đăng ký, Quý khách vui lòng mang hộ chiếu bản gốc và đóng cọc 50% giá tour<br>
+								- Nếu yêu cầu ở phòng đơn, Quý khách vui lòng thanh toán tiền phụ thu.<br>
+								- Nếu khách là Việt Kiều hoặc nước ngoài có visa rời phải mang theo lúc đi tour.<br>
+								- Quý khách mang 2 Quốc tịch hoặc Travel document (chưa nhập quốc tịch) vui lòng thông báo với nhân viên bán tour ngay thời điểm đăng ký tour và nộp bản gốc kèm các giấy tờ có liên quan (nếu có).<br>
+								- Quý khách chỉ mang thẻ xanh (thẻ tạm trú tại nước ngoài) và không còn hộ chiếu VN còn hiệu lực thì không đăng ký du lịch sang nước thứ ba được.<br>
+								- Quý khách dưới 18 tuổi phải có Bố Mẹ hoặc người nhà trên 18 tuổi đi cùng. Trường hợp đi với người nhà phải nộp kèm giấy ủy quyền được chính quyền địa phương xác nhận (được Bố Mẹ ủy quyến để dắt đi tour)<br>
+								- Khách nữ từ 55 tuổi trở lên và khách nam từ 60 trở lên: nên có người thân dưới 55 tuổi (đầy đủ sức khỏe) đi cùng. Riêng khách từ 70 tuổi trở lên: bắt buộc phải có người thân dưới 55 tuổi (đầy đủ sức khỏe) đi cùng. Ngoài ra, khách từ 75 tuổi trở lên khuyến khích đóng thêm phí bảo hiểm cao cấp. Không nhận khách từ 80 tuổi trở lên.<br>
+								- Quý khách mang thai vui lòng báo cho nhân viên bán tour ngay tại thời điểm đăng ký. Lưu ý phải có ý kiến của bác sĩ trước khi đi tour. Cam kết tự chịu trách nhiệm về sức khỏe của mình và thai nhi trong suốt thời gian tham gia chương trình du lịch.<br>
+								- Vietravel miễn trừ trách nhiệm trong trường hợp khách tham gia tour bị từ chối hoặc không được phép xuất nhập cảnh vì lý do cá nhân, hoặc các vấn đề phát sinh từ việc tự xin visa nhập cảnh, việc sử dụng thẻ ABTC (APEC), hộ chiếu công vụ, ngoại giao khi đi tour, hoặc trong trường hợp hồ sơ xin visa của Quý khách bị từ chối, bị kéo dài bởi cơ quan có thẩm quyền.
+							</p>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<div class="accordion-header" onclick="toggleAccordion(this)">Lưu ý về chuyến hoặc hủy tour <i class="fa-solid fa-sort-down"></i></div>
+						<div class="accordion-content">
+							<p>- Sau khi đóng tiền, nếu Quý khách muốn chuyển/huỷ tour xin vui lòng mang Vé Du Lịch đến văn phòng đăng ký tour để làm thủ tục chuyển/huỷ tour và chịu chi phí theo quy định của Vietravel. Không giải quyết các trường hợp liên hệ chuyển/huỷ tour qua điện thoại.<br>
+								- Đối với những tour còn thời hạn hủy nhưng đã làm visa, Quý khách vui lòng thanh toán phí visa.
+							</p>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<div class="accordion-header" onclick="toggleAccordion(this)">Giá tour không bao gồm<i class="fa-solid fa-sort-down"></i></div>
+						<div class="accordion-content">
+							<p>- Hộ chiếu<br>
+								- Chi phí ăn uống cá nhân<br>
+								- Các chi phí khác không bao gồm trong giá: Nước uống bia rượu trong bữa ăn, điện thoại, giặt ủi, chi phí quá cước theo quy định của hàng không. Thuốc men, bệnh viện...và chi phí cá nhân khác ngoài chương trình.<br>
+								- Chi phí dời ngày, đổi chặng, nâng hạng vé máy bay. Trường hợp Quý khách không sử dụng chặng đi của vé đoàn theo tour, các chặng nội địa và quốc tế còn lại sẽ bị hủy do điều kiện của hãng Hàng Không.<br>
+								- Bảo hiểm du lịch đối với khách chỉ mua land tour (không có vé máy bay xuất phát từ Việt Nam)<br>
+								- Tour áp dụng cho khách quốc tịch Việt Nam. Theo quy định của đối tác Thái Lan, khách quốc tịch nước ngoài (trừ khách Việt Kiều) sẽ phụ thu 1.000.000 vnd/khách.<br>
+								- Tiền bồi dưỡng cho Hướng dẫn viên và tài xế địa phương 100.000 vnd/khách/ngày (tương đương 4 usd/khách/ ngày)<br>
+								* Lưu ý: Nếu Quý Khách có nhu cầu tách đoàn, vui lòng thông báo cho nhân viên bán tour ngay tại thời điểm đăng ký tour, Quý khách sẽ thanh toán thêm chi phí là 1.500.000vnđ/khách/ngày
+							</p>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<div class="accordion-header" onclick="toggleAccordion(this)">Trường hợp bất khả kháng<i class="fa-solid fa-sort-down"></i></div>
+						<div class="accordion-content">
+							<p>Nếu chương trình du lịch bị hủy bỏ hoặc thay đổi bởi một trong hai bên vì lý do bất khả kháng (hỏa hoạn, thời tiết, tai nạn, thiên tai, chiến tranh, dịch bệnh, hoãn, dời, và hủy chuyến hoặc thay đổi khác của các phương tiện vận chuyển công cộng hoặc các sự việc bất khả kháng khác theo quy định pháp luật…), thì hai bên sẽ không chịu bất kỳ nghĩa vụ bồi hoàn các tổn thất đã xảy ra và không chịu bất kỳ trách nhiệm pháp lý nào. Tuy nhiên mỗi bên có trách nhiệm cố gắng tối đa để giúp đỡ bên bị thiệt hại nhằm giảm thiểu các tổn thất gây ra vì lý do bất khả kháng.
+							</p>
 						</div>
 					</div>
 				</div>
-			</div>
-
-			<hr>
-			<h6 class="fs-3 text-uppercase mt-5 fw-bolder center">Đánh giá</h6>
-			<hr>
+            </div>
 			<h5 class="fs-3 text-uppercase mt-5 fw-bolder">Xem thêm</h5>
 			<div class="row gy-4">
+				{% for i in tour %}
+				{% if forloop.counter <= 6%}
 				<div class="col-lg-4 pic-product">
-					<div class="image-container">
-						<img src="{% static 'images/DaNang.jpg' %}" class="d-block mt-4 w-100 " alt="">
-					</div>
-					<div class="card">
-						<h5 class="text-primary p-2">Phu Quoc</h5>
-						<h6 class="px-2">Trải nghiệm 3 ngày 2 đêm tại Phú Quốc với các hoạt động đầy hấp dẫn</h6>
-						<div class="container-star p-2">
-							<div class"star">
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-regular fa-star-half-stroke" style="color: #FFD43B;"></i>
-							</div>
-							<p class="px-2">4.7</p>
-						</div>
-						<div class="container p-2">
-							<button class="btn btn-outline-success">Đặt tour</button>
-							<button class="btn btn-outline-primary">Xem thêm chi tiết</button>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 pic-product">
+					{% with first_image=i.images.first %}
 					<div class="image-container">
 						<img src="{% static 'images/DaNang.jpg' %}" class="d-block mt-4 w-100" alt="">
 					</div>
+					{% comment %} <div class="image-container" style="background-image:url('{{first_image.images.url }}');">
+					</div> {% endcomment %}
+					{% endwith %}
 					<div class="card">
-						<h5 class="text-primary p-2">Phu Quoc</h5>
-						<h6 class="px-2">Trải nghiệm 3 ngày 2 đêm tại Phú Quốc với các hoạt động đầy hấp dẫn</h6>
-						<div class="container-star p-2">
-							<div class"star">
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-regular fa-star-half-stroke" style="color: #FFD43B;"></i>
-							</div>
-							<p class="px-2">4.7</p>
-						</div>
+						<h5 class="text-primary p-2">{{ i.name }}</h5>
+						<h6 class="px-2">Khởi hành: {{ i.start_location }}</h6>
+						<h6 class="px-2">Ngày khởi hành: {{ i.start_date }}</h6>
+						<h6 class="px-2">Thời gian: {{ i.duration_in_days_and_nights }}</h6>
+                		<h6 class="px-2">Số chỗ còn: {{ i.remaining_seats }}</h6>
+						<h5 class="p-2">Giá: {{ i.price }} VND</h5>
 						<div class="container p-2">
 							<button class="btn btn-outline-success">Đặt tour</button>
 							<button class="btn btn-outline-primary">Xem thêm chi tiết</button>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4 pic-product">
-					<div class="image-container">
-						<img src="{% static 'images/DaNang.jpg' %}" class="d-block mt-4 w-100" alt="">
-					</div>
-					<div class="card">
-						<h5 class="text-primary p-2">Phu Quoc</h5>
-						<h6 class="px-2">Trải nghiệm 3 ngày 2 đêm tại Phú Quốc với các hoạt động đầy hấp dẫn</h6>
-						<div class="container-star p-2">
-							<div class"star">
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-regular fa-star-half-stroke" style="color: #FFD43B;"></i>
-							</div>
-							<p class="px-2">4.7</p>
-						</div>
-						<div class="container p-2">
-							<button class="btn btn-outline-success">Đặt tour</button>
-							<button class="btn btn-outline-primary">Xem thêm chi tiết</button>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 pic-product">
-					<div class="image-container">
-						<img src="{% static 'images/DaNang.jpg' %}" class="d-block mt-4 w-100" alt="">
-					</div>
-					<div class="card">
-						<h5 class="text-primary p-2">Phu Quoc</h5>
-						<h6 class="px-2">Trải nghiệm 3 ngày 2 đêm tại Phú Quốc với các hoạt động đầy hấp dẫn</h6>
-						<div class="container-star p-2">
-							<div class"star">
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-regular fa-star-half-stroke" style="color: #FFD43B;"></i>
-							</div>
-							<p class="px-2">4.7</p>
-						</div>
-						<div class="container p-2">
-							<button class="btn btn-outline-success">Đặt tour</button>
-							<button class="btn btn-outline-primary">Xem thêm chi tiết</button>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 pic-product">
-					<div class="image-container">
-						<img src="{% static 'images/DaNang.jpg' %}" class="d-block mt-4 w-100" alt="">
-					</div>
-					<div class="card">
-						<h5 class="text-primary p-2">Phu Quoc</h5>
-						<h6 class="px-2">Trải nghiệm 3 ngày 2 đêm tại Phú Quốc với các hoạt động đầy hấp dẫn</h6>
-						<div class="container-star p-2">
-							<div class"star">
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-regular fa-star-half-stroke" style="color: #FFD43B;"></i>
-							</div>
-							<p class="px-2">4.7</p>
-						</div>
-						<div class="container p-2">
-							<button class="btn btn-outline-success">Đặt tour</button>
-							<button class="btn btn-outline-primary">Xem thêm chi tiết</button>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 pic-product">
-					<div class="image-container">
-						<img src="{% static 'images/DaNang.jpg' %}" class="d-block mt-4 w-100" alt="">
-					</div>
-					<div class="card">
-						<h5 class="text-primary p-2">Phu Quoc</h5>
-						<h6 class="px-2">Trải nghiệm 3 ngày 2 đêm tại Phú Quốc với các hoạt động đầy hấp dẫn</h6>
-						<div class="container-star p-2">
-							<div class"star">
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-regular fa-star-half-stroke" style="color: #FFD43B;"></i>
-							</div>
-							<p class="px-2">4.7</p>
-						</div>
-						<div class="container p-2">
-							<button class="btn btn-outline-success">Đặt tour</button>
-							<button class="btn btn-outline-primary">Xem thêm chi tiết</button>
-						</div>
-					</div>
-				</div>
+				{% endif %}
+				{% endfor %}
 			</div>
 		  </div>
 		  <ul class="pagination justify-content-center mt-5">
