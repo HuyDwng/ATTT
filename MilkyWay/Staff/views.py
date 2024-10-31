@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from Management.models import Users, Tour, Tickets, Booking, Payment, Review 
 from django.shortcuts import render, redirect
 from Management.models import Users, Tour, Tickets, Booking, Payment, Review, Images
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render  
 
 # Create your views here.
 def get_home(request):  
@@ -99,11 +99,12 @@ def get_tour_edit(request, tour_id):
     return render(request, 'tour_management/tour_edit.html', context)
 
 
+
 def delete_image(request, image_id):
-    image = get_object_or_404(Images, id=image_id)
-    tour_id = image.tour.id  # Lưu tour_id để điều hướng lại sau khi xóa
-    image.delete()
-    return redirect('tour_edit', tour_id=tour_id)  # Điều hướng lại trang chỉnh sửa tour
+    image = get_object_or_404(Images, id=image_id)  # Tìm ảnh theo ID
+    if request.method == 'POST':
+        image.delete()  # Xóa ảnh khỏi database
+        return redirect('tour_edit', tour_id=image.tour.id)  # Điều hướng trở lại trang chỉnh sửa tour
 
 def add_images(request, tour_id):
     if request.method == 'POST':
@@ -113,6 +114,16 @@ def add_images(request, tour_id):
             Images.objects.create(tour=tour, images=img)  # Tạo đối tượng hình ảnh
             
         return redirect('tour_edit', tour_id=tour_id)  # Điều hướng lại trang chỉnh sửa tour
+    
+def change_image(request, image_id):
+    image = get_object_or_404(Images, id=image_id)
+    if request.method == 'POST':
+        new_image = request.FILES.get('new_image')  # Nhận hình ảnh mới
+        if new_image:
+            image.images = new_image  # Thay đổi hình ảnh
+            image.save()  # Lưu thay đổi
+    return redirect('tour_edit', tour_id=image.tour.id)  # Điều hướng lại trang chỉnh sửa tour
+
 def get_revenue_statistics(request):
     tour = Tour.objects.all()
     user = Users.objects.all()
