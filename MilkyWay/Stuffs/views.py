@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import os
-from Management.models import Users, Tour, Tickets, Booking, Payment, Review 
+from Management.models import Users, Tour, Tickets, Booking, Payment, Review, Images
+from django.db.models import OuterRef, Subquery
 
 # Create your views here.
 def index(request):
@@ -10,6 +11,7 @@ def index(request):
     booking = Booking.objects.all()
     payment = Payment.objects.all()
     review = Review.objects.all()
+     # Lấy tour và ảnh đầu tiên của mỗi tour (theo `position`)
     context = {'tour': tour, 'user':user, 'ticket':ticket, 'booking':booking, 'payment':payment, 'review':review}
     return render(request, 'index.html', context)
 

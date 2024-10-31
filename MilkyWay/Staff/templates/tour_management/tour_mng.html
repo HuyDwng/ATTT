@@ -85,8 +85,7 @@
                         <td>{{i.remaining_seats}}</td>
                         <td>{{i.price}}</td>
                         <td>
-                            <a class="edit-btn" href="../../templates/tour_management/tour_edit.html"
-                                target="_blank">Sửa</a>
+                            <a class="edit-btn" href="{% url 'tour_edit' tour_id=i.id %}" target="_blank">Sửa</a>
                             <button class="delete-btn">Xóa</button>
                             <a class="more-info-btn" href="#">Xem chi tiết</a>
                         </td>

@@ -17,50 +17,22 @@ function showTab(evt, tabName) {
 }
 
 
-// CountDown Timer
-var daysEl = document.getElementById('days')
-var hoursEl = document.getElementById('hours')
-var minutesEl = document.getElementById('minutes')
-var secondsEl = document.getElementById('seconds')
+// Lấy các phần tử HTML theo ID
+var hoursEl = document.getElementById('hours');
+var minutesEl = document.getElementById('minutes');
+var secondsEl = document.getElementById('seconds');
 
-function CountDownTimer(){
-    const countdownDate = new Date("Nov 30, 2024 23:59:59").getTime();
+function Clock() {
+    const now = new Date();
 
-    //convert to milliseconds
-    const second = 1000
-    const minute = second * 60
-    const hour = minute * 60
-    const day = hour * 24
-    
-    //Calculate every second
-    const interval = setInterval(() =>{
-        // Get Current Date
-        const now = new Date(). getTime()
-        const distance = countdownDate - now
-
-        daysEl.innerText = formatNumber(Math.floor(distance / day))
-        hoursEl.innerText = formatNumber(Math.floor((distance % day) / hour))
-        minutesEl.innerText = formatNumber(Math.floor((distance % hour) / minute))
-        secondsEl.innerText = formatNumber(Math.floor((distance % minute) / second))
-
-        //when data is reached
-        if(distance < 0){
-            document.getElementById('countdown').style.display = 'none'
-
-            //stop interval
-            clearInterval(interval)
-        }
-    },1000)
-
+    // Gán các giá trị thời gian hiện tại vào các phần tử HTML
+    hoursEl.innerText = String(now.getHours()).padStart(2, '0');
+    minutesEl.innerText = String(now.getMinutes()).padStart(2, '0');
+    secondsEl.innerText = String(now.getSeconds()).padStart(2, '0');
 }
 
-function formatNumber(number){
-    if(number < 10){
-        return '0' + number
-    }
-
-    return number
-}
+// Cập nhật đồng hồ mỗi giây
+setInterval(Clock, 1000);
 
 // scroll navbar
 var menu = document.getElementById("Menu");

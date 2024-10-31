@@ -221,22 +221,18 @@
             <div class="Discount-Img">
                 <div class="Discount-Info">
                     <div class="Discount-Content">
-                        <p>Join with us within 21 January, 2018 and get up to 40% Discount</p>
+                        <p>Sài Gòn Bây Giờ</p>
                     </div>
                     <div class="Discount-Time">
                         <div id="countdown" class="countdown">
                             <ul>
-                                <li><span id="days">00</span>days</li>
-                                <li><span id="hours">00</span>hours</li>
+                                <li><span id="hours">00</span> Giờ</li>
                                 <li class="separator">:</li>
-                                <li><span id="minutes">00</span>minutes</li>
+                                <li><span id="minutes">00</span> Phút</li>
                                 <li class="separator">:</li>
-                                <li><span id="seconds">00</span>seconds</li>
+                                <li><span id="seconds">00</span> Giây</li>
                             </ul>
                         </div>
-                    </div>
-                    <div class="btn-JoinDiscount">
-                        <button>JOIN NOW</button>
                     </div>
                 </div>
             </div>
@@ -249,192 +245,43 @@
                     <p>Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.</p>
                 </div>
                 <div class="package-cards">
-                    <div class="package-card">
-                        <div class="packages-info">
-                            <div class="img-packages"></div>
-                            <div class="packages-content">
-                                <div class="country">
-                                    <p>Italy</p>
-                                </div>
-                                <div class="price">
-                                    <p>$499</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="detail-info">
-                                <div>5 daays 6 nights</div>
-                                <div>5 star accomodation</div>
-                                <div>transportation</div>
-                                <div>food facilities</div>
-                                <div>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                </div>
-                                <div>2544 review</div>
-                                <div class="btn-BookTour">
-                                    <button>Book Now</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="package-card">
-                        <div class="packages-info">
-                            <div class="img-packages"></div>
-                            <div class="packages-content">
-                                <div class="country">
-                                    <p>Italy</p>
-                                </div>
-                                <div class="price">
-                                    <p>$499</p>
+                    {% for i in tour %}
+                        {% if forloop.counter <= 6%}
+                            <div class="package-card">
+                                <div class="packages-info">
+                                    {% with first_image=i.images.first %}
+                                    <div class="img-packages" style="background-image:url('{{first_image.images.url }}');">
+                                    </div>
+                                    {% endwith %}
+                                    <div class="packages-content">
+                                        <div class="country">
+                                            <p>{{ i.destination }}</p>
+                                        </div>
+                                        <div class="price">
+                                            <p>{{ i.price }} VND</p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="detail-info">
+                                        <div>{{ i.duration_in_days_and_nights }}</div>
+                                        <div>{{ i.start_location }}</div>
+                                        <div>Còn lại {{ i.remaining_seats }}</div>
+                                        <div>
+                                            <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                            <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                            <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                            <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                            <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                                        </div>
+                                        <div>2544 review</div>
+                                        <div class="btn-BookTour">
+                                            <button>Book Now</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <hr>
-                            <div class="detail-info">
-                                <div>5 daays 6 nights</div>
-                                <div>5 star accomodation</div>
-                                <div>transportation</div>
-                                <div>food facilities</div>
-                                <div>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                </div>
-                                <div>2544 review</div>
-                                <div class="btn-BookTour">
-                                    <button>Book Now</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="package-card">
-                        <div class="packages-info">
-                            <div class="img-packages"></div>
-                            <div class="packages-content">
-                                <div class="country">
-                                    <p>Italy</p>
-                                </div>
-                                <div class="price">
-                                    <p>$499</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="detail-info">
-                                <div>5 daays 6 nights</div>
-                                <div>5 star accomodation</div>
-                                <div>transportation</div>
-                                <div>food facilities</div>
-                                <div>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                </div>
-                                <div>2544 review</div>
-                                <div class="btn-BookTour">
-                                    <button>Book Now</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="package-card">
-                        <div class="packages-info">
-                            <div class="img-packages"></div>
-                            <div class="packages-content">
-                                <div class="country">
-                                    <p>Italy</p>
-                                </div>
-                                <div class="price">
-                                    <p>$499</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="detail-info">
-                                <div>5 daays 6 nights</div>
-                                <div>5 star accomodation</div>
-                                <div>transportation</div>
-                                <div>food facilities</div>
-                                <div>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                </div>
-                                <div>2544 review</div>
-                                <div class="btn-BookTour">
-                                    <button>Book Now</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="package-card">
-                        <div class="packages-info">
-                            <div class="img-packages"></div>
-                            <div class="packages-content">
-                                <div class="country">
-                                    <p>Italy</p>
-                                </div>
-                                <div class="price">
-                                    <p>$499</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="detail-info">
-                                <div>5 daays 6 nights</div>
-                                <div>5 star accomodation</div>
-                                <div>transportation</div>
-                                <div>food facilities</div>
-                                <div>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                </div>
-                                <div>2544 review</div>
-                                <div class="btn-BookTour">
-                                    <button>Book Now</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="package-card">
-                        <div class="packages-info">
-                            <div class="img-packages"></div>
-                            <div class="packages-content">
-                                <div class="country">
-                                    <p>Italy</p>
-                                </div>
-                                <div class="price">
-                                    <p>$499</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="detail-info">
-                                <div>5 daays 6 nights</div>
-                                <div>5 star accomodation</div>
-                                <div>transportation</div>
-                                <div>food facilities</div>
-                                <div>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                </div>
-                                <div>2544 review</div>
-                                <div class="btn-BookTour">
-                                    <button>Book Now</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
         </section>
     </section>

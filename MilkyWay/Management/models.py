@@ -52,13 +52,19 @@ class Tour(models.Model):
     destination = models.CharField(max_length=255)  # Điểm đến
     start_date = models.DateField()  # Ngày khởi hành
     end_date = models.DateField()  # Ngày kết thúc
-    price = models.DecimalField(max_digits=10, decimal_places=2)  # Giá tour
+    price = models.DecimalField(max_digits=10, decimal_places=0)  # Giá tour
     available_seats = models.IntegerField()  # Số lượng chỗ trống
     remaining_seats = models.IntegerField(null=True) # Số lượng chỗ còn lại
 
     def __str__(self):
         return self.name
    
+    def duration_in_days_and_nights(self):
+            # Tính khoảng cách giữa end_date và start_date
+            duration = self.end_date - self.start_date
+            days = duration.days
+            nights = days - 1 if days > 0 else 0  # Mỗi đêm là số ngày - 1, ngoại trừ khi chỉ có 1 ngày
+            return f"{days} ngày, {nights} đêm"
 
 class Booking(models.Model):
     STATUS_CHOICES = [
@@ -122,7 +128,7 @@ class Tickets(models.Model):
         return url
     
 class Images(models.Model):
-    tour = models.ForeignKey(Tour, on_delete=models.CASCADE, null=True, blank=True)
+    tour = models.ForeignKey(Tour,related_name='images', on_delete=models.CASCADE, null=True, blank=True)
     images = models.ImageField(upload_to=user_directory_path, default=None)
     position = models.IntegerField()
 

@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from Management.models import Users, Tour, Tickets, Booking, Payment, Review 
 from django.shortcuts import render, redirect
 from Management.models import Users, Tour, Tickets, Booking, Payment, Review, Images
-
+from django.shortcuts import get_object_or_404, render
 
 # Create your views here.
 def get_home(request):  
@@ -28,6 +28,7 @@ def get_payment(request):
 
 def get_add_tour(request):
     if request.method == 'POST':
+        # Nhận thông tin tour từ form
         user_tour = request.POST.get('tour_code')
         name = request.POST.get('tour_name')
         start_location = request.POST.get('start_location')
@@ -36,17 +37,17 @@ def get_add_tour(request):
         end_date = request.POST.get('end_date')
         price = request.POST.get('tour_price')
         available_seats = request.POST.get('passenger_count')
-        remaining_seats = available_seats  
+        remaining_seats = available_seats
 
-        # Collect descriptions for each itinerary
+        # Thu thập mô tả địa điểm từ các trường itinerary_0, itinerary_1, ...
         descriptions = []
-        for i in range(1, 5):
-            itinerary = request.POST.get(f'itinerary_{i}')
-            if itinerary:
-                descriptions.append(itinerary)
-        description = ''.join(descriptions)  # Combine with '' separator
+        for key in request.POST:
+            if key.startswith('itinerary_'):
+                descriptions.append(request.POST.get(key))
+        
+        description = '*'.join(descriptions)  # Ghép các mô tả lại với dấu `*` phân cách
 
-        # Save Tour instance
+        # Lưu thông tin Tour
         tour = Tour(
             user_tour=user_tour,
             name=name,
@@ -61,27 +62,57 @@ def get_add_tour(request):
         )
         tour.save()
 
-        # Save images to Images model
+        # Lưu ảnh
         images = request.FILES.getlist('tour_image')
         for idx, image in enumerate(images):
             Images.objects.create(tour=tour, images=image, position=idx + 1)
 
         return redirect('tour_management')
 
-    # Display add tour page if GET request
     context = {'range': range(1, 5)}
     return render(request, 'tour_management/add_tour.html', context)
 
-def get_tour_edit(request):
-    tour = Tour.objects.all()
+
+
+def get_tour_edit(request, tour_id):
+    tour = get_object_or_404(Tour, id=tour_id)
+    images = Images.objects.filter(tour=tour)  # Lấy các ảnh thuộc tour này
     user = Users.objects.all()
     ticket = Tickets.objects.all()
     booking = Booking.objects.all()
     payment = Payment.objects.all()
     review = Review.objects.all()
-    context = {'tour': tour, 'user':user, 'ticket':ticket, 'booking':booking, 'payment':payment, 'review':review}
-    return render(request,'tour_management/tour_edit.html', context)
+    tour.start_date = tour.start_date.strftime("%Y-%m-%d") if tour.start_date else ""
+    tour.end_date = tour.end_date.strftime("%Y-%m-%d") if tour.end_date else ""
 
+    # Cập nhật context để bao gồm danh sách ảnh
+    context = {
+        'range': range(1, 5),
+        'tour': tour,
+        'images': images,  # Thêm danh sách ảnh vào context
+        'user': user,
+        'ticket': ticket,
+        'booking': booking,
+        'payment': payment,
+        'review': review,
+    }
+    return render(request, 'tour_management/tour_edit.html', context)
+
+
+def delete_image(request, image_id):
+    image = get_object_or_404(Images, id=image_id)
+    tour_id = image.tour.id  # Lưu tour_id để điều hướng lại sau khi xóa
+    image.delete()
+    return redirect('tour_edit', tour_id=tour_id)  # Điều hướng lại trang chỉnh sửa tour
+
+def add_images(request, tour_id):
+    if request.method == 'POST':
+        tour = get_object_or_404(Tour, id=tour_id)
+        images = request.FILES.getlist('tour_images')  # Nhận danh sách file hình ảnh
+        for img in images:
+            Images.objects.create(tour=tour, images=img)  # Tạo đối tượng hình ảnh
+            
+        return redirect('tour_edit', tour_id=tour_id)  # Điều hướng lại trang chỉnh sửa tour
 def get_revenue_statistics(request):
     tour = Tour.objects.all()
     user = Users.objects.all()
