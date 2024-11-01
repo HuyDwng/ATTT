@@ -21,9 +21,6 @@
     height: auto; /* Đảm bảo chiều cao tự động điều chỉnh theo ảnh */
 }
 
-.container-star{
-    display: inline-flex;
-}
 .image{
     width: 50%;
     margin-left: 7%;
@@ -87,11 +84,7 @@
     text-align: center;
     font-size: 18px;
   }
-  
-  .data-detail{
-    display: flex;
-    margin-left: 10px;
-  }
+
   .accordion-button::after {
     font-family: 'FontAwesome';
     float: right;
@@ -112,4 +105,66 @@
 
 .card-title {
     margin-top: 10px;
+}
+
+/* ACCORDION */
+
+.accordion {
+    width: 100%;
+    max-width: 600px;
+}
+
+.accordion-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.accordion-header {
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+}
+
+.accordion-header:hover {
+    background-color: #f0f0f0;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 15px;
+    background-color: #fff;
+}
+
+.accordion-content p {
+    margin: 15px 0;
+}
+
+.open .accordion-content {
+    max-height: 200px; /* Điều chỉnh độ cao tối đa cho phù hợp */
+    padding: 15px;
+}
+
+.btn-check:focus+.btn-outline-success, .btn-outline-success:focus {
+    box-shadow: none !important;
+}
+
+.btn-check:focus+.btn-outline-primary, .btn-outline-primary:focus {
+    box-shadow: none !important;
+}
+
+.btn-check:focus+.btn-success, .btn-success:focus {
+    box-shadow: none !important;
+}
+
+.text-primary {
+    margin-bottom: 0px !important;
 }

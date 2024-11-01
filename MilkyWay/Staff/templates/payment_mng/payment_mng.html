@@ -1,4 +1,6 @@
 {% load static %}
+
+{% load custom_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -131,6 +133,49 @@
                             <th>Phương thức thanh toán</th>
                             <th>Hành động</th>
                         </tr>
+                        {% for i in booking %}
+                        <tr>
+                            <td>{{i.id}}</td>
+                            <td>{{i.user}}</td>
+                            <td>{{i.tour}}</td>
+                            <td>{{i.booking_date}}</td>
+
+
+
+                            <td class="total-payment">
+                                {% for t in tour %}
+                                {% if t.name|lower == i.tour|lower %}
+                                {% for tick in ticket %}
+                                {% if i.ticket_code|stringformat:"s" == tick.ticket_code|stringformat:"s" %}
+                                {{ t.price|multiply:tick.quantity }} VND
+                                {% endif %}
+                                {% endfor%}
+                                {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td>{{i.status}}</td>
+                            <td>{{i.payment_method}}</td>
+                            <td>
+                                <details>
+                                    <summary class="btn btn-link p-0">Xem chi tiết</summary>
+                                    <div class="details-content">
+                                        <span class="close-btn"
+                                            onclick="this.closest('details').removeAttribute('open')">&times;</span>
+                                        <p>Chi tiết giao dịch {{i.id}}:</p>
+                                        <ul>
+                                            <li>Mã giao dịch: {{i.id}}</li>
+                                            <li>Tên khách hàng: {{i.user}}</li>
+                                            <li>Tên tour: {{i.tour}}</li>
+                                            <li>Ngày giao dịch: {{i.booking_date}}</li>
+                                            <li id="total-payment-li">Tổng số tiền: </li>
+                                            <li>Trạng thái: {{i.payment_method}}</li>
+                                            <li>Phương thức: {{i.ticket_code}}</li>
+                                        </ul>
+                                    </div>
+                                </details>
+                            </td>
+                        </tr>
+                        {% endfor %}
                     </thead>
                     <tbody>
 
