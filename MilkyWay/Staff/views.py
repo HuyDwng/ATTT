@@ -84,6 +84,7 @@ def get_tour_edit(request, tour_id):
     review = Review.objects.all()
     tour.start_date = tour.start_date.strftime("%Y-%m-%d") if tour.start_date else ""
     tour.end_date = tour.end_date.strftime("%Y-%m-%d") if tour.end_date else ""
+    numbers = range(1,6)
 
     # Cập nhật context để bao gồm danh sách ảnh
     context = {
@@ -95,6 +96,7 @@ def get_tour_edit(request, tour_id):
         'booking': booking,
         'payment': payment,
         'review': review,
+        'numbers': numbers,
     }
     return render(request, 'tour_management/tour_edit.html', context)
 

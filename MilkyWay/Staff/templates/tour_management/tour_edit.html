@@ -42,18 +42,9 @@
 
             <!-- Upload Hình Ảnh Tour -->
             <div class="image-gallery">
-                <h2>Hình Ảnh Tour</h2>
-                {% for image in images %}
-                <div class="image-item">
-                    <p>URL: {{ image.ImageURL }}, ID: {{ image.id }}</p> <!-- Kiểm tra giá trị -->
-                    <img src="{{ image.ImageURL }}" alt="Hình ảnh {{ image.position }}" />
-                    <form action="{% url 'delete_image' image.id %}" method="POST" style="display:inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">Xóa</button>
-                    </form>
-                </div>
-                {% empty %}
-                <p>Không có hình ảnh nào cho tour này.</p>
+                {% for i in numbers %}
+                <li>Số: {{ i }}</li>
+                <form action=""></form>
                 {% endfor %}
             </div>
 
