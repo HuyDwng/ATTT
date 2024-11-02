@@ -45,7 +45,7 @@ label {
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 .form-section h2 {
@@ -242,3 +242,88 @@ textarea {
 }
 
 /*=========================CSS cho phần hiển thị và chỉnh sửa hình ảnh*/
+.image-gallery {
+    margin: 20px auto;
+    max-width: 800px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+}
+
+.image-gallery ul {
+    list-style: none;
+}
+
+.image-gallery li {
+    background-color: #f2f2f2;
+    margin: 0.5rem 1rem 0.5rem 1rem;
+    padding: 1rem;
+    border-radius: 7px;
+}
+
+.image-gallery h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--main-color);
+
+}
+
+.image-gallery input {
+    vertical-align: top;
+    padding: 0.4rem;
+}
+
+.image-gallery img {
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.image-gallery .btn {
+    margin-left: 5px;
+    vertical-align: top;
+    color: var(--bg-color);
+    padding: 0.6rem;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--main-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+
+}
+
+.image-gallery .btn :hover {
+    padding: 0.7rem;
+    transition: 0.3s ease;
+
+}
+
+.image-gallery .btn-danger {
+    background-color: var(--remove-btn-color);
+}
+
+#add_image_form .btn-success {
+    margin: 0.5rem auto 1rem auto;
+    vertical-align: top;
+    color: var(--bg-color);
+    padding: 0.6rem;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--main-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    width: 8rem;
+}
+
+#add_image_form label {
+    text-align: center;
+}
+
+/*==========================================THiết kế css cho phần description===================*/
+.description-item {
+    display: flex;
+    align-items: center;
+}
+
+.description-item input {
+    flex: 1;
+    margin-right: 10px;
+}

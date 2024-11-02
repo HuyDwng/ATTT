@@ -42,10 +42,29 @@
 
             <!-- Upload Hình Ảnh Tour -->
             <div class="image-gallery">
-                {% for i in numbers %}
-                <li>Số: {{ i }}</li>
-                <form action=""></form>
-                {% endfor %}
+                <h2>Hình Ảnh Tour Hiện Tại:</h2>
+                <ul>
+                    {% for image in images %}
+                    <form action=""></form>
+                    <li>
+                        <img src="{{ image.ImageURL }}" alt="Image {{ forloop.counter }}" width="200px" height="150px">
+                        <!-- Nút Xóa Ảnh -->
+
+                        <!--Form để khi vòng lặp chạy thì sẽ bị mất form này mà không mất form chứa nút-->
+                        <form action="{% url 'delete_image' image.id %}" method="POST" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Xóa</button>
+                        </form>
+                        <!-- Nút Thay Đổi Ảnh -->
+                        <form action="{% url 'change_image' image.id %}" method="POST" enctype="multipart/form-data"
+                            style="display:inline;">
+                            {% csrf_token %}
+                            <input type="file" name="new_image" accept="image/*">
+                            <button type="submit" class="btn btn-primary">Thay Đổi</button>
+                        </form>
+                    </li>
+                    {% endfor %}
+                </ul>
             </div>
 
             <!-- Thêm Hình Ảnh Mới -->
@@ -56,6 +75,26 @@
                 <input type="file" id="tour_images" name="tour_images" accept="image/*" multiple required>
                 <button type="submit" class="btn btn-success">Thêm Hình Ảnh</button>
             </form>
+            <!-- Hiển thị các mô tả trong description -->
+            <div id="description-container">
+                {% for desc in descriptions %}
+                <div class="description-item">
+                    <input type="text" name="description[]" value="{{ desc }}" class="form-control"
+                        placeholder="Mô tả địa điểm" />
+                </div>
+                {% endfor %}
+            </div>
 
-            <!-- Nút submit -->
-            <button type="submit" class="submit-btn btn btn-primary">Lưu thông tin</button>
+            <button type="button" onclick="addDescription()">Thêm địa điểm</button>
+            <button type="submit">Lưu</button>
+        </form> <!-- Nút submit -->
+        <script>
+            function addDescription() {
+                const container = document.getElementById('description-container');
+                const inputDiv = document.createElement('div');
+                inputDiv.className = 'description-item';
+                inputDiv.innerHTML = '<input type="text" name="description[]" class="form-control" placeholder="Mô tả địa điểm" />';
+                container.appendChild(inputDiv);
+            }
+        </script>
+</body>
