@@ -17,7 +17,7 @@ class Users(models.Model):
         ('admin', 'Admin'),
     ]
     role = models.CharField(max_length=10, choices=ROLES, default='customer')  # Phân quyền
-    phone_number = models.CharField(max_length=500)
+    phone_number = models.IntegerField()
     date_joined = models.DateTimeField(auto_now_add=True, auto_created=True)
     is_actived = models.BooleanField(default=True)
 
@@ -62,7 +62,6 @@ def user_directory_path(instance, filename):
     return os.path.join("", new_filename)
 
 class Tour(models.Model):
-    user_tour = models.CharField(max_length=255, default='user')
     name = models.CharField(max_length=255)  # Tên tour
     description = models.TextField()  # Mô tả tour
     start_location = models.CharField(max_length=255)  # Nơi bắt đầu
@@ -72,6 +71,17 @@ class Tour(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=0)  # Giá tour
     available_seats = models.IntegerField()  # Số lượng chỗ trống
     remaining_seats = models.IntegerField(null=True) # Số lượng chỗ còn lại
+
+    def save(self, *args, **kwargs):
+        self.description = encrypt_data(self.description)
+        self.destination = encrypt_data(self.destination)
+        self.start_location = encrypt_data(self.start_location)
+        super().save(*args, **kwargs)
+
+    def load_encrypted(self):
+        self.description = decrypt_data(self.description)
+        self.destination = decrypt_data(self.destination)
+        self.start_location = decrypt_data(self.start_location)
 
     def __str__(self):
         return self.name
