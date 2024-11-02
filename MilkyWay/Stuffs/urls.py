@@ -6,6 +6,7 @@ from django.conf import settings
 urlpatterns = [
     path("", views.index, name="homepage"),
     path("saigonguide", views.saigonguide, name="saigonguide"),
+    path("turkeyguide", views.turkeyguide, name="turkeyguide"),
     path("hotel", views.hotel, name="hotel"),
     path("payment", views.payment, name="payment"),
     path('guide', views.guide, name='guide'),
