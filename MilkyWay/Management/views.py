@@ -7,6 +7,7 @@ from Management.models import Users, Tour, Tickets, Booking, Payment, Review
 from django.contrib.auth.models import User
 from django.contrib import messages
 
+
 def members(request):
   tour = Tour.objects.all()
   user = Users.objects.all()

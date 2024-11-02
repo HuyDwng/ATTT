@@ -13,6 +13,7 @@ import os
 from dotenv import load_dotenv
 from pathlib import Path
 import stripe
+
 load_dotenv()
 
 
@@ -21,8 +22,8 @@ STRIPE_PUBLIC_KEY = 'pk_test_51QFuVAASHPXVdWXjFdrGHky3kHWbyVNPiXtCPiRXYK8MgIIBQp
 STRIPE_SECRET_KEY = 'sk_test_51QFuVAASHPXVdWXj4C2ge2pKe9CDnHtB5EZb3Ma7Lsz8waP8KjPSRqR13jjRaF8PY20XitjOzdZh45EDV9ZvN3jP00mZgs6Vs6'
 stripe.api_key = STRIPE_SECRET_KEY
 
-
-
+#ecryption
+FERNET_KEY = b'7bjaG8Yisy7kFNSfFz1dDeaGbMtCLn_xzM5KOiaVMIE='
 
 GOOGLE_OAUTH_CLIENT_ID = os.environ.get('GOOGLE_OAUTH_CLIENT_ID')
 if not GOOGLE_OAUTH_CLIENT_ID:
