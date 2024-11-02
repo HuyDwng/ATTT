@@ -157,7 +157,7 @@ class Tickets(models.Model):
 class Images(models.Model):
     tour = models.ForeignKey(Tour,related_name='images', on_delete=models.CASCADE, null=True, blank=True)
     images = models.ImageField(upload_to=user_directory_path, default=None)
-    position = models.IntegerField()
+    position = models.IntegerField(default=0)
 
     @property
     def ImageURL(self):
