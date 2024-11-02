@@ -1,14 +1,14 @@
 from django.db import models
 import os
 from datetime import datetime
-
+from .utils import encrypt_data, decrypt_data
 # Create your models here.
 #Tạo bảng, các trường dữ liệu (database)
 #ID sẽ được tự động tạo
 
 class Users(models.Model):
-    username = models.CharField(max_length=255, blank=False)  # Tên user
-    password = models.IntegerField(blank=False)
+    username = models.CharField(max_length=500, blank=False)  # Tên user
+    password = models.CharField(max_length=500,blank=False)
     email = models.EmailField(null=True)
     fullname = models.CharField(max_length=200)
     ROLES = [
@@ -17,9 +17,26 @@ class Users(models.Model):
         ('admin', 'Admin'),
     ]
     role = models.CharField(max_length=10, choices=ROLES, default='customer')  # Phân quyền
-    phone_number = models.IntegerField()  # Số điện thoại
-    date_joined = models.DateTimeField(auto_now_add=True)
+    phone_number = models.CharField(max_length=500)
+    date_joined = models.DateTimeField(auto_now_add=True, auto_created=True)
     is_actived = models.BooleanField(default=True)
+
+    def save(self, *args, **kwargs):
+        # Mã hóa các trường nhạy cảm trước khi lưu
+        self.fullname = encrypt_data(self.fullname)
+        self.email = encrypt_data(self.email)
+        self.password = encrypt_data(self.password)
+        self.phone_number = encrypt_data(self.phone_number)
+
+
+        super().save(*args, **kwargs)
+
+    def load_encrypted(self):
+        # Giải mã các trường nhạy cảm khi lấy ra
+        self.fullname = decrypt_data(self.fullname)
+        self.email = decrypt_data(self.email)
+        self.password = decrypt_data(self.password)
+        self.phone_number = decrypt_data(self.phone_number)
 
     def __str__(self):
         return self.username
