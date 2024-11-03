@@ -49,38 +49,45 @@
         <div class="search-container">
             <div class="tabs-search">
                 <button class="tab active" onclick="showTab(event, 'tours')"><i class="fa-brands fa-pagelines"></i> Tours</button>
-                <button class="tab" onclick="showTab(event, 'hotels')"><i class="fa-solid fa-building"></i> Hotels</button>
-                <button class="tab" onclick="showTab(event, 'flights')"><i class="fa-solid fa-plane-departure"></i> Flights</button>
+                {% comment %} <button class="tab" onclick="showTab(event, 'hotels')"><i class="fa-solid fa-building"></i> Hotels</button>
+                <button class="tab" onclick="showTab(event, 'flights')"><i class="fa-solid fa-plane-departure"></i> Flights</button> {% endcomment %}
             </div>
 
             <div id="tours" class="tab-content">
-                <div class="search-form">
+                <form method="POST" action="{% url 'search_tours' %}" class="search-form">
+                    {% csrf_token %}
                     <div class="Find_Content">
-                        <p>Destination</p>
-                        <p>Check in</p>
-                        <p>Check out</p>
-                        <p>Duration</p>
-                        <p>Members</p>
+                        <div class="input-destination">
+                            <label>Địa Điểm</label>
+                            <input type="text" name="starting_location" placeholder="Nhập Nơi Ở" class="search-destination">
+                            <input type="text" name="destination" placeholder="Nhập Địa Điểm" class="destination">
+                        </div>
+                        <div class="input-check-in">
+                            <label>Thời Gian Đi</label>
+                            <input type="date" name="start_date">
+                        </div>
+                        <div class="input-duration">
+                            <label>Bao Lâu</label>
+                            <input type="number" name="duration" placeholder="Duration">
+                        </div>
+                        <div class="input-members">
+                            <label>Số Lượng Người</label>
+                            <input type="number" name="members" placeholder="Members">
+                        </div>
                     </div>
-                    <input type="text" placeholder="Enter Your Destination Country" class="search-destination">
-                    <input type="date">
-                    <input type="date">
-                    <input type="number" placeholder="Duration">
-                    <input type="number" placeholder="Members">
-                    <input type="text" placeholder="Enter Your Destination Location" class="search-destination">
-                </div>
-                <div class="Find_budget">
-                    <p>Budget :</p>
-                    <select>
-                        <option value="low"> &lt; 200$</option><!-- /.option-->
-                        <option value="medium">200$ - 500$</option><!-- /.option-->
-                        <option value="rather">500$ - 1000$</option><!-- /.option-->
-                        <option value="high">trên 1000$</option><!-- /.option-->
-                    </select>
-                    <button class="btn-search">Search</button>
-                </div>
+                    <div class="Find_budget">
+                        <p>Mức Giá :</p>
+                        <select name="price_range">
+                            <option value="low">&lt; 1,000,000 VND</option>
+                            <option value="medium">1,000,000 - 2,000,000 VND</option>
+                            <option value="rather">2,000,000 - 4,000,000 VND</option>
+                            <option value="high">trên 4,000,000 VND</option>
+                        </select>
+                        <button type="submit" class="btn-search">Search</button>
+                    </div>
+                </form>
             </div>
-            <div id="hotels" class="tab-content" style="display:none;">
+            {% comment %} <div id="hotels" class="tab-content" style="display:none;">
                 <div class="search-form">
                     <!-- Nội dung tìm kiếm khách sạn giống tab Tours -->
                     <div class="Find_Content">
@@ -162,66 +169,65 @@
                         <button type="submit" class="search-btn">Search</button>
                     </div>
                 </div>
-            </div>
+            </div> {% endcomment %}
         </div> <!-- end search-content -->
     </section>
     <section id = "destination">
         <!-- Top Destinations -->     
         <section class="destinations">
             <div class="title-MainPage">
-                <h2>Top Destination</h2>
-                <p>Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.</p>
+                <h2>Tổng Hợp Địa Điểm Du Lịch</h2>
+                <p>Cuộc Sống Là Những Trải Nghiệm</p>
             </div>
             <div class="destination-card">
                 <div class="Parent-TopCard">
-                    <div class="top-card">
-                        <div class="Destination-Info">
-                            <h3 class="Destination-Name">China</h3>
-                            <p class= "Places-number">20 Tours    15 Places</p>
-                        </div>
-                    </div>
-                    <div class="top-card">
-                        <div class="Destination-Info">
-                            <h3 class="Destination-Name">China</h3>
-                            <p class= "Places-number">20 Tours    15 Places</p>
-                        </div>
-                    </div>
+                    {% for tour in tour_counts %}
+                        {% if forloop.counter <= 2 %}
+                            <div class="top-card">
+                                <div class="Destination-Info">
+                                    <h3 class="Destination-Name">{{ tour.destination }}</h3>
+                                    <p class="Places-number">{{ tour.count }} Tours, Địa Điểm</p>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
-                <div class="other-card">
-                    <div class="left-card">
-                        <div class="Destination-Info">
-                            <h3 class="Destination-Name">China</h3>
-                            <p class= "Places-number">20 Tours    15 Places</p>
-                        </div>
-                    </div>
-                    <div class="right-card">
-                        <div class="right-card1">
-                            <div class="Destination-Info">
-                                <h3 class="Destination-Name">China</h3>
-                                <p class= "Places-number">20 Tours    15 Places</p>
+                    <div class="other-card">
+                        {% for tour in tour_counts %}
+                            {% if forloop.counter == 3 %}
+                            <div class="left-card">
+                                <div class="Destination-Info">
+                                    <h3 class="Destination-Name">{{ tour.destination }}</h3>
+                                    <p class="Places-number">{{ tour.count }} Tours, Địa Điểm</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="right-card1">
-                            <div class="Destination-Info">
-                                <h3 class="Destination-Name">China</h3>
-                                <p class= "Places-number">20 Tours    15 Places</p>
+                            <div class="right-card">
+                                {% elif forloop.counter > 3 and forloop.counter <= 5 %}
+                                <div class="right-card1">
+                                    <div class="Destination-Info">
+                                        <h3 class="Destination-Name">{{ tour.destination }}</h3>
+                                        <p class="Places-number">{{ tour.count }} Tours, Địa Điểm</p>
+                                    </div>
+                                </div>
+                                {% elif forloop.counter > 5 and forloop.counter <= 6%}
+                                <div class="right-card2">
+                                    <div class="Destination-Info">
+                                        <h3 class="Destination-Name">{{ tour.destination }}</h3>
+                                        <p class="Places-number">{{ tour.count }} Tours, Địa Điểm</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="right-card2">
-                            <div class="Destination-Info">
-                                <h3 class="Destination-Name">China</h3>
-                                <p class= "Places-number">20 Tours    15 Places</p>
-                            </div>
-                        </div>
+                        {% endif %}
+                        {%endfor%}
                     </div>
                 </div>
             </div>
         </section>
         <section class="Discount-Destination">
-            <div class="Discount-Img">
+            <div class="Discount-Img" style = "background-image: url('{% static "images/bg-clock.jpg"%}');">
                 <div class="Discount-Info">
                     <div class="Discount-Content">
-                        <p>Sài Gòn Bây Giờ</p>
+                        <p>Việt Nam Bây Giờ</p>
                     </div>
                     <div class="Discount-Time">
                         <div id="countdown" class="countdown">
@@ -520,6 +526,6 @@
 	<!-- footer-copyright end -->
         
     <!--JavaScript-->
-    <script src="{% static 'javascript/MainPage.js' %}"></script>
+<script src="{% static 'javascript/MainPage.js' %}"></script>
 </body>
 </html>
