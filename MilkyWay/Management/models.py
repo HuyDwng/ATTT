@@ -44,7 +44,7 @@ class Users(models.Model):
 
 def user_directory_path(instance, filename):
     tour = instance.tour
-    user_tour = tour.user_tour
+    name_tour=tour.name
     # Lấy ngày hiện tại
     today = datetime.today()
     date_str = today.strftime("%Y%m%d")  # Định dạng ngày thành YYYYMMDD
@@ -53,10 +53,10 @@ def user_directory_path(instance, filename):
     # Điều này sẽ đếm tất cả các file cùng ngày với username đó
     existing_files_count = Images.objects.filter(
         tour=tour
-    ).filter(images__icontains=f"{user_tour}_{date_str}").count()
+    ).filter(images__icontains=f"{name_tour}_{date_str}").count()
 
     # Tạo tên file với username, ngày và số thứ tự
-    new_filename = f"{user_tour}_{date_str}_{existing_files_count + 1}{os.path.splitext(filename)[1]}"
+    new_filename = f"{name_tour}_{date_str}_{existing_files_count + 1}{os.path.splitext(filename)[1]}"
 
     # Trả về đường dẫn đầy đủ cho file
     return os.path.join("", new_filename)
@@ -71,6 +71,15 @@ class Tour(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=0)  # Giá tour
     available_seats = models.IntegerField()  # Số lượng chỗ trống
     remaining_seats = models.IntegerField(null=True) # Số lượng chỗ còn lại
+
+    def decrypted_data(self, field_name):
+        # Giải mã dữ liệu dựa vào tên trường
+        encrypted_value = getattr(self, field_name, None)  # Lấy giá trị từ trường
+        if encrypted_value is not None:
+            return decrypt_data(encrypted_value)
+        return None  # Trả về None nếu trường không tồn tại
+    def decrypted_description(self):
+        return decrypt_data(self.description)
 
     def save(self, *args, **kwargs):
         self.description = encrypt_data(self.description)

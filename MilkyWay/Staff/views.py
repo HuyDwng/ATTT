@@ -5,6 +5,30 @@ from Management.models import Users, Tour, Tickets, Booking, Payment, Review, Im
 from django.shortcuts import get_object_or_404, render  
 
 # Create your views here.
+
+#encrypted and decrypted code
+def decrypted_tours():
+    tour = Tour.objects.all()
+    return [
+        {
+            'description': t.decrypted_data('description'),
+            'name': t.decrypted_data('name'),
+            'destination': t.decrypted_data('destination'),
+            'price': t.decrypted_data('price'),
+        }
+        for t in tour
+    ]
+def get_common_context():
+    tours = decrypted_tours()
+    return {
+        'tour': tours,
+        'user': Users.objects.all(),
+        'ticket': Tickets.objects.all(),
+        'booking': Booking.objects.all(),
+        'payment': Payment.objects.all(),
+        'review': Review.objects.all(),
+    }
+
 def get_home(request):  
     tour = Tour.objects.all()
     user = Users.objects.all()
@@ -29,7 +53,6 @@ def get_payment(request):
 def get_add_tour(request):
     if request.method == 'POST':
         # Nhận thông tin tour từ form
-        user_tour = request.POST.get('tour_code')
         name = request.POST.get('tour_name')
         start_location = request.POST.get('start_location')
         destination = request.POST.get('destination')
@@ -49,7 +72,6 @@ def get_add_tour(request):
 
         # Lưu thông tin Tour
         tour = Tour(
-            user_tour=user_tour,
             name=name,
             description=description,
             start_location=start_location,
@@ -84,7 +106,6 @@ def get_tour_edit(request, tour_id):
     if request.method == 'POST':
         # Cập nhật các thông tin tour từ form
         tour.name = request.POST.get('tour_name')
-        tour.user_tour = request.POST.get('tour_code')
         tour.start_location = request.POST.get('start_location')
         tour.destination = request.POST.get('destination')
         tour.start_date = request.POST.get('start_date')
@@ -103,7 +124,9 @@ def get_tour_edit(request, tour_id):
         return redirect('tour_mng')  # Chuyển hướng về trang quản lý tour sau khi lưu
 
     # Nếu là GET, render form với dữ liệu hiện tại
-    descriptions = tour.description.split('*') if tour.description else []
+
+    desc = tour.decrypted_description()
+    descriptions = desc.split('*') if tour.description else []
     context = {
         'tour': tour,
         'images': images,

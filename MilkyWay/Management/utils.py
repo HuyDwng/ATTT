@@ -1,4 +1,4 @@
-from cryptography.fernet import Fernet
+from cryptography.fernet import Fernet,InvalidToken
 from django.conf import settings
 import json
 
@@ -18,6 +18,10 @@ def encrypt_data(data):
     encrypted_data = fernet.encrypt(json_data.encode())
     return encrypted_data.decode()  # Trả về dữ liệu đã mã hóa dưới dạng chuỗi
 
-def decrypt_data(encrypted_data):
-    decrypted_data = fernet.decrypt(encrypted_data.encode()).decode()
-    return json.loads(decrypted_data)
+def decrypt_data(encrypted_value):
+    try:
+        fernet = Fernet(settings.FERNET_KEY)
+        return fernet.decrypt(encrypted_value.encode()).decode()
+    except InvalidToken:
+        # Xử lý khi token không hợp lệ
+        return None  # Hoặc xử lý lỗi theo cách khác
