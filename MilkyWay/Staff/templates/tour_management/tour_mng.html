@@ -38,7 +38,7 @@
                     </div>
 
                     <div class="offcanvas-body">
-                        <a href="{% url 'payment' %}" target="_blank">
+                        <a href="{% url 'payment' %}">
                             Quản lý thanh toán
                         </a><br>
                         <a href="#" target="_blank">
@@ -59,7 +59,7 @@
             </div>
         </div>
 
-        <a class="add-tour" href="{% url 'add_tour' %}" target="_blank">Thêm Tour Mới</a>
+        <a class="add-tour" href="{% url 'add_tour' %}">Thêm Tour Mới</a>
 
         <div id="main">
 
@@ -85,7 +85,7 @@
                         <td>{{i.remaining_seats}}</td>
                         <td>{{i.price}}</td>
                         <td>
-                            <a class="edit-btn" href="{% url 'tour_edit' tour_id=i.id %}" target="_blank">Sửa</a>
+                            <a class="edit-btn" href="{% url 'tour_edit' tour_id=i.id %}">Sửa</a>
                             <button class="delete-btn">Xóa</button>
                             <a class="more-info-btn" href="#">Xem chi tiết</a>
                         </td>

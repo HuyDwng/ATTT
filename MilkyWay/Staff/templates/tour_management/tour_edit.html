@@ -38,63 +38,87 @@
                 <label for="remaining_count">Số Lượng Còn Lại:</label>
                 <input type="number" id="remaining_count" name="remaining_count" required
                     value="{{ tour.remaining_seats }}">
-            </div>
 
-            <!-- Upload Hình Ảnh Tour -->
-            <div class="image-gallery">
-                <h2>Hình Ảnh Tour Hiện Tại:</h2>
-                <ul>
-                    {% for image in images %}
-                    <form action=""></form>
-                    <li>
-                        <img src="{{ image.ImageURL }}" alt="Image {{ forloop.counter }}" width="200px" height="150px">
-                        <!-- Nút Xóa Ảnh -->
-
-                        <!--Form để khi vòng lặp chạy thì sẽ bị mất form này mà không mất form chứa nút-->
-                        <form action="{% url 'delete_image' image.id %}" method="POST" style="display:inline;">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-danger">Xóa</button>
-                        </form>
-                        <!-- Nút Thay Đổi Ảnh -->
-                        <form action="{% url 'change_image' image.id %}" method="POST" enctype="multipart/form-data"
-                            style="display:inline;">
-                            {% csrf_token %}
-                            <input type="file" name="new_image" accept="image/*">
-                            <button type="submit" class="btn btn-primary">Thay Đổi</button>
-                        </form>
-                    </li>
+                <!-- Đây là code html phần description -->
+                <div id="description-container">
+                    <h3>Mô tả địa điểm:</h3>
+                    {% for description in descriptions %}
+                    <div class="description-item">
+                        <input type="text" name="description[]" value="{{ description }}" class="form-control"
+                            placeholder="Mô tả địa điểm" />
+                        <button type="button" onclick="removeDescription(this)">Xóa</button>
+                    </div>
                     {% endfor %}
-                </ul>
-            </div>
-
-            <!-- Thêm Hình Ảnh Mới -->
-            <form id="add_image_form" action="{% url 'add_images' tour.id %}" method="POST"
-                enctype="multipart/form-data">
-                {% csrf_token %}
-                <label for="tour_images">Thêm Hình Ảnh Mới:</label>
-                <input type="file" id="tour_images" name="tour_images" accept="image/*" multiple required>
-                <button type="submit" class="btn btn-success">Thêm Hình Ảnh</button>
-            </form>
-            <!-- Hiển thị các mô tả trong description -->
-            <div id="description-container">
-                {% for desc in descriptions %}
-                <div class="description-item">
-                    <input type="text" name="description[]" value="{{ desc }}" class="form-control"
-                        placeholder="Mô tả địa điểm" />
                 </div>
-                {% endfor %}
-            </div>
+                <button type="button" onclick="addDescription()">Thêm Mô tả</button>
 
-            <button type="button" onclick="addDescription()">Thêm địa điểm</button>
+            </div>
             <button type="submit">Lưu</button>
-        </form> <!-- Nút submit -->
+        </form>
+        <!-- Upload Hình Ảnh Tour -->
+        <div class="image-gallery">
+            <h2>Hình Ảnh Tour Hiện Tại:</h2>
+            <ul>
+                {% for image in images %}
+                <form action=""></form>
+                <li>
+                    <img src="{{ image.ImageURL }}" alt="Image {{ forloop.counter }}" width="200px" height="150px">
+                    <!-- Nút Xóa Ảnh -->
+
+                    <!--Form để khi vòng lặp chạy thì sẽ bị mất form này mà không mất form chứa nút-->
+                    <form action="{% url 'delete_image' image.id %}" method="POST" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Xóa</button>
+                    </form>
+                    <!-- Nút Thay Đổi Ảnh -->
+                    <form action="{% url 'change_image' image.id %}" method="POST" enctype="multipart/form-data"
+                        style="display:inline;">
+                        {% csrf_token %}
+                        <input type="file" name="new_image" accept="image/*">
+                        <button type="submit" class="btn btn-primary">Thay Đổi</button>
+                    </form>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Thêm Hình Ảnh Mới -->
+        <form id="add_image_form" action="{% url 'add_images' tour.id %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="tour_images">Thêm Hình Ảnh Mới:</label>
+            <input type="file" id="tour_images" name="tour_images" accept="image/*" multiple required>
+            <button type="submit" class="btn btn-success">Thêm Hình Ảnh</button>
+        </form>
+
+
+
+
+
+
         <script>
             function addDescription() {
+                // Hàm này sẽ gọi addDescriptionInput() để thêm một ô input trống
+                addDescriptionInput();
+            }
+
+            function addDescriptionInput(value = '') {
                 const container = document.getElementById('description-container');
                 const inputDiv = document.createElement('div');
                 inputDiv.className = 'description-item';
-                inputDiv.innerHTML = '<input type="text" name="description[]" class="form-control" placeholder="Mô tả địa điểm" />';
+                inputDiv.innerHTML = `
+                    <input type="text" name="description[]" class="form-control" placeholder="Mô tả địa điểm" value="${value}" />
+                    <button type="button" onclick="removeDescription(this)">Xóa</button>
+                `;
                 container.appendChild(inputDiv);
             }
+
+            function removeDescription(button) {
+                const container = document.getElementById('description-container');
+                const inputDiv = button.parentNode;
+                container.removeChild(inputDiv);
+            }
         </script>
+
+
+    </div>
 </body>

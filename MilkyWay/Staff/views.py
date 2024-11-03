@@ -67,7 +67,7 @@ def get_add_tour(request):
         for idx, image in enumerate(images):
             Images.objects.create(tour=tour, images=image, position=idx + 1)
 
-        return redirect('tour_management')
+        return redirect('tour_mng')
 
     context = {'range': range(1, 5)}
     return render(request, 'tour_management/add_tour.html', context)
@@ -75,33 +75,42 @@ def get_add_tour(request):
 
 
 def get_tour_edit(request, tour_id):
+    # Lấy tour cần chỉnh sửa
     tour = get_object_or_404(Tour, id=tour_id)
-    images = Images.objects.filter(tour=tour)  # Lấy các ảnh thuộc tour này
-    user = Users.objects.all()
-    ticket = Tickets.objects.all()
-    booking = Booking.objects.all()
-    payment = Payment.objects.all()
-    review = Review.objects.all()
+    images = Images.objects.filter(tour=tour)
     tour.start_date = tour.start_date.strftime("%Y-%m-%d") if tour.start_date else ""
     tour.end_date = tour.end_date.strftime("%Y-%m-%d") if tour.end_date else ""
-   
-    # Tách description thành danh sách, nếu description không rỗng
+
+    if request.method == 'POST':
+        # Cập nhật các thông tin tour từ form
+        tour.name = request.POST.get('tour_name')
+        tour.user_tour = request.POST.get('tour_code')
+        tour.start_location = request.POST.get('start_location')
+        tour.destination = request.POST.get('destination')
+        tour.start_date = request.POST.get('start_date')
+        tour.end_date = request.POST.get('end_date')
+        tour.price = request.POST.get('tour_price')
+        tour.available_seats = request.POST.get('passenger_count')
+        tour.remaining_seats = request.POST.get('remaining_count')
+
+        # Thu thập tất cả các mô tả từ form input `description[]`
+        descriptions = request.POST.getlist('description[]')  # Sử dụng getlist để lấy tất cả mô tả
+        tour.description = '*'.join(descriptions)  # Ghép các mô tả lại với dấu `*` phân cách
+
+        # Lưu lại tour sau khi chỉnh sửa
+        tour.save()
+
+        return redirect('tour_mng')  # Chuyển hướng về trang quản lý tour sau khi lưu
+
+    # Nếu là GET, render form với dữ liệu hiện tại
     descriptions = tour.description.split('*') if tour.description else []
-
-    # Cập nhật context để bao gồm danh sách ảnh
     context = {
-        'range': range(1, 5),
         'tour': tour,
-        'images': images,  # Thêm danh sách ảnh vào context
-        'user': user,
-        'ticket': ticket,
-        'booking': booking,
-        'payment': payment,
-        'review': review,
-        'descriptions': descriptions,  # Thêm danh sách mô tả vào context
+        'images': images,
+        'descriptions': descriptions,
     }
-    return render(request, 'tour_management/tour_edit.html', context)
 
+    return render(request, 'tour_management/tour_edit.html', context)
 
 
 def delete_image(request, image_id):
@@ -127,6 +136,8 @@ def change_image(request, image_id):
             image.images = new_image  # Thay đổi hình ảnh
             image.save()  # Lưu thay đổi
     return redirect('tour_edit', tour_id=image.tour.id)  # Điều hướng lại trang chỉnh sửa tour
+
+
 
 def get_revenue_statistics(request):
     tour = Tour.objects.all()
