@@ -144,26 +144,9 @@ body {
     box-shadow: 2px 2px 4px 0px rgb(46, 46, 46); /*left right blur scale color*/
     background-color: #fff;
     border-radius: 10px;
-    width: 80%;
+    width: 70%;
+    height: 380px;
     margin-top: -60px;
-    margin-left: auto;
-    margin-right: auto;
-}
-.Find_Content{
-    width: 100%;
-    display: flex;
-}
-.Find_Content p{
-    font-weight: bold;
-}
-.Find_Content p{
-    color: rgb(31, 31, 31);
-    font-size: 22px;
-}
-.Find_Content p:first-child{
-    margin-right: 20%;
-}
-.Find_Content p:not(:first-child){
     margin-left: auto;
     margin-right: auto;
 }
@@ -177,7 +160,6 @@ body {
 .tabs-search button:first-child{
     border-top-left-radius: 10px;
 }
-
 .tab {
     padding: 20.3px 49px;
     background-color: #00d4ff;
@@ -193,36 +175,49 @@ body {
     background-color: white;
     color: #333;
 }
-.tab-content{
-    padding: 30px;
-}
-.search-form {
+.Find_Content{
+    margin-left: 30px;
+    gap: 5%;
     display: flex;
-    gap: 10px;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    width: 100%;
+}
+.Find_Content div{
+    display: flex;
+    flex-direction: column;
+}
+.Find_Content label{
+    font-size: 20px;
+}
+.Find_Content input{
+    height: 50px;
 }
 
-.search-form input{
-    padding: 15px 5px 15px 15px;
-    border: 1px solid #ccc;
-    width: 13%;
-}
-.search-form .search-destination{
-    font-size: 15px;
+.Find_Content .input-destination{
     width: 30%;
 }
+.input-destination input{
+    margin-bottom: 10px;
+}
+.input-duration input{
+    text-align: center;
+}
+.input-members input{
+    text-align: center;
+}
 .Find_budget{
+    width: 100%;
     display: flex;
     padding: 10px;
+    margin-left: 10px;
+    height: 70px;
 }
 .Find_budget p{
-    padding: 10px;
-    font-size: 30px;
+    padding: 10px 20px 10px 10px;
+    font-size: 20px;
     color: #333;
 }
 .Find_budget select{
-    padding: 5px 10px 10px 10px;
+    padding: 5px 20px 5px 20px;
     font-size: 18px;
     border: #f2eaea;
 }
@@ -232,7 +227,8 @@ body {
 .Find_budget .btn-search  {
     border: none;
     border-radius: 5px;
-    margin-left: 60%;
+    margin-left: 41%;
+    margin-bottom: 5px;
     height: 60px;
     width: 15%;
     color: white;
@@ -356,7 +352,7 @@ body {
 }
 .Destination-Info{
     position: relative;
-    width: 40%;
+    width: 60%;
     height: 85%;
     margin-left:10% ;
 }
@@ -466,7 +462,6 @@ body {
     height: 700px;
 }
 .Discount-Img{
-    background-image:url(../pictures/HomeBG.jpg);
     height: 600px;
     width: 100%; 
     background-size: cover;
@@ -487,27 +482,13 @@ body {
     margin-bottom: 25px;
 }
 .Discount-Info .Discount-Time{
-    background-color: #45454594;
+    background-color: #454545a5;
     width:500px;
-    height: 120px;
+    height: 135px;
     border-radius: 5px;
 }
 .Discount-Info .btn-JoinDiscount{
     margin-top: 25px;
-}
-.Discount-Info .btn-JoinDiscount button{
-    padding: 20px 37px 20px 37px;
-    color: #fff;
-    background-color: #00d4ff;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0px 0px 3px 0px rgb(90, 89, 89); /*left right blur scale color*/
-}
-.Discount-Info .btn-JoinDiscount button:hover{
-    transition: all 1s ease; /* Hiệu ứng chuyển đổi khi hover */
-    background-color: #03bdaa;
-    box-shadow: 0px 0px 15px 0px rgb(78, 77, 77); /*left right blur scale color*/
 }
 /*Discount Time*/
 .Discount-Time{
@@ -556,7 +537,7 @@ body {
 }
 .package-card{
     width: 25%;
-    height: 550px;
+    height: 600px;
     margin-bottom: 10px;
     box-shadow:0px 0px 5px 0px rgb(23, 23, 23); /*left right blur scale color*/ ;
     background-color: white;

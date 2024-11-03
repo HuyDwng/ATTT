@@ -13,6 +13,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	</head>
 	<body>
+		{% csrf_token %}
 		<!--Slide-->
 		<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
 			<div class="carousel-indicators">
@@ -53,20 +54,23 @@
 			</button>
 		  </div>
 
-		  {% block content %}
+		  {% comment %} {% block content %} {% endcomment %}
 		  <!--Product-->
 		  <div class="container">
 			<h5 class="fs-3 text-uppercase mt-5 fw-bolder">Phân loại theo tìm kiếm</h5>
 			<div class="row gy-4">
+				{% for tour in page_obj %}
 				<div class="col-lg-4 pic-product">
 					<div class="image-container">
-						<img src="../static/pictures/DaNang.jpg" class="d-block mt-4 w-100 " alt="">
+						{% with first_image=tour.images.first %}
+						<img src="{{ first_image.images.url }}" class="d-block mt-4 w-100" alt="{{ tour.destination }}">
+						{% endwith %}
 					</div>
 					<div class="card">
-						<h5 class="text-primary p-2">Phu Quoc</h5>
-						<h6 class="px-2">Trải nghiệm 3 ngày 2 đêm tại Phú Quốc với các hoạt động đầy hấp dẫn</h6>
+						<h5 class="text-primary p-2">{{ tour.name }}</h5>
+						<h6 class="px-2">{{ tour.price }} VND</h6>
 						<div class="container-star p-2">
-							<div class"star">
+							<div class="star">
 								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
 								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
 								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
@@ -81,131 +85,34 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4 pic-product">
-					<div class="image-container">
-						<img src="../static/pictures/DaNang.jpg" class="d-block mt-4 w-100" alt="">
-					</div>
-					<div class="card">
-						<h5 class="text-primary p-2">Phu Quoc</h5>
-						<h6 class="px-2">Trải nghiệm 3 ngày 2 đêm tại Phú Quốc với các hoạt động đầy hấp dẫn</h6>
-						<div class="container-star p-2">
-							<div class"star">
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-regular fa-star-half-stroke" style="color: #FFD43B;"></i>
-							</div>
-							<p class="px-2">4.7</p>
-						</div>
-						<div class="container p-2">
-							<button class="btn btn-outline-success">Đặt tour</button>
-							<button class="btn btn-outline-primary">Xem thêm chi tiết</button>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 pic-product">
-					<div class="image-container">
-						<img src="../static/pictures/DaNang.jpg" class="d-block mt-4 w-100" alt="">
-					</div>
-					<div class="card">
-						<h5 class="text-primary p-2">Phu Quoc</h5>
-						<h6 class="px-2">Trải nghiệm 3 ngày 2 đêm tại Phú Quốc với các hoạt động đầy hấp dẫn</h6>
-						<div class="container-star p-2">
-							<div class"star">
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-regular fa-star-half-stroke" style="color: #FFD43B;"></i>
-							</div>
-							<p class="px-2">4.7</p>
-						</div>
-						<div class="container p-2">
-							<button class="btn btn-outline-success">Đặt tour</button>
-							<button class="btn btn-outline-primary">Xem thêm chi tiết</button>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 pic-product">
-					<div class="image-container">
-						<img src="../static/pictures/DaNang.jpg" class="d-block mt-4 w-100" alt="">
-					</div>
-					<div class="card">
-						<h5 class="text-primary p-2">Phu Quoc</h5>
-						<h6 class="px-2">Trải nghiệm 3 ngày 2 đêm tại Phú Quốc với các hoạt động đầy hấp dẫn</h6>
-						<div class="container-star p-2">
-							<div class"star">
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-regular fa-star-half-stroke" style="color: #FFD43B;"></i>
-							</div>
-							<p class="px-2">4.7</p>
-						</div>
-						<div class="container p-2">
-							<button class="btn btn-outline-success">Đặt tour</button>
-							<button class="btn btn-outline-primary">Xem thêm chi tiết</button>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 pic-product">
-					<div class="image-container">
-						<img src="../static/pictures/DaNang.jpg" class="d-block mt-4 w-100" alt="">
-					</div>
-					<div class="card">
-						<h5 class="text-primary p-2">Phu Quoc</h5>
-						<h6 class="px-2">Trải nghiệm 3 ngày 2 đêm tại Phú Quốc với các hoạt động đầy hấp dẫn</h6>
-						<div class="container-star p-2">
-							<div class"star">
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-regular fa-star-half-stroke" style="color: #FFD43B;"></i>
-							</div>
-							<p class="px-2">4.7</p>
-						</div>
-						<div class="container p-2">
-							<button class="btn btn-outline-success">Đặt tour</button>
-							<button class="btn btn-outline-primary">Xem thêm chi tiết</button>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 pic-product">
-					<div class="image-container">
-						<img src="../static/pictures/DaNang.jpg" class="d-block mt-4 w-100" alt="">
-					</div>
-					<div class="card">
-						<h5 class="text-primary p-2">Phu Quoc</h5>
-						<h6 class="px-2">Trải nghiệm 3 ngày 2 đêm tại Phú Quốc với các hoạt động đầy hấp dẫn</h6>
-						<div class="container-star p-2">
-							<div class"star">
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-regular fa-star-half-stroke" style="color: #FFD43B;"></i>
-							</div>
-							<p class="px-2">4.7</p>
-						</div>
-						<div class="container p-2">
-							<button class="btn btn-outline-success">Đặt tour</button>
-							<button class="btn btn-outline-primary">Xem thêm chi tiết</button>
-						</div>
-					</div>
-				</div>
+				{% empty %}
+				<p>Không tìm thấy tour phù hợp với yêu cầu của bạn.</p>
+				{% endfor %}
 			</div>
-		  </div>
-		  <ul class="pagination justify-content-center mt-5">
-			<li class="page-item"><a class="page-link" href="javascript:void(0);" onclick="nextpage()">Previous</a></li>
-			<li class="page-item"><a class="page-link" href="javascript:void(0);" onclick="nextpage()">1</a></li>
-			<li class="page-item"><a class="page-link" href="javascript:void(0);" onclick="nextpage()">2</a></li>
-			<li class="page-item"><a class="page-link" href="javascript:void(0);" onclick="nextpage()">Next</a></li>
-		  </ul>
-		{% endblock content%}
-		{% block content_detail %} {% endblock content_detail%}
+		</div>
+		
+		<!-- Phân trang -->
+		<ul class="pagination justify-content-center mt-5">
+			{% if page_obj.has_previous %}
+			<li class="page-item">
+				<a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if query_string %}&{{ query_string }}{% endif %}">Previous</a>
+			</li>
+			{% endif %}
+		
+			{% for num in page_obj.paginator.page_range %}
+			<li class="page-item {% if page_obj.number == num %}active{% endif %}">
+				<a class="page-link" href="?page={{ num }}{% if query_string %}&{{ query_string }}{% endif %}">{{ num }}</a>
+			</li>
+			{% endfor %}
+		
+			{% if page_obj.has_next %}
+			<li class="page-item">
+				<a class="page-link" href="?page={{ page_obj.next_page_number }}{% if query_string %}&{{ query_string }}{% endif %}">Next</a>
+			</li>
+			{% endif %}
+		</ul>
+		{% comment %} {% endblock content%}
+		{% block content_detail %} {% endblock content_detail%} {% endcomment %}
 		  <!--footer-->
 		    <!-- footer-copyright start -->
 		<footer  class="footer-copyright">
