@@ -1,14 +1,14 @@
 from django.db import models
 import os
 from datetime import datetime
-
+from .utils import encrypt_data, decrypt_data
 # Create your models here.
 #Tạo bảng, các trường dữ liệu (database)
 #ID sẽ được tự động tạo
 
 class Users(models.Model):
-    username = models.CharField(max_length=255, blank=False)  # Tên user
-    password = models.IntegerField(blank=False)
+    username = models.CharField(max_length=500, blank=False)  # Tên user
+    password = models.CharField(max_length=500,blank=False)
     email = models.EmailField(null=True)
     fullname = models.CharField(max_length=200)
     ROLES = [
@@ -17,9 +17,26 @@ class Users(models.Model):
         ('admin', 'Admin'),
     ]
     role = models.CharField(max_length=10, choices=ROLES, default='customer')  # Phân quyền
-    phone_number = models.IntegerField()  # Số điện thoại
-    date_joined = models.DateTimeField(auto_now_add=True)
+    phone_number = models.IntegerField()
+    date_joined = models.DateTimeField(auto_now_add=True, auto_created=True)
     is_actived = models.BooleanField(default=True)
+
+    def save(self, *args, **kwargs):
+        # Mã hóa các trường nhạy cảm trước khi lưu
+        self.fullname = encrypt_data(self.fullname)
+        self.email = encrypt_data(self.email)
+        self.password = encrypt_data(self.password)
+        self.phone_number = encrypt_data(self.phone_number)
+
+
+        super().save(*args, **kwargs)
+
+    def load_encrypted(self):
+        # Giải mã các trường nhạy cảm khi lấy ra
+        self.fullname = decrypt_data(self.fullname)
+        self.email = decrypt_data(self.email)
+        self.password = decrypt_data(self.password)
+        self.phone_number = decrypt_data(self.phone_number)
 
     def __str__(self):
         return self.username
@@ -27,7 +44,7 @@ class Users(models.Model):
 
 def user_directory_path(instance, filename):
     tour = instance.tour
-    user_tour = tour.user_tour
+    name_tour=tour.name
     # Lấy ngày hiện tại
     today = datetime.today()
     date_str = today.strftime("%Y%m%d")  # Định dạng ngày thành YYYYMMDD
@@ -36,16 +53,15 @@ def user_directory_path(instance, filename):
     # Điều này sẽ đếm tất cả các file cùng ngày với username đó
     existing_files_count = Images.objects.filter(
         tour=tour
-    ).filter(images__icontains=f"{user_tour}_{date_str}").count()
+    ).filter(images__icontains=f"{name_tour}_{date_str}").count()
 
     # Tạo tên file với username, ngày và số thứ tự
-    new_filename = f"{user_tour}_{date_str}_{existing_files_count + 1}{os.path.splitext(filename)[1]}"
+    new_filename = f"{name_tour}_{date_str}_{existing_files_count + 1}{os.path.splitext(filename)[1]}"
 
     # Trả về đường dẫn đầy đủ cho file
     return os.path.join("", new_filename)
 
 class Tour(models.Model):
-    user_tour = models.CharField(max_length=255, default='user')
     name = models.CharField(max_length=255)  # Tên tour
     description = models.TextField()  # Mô tả tour
     start_location = models.CharField(max_length=255)  # Nơi bắt đầu
@@ -55,6 +71,26 @@ class Tour(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=0)  # Giá tour
     available_seats = models.IntegerField()  # Số lượng chỗ trống
     remaining_seats = models.IntegerField(null=True) # Số lượng chỗ còn lại
+
+    def decrypted_data(self, field_name):
+        # Giải mã dữ liệu dựa vào tên trường
+        encrypted_value = getattr(self, field_name, None)  # Lấy giá trị từ trường
+        if encrypted_value is not None:
+            return decrypt_data(encrypted_value)
+        return None  # Trả về None nếu trường không tồn tại
+    def decrypted_description(self):
+        return decrypt_data(self.description)
+
+    def save(self, *args, **kwargs):
+        self.description = encrypt_data(self.description)
+        self.destination = encrypt_data(self.destination)
+        self.start_location = encrypt_data(self.start_location)
+        super().save(*args, **kwargs)
+
+    def load_encrypted(self):
+        self.description = decrypt_data(self.description)
+        self.destination = decrypt_data(self.destination)
+        self.start_location = decrypt_data(self.start_location)
 
     def __str__(self):
         return self.name
@@ -130,7 +166,7 @@ class Tickets(models.Model):
 class Images(models.Model):
     tour = models.ForeignKey(Tour,related_name='images', on_delete=models.CASCADE, null=True, blank=True)
     images = models.ImageField(upload_to=user_directory_path, default=None)
-    position = models.IntegerField()
+    position = models.IntegerField(default=0)
 
     @property
     def ImageURL(self):

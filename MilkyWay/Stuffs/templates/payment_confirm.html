@@ -41,74 +41,14 @@
             <div >
                 <p>Điền thông tin và xem tóm tắt đặt chỗ</p>
             </div>
-            <h3>Thông tin liên hệ</h3>
-            <div class="form-section customer">
-                <div class="header-section">
-                    <h4 id="contact-info-header">Thông tin liên hệ (Nhận vé/phiếu thanh toán)</h4>
-                    <div class="button-section">
-                        <div id="save-button" class="btn-save">Lưu</div>
-                        <div id="edit-button" class="btn-edit hidden">Chỉnh sửa chi tiết</div>
-                    </div>
-                </div>
-                <form id="contact-form" class="visible"> 
-                    <div class="nhap">
-                        <label for="name">Họ và Tên:</label>
-                        <input type="text" id="name" name="name" class="required" placeholder="Nhập họ và tên của bạn" required>
-                    </div>
-    
-                    <div class="nhap-group">
-                        <div class="nhap">
-                            <label for="email">Email: </label>
-                            <input type="email" id="email" name="email" class="required" placeholder="Nhập email của bạn" required>
-                        </div>
-        
-                        <div class="nhap">
-                            <label for="sdt">Số điện thoại:</label>
-                            <input type="tel" id="sdt" name="sdt" class="required" placeholder="Nhập số điện thoại của bạn" required>
-                        </div>
-                    </div>
-    
-                    <div class="nhap">
-                        <label for="address">Địa chỉ:</label>
-                        <input type="text" id="address" name="address" class="required" placeholder="Nhập địa chỉ của bạn" required>
-                    </div>
-    
-                </form>
-
-                <div id="contact-info-display" class="hidden">
-                    <div class="contact-info">
-                        <div>Email: <span id="display-email"></span></div>
-                        <div>Số điện thoại: <span id="display-phone"></span></div>
-                        <div>Địa chỉ: <span id="display-address"></span></div>
-                    </div>
-                </div>
-            
-    
-                <div class="radio-group">
-                    <label class="radio-option"><input type="radio" name="customer_type" value="khach" required> Tôi là khách</label>
-                    <label class="radio-option"><input type="radio" name="customer_type" value="dat_cho_nguoi_khac"> Tôi đặt cho người khác</label>
-                </div>
-            </div>
-
+           
             <h3>Thông tin khách</h3>
             <div class="form-section tour-info">
                 <div class="header-section">
                     <h4 id="guest-info-header">Thông tin khách</h4>
-                    <div class="button-section">
-                        <div id="g-save-button" class="btn-save">Lưu</div>
-                        <div id="g-edit-button" class="btn-edit hidden">Chỉnh sửa chi tiết</div>
-                    </div>
                 </div>
-                <form id="guest-inform-form" class="visible"> 
-                    <div class="nhap">
-                        <label for="salutation">Danh xưng:</label>
-                        <select id="salutation" name="salutation" required>
-                            <option value="" disabled selected ></option>
-                            <option value="mr">Ông</option>
-                            <option value="ms">Bà</option>
-                            <option value="miss">Cô</option>
-                        </select>
-                    </div>
+                <form id="guest-inform-form" class="visible" method="POST" action="{% url 'confirm-payment' tour.id %}"> 
+                    
                     <div class="nhap">
                         <label for="guest-name">Họ và Tên :</label>
                         <input type="text" id="guest-name" name="guest-name" class="required" placeholder="Nhập tên khách hàng" required>
@@ -124,26 +64,27 @@
                             <label for="sdt">Số điện thoại:</label>
                             <input type="tel" id="guest-phone" name="guest-phone" class="required" placeholder="Nhập số điện thoại của bạn" required>
                         </div>
+                        
                     </div>
-    
                     <div class="nhap">
-                        <label for="address">Địa chỉ:</label>
-                        <input type="text" id="guest-address" name="guest-address" class="required" placeholder="Nhập địa chỉ của bạn" required>
+                        <label for="sdt">Tên tour:</label>
+                        <input type="text" id="tourname" name="tourname" class="required" readonly>
                     </div>
-
+                    <div class="nhap">
+                        <label for="sdt">Ngày đi:</label>
+                        <input type="date" id="start_date" name="start_date" class="required" readonly>
+                    </div>
+                    <div class="nhap">
+                        <label for="sdt">Ngày về:</label>
+                        <input type="date" id="end_date" name="end_date" class="required" readonly>
+                    </div>
                 </form>
-                <div id="guest-info-display" class="hidden">
-                    <div class="guest-info">
-                        <div>Email: <span id="g-display-email"></span></div>
-                        <div>Số điện thoại: <span id="g-display-phone"></span></div>
-                        <div>Địa chỉ: <span id="g-display-address"></span></div>
-                    </div>
-                </div>
+                
             </div>
-            
+           
             <div class="nhap">
                 <label for="special-request">Yêu cầu đặc biệt:</label>
-                <textarea id="special-request" name="special-request" placeholder="Nhập yêu cầu đặc biệt (nếu có)"></textarea>
+                <input type="textarea" id="request" name="request" class="required" placeholder="Nhập yêu cầu đặc biệt (nếu có)">
             </div>
             <div class="form-section bill-details">
                 <h3>Chi tiết hóa đơn</h3>
@@ -160,12 +101,6 @@
                     <span id="tax-service-fee">10%</span>
                 </div>
         
-                <!-- Mã ưu đãi/khuyến mãi -->
-                <div class="bill-item">
-                    <label for="promo-code">Mã khuyến mãi:</label>
-                    <input type="text" id="promo-code" placeholder="Nhập mã giảm giá">
-                    <button id="apply-code">Áp dụng</button>
-                </div>
         
                 <!-- Tổng số tiền cần thanh toán -->
                 <div class="bill-item total">
@@ -208,7 +143,7 @@
         </div>
     </div>
 
-    <div id="confirmation-popup" class="confirmation-popup ">
+    {% comment %} <div id="confirmation-popup" class="confirmation-popup ">
         <div class="popup-content" >
             <h2>Tất cả thông tin đặt chỗ của bạn đều đã chính xác?</h2>
             <p>Bạn sẽ không thể thay đổi thông tin đặt chỗ sau khi tiến hành thanh toán. Bạn có muốn tiếp tục?</p>
@@ -217,13 +152,13 @@
                 <button id="proceed-btn" class="btn-cont">Tiếp tục</button>
             </div>
         </div>
-    </div>
+    </div> {% endcomment %}
     
     <div id="error-container" class="error-container">
         <span id="error-message">Vui lòng điền thông tin liên hệ!</span>
         <button id="close-error-btn" class="close-btn">&times;</button>
     </div>
-    <script src="../static/javascript/tour-payment-confirmation.js"></script> 
+    {% comment %} <script src="../static/javascript/tour-payment-confirmation.js"></script>  {% endcomment %}
     
 </body>
 </html>

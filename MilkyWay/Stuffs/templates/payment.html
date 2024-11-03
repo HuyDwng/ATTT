@@ -126,7 +126,7 @@
 
             <section class="payment-button">
                 <h3>Tổng giá tiền: 330,000 VND</h3>
-                <button onclick="submitPayment()">Thanh toán & Hiển thị mã QR</button>
+                <button id="pay-button" class="btn-continue">Thanh toán</button>
             </section>
         </div>
 
@@ -153,7 +153,24 @@
             <button id="return-home">Quay lại trang chủ</button>
         </div>
     </div>
-
+    <script src="https://js.stripe.com/v3/"></script>
+                <script>
+                    const stripe = Stripe("{{ STRIPE_PUBLIC_KEY }}");
+                    
+                    document.getElementById("pay-button").addEventListener("click", function () {
+                        fetch("{% url 'create_checkout_session' %}", {
+                            method: "POST",
+                            headers: {
+                                "X-CSRFToken": "{{ csrf_token }}",
+                            },
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            return stripe.redirectToCheckout({ sessionId: data.id });
+                        })
+                        .catch(error => console.error("Error:", error));
+                    });
+                </script>
     <script src="../static/javascript/payment.js"></script>
 </body>
 </html>

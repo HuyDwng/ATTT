@@ -1,4 +1,5 @@
 {% load static %}
+{% load custom_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -126,6 +127,26 @@
                             <th>Lượt đăng ký</th>
                             <th>Doanh thu</th>
                         </tr>
+                        {% for t in tour %}
+                        <tr>
+                            <td>{{t.id}}</td>
+                            <td>{{t.name}}</td>
+                            <td>
+                                {% for b in booking %}
+                                {% if t.name|lower == b.tour|lower %}
+                                {% for tick in ticket %}
+                                {% if b.ticket_code|stringformat:"s" == tick.ticket_code|stringformat:"s" %}
+                                {{tick.quantity|addition:tick.quantity}}
+                                {% endif %}
+                                {% endfor %}
+                                {% endif %}
+
+                                {% endfor %}
+                            </td>
+                            <td></td>
+
+                        </tr>
+                        {% endfor %}
                     </thead>
                     <tbody>
 

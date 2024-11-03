@@ -5,91 +5,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chỉnh sửa tour du lịch</title>
+    <title>Chỉnh sửa Tour Du Lịch</title>
     <link rel="stylesheet" href="{% static 'css/tour_mng/add_tour.css' %}">
     <link rel="icon" href="../../static/pictures/logo.jpg">
 </head>
 
-
 <body>
 
     <div class="container">
-        <h1>Thêm Thông Tin Tour Du Lịch</h1>
+        <h1>Chỉnh sửa thông tin Tour Du Lịch: {{ tour.name }}</h1>
         <form id="tour_form" action="{% url 'tour_edit' tour.id %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <!-- Thông Tin Tour -->
             <div class="form-section">
                 <label for="tour_name">Tên Tour:</label>
-                <input type="text" id="tour_name" name="tour_name" autocomplete="off" required value="{{tour.name}}">
-                <label for="tour_code">Tên người thêm Tour:</label>
-                <input type="text" id="tour_code" name="tour_code" autocomplete="off" required
-                    value="{{tour.user_tour}}">
+                <input type="text" id="tour_name" name="tour_name" required value="{{ tour.name }}">
                 <label for="start_location">Địa Điểm Khởi Hành:</label>
-                <input type="text" id="start_location" name="start_location" autocomplete="off" required
-                    value="{{tour.start_location}}">
+                <input type="text" id="start_location" name="start_location" required value="{{ tour.start_location }}">
                 <label for="destination">Địa Điểm Du Lịch:</label>
-                <input type="text" id="destination" name="destination" autocomplete="off" required
-                    value="{{tour.destination}}">
+                <input type="text" id="destination" name="destination" required value="{{ tour.destination }}">
                 <label for="start_date">Ngày Khởi Hành:</label>
-                <input type="date" id="start_date" name="start_date" required value="{{tour.start_date}}">
+                <input type="date" id="start_date" name="start_date" required value="{{ tour.start_date }}">
                 <label for="end_date">Ngày Kết Thúc:</label>
-                <input type="date" id="end_date" name="end_date" required value="{{tour.end_date}}">
+                <input type="date" id="end_date" name="end_date" required value="{{ tour.end_date }}">
                 <label for="tour_price">Giá Tiền (VND):</label>
-                <input type="number" id="tour_price" name="tour_price" autocomplete="off" required
-                    value="{{tour.price}}">
+                <input type="number" id="tour_price" name="tour_price" required value="{{ tour.price }}">
                 <label for="passenger_count">Số Lượng Hành Khách:</label>
-                <input type="number" id="passenger_count" name="passenger_count" autocomplete="off" required
-                    value="{{tour.available_seats}}">
+                <input type="number" id="passenger_count" name="passenger_count" required
+                    value="{{ tour.available_seats }}">
                 <label for="remaining_count">Số Lượng Còn Lại:</label>
-                <input type="number" id="remaining_count" name="remaining_count" autocomplete="off" required
-                    value="{{tour.remaining_seats}}">
+                <input type="number" id="remaining_count" name="remaining_count" required
+                    value="{{ tour.remaining_seats }}">
 
-                <!-- Upload Hình Ảnh Tour -->
-                <div class="image-gallery">
-                    <h2>Hình Ảnh Tour</h2>
-                    {% for image in images %}
-                    <div class="image-item">
-                        <img src="{{ image.ImageURL }}" alt="Hình ảnh {{ image.position }}" />
-                        <form action="{% url 'delete_image' image.id %}" method="POST" style="display:inline;">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-danger">Xóa</button>
-                        </form>
-                    </div>
-                    {% empty %}
-                    <p>Không có hình ảnh nào cho tour này.</p>
-                    {% endfor %}
-                </div>
-                <form id="add_image_form" action="{% url 'add_images' tour.id %}" method="POST"
-                    enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <label for="tour_images">Thêm Hình Ảnh Mới:</label>
-                    <input type="file" id="tour_images" name="tour_images" accept="image/*" multiple required>
-                    <button type="submit" class="btn btn-success">Thêm Hình Ảnh</button>
-                </form>
-
-                <!-- Mô Tả Địa Điểm -->
-                <div id="tour_sections_container">
-                    {% for i in range %}
-                    <div class="form-section" id="description_section_{{ i }}" style="display: none;">
-                        <label for="itinerary_{{ i }}">Mô Tả Địa Điểm {{ i }}:</label>
-                        <textarea id="itinerary_{{ i }}" name="itinerary_{{ i }}"></textarea>
+                <!-- Đây là code html phần description -->
+                <div id="description-container">
+                    <h3>Mô tả địa điểm:</h3>
+                    {% for description in descriptions %}
+                    <div class="description-item">
+                        <input type="text" name="description[]" value="{{ description }}" class="form-control"
+                            placeholder="Mô tả địa điểm" />
+                        <button type="button" onclick="removeDescription(this)">Xóa</button>
                     </div>
                     {% endfor %}
                 </div>
+                <button type="button" onclick="addDescription()">Thêm Mô tả</button>
 
-                <!-- Nút submit -->
-                <button type="submit" class="submit-btn btn btn-primary btn-hover">Chỉnh sửa</button>
+            </div>
+            <button type="submit">Lưu</button>
         </form>
-    </div>
+        <!-- Upload Hình Ảnh Tour -->
+        <div class="image-gallery">
+            <h2>Hình Ảnh Tour Hiện Tại:</h2>
+            <ul>
+                {% for image in images %}
+                <form action=""></form>
+                <li>
+                    <img src="{{ image.ImageURL }}" alt="Image {{ forloop.counter }}" width="200px" height="150px">
+                    <!-- Nút Xóa Ảnh -->
 
-    <script>
-        document.getElementById("tour_image").addEventListener("change", function (event) {
-            const sections = document.querySelectorAll("#tour_sections_container .form-section");
-            for (let i = 0; i < sections.length; i++) {
-                sections[i].style.display = i < event.target.files.length ? "block" : "none";
+                    <!--Form để khi vòng lặp chạy thì sẽ bị mất form này mà không mất form chứa nút-->
+                    <form action="{% url 'delete_image' image.id %}" method="POST" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Xóa</button>
+                    </form>
+                    <!-- Nút Thay Đổi Ảnh -->
+                    <form action="{% url 'change_image' image.id %}" method="POST" enctype="multipart/form-data"
+                        style="display:inline;">
+                        {% csrf_token %}
+                        <input type="file" name="new_image" accept="image/*">
+                        <button type="submit" class="btn btn-primary">Thay Đổi</button>
+                    </form>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Thêm Hình Ảnh Mới -->
+        <form id="add_image_form" action="{% url 'add_images' tour.id %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="tour_images">Thêm Hình Ảnh Mới:</label>
+            <input type="file" id="tour_images" name="tour_images" accept="image/*" multiple required>
+            <button type="submit" class="btn btn-success">Thêm Hình Ảnh</button>
+        </form>
+
+
+
+
+
+
+        <script>
+            function addDescription() {
+                // Hàm này sẽ gọi addDescriptionInput() để thêm một ô input trống
+                addDescriptionInput();
             }
-        });
-    </script>
-</body>
 
-</html>
+            function addDescriptionInput(value = '') {
+                const container = document.getElementById('description-container');
+                const inputDiv = document.createElement('div');
+                inputDiv.className = 'description-item';
+                inputDiv.innerHTML = `
+                    <input type="text" name="description[]" class="form-control" placeholder="Mô tả địa điểm" value="${value}" />
+                    <button type="button" onclick="removeDescription(this)">Xóa</button>
+                `;
+                container.appendChild(inputDiv);
+            }
+
+            function removeDescription(button) {
+                const container = document.getElementById('description-container');
+                const inputDiv = button.parentNode;
+                container.removeChild(inputDiv);
+            }
+        </script>
+
+
+    </div>
+</body>

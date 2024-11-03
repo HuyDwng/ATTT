@@ -19,48 +19,48 @@ fetch(filePath)
     .catch(error => console.error('There has been a problem with your fetch operation:', error));
 
 // Hàm hiển thị giao dịch
-function displayTransactions(transactions) {
-    const htmlContent = generateHTMLTable(transactions);
-    document.querySelector('tbody').innerHTML = htmlContent; // Thêm HTML vào tbody
-}
+// function displayTransactions(transactions) {
+//     const htmlContent = generateHTMLTable(transactions);
+//     document.querySelector('tbody').innerHTML = htmlContent; // Thêm HTML vào tbody
+// }
 
 // Hàm tạo HTML
-function generateHTMLTable(transactions) {
-    let html = '';
+// function generateHTMLTable(transactions) {
+//     let html = '';
 
-    transactions.forEach(transaction => {
-        html += `
-       <tr>
-            <td>${transaction.transaction_id}</td>
-            <td>${transaction.customer_name}</td>
-            <td>${transaction.tour_name}</td>
-            <td>${transaction.transaction_date}</td>
-            <td>${transaction.total_payment}</td>
-            <td>${transaction.transaction_status}</td>
-            <td>${transaction.payment_method}</td>
-            <td>
-                <details>
-                    <summary class="btn btn-link p-0">Xem chi tiết</summary>
-                    <div class="details-content">
-                        <span class="close-btn" onclick="this.closest('details').removeAttribute('open')">&times;</span>
-                        <p>Chi tiết giao dịch ${transaction.transaction_id}:</p>
-                        <ul>
-                            <li>Mã giao dịch: ${transaction.transaction_id}</li>
-                            <li>Tên khách hàng: ${transaction.customer_name}</li>
-                            <li>Tên tour: ${transaction.tour_name}</li>
-                            <li>Ngày giao dịch: ${transaction.transaction_date}</li>
-                            <li>Tổng số tiền: ${transaction.total_payment}</li>
-                            <li>Trạng thái: ${transaction.transaction_status}</li>
-                            <li>Phương thức: ${transaction.payment_method}</li>
-                        </ul>
-                    </div>
-                </details>
-            </td>
-        </tr>`;
-    });
+//     transactions.forEach(transaction => {
+//         html += `
+//        <tr>
+//             <td>${transaction.transaction_id}</td>
+//             <td>${transaction.customer_name}</td>
+//             <td>${transaction.tour_name}</td>
+//             <td>${transaction.transaction_date}</td>
+//             <td>${transaction.total_payment}</td>
+//             <td>${transaction.transaction_status}</td>
+//             <td>${transaction.payment_method}</td>
+//             <td>
+//                 <details>
+//                     <summary class="btn btn-link p-0">Xem chi tiết</summary>
+//                     <div class="details-content">
+//                         <span class="close-btn" onclick="this.closest('details').removeAttribute('open')">&times;</span>
+//                         <p>Chi tiết giao dịch ${transaction.transaction_id}:</p>
+//                         <ul>
+//                             <li>Mã giao dịch: ${transaction.transaction_id}</li>
+//                             <li>Tên khách hàng: ${transaction.customer_name}</li>
+//                             <li>Tên tour: ${transaction.tour_name}</li>
+//                             <li>Ngày giao dịch: ${transaction.transaction_date}</li>
+//                             <li>Tổng số tiền: ${transaction.total_payment}</li>
+//                             <li>Trạng thái: ${transaction.transaction_status}</li>
+//                             <li>Phương thức: ${transaction.payment_method}</li>
+//                         </ul>
+//                     </div>
+//                 </details>
+//             </td>
+//         </tr>`;
+//     });
 
-    return html;
-}
+//     return html;
+// }
 
 // Hàm chuyển đổi định dạng ngày từ dd/mm/yyyy sang yyyy-mm-dd
 function convertDateFormat(dateString) {
@@ -101,4 +101,21 @@ document.getElementById('reset-button').addEventListener('click', function () {
 
     // Hiển thị lại tất cả giao dịch
     displayTransactions(transactions); // 'transactions' là mảng gốc
+});
+
+// Lấy tổng tiền thanh toán vào thông tin chi tiết
+document.addEventListener('DOMContentLoaded', function () {
+    const detailsElements = document.querySelectorAll('details');
+
+    detailsElements.forEach((details) => {
+        details.querySelector('summary').addEventListener('click', function () {
+            const row = details.closest('tr'); // Lấy hàng tương ứng
+            const totalPayment = row.querySelector('.total-payment').innerHTML; // Lấy nội dung total-payment
+            const itemElement = row.querySelector('#total-payment-li'); // Lấy phần tử có id="item"
+
+            if (itemElement) {
+                itemElement.innerHTML += totalPayment; // Thêm nội dung total-payment vào item
+            }
+        });
+    });
 });
