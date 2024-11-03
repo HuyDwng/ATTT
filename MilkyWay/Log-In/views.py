@@ -8,21 +8,90 @@ import os
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
-from Management.models import Users, Tour, Tickets, Booking, Payment, Review 
+from Management.models import Users, Tour, Tickets, Booking, Payment
 import datetime
 
 # Create your views here.
 
+# Function system
+def decrypted_tours():
+    tour = Tour.objects.all()
+    return [
+        {
+            'name': t.decrypted_data('name'),
+            'description': t.decrypted_data('description'),
+            'star_location': t.decrypted_data('star_location'),
+            'destination': t.decrypted_data('destination'),
+            'price': t.decrypted_data('price'),
+            'available_seats': t.decrypted_data('available_seats'),
+            'remaining_seats': t.decrypted_data('remaining_seats'),
+        }
+        for t in tour
+    ]
+
+def decrypted_user():
+    users = Users.objects.all()
+    return [
+        {
+            'password': t.decrypted_data('password'),
+            'email': t.decrypted_data('email'),
+            'fullname': t.decrypted_data('fullname'),
+            'phone_number': t.decrypted_data('phone_number'),
+        }
+        for t in users
+    ]
+
+def decrypted_tickets():
+    tickets = Tickets.objects.all()
+    return [
+        {
+            'ticket_code': t.decrypted_data('ticket_code'),
+            'quantity': t.decrypted_data('quantity'),
+            'ticket_status': t.decrypted_data('ticket_status'),
+        }
+        for t in tickets
+    ]
+
+def decrypted_bookings():
+    bookings = Booking.objects.all()
+    return [
+        {
+            'status': t.decrypted_data('status'),
+            'payment_method': t.decrypted_data('payment_method'),
+            'ticket_code': t.decrypted_data('ticket_code'),
+        }
+        for t in bookings
+    ]
+def decrypted_payments():
+    payments = Payment.objects.all()
+    return [
+        {
+            'amount': t.decrypted_data('amount'),
+            'payment_method': t.decrypted_data('payment_method'),
+            'payment_state': t.decrypted_data('payment_state'),
+        }
+        for t in payments
+    ]
+def get_common_context():
+    tours = decrypted_tours()
+    users = decrypted_user()
+    tickets = decrypted_tickets()
+    bookings = decrypted_bookings()  
+    payments = decrypted_payments()      
+    return {
+        'tour': tours,
+        'user': users,
+        'ticket': tickets,
+        'booking':bookings,
+        'payment': payments,
+    }
+
+
+
 
 @csrf_exempt
 def register(request):
-    tour = Tour.objects.all()
-    user = Users.objects.all()
-    ticket = Tickets.objects.all()
-    booking = Booking.objects.all()
-    payment = Payment.objects.all()
-    review = Review.objects.all()
-    context = {'tour': tour, 'user':user, 'ticket':ticket, 'booking':booking, 'payment':payment, 'review':review}
+    context = get_common_context()
     if request.method == 'POST':
         # Lấy dữ liệu từ form
         username = request.POST['username']

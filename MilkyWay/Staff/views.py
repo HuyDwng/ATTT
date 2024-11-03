@@ -1,27 +1,88 @@
 from django.shortcuts import render,redirect
-from Management.models import Users, Tour, Tickets, Booking, Payment, Review 
 from django.shortcuts import render, redirect
-from Management.models import Users, Tour, Tickets, Booking, Payment, Review, Images
+from Management.models import Users, Tour, Tickets, Booking, Payment, Images
 from django.shortcuts import get_object_or_404, render  
 
 # Create your views here.
-def get_home(request):  
+# Function system
+def decrypted_tours():
     tour = Tour.objects.all()
-    user = Users.objects.all()
-    ticket = Tickets.objects.all()
-    booking = Booking.objects.all()
-    payment = Payment.objects.all()
-    review = Review.objects.all()
-    context = {'tour': tour, 'user':user, 'ticket':ticket, 'booking':booking, 'payment':payment, 'review':review}
+    return [
+        {
+            'name': t.decrypted_data('name'),
+            'description': t.decrypted_data('description'),
+            'star_location': t.decrypted_data('star_location'),
+            'destination': t.decrypted_data('destination'),
+            'price': t.decrypted_data('price'),
+            'available_seats': t.decrypted_data('available_seats'),
+            'remaining_seats': t.decrypted_data('remaining_seats'),
+        }
+        for t in tour
+    ]
+
+def decrypted_user():
+    users = Users.objects.all()
+    return [
+        {
+            'password': t.decrypted_data('password'),
+            'email': t.decrypted_data('email'),
+            'fullname': t.decrypted_data('fullname'),
+            'phone_number': t.decrypted_data('phone_number'),
+        }
+        for t in users
+    ]
+
+def decrypted_tickets():
+    tickets = Tickets.objects.all()
+    return [
+        {
+            'ticket_code': t.decrypted_data('ticket_code'),
+            'quantity': t.decrypted_data('quantity'),
+            'ticket_status': t.decrypted_data('ticket_status'),
+        }
+        for t in tickets
+    ]
+
+def decrypted_bookings():
+    bookings = Booking.objects.all()
+    return [
+        {
+            'status': t.decrypted_data('status'),
+            'payment_method': t.decrypted_data('payment_method'),
+            'ticket_code': t.decrypted_data('ticket_code'),
+        }
+        for t in bookings
+    ]
+def decrypted_payments():
+    payments = Payment.objects.all()
+    return [
+        {
+            'amount': t.decrypted_data('amount'),
+            'payment_method': t.decrypted_data('payment_method'),
+            'payment_state': t.decrypted_data('payment_state'),
+        }
+        for t in payments
+    ]
+def get_common_context():
+    tours = decrypted_tours()
+    users = decrypted_user()
+    tickets = decrypted_tickets()
+    bookings = decrypted_bookings()  
+    payments = decrypted_payments()      
+    return {
+        'tour': tours,
+        'user': users,
+        'ticket': tickets,
+        'booking':bookings,
+        'payment': payments,
+    }
+
+
+def get_home(request):  
+    context = get_common_context()
     return render(request, 'tour_management/tour_mng.html', context)
 def get_payment(request):
-    tour = Tour.objects.all()
-    user = Users.objects.all()
-    ticket = Tickets.objects.all()
-    booking = Booking.objects.all()
-    payment = Payment.objects.all()
-    review = Review.objects.all()
-    context = {'tour': tour, 'user':user, 'ticket':ticket, 'booking':booking, 'payment':payment, 'review':review}
+    context = get_common_context()
     return render(request,'payment_mng/payment_mng.html', context)
 
 
@@ -29,7 +90,6 @@ def get_payment(request):
 def get_add_tour(request):
     if request.method == 'POST':
         # Nhận thông tin tour từ form
-        user_tour = request.POST.get('tour_code')
         name = request.POST.get('tour_name')
         start_location = request.POST.get('start_location')
         destination = request.POST.get('destination')
@@ -49,7 +109,6 @@ def get_add_tour(request):
 
         # Lưu thông tin Tour
         tour = Tour(
-            user_tour=user_tour,
             name=name,
             description=description,
             start_location=start_location,
@@ -81,7 +140,6 @@ def get_tour_edit(request, tour_id):
     ticket = Tickets.objects.all()
     booking = Booking.objects.all()
     payment = Payment.objects.all()
-    review = Review.objects.all()
     tour.start_date = tour.start_date.strftime("%Y-%m-%d") if tour.start_date else ""
     tour.end_date = tour.end_date.strftime("%Y-%m-%d") if tour.end_date else ""
    
@@ -97,7 +155,6 @@ def get_tour_edit(request, tour_id):
         'ticket': ticket,
         'booking': booking,
         'payment': payment,
-        'review': review,
         'descriptions': descriptions,  # Thêm danh sách mô tả vào context
     }
     return render(request, 'tour_management/tour_edit.html', context)
@@ -129,11 +186,5 @@ def change_image(request, image_id):
     return redirect('tour_edit', tour_id=image.tour.id)  # Điều hướng lại trang chỉnh sửa tour
 
 def get_revenue_statistics(request):
-    tour = Tour.objects.all()
-    user = Users.objects.all()
-    ticket = Tickets.objects.all()
-    booking = Booking.objects.all()
-    payment = Payment.objects.all()
-    review = Review.objects.all()
-    context = {'tour': tour, 'user':user, 'ticket':ticket, 'booking':booking, 'payment':payment, 'review':review}
+    context = get_common_context()
     return render(request,'revenue_statistics/revenue_statistics.html',context)
