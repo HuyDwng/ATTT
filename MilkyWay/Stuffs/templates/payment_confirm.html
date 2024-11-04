@@ -5,160 +5,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xác nhận thông tin thanh toán cho tour</title>
-    <link rel="stylesheet" href="../static/css/tour-payment-confirmation.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/tour-payment-confirmation.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <div class="bg_Main">
-        <header class="Pr_Menu">
-            <div class="Menu">
-                <div class="logo"><a href="index.html">Milky<span>Way</span></a></div>
-                <div class="progress-bar-container">
-                    <ul class="progress-bar">
-                        <div class="progress-step">
-                            <div class="circle active-circle">1</div>
-                            <li class="active">Đặt vé</li>
-                            <span class="dash"></span>
+    <section class="Parent-Info-Confirm">
+        <div class="Info-Confirm">
+            <div class="logo">
+                <a href="#"><i class="fa-solid fa-house" style="color: #006a80;"></i></a>
+            </div>
+            <div class="Parent-UserInfo">
+                <div class="Name user-info">
+                    <div class="title">Tên Của Bạn</div>
+                    <div class="UserName">
+                        <div class="LastName">
+                            <label>Họ</label>
+                            <input type="text" class="input-Name">
+                            <hr>
                         </div>
-                        <div class="progress-step">
-                            <div class="circle">2</div>
-                            <li>Thanh toán</li>
-                            <span class="dash"></span>
+                        <div class="FirstName">
+                            <label>Tên</label>
+                            <input type="text" class="input-Name">
+                            <hr>
                         </div>
-                        <div class="progress-step">
-                            <div class="circle">3</div>
-                            <li>Ví điện tử</li>
+                    </div>
+                </div>
+                <div class="Contact user-info">
+                    <div class="title">Liên Hệ</div>
+                    <div class="UserContact">
+                        <div class="Email">
+                            <label>Email</label>
+                            <input type="text" class="input-Email">
+                            <hr>
                         </div>
-                    </ul>
+                        <div class="SĐT">
+                            <label>SĐT</label>
+                            <input type="text" class="input-Number">
+                            <hr>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <hr>
-            </header>
-    </div>
-    <div class="trang">
-        <div class="container">
-            <h1 aria-level="1" dir="auto" role="heading" class="heading">Đặt chỗ của tôi</h1>
-            <div >
-                <p>Điền thông tin và xem tóm tắt đặt chỗ</p>
-            </div>
-           
-            <h3>Thông tin khách</h3>
-            <div class="form-section tour-info">
-                <div class="header-section">
-                    <h4 id="guest-info-header">Thông tin khách</h4>
+            <div class="Parent-TourInfo">
+                <div class="title">Thông Tin Tour</div>
+                <div class="ToutInfo">
+                    <div class="TourName">
+                        <label>Tên Tour</label>
+                        <input type="text" class="input-TourName">
+                        <hr>
+                    </div>
+                    <div class="GoDate">
+                        <label>Ngày Đi</label>
+                        <input type="date" class="input-GoDate">
+                        <hr>
+                    </div>
+                    <div class="BackDate">
+                        <label>Ngày Về</label>
+                        <input type="date" class="input-BackDate">
+                        <hr>
+                    </div>
                 </div>
-                <form id="guest-inform-form" class="visible" method="POST" action="{% url 'confirm-payment' tour.id %}"> 
-                    
-                    <div class="nhap">
-                        <label for="guest-name">Họ và Tên :</label>
-                        <input type="text" id="guest-name" name="guest-name" class="required" placeholder="Nhập tên khách hàng" required>
-                    </div>
-
-                    <div class="nhap-group">
-                        <div class="nhap">
-                            <label for="guest-email">Email: </label>
-                            <input type="email" id="guest-email" name="guest-email" class="required" placeholder="Nhập email của bạn" required>
-                        </div>
-        
-                        <div class="nhap">
-                            <label for="sdt">Số điện thoại:</label>
-                            <input type="tel" id="guest-phone" name="guest-phone" class="required" placeholder="Nhập số điện thoại của bạn" required>
-                        </div>
-                        
-                    </div>
-                    <div class="nhap">
-                        <label for="sdt">Tên tour:</label>
-                        <input type="text" id="tourname" name="tourname" class="required" readonly>
-                    </div>
-                    <div class="nhap">
-                        <label for="sdt">Ngày đi:</label>
-                        <input type="date" id="start_date" name="start_date" class="required" readonly>
-                    </div>
-                    <div class="nhap">
-                        <label for="sdt">Ngày về:</label>
-                        <input type="date" id="end_date" name="end_date" class="required" readonly>
-                    </div>
-                </form>
-                
             </div>
-           
-            <div class="nhap">
-                <label for="special-request">Yêu cầu đặc biệt:</label>
-                <input type="textarea" id="request" name="request" class="required" placeholder="Nhập yêu cầu đặc biệt (nếu có)">
-            </div>
-            <div class="form-section bill-details">
-                <h3>Chi tiết hóa đơn</h3>
-                
-                <!-- Tổng tiền -->
-                <div class="bill-item">
-                    <span>Tổng tiền vé:</span>
-                    <span id="total-amount">2,000,000 VND</span>
+            <div class="Parent-RequestUser">
+                <div class="title">Yêu Cầu</div>
+                <div class="RequestUser">
+                    <input type="text" class="input-RequestUser">
+                    <hr>
                 </div>
-        
-                <!-- Thuế và phí dịch vụ -->
-                <div class="bill-item">
-                    <span>Thuế và phí dịch vụ:</span>
-                    <span id="tax-service-fee">10%</span>
-                </div>
-        
-        
-                <!-- Tổng số tiền cần thanh toán -->
-                <div class="bill-item total">
-                    <span>Tổng số tiền cần thanh toán:</span>
-                    <span id="final-amount">2,200,000 VND</span>
-                </div>
-    
             </div>
-            
-            <div class="continue-section">
-                <button id="pay-button" class="btn-continue" id="continue-btn">Tiếp tục</button>
-            </div>
-        </div> 
-
-        <div class="empty"></div>
-        <div class="summary">
-            <div>            
-                <h3><i class="fas fa-ticket-alt"></i> Tóm tắt đặt chỗ</h3>
-            </div>
-            
-            <div>
-                <p><b>Tour:</b> Tour ngắm hoàng hôn và câu cá - Tour ghép</p>
-            </div>
-
-            <div class="tour-date">
-                <p><b style="color: lightgray;">Ngày tham quan:</b> CN, 3 thg 11 2024</p>
-                <p><b style="color: lightgray;">Người lớn:</b> 1</p>
-            </div>
-
-            <div>
-                <p><b>Trạng thái vé:</b> Có hiệu lực vào 03 thg 11 2024</p>
-                <p><b>Hoàn tiền:</b> Có thể hoàn tiền cho đến 31 thg 10 2024</p>
-            </div>
-
-            <div>
-                <p>Để biết thêm chi tiết của vé này, <span class="view-details" onclick="openModal()">vui lòng xem tại đây</span>.</p>
-            </div>
-
-
-        </div>
-    </div>
-
-    {% comment %} <div id="confirmation-popup" class="confirmation-popup ">
-        <div class="popup-content" >
-            <h2>Tất cả thông tin đặt chỗ của bạn đều đã chính xác?</h2>
-            <p>Bạn sẽ không thể thay đổi thông tin đặt chỗ sau khi tiến hành thanh toán. Bạn có muốn tiếp tục?</p>
-            <div class="popup-buttons">
-                <button id="check-again-btn" class="btn-check">Kiểm tra lại</button>
-                <button id="proceed-btn" class="btn-cont">Tiếp tục</button>
+            <div class="Parent-btn-ConFirm">
+                <button class="btn-ConFirm"><span>Xác Nhận</span></button>
             </div>
         </div>
-    </div> {% endcomment %}
-    
-    <div id="error-container" class="error-container">
-        <span id="error-message">Vui lòng điền thông tin liên hệ!</span>
-        <button id="close-error-btn" class="close-btn">&times;</button>
-    </div>
-    {% comment %} <script src="../static/javascript/tour-payment-confirmation.js"></script>  {% endcomment %}
-    
+    </section>
 </body>
 </html>
+

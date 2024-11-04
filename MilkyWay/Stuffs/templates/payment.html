@@ -153,7 +153,7 @@
             <button id="return-home">Quay lại trang chủ</button>
         </div>
     </div>
-    <script src="https://js.stripe.com/v3/"></script>
+    {% comment %} <script src="https://js.stripe.com/v3/"></script>
                 <script>
                     const stripe = Stripe("{{ STRIPE_PUBLIC_KEY }}");
                     
@@ -171,6 +171,6 @@
                         .catch(error => console.error("Error:", error));
                     });
                 </script>
-    <script src="../static/javascript/payment.js"></script>
+    <script src="../static/javascript/payment.js"></script> {% endcomment %}
 </body>
 </html>

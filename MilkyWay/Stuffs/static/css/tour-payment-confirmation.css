@@ -1,517 +1,118 @@
-:root {
-    --main_color: #6dbfe2;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
-
-.bg_Main{
-    color: #fff;
-    background-image: url(../images/HomeBG.jpg);
-    background-size: cover;
-}
-
-.heading {
-    color: rgb(3, 18, 26); /* Màu chữ */
-    font-size: 24px; /* Kích thước chữ */
-    font-weight: 700; /* Độ đậm chữ */
-    line-height: 28px; /* Chiều cao dòng */
-    margin-top: 12px; /* Khoảng cách trên */
-    margin-bottom: 12px; /* Khoảng cách dưới */
-}
-
-.Menu {
-    margin: 0 12% 0 12%; /*base*/
-    padding-top: 30px;
-    padding: 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.Pr_Menu hr{
-    margin: 0 13% 0 13%; /*base*/
-}
-.logo a{
-    color: #fff;
-    text-decoration: none;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.logo span {
-    color: #00d4ff;
-}
-
-/* Styling for the progress bar */
-.progress-bar-container {
-    display: flex;
-    justify-content: center;
-}
-
-.progress-bar {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    padding: 0;
-}
-
-.progress-step {
-    display: flex;
-    align-items: center;
-}
-
-.circle {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: #ddd; /* Màu xám cho các bước chưa hoàn thành */
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-.active-circle {
-    background-color: #4CAF50; /* Màu xanh cho bước hiện tại */
-    color: white;
-}
-
-li {
-    font-size: 16px;
-    color: white;
-}
-
-.active {
-    font-weight: bold;
-    color: #4CAF50; /* Màu xanh cho bước hiện tại */
-}
-
-.dash {
-    width: 30px;
-    height: 2px;
-    background-color: white ; /* Dấu gạch ngang màu trắng cho các bước chưa hoàn thành */
-    margin: 0 10px;
-}
-
-.progress-step .active + .dash {
-    background-color: #4CAF50; /* Dấu gạch ngang màu xanh cho bước hiện tại */
-}
-
-/*Information*/
-.trang{
-    display: flex;
-    width: 80%; /* Chiếm 2/3 bề rộng của trang */
-    justify-content: center; /* Căn giữa theo chiều ngang */
-    margin: 0 auto; /* Căn giữa div theo chiều ngang */
-    padding: 20px; /* Thêm padding cho nội dung bên trong */
-}
-.container {
-    display: flex;
-    flex-wrap: wrap; /* Cho phép xuống dòng */
-    justify-content: space-between;
-    width: 66.67%; /* Chiếm 2/3 bề rộng của trang */
-    flex-direction: column; /* Sắp xếp theo chiều dọc */
-    align-items: stretch; /* Đảm bảo các phần tử con chiếm toàn bộ chiều rộng */
-}
-
-form {
-    padding: 20px; /* Khoảng cách trong của phần form */
-}
-
-.form-section {
-    border: 2px solid #007BFF;
-
-    border-radius: 8px; /* Bo góc cho toàn bộ phần */
-    background-color: white; /* Màu nền cho toàn bộ phần */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Đổ bóng cho phần */
-}
-
-/* Lưu thông tin liên hệ */
-.button-section {
-    width: 25%; /* Chiếm 25% chiều rộng cho nút Lưu */
-    display: flex;
-    align-items: center; /* Căn giữa theo chiều dọc */
-    justify-content: center; /* Căn giữa theo chiều ngang */
-    padding: 20px;
-}
-
-.header-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#contact-info-header{
-    margin: 0 20px;
-}
-
-.contact-info {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding: 20px;
-}
-
-.contact-info div {
-    width: 48%; /* Đảm bảo mỗi phần chiếm 50% chiều rộng */
-}
-
-.border-bottom {
-    border-bottom: 1px solid gray;
-    margin: 10px 0;
-}
-
-.btn-save {
-    background: none;
-    color: var(--main_color);
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.btn-save:hover {
-    color: black; /* Màu khi hover */
-}
-
-.btn-edit {
-    background: none;
-    color: var(--main_color);
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.btn-edit:hover {
-    color: black; /* Màu khi hover */
-}
-
-
-/*Lưu thông tin khách hàng*/
-#guest-info-header{
-    margin: 0 20px;
-}
-
-.guest-info {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding: 20px;
-}
-
-.guest-info div {
-    width: 48%; /* Đảm bảo mỗi phần chiếm 50% chiều rộng */
-}
-
-/* Ẩn form khi đã lưu */
-/*customer*/
-.form-section.customer form {
-    display: none; /* Ẩn form khi ban đầu */
-}
-
-.form-section.customer form.visible {
-    display: block; /* Hiển thị form khi có class 'visible' */
-}
-/*guest*/
-
-.form-section.tour-info form.visible {
-    display: block; /* Hiển thị form khi có class 'visible' */
-}
-
-.form-section.tour-info form {
-    display: none; /* Ẩn form khi ban đầu */
-}
-
-.hidden {
-    display: none; /* Ẩn các phần tử khác */
-}
-
-
-
-
-
-/*Ô nhập thông tin*/
-.nhap {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.nhap label {
-    margin-right: 10px;
-}
-
-.nhap-group {
-    display: flex; /* Sử dụng Flexbox để đặt các trường trên cùng một hàng */
-    justify-content: space-between; /* Khoảng cách đều giữa các phần tử con */
-}
-
-.nhap {
-    flex: 1; /* Mỗi phần tử con sẽ chiếm 50% chiều rộng */
-    margin-right: 10px; /* Khoảng cách bên phải giữa các trường */
-}
-
-.nhap:last-child {
-    margin-right: 0; /* Bỏ khoảng cách bên phải cho phần tử cuối cùng */
-}
-
-input[type="text"], input[type="email"], input[type="tel"], input[type="number"], select, textarea {
-    flex: 1;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-input[type="submit"] {
-    background-color: #007BFF;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-input[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-input.required {
-    border: 1px solid #ccc; /* Màu mặc định */
-}
-
-input.required.error {
-    border: 1px solid red; /* Màu đỏ khi có lỗi */
-}
-
-/* Lựa chọn là đặt giúp hoặc là bản thân là người đi tour */
-.radio-group {
-    display: flex; /* Sử dụng Flexbox cho nhóm radio button */
-    justify-content: space-between; /* Căn chỉnh không gian giữa các radio button */
-    background-color: #f0f0f0; /* Màu xám cho vùng radio button */
-    padding: 20px; /* Khoảng cách trong của vùng radio button */
-    border-radius: 0 0 8px 8px;
-}
-
-.radio-option {
-    flex: 1; /* Mỗi radio option chiếm 50% chiều rộng */
-    text-align: center; /* Căn giữa nội dung bên trong */
-}
-
-/* Để đảm bảo khung bo góc cho radio group */
-.radio-group label {
-    display: block; /* Để mỗi label chiếm toàn bộ chiều rộng */
-}
-
-.radio-option input {
-    margin-right: 5px; /* Khoảng cách giữa radio button và nhãn */
-}
-
-/* Guest information */
-
-
-/* Khi màn hình nhỏ hơn 768px (điện thoại) */
-@media (max-width: 768px) {
-    .trang {
-        flex-direction: column; /* Xếp chồng các div lên nhau */
-    }
-
-    .form-section {
-        flex: 1 1 100%; /* Mỗi div chiếm toàn bộ chiều rộng */
-        margin: 10px 0; /* Khoảng cách giữa các ô trong hàng dọc */
-    }
-}
-
-/* Chi tiết hóa đơn*/
-.bill-details {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.bill-details h3 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.bill-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-}
-
-.bill-item label {
-    margin-right: 10px;
-}
-
-.bill-item input {
-    padding: 5px;
-    width: 150px;
-}
-
-.bill-item.total {
-    font-weight: bold;
-    font-size: 1.2em;
-    margin-top: 20px;
-}
-
-/* Nút tiếp tục để chuyển qua trang tiếp theo */
-.continue-section {
-    display: flex; /* Sử dụng flexbox để căn chỉnh */
-    justify-content: flex-end; /* Đặt các phần tử con ở góc phải */
-    margin-top: 20px; /* Khoảng cách phía trên */
-}
-
-.btn-continue {
-    background-color: #FFA500; /* Màu nền cam */
-    color: white; /* Màu chữ trắng */
-    padding: 15px 32px; /* Padding cho nút */
-    text-align: center; /* Căn giữa chữ trong nút */
-    text-decoration: none; /* Không có gạch chân */
-    display: inline-block; /* Hiển thị inline-block */
-    font-size: 16px; /* Kích thước chữ */
-    margin: 4px 2px; /* Khoảng cách xung quanh */
-    border: none; /* Không có viền */
-    border-radius: 4px; /* Bo góc cho nút */
-    cursor: pointer; /* Hiển thị con trỏ khi hover */
-    transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển màu nền và màu chữ */
-
-    width: 30%;
-}
-
-.btn-continue:hover {
-    background-color: #FF8C00; /* Màu nền cam đậm khi hover */
-}
-
-.btn-continue:active {
-    background-color: #FF8C00; /* Giữ màu nền cam đậm khi click */
-    color: #FFA500; /* Đổi màu chữ sang cam */
-    text-shadow: 0 0 5px white, 0 0 10px white; /* Tạo hiệu ứng ánh sáng cho chữ */
-}
-
-/* Hộp thoại cảnh báo khi chưa điền đủ thông tin */
-.error-container {
-    position: fixed;
-    bottom: 20px; /* Đặt khối ở góc phải dưới */
-    right: 20px;
-    background-color: #f44336; /* Màu đỏ */
-    color: white;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: none; /* Mặc định là ẩn */
-    z-index: 1000; /* Đảm bảo luôn hiển thị trên các phần tử khác */
-    width: 300px;
-    text-align: center;
-}
-
-.error-container .close-btn {
-    background-color: transparent;
-    border: none;
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    position: absolute;
-    top: 5px;
-    right: 10px;
-}
-
-.error-container .close-btn:hover {
-    color: #ffcccb; /* Thay đổi màu khi hover */
-}
-
-/*Chuyển hướng trang hay không*/
-.confirmation-popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-}
-
-.popup-content {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    width: 400px;
-}
-
-.popup-content h2 {
-    margin-bottom: 15px;
-}
-
-.popup-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.popup-buttons .btn-check {
-    background-color:#f0f0f0; /* Màu nền xám nhạt */
-    color: var(--main_color); /* Màu chữ xanh */
-    padding: 10px 20px;
-    cursor: pointer;
-    border: none; /* Xóa viền */
-    border-radius: 5px; /* Bo góc nút */
-    font-weight: bold; /* Làm cho chữ tiêu đề in đậm */
-}
-
-.popup-buttons .btn-cont {
-    background-color: var(--main_color); /* Màu nền xanh */
-    color: white; /* Màu chữ trắng */
-    padding: 10px 20px;
-    cursor: pointer;
-    border: none; /* Xóa viền */
-    border-radius: 5px; /* Bo góc nút */
-    font-weight: bold; /* Làm cho chữ tiêu đề in đậm */
-}
-
-.popup-buttons {
-    display: flex;
-    flex-direction: column; /* Đặt các nút theo cột */
-    gap: 10px; /* Khoảng cách giữa các nút */
-    margin-top: 20px;
-}
-
-
-.disapear{
-    visibility: hidden; /* Ẩn phần tử nhưng vẫn chiếm không gian */
-}
-
-.empty{
-    margin: 0 20px;
-}
-
-.summary{
-    width: 30%;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.summary div{
-    padding: 15px;
-}
-
-.tour-date{
-    background-color: lightblue;
-}
-
-.fa-ticket-alt{
-    color:orange;
-}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        .Parent-Info-Confirm {
+            display: flex;
+            align-items: center;
+            margin-top: 20vh;
+            margin-bottom: 10vh;
+            width: 100%;
+            max-width: 55%;
+            height: 125vh;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .logo a {
+            color: #333;
+            font-size: 40px;
+        }
+        .title {
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 26px;
+            margin-top: 50px;
+            color: #555;
+        }
+        .Info-Confirm label{
+            margin-bottom: 20px;
+            font-size: 17px;
+        }
+        .user-info, .ToutInfo {
+            margin-bottom: 20px;
+        }
+        .UserName, .UserContact, .ToutInfo {
+            display: flex;
+            gap: 15px;
+        }
+        .UserName .LastName, .UserName .FirstName,
+        .UserContact .Email, .UserContact .SĐT,
+        .TourName, .GoDate, .BackDate {
+            flex: 1;
+        }
+        .input-Name, .input-Email, .input-Number, .input-TourName, .input-GoDate, .input-BackDate{
+            width: 100%;
+            height: 40px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 17px;
+            margin-top: 5px;
+            border: none;
+        }
+        .Parent-RequestUser .title{
+            margin-bottom: 8px !important;
+        }
+        .RequestUser{
+            width: 100%;
+        }
+        .input-RequestUser{
+            font-size: 17px;
+            padding: 8px;
+            width: 100%;
+            height: 50px;
+            border: none;
+        }
+        .Parent-btn-ConFirm {
+            margin-top: 8vh;
+            text-align: center;
+        }
+        .btn-ConFirm {
+            padding: 27px 70px;
+            background-color: #00778f; /* Initial color */
+            color: #fff;
+            border: none;
+            border-radius: 35px;
+            cursor: pointer;
+            font-size: 16px;
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.8s ease;
+        }
+        
+        .btn-ConFirm::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background-color: #03bdaa; /* Pink color */
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.8s ease;
+            z-index: 0;
+        }
+        
+        .btn-ConFirm:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
+        .btn-ConFirm:hover {
+            color: #fff;
+        }
+        
+        .btn-ConFirm span {
+            position: relative;
+            z-index: 1;
+        }
