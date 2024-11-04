@@ -126,7 +126,8 @@ def get_tour_edit(request, tour_id):
     # Nếu là GET, render form với dữ liệu hiện tại
 
     desc = tour.decrypted_description()
-    descriptions = desc.split('*') if tour.description else []
+    descriptions = desc.split('*') if desc else []
+
     context = {
         'tour': tour,
         'images': images,
