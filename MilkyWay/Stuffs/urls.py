@@ -13,4 +13,5 @@ urlpatterns = [
     path('confirm-payment', views.confirm_payment, name='confirm-payment'),
     path('tour', views.tour, name='tour'),
     path('tour_detail', views.tour_detail, name='tour_detail'),
+    path('search_tours/', views.search_tours, name='search_tours'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

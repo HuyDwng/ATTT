@@ -101,7 +101,7 @@ class Tour(models.Model):
             days = duration.days
             nights = days - 1 if days > 0 else 0  # Mỗi đêm là số ngày - 1, ngoại trừ khi chỉ có 1 ngày
             return f"{days} ngày, {nights} đêm"
-
+    
 class Booking(models.Model):
     STATUS_CHOICES = [
         ('booked', 'Booked'),
