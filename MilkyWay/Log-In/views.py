@@ -4,12 +4,15 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import login
 from google.oauth2 import id_token
 from google.auth.transport import requests
-import os
+import os, json
+from cryptography.fernet import Fernet
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
 from Management.models import Users, Tour, Tickets, Booking, Payment
+from Management.utils import encrypt_data, decrypt_data
 import datetime
+from django.conf import settings
 
 # Create your views here.
 
@@ -86,9 +89,6 @@ def get_common_context():
         'payment': payments,
     }
 
-
-
-
 @csrf_exempt
 def register(request):
     context = get_common_context()
@@ -105,14 +105,14 @@ def register(request):
             messages.error(request, "Không được để trống tên đăng nhập")
         else:
             if password == password1:
-                if User.objects.filter(username=username).exists():
+                if Users.objects.filter(username=username).exists():
                     messages.error(request, "Tên người dùng đã tồn tại")
-                elif User.objects.filter(email=email).exists():
+                elif Users.objects.filter(email=email).exists():
                     messages.error(request, "Email đã được sử dụng")
                 else:
                     # Tạo người dùng mới
                     # user_account = User.objects.create_user(username=username, email=email, password=password1)  __ tài khoản admin
-                    user = Users.objects.create(username=username, email=email, password=password1, phone_number=phone_number, fullname=fullname)
+                    user = Users.objects.create(username=username, email=email, password=password, phone_number=phone_number, fullname=fullname)
                     user.save()
                     # user_account.save()
                     messages.success(request, "Đăng ký thành công!")
@@ -124,45 +124,108 @@ def register(request):
 
 @csrf_exempt
 def login(request):
-    return render(request, 'log_in/log-in.html')
+    context = get_common_context()
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        if not username:
+            messages.error(request, "Không được để trống tên đăng nhập")
+        elif not password:
+            messages.error(request, "Vui lòng nhập mật khẩu")
+        else:
+            # Tìm người dùng dựa trên tên đăng nhập
+            try:
+                fernet = Fernet(settings.FERNET_KEY)
+                user = Users.objects.get(username=username)
+                print(user)
+                db_password = json.loads(fernet.decrypt(user.decrypted_data('password')))
+                print(db_password)
+                if  db_password == password:
+                    role = user.role.lower()
+                    if role == "customer":
+                        return redirect('homepage')  
+                    elif role == "staff":
+                        return redirect('tour_mng')
+                    elif role == "admin":
+                        return redirect('tour-list')
+                    else:
+                        messages.error(request, "Lỗi phân quyền người dùng")
+                else:
+                    messages.error(request, "Mật khẩu không chính xác")
+            except Users.DoesNotExist:
+                messages.error(request, "Tên đăng nhập không tồn tại")
+            except Exception as e:
+                messages.error(request, "Đã xảy ra lỗi trong quá trình đăng nhập")
+                print(e)
 
-def signup(request):
-    return render(request, 'log_in/sign-up.html') 
+    return render(request, 'log_in/log_in.html', context)
 
+@csrf_exempt
 def forget(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        password1 = request.POST.get('password1')
+        # Kiểm tra tính hợp lệ của dữ liệu
+        if username == "":
+            messages.error(request, "Không được để trống tên đăng nhập")
+        else:
+            print("Thành công 1 phần")
+            print(password)
+            print(password1)
+            if Users.objects.filter(username=username).exists():
+                if password == password1:
+                    user = Users.objects.get(username=username)
+                    print(user)
+                    user.password = password
+                    user.save()
+                    messages.success(request, "Đổi mật khẩu thành công!")
+                    return redirect('login')
+                else:
+                    messages.error(request, "Mật khẩu không khớp")                          
+                    return redirect('forget')
+            else:
+                messages.error(request, "Tên người dùng không đã tồn tại")
     return render(request, 'log_in/forget-password.html') 
 
 def sign_out(request):
     del request.session['user_data']
     return redirect('login')
-@csrf_exempt
-def auth_receiver(request):
-    if request.method == 'POST':
-        token = request.POST.get('credential')
 
-        try:
-            # Xác minh token Google
-            user_data = id_token.verify_oauth2_token(
-                token, requests.Request(), os.environ['GOOGLE_OAUTH_CLIENT_ID']
-            )
-        except ValueError:
-            return JsonResponse({'error': 'Token không hợp lệ'}, status=403)
+#Tài khoản google
+# @csrf_exempt
+# def auth_receiver(request):
+#     if request.method == 'POST':
+#         token = request.POST.get('credential')
 
-        # Lấy email và thông tin người dùng từ Google
-        email = user_data.get('email')
-        username = email  # Sử dụng email làm username
-        password = email  # Sử dụng email làm password (nên mã hóa)
+#         try:
+#             # Xác minh token Google
+#             user_data = id_token.verify_oauth2_token(
+#                 token, requests.Request(), os.environ['GOOGLE_OAUTH_CLIENT_ID']
+#             )
+#         except ValueError:
+#             return JsonResponse({'error': 'Token không hợp lệ'}, status=403)
 
-        # Kiểm tra xem người dùng đã tồn tại trong hệ thống chưa
-        user, created = User.objects.get_or_create(username=username)
+#         # Lấy email và thông tin người dùng từ Google
+#         email = user_data.get('email')
+#         username = email  # Sử dụng email làm username
+#         password = email  # Sử dụng email làm password (nên mã hóa)
 
-        if created:
-            # Nếu tài khoản mới, thiết lập thêm thông tin người dùng
-            user.email = email
-            user.set_password(password)  # Đặt password là email (hoặc bạn có thể tạo mật khẩu tự sinh)
-            user.save()  # Lưu người dùng mới vào database
+#         # Kiểm tra xem người dùng đã tồn tại trong hệ thống chưa
+#         user, created = User.objects.get_or_create(username=username)
 
-        # Trả về phản hồi thành công và chuyển hướng
-        return JsonResponse({'message': 'Đăng nhập thành công'}, status=200)
+#         if created:
+#             # Nếu tài khoản mới, thiết lập thêm thông tin người dùng
+#             user.email = email
+#             user.set_password(password)  # Đặt password là email (hoặc bạn có thể tạo mật khẩu tự sinh)
+#             user.save()  # Lưu người dùng mới vào database
 
-    return JsonResponse({'error': 'Yêu cầu không hợp lệ'}, status=400)
+#         # Trả về phản hồi thành công và chuyển hướng
+#         return JsonResponse({'message': 'Đăng nhập thành công'}, status=200)
+
+#     return JsonResponse({'error': 'Yêu cầu không hợp lệ'}, status=400)
+
+# def login_user(request):
+    
+#     return render(request, 'log_in/log-in.html')

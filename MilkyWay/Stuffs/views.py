@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 import os
-from Management.models import Users, Tour, Tickets, Booking, Payment, Review, Images
+from Management.models import Users, Tour, Tickets, Booking, Payment, Images
 from django.db.models import OuterRef, Subquery
 from datetime import timedelta, datetime
 from django.views.decorators.csrf import csrf_exempt
@@ -8,36 +8,98 @@ from django.core.paginator import Paginator
 from urllib.parse import urlencode
 from django.db.models import Count
 
+# Function system
+def decrypted_tours():
+    tour = Tour.objects.all()
+    tours_with_images = []
+    
+    for t in tour:
+        images = t.images.all()  # Lấy tất cả hình ảnh liên quan đến tour
+        decrypted_tour = {
+            'id': t.id,
+            'name': t.decrypted_data('name'),
+            'description': t.decrypted_data('description'),
+            'start_location': t.decrypted_data('start_location'),
+            'destination': t.decrypted_data('destination'),
+            'price': t.decrypted_data('price'),
+            'available_seats': t.decrypted_data('available_seats'),
+            'remaining_seats': t.decrypted_data('remaining_seats'),
+            'images': images  
+        }
+        tours_with_images.append(decrypted_tour)
+    return tours_with_images
+# def decrypted_user():
+#     users = Users.objects.all()
+#     return [
+#         {
+#             'password': t.decrypted_data('password'),
+#             'email': t.decrypted_data('email'),
+#             'fullname': t.decrypted_data('fullname'),
+#             'phone_number': t.decrypted_data('phone_number'),
+#         }
+#         for t in users
+#     ]
+
+def decrypted_tickets():
+    tickets = Tickets.objects.all()
+    return [
+        {
+            'ticket_code': t.decrypted_data('ticket_code'),
+            'quantity': t.decrypted_data('quantity'),
+            'ticket_status': t.decrypted_data('ticket_status'),
+        }
+        for t in tickets
+    ]
+
+def decrypted_bookings():
+    bookings = Booking.objects.all()
+    return [
+        {
+            'status': t.decrypted_data('status'),
+            'payment_method': t.decrypted_data('payment_method'),
+            'ticket_code': t.decrypted_data('ticket_code'),
+        }
+        for t in bookings
+    ]
+def decrypted_payments():
+    payments = Payment.objects.all()
+    return [
+        {
+            'amount': t.decrypted_data('amount'),
+            'payment_method': t.decrypted_data('payment_method'),
+            'payment_state': t.decrypted_data('payment_state'),
+        }
+        for t in payments
+    ]
+def get_common_context():
+    tours = decrypted_tours()
+    # users = decrypted_user()
+    tickets = decrypted_tickets()
+    bookings = decrypted_bookings()  
+    payments = decrypted_payments()
+    images = Images.objects.all()      
+    return {
+        'tour': tours,
+        # 'user': users,
+        'ticket': tickets,
+        'booking':bookings,
+        'payment': payments,
+        'image': images,
+    }
+
+
 # Create your views here.
 def index(request):
-    tour = Tour.objects.all()
-    user = Users.objects.all()
-    ticket = Tickets.objects.all()
-    booking = Booking.objects.all()
-    payment = Payment.objects.all()
-    review = Review.objects.all()
+    context = get_common_context()
     tour_counts = Tour.objects.values('destination').annotate(count=Count('destination')).order_by('-count')
-    context = {'tour': tour, 'user': user, 'ticket': ticket, 'booking': booking, 'payment': payment, 'review': review,'tour_counts': tour_counts}
-    return render(request, 'index.html', context)
+    return render(request, 'index.html', context )
 
 def payment(request):
-    tour = Tour.objects.all()
-    user = Users.objects.all()
-    ticket = Tickets.objects.all()
-    booking = Booking.objects.all()
-    payment = Payment.objects.all()
-    review = Review.objects.all()
-    context = {'tour': tour, 'user': user, 'ticket': ticket, 'booking': booking, 'payment': payment, 'review': review}
+    context = get_common_context()
     return render(request, 'payment.html', context)
 
 def hotel(request):
-    tour = Tour.objects.all()
-    user = Users.objects.all()
-    ticket = Tickets.objects.all()
-    booking = Booking.objects.all()
-    payment = Payment.objects.all()
-    review = Review.objects.all()
-    context = {'tour': tour, 'user': user, 'ticket': ticket, 'booking': booking, 'payment': payment, 'review': review}
+    context = get_common_context()
     return render(request, 'hotel.html', context)
 
 def confirm_payment(request):
@@ -63,64 +125,42 @@ def confirm_payment(request):
 #             return redirect('payment_success')  # Chuyển hướng sau khi thanh toán thành công
 #     else:
     # form = Payment()
-    tour = Tour.objects.all()
-    user = Users.objects.all()
-    ticket = Tickets.objects.all()
-    booking = Booking.objects.all()
-    payment = Payment.objects.all()
-    review = Review.objects.all()
-    context = {'tour': tour, 'user': user, 'ticket': ticket, 'booking': booking, 'payment': payment, 'review': review}
+    context = get_common_context()
     return render(request, 'payment_confirm.html', context)
 
 def guide(request):
-    tour = Tour.objects.all()
-    user = Users.objects.all()
-    ticket = Tickets.objects.all()
-    booking = Booking.objects.all()
-    payment = Payment.objects.all()
-    review = Review.objects.all()
-    context = {'tour': tour, 'user': user, 'ticket': ticket, 'booking': booking, 'payment': payment, 'review': review}
+    context = get_common_context()
     return render(request, 'saigonguide.html', context)
 
 @csrf_exempt
 def tour(request):
-    tour = Tour.objects.all()
-    user = Users.objects.all()
-    ticket = Tickets.objects.all()
-    booking = Booking.objects.all()
-    payment = Payment.objects.all()
-    review = Review.objects.all()
-    context = {'tour': tour, 'user': user, 'ticket': ticket, 'booking': booking, 'payment': payment, 'review': review}
+    context = get_common_context()
     return render(request, 'tour.html', context)
 
-def tour_detail(request):
-    tour = Tour.objects.all()
-    user = Users.objects.all()
-    ticket = Tickets.objects.all()
-    booking = Booking.objects.all()
-    payment = Payment.objects.all()
-    review = Review.objects.all()
-    context = {'tour': tour, 'user': user, 'ticket': ticket, 'booking': booking, 'payment': payment, 'review': review}
+def tour_detail(request, tour_id):
+    context = get_common_context()
+    # Lấy tour cần chỉnh sửa
+    tour = get_object_or_404(Tour, id=tour_id)
+    tours = decrypted_tours()
+    images = Images.objects.filter(tour=tour)
+    tour.start_date = tour.start_date.strftime("%Y-%m-%d") if tour.start_date else ""
+    tour.end_date = tour.end_date.strftime("%Y-%m-%d") if tour.end_date else ""
+
+
+    context = {
+        'tours': tours,
+        'tour': tour,
+        'images': images,
+    }
+
     return render(request, 'tour-detail.html', context)
 
 def turkeyguide(request):
-    tour = Tour.objects.all()
-    user = Users.objects.all()
-    ticket = Tickets.objects.all()
-    booking = Booking.objects.all()
-    payment = Payment.objects.all()
-    review = Review.objects.all()
-    context = {'tour': tour, 'user': user, 'ticket': ticket, 'booking': booking, 'payment': payment, 'review': review}
+    context = get_common_context()
     return render(request, 'turkeyguide.html', context)
 
 def saigonguide(request):
-    tour = Tour.objects.all()
-    user = Users.objects.all()
-    ticket = Tickets.objects.all()
-    booking = Booking.objects.all()
-    payment = Payment.objects.all()
-    review = Review.objects.all()
-    context = {'tour': tour, 'user': user, 'ticket': ticket, 'booking': booking, 'payment': payment, 'review': review}
+    context = get_common_context()
     return render(request, 'saigonguide.html', context)
 
 @csrf_exempt

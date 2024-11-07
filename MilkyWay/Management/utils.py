@@ -5,23 +5,14 @@ import json
 #ecryption key
 fernet = Fernet(settings.FERNET_KEY)
 
-# def encrypt_data(data):
-#     return fernet.encrypt(data.encode()).decode()
-
-# def decrypt_data(encrypted_data):
-#     return fernet.decrypt(encrypted_data.encode()).decode()
-
-
 def encrypt_data(data):
-    # Chuyển đổi dữ liệu thành chuỗi JSON
-    json_data = json.dumps(data, default=str)
-    encrypted_data = fernet.encrypt(json_data.encode())
-    return encrypted_data.decode()  # Trả về dữ liệu đã mã hóa dưới dạng chuỗi
+    json_data = json.dumps(data, ensure_ascii=False)
+    encrypted_data = fernet.encrypt(json_data.encode('utf-8'))
+    return encrypted_data.decode('utf-8')
 
 def decrypt_data(encrypted_value):
     try:
-        fernet = Fernet(settings.FERNET_KEY)
-        return fernet.decrypt(encrypted_value.encode()).decode()
+        decrypted_data = fernet.decrypt(encrypted_value.encode('utf-8')).decode('utf-8')
+        return json.loads(decrypted_data)
     except InvalidToken:
-        # Xử lý khi token không hợp lệ
-        return None  # Hoặc xử lý lỗi theo cách khác
+        return None

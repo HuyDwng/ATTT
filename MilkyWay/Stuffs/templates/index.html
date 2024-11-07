@@ -32,7 +32,7 @@
                         <li><a href="#client-review">Client Review</a></li>
                         <li><a href="#blog">Blog</a></li>
                         <li><a href="#infomation">Infomation</a></li>
-                        <li><a href="#" class="btn">Đăng Nhập</a></li>
+                        <li><a href="{% url 'login' %}" class="btn">Đăng Nhập</a></li>
                     </ul>
                 </div>
                 <hr>
@@ -252,7 +252,7 @@
                 </div>
                 <div class="package-cards">
                     {% for i in tour %}
-                        {% if forloop.counter <= 6%}
+                        {% if forloop.counter <= 20 %}
                             <div class="package-card">
                                 <div class="packages-info">
                                     {% with first_image=i.images.first %}
@@ -281,7 +281,7 @@
                                         </div>
                                         <div>2544 review</div>
                                         <div class="btn-BookTour">
-                                            <button>Book Now</button>
+                                            <button><a href="{% url 'tour_detail' tour_id=i.id %}">Book Now</a></button>
                                         </div>
                                     </div>
                                 </div>
