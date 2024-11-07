@@ -41,8 +41,7 @@ class Users(models.Model):
         return None
 
     def __str__(self):
-        phone = decrypt_data(self.phone_number) 
-        return phone
+        return self.username
     
 
 def user_directory_path(instance, filename):
@@ -97,7 +96,8 @@ class Tour(models.Model):
 
 
     def __str__(self):
-        return self.name
+        name = decrypt_data(self.name) 
+        return name
    
     def duration_in_days_and_nights(self):
             # Tính khoảng cách giữa end_date và start_date

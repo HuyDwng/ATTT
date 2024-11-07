@@ -12,6 +12,8 @@ def decrypted_tours():
         images = t.images.all()  # Lấy tất cả hình ảnh liên quan đến tour
         decrypted_tour = {
             'id': t.id,
+            'start_date': t.start_date,
+            'end_date': t.end_date,
             'name': t.decrypted_data('name'),
             'description': t.decrypted_data('description'),
             'start_location': t.decrypted_data('start_location'),
@@ -144,7 +146,9 @@ def get_tour_edit(request, tour_id):
     tour = get_object_or_404(Tour, id=tour_id)
     images = tour.images.all()
     decrypted_tour = {
-            'id': tour.id,
+            'id': tour.id,  
+            'start_date': tour.start_date,
+            'end_date': tour.end_date,
             'name': tour.decrypted_data('name'),
             'description': tour.decrypted_data('description'),
             'start_location': tour.decrypted_data('start_location'),
