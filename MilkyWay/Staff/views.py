@@ -19,7 +19,9 @@ def decrypted_tours():
             'price': t.decrypted_data('price'),
             'available_seats': t.decrypted_data('available_seats'),
             'remaining_seats': t.decrypted_data('remaining_seats'),
-            'images': images  
+            'images': images,
+            'start_date': t.start_date,
+            'end_date':t.end_date,
         }
         tours_with_images.append(decrypted_tour)
     return tours_with_images
@@ -49,6 +51,10 @@ def decrypted_bookings():
     bookings = Booking.objects.all()
     return [
         {
+            'id': t.id,
+            'booking_date': t.booking_date,
+            'user': t.user,
+            'tour': t.tour,
             'payment_method': t.decrypted_data('payment_method'),
             'ticket_code': t.decrypted_data('ticket_code'),
         }
@@ -146,7 +152,9 @@ def get_tour_edit(request, tour_id):
             'price': tour.decrypted_data('price'),
             'available_seats': tour.decrypted_data('available_seats'),
             'remaining_seats': tour.decrypted_data('remaining_seats'),
-            'images': images  
+            'images': images,
+            'start_date':tour.start_date.strftime("%Y-%m-%d") if tour.start_date else "",  
+            'end_date':tour.end_date.strftime("%Y-%m-%d") if tour.end_date else "",
         }
     tours = decrypted_tours()
     images = Images.objects.filter(tour=tour)
