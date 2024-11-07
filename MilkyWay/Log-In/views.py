@@ -112,7 +112,7 @@ def register(request):
                 else:
                     # Tạo người dùng mới
                     # user_account = User.objects.create_user(username=username, email=email, password=password1)  __ tài khoản admin
-                    user = Users.objects.create(username=username, email=email, password=password, phone_number=phone_number, fullname=fullname)
+                    user = Users(username=username, email=email, password=password, phone_number=phone_number, fullname=fullname)
                     user.save()
                     # user_account.save()
                     messages.success(request, "Đăng ký thành công!")
@@ -138,9 +138,7 @@ def login(request):
             try:
                 fernet = Fernet(settings.FERNET_KEY)
                 user = Users.objects.get(username=username)
-                print(user)
-                db_password = json.loads(fernet.decrypt(user.decrypted_data('password')))
-                print(db_password)
+                db_password = (user.decrypted_data('password'))
                 if  db_password == password:
                     role = user.role.lower()
                     if role == "customer":

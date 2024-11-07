@@ -12,7 +12,6 @@ from django.db.models import Count
 def decrypted_tours():
     tour = Tour.objects.all()
     tours_with_images = []
-    
     for t in tour:
         images = t.images.all()  # Lấy tất cả hình ảnh liên quan đến tour
         decrypted_tour = {
@@ -28,17 +27,17 @@ def decrypted_tours():
         }
         tours_with_images.append(decrypted_tour)
     return tours_with_images
-# def decrypted_user():
-#     users = Users.objects.all()
-#     return [
-#         {
-#             'password': t.decrypted_data('password'),
-#             'email': t.decrypted_data('email'),
-#             'fullname': t.decrypted_data('fullname'),
-#             'phone_number': t.decrypted_data('phone_number'),
-#         }
-#         for t in users
-#     ]
+def decrypted_user():
+    users = Users.objects.all()
+    return [
+        {
+            'password': t.decrypted_data('password'),
+            'email': t.decrypted_data('email'),
+            'fullname': t.decrypted_data('fullname'),
+            'phone_number': t.decrypted_data('phone_number'),
+        }
+        for t in users
+    ]
 
 def decrypted_tickets():
     tickets = Tickets.objects.all()
@@ -46,7 +45,6 @@ def decrypted_tickets():
         {
             'ticket_code': t.decrypted_data('ticket_code'),
             'quantity': t.decrypted_data('quantity'),
-            'ticket_status': t.decrypted_data('ticket_status'),
         }
         for t in tickets
     ]
@@ -55,7 +53,6 @@ def decrypted_bookings():
     bookings = Booking.objects.all()
     return [
         {
-            'status': t.decrypted_data('status'),
             'payment_method': t.decrypted_data('payment_method'),
             'ticket_code': t.decrypted_data('ticket_code'),
         }
@@ -66,21 +63,19 @@ def decrypted_payments():
     return [
         {
             'amount': t.decrypted_data('amount'),
-            'payment_method': t.decrypted_data('payment_method'),
-            'payment_state': t.decrypted_data('payment_state'),
         }
         for t in payments
     ]
 def get_common_context():
     tours = decrypted_tours()
-    # users = decrypted_user()
+    users = decrypted_user()
     tickets = decrypted_tickets()
     bookings = decrypted_bookings()  
     payments = decrypted_payments()
     images = Images.objects.all()      
     return {
         'tour': tours,
-        # 'user': users,
+        'user': users,
         'ticket': tickets,
         'booking':bookings,
         'payment': payments,
@@ -141,6 +136,18 @@ def tour_detail(request, tour_id):
     context = get_common_context()
     # Lấy tour cần chỉnh sửa
     tour = get_object_or_404(Tour, id=tour_id)
+    images = tour.images.all() 
+    decrypted_tour = {
+            'id': tour.id,
+            'name': tour.decrypted_data('name'),
+            'description': tour.decrypted_data('description'),
+            'start_location': tour.decrypted_data('start_location'),
+            'destination': tour.decrypted_data('destination'),
+            'price': tour.decrypted_data('price'),
+            'available_seats': tour.decrypted_data('available_seats'),
+            'remaining_seats': tour.decrypted_data('remaining_seats'),
+            'images': images  
+        }
     tours = decrypted_tours()
     images = Images.objects.filter(tour=tour)
     tour.start_date = tour.start_date.strftime("%Y-%m-%d") if tour.start_date else ""
@@ -149,7 +156,7 @@ def tour_detail(request, tour_id):
 
     context = {
         'tours': tours,
-        'tour': tour,
+        'tour': decrypted_tour,
         'images': images,
     }
 

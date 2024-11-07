@@ -4,12 +4,10 @@ from Management.models import Users, Tour, Tickets, Booking, Payment, Images
 from django.shortcuts import get_object_or_404, render  
 
 # Create your views here.
-
 # Function system
 def decrypted_tours():
     tour = Tour.objects.all()
     tours_with_images = []
-    
     for t in tour:
         images = t.images.all()  # Lấy tất cả hình ảnh liên quan đến tour
         decrypted_tour = {
@@ -25,7 +23,6 @@ def decrypted_tours():
         }
         tours_with_images.append(decrypted_tour)
     return tours_with_images
-
 def decrypted_user():
     users = Users.objects.all()
     return [
@@ -44,7 +41,6 @@ def decrypted_tickets():
         {
             'ticket_code': t.decrypted_data('ticket_code'),
             'quantity': t.decrypted_data('quantity'),
-            'ticket_status': t.decrypted_data('ticket_status'),
         }
         for t in tickets
     ]
@@ -53,7 +49,6 @@ def decrypted_bookings():
     bookings = Booking.objects.all()
     return [
         {
-            'status': t.decrypted_data('status'),
             'payment_method': t.decrypted_data('payment_method'),
             'ticket_code': t.decrypted_data('ticket_code'),
         }
@@ -64,8 +59,6 @@ def decrypted_payments():
     return [
         {
             'amount': t.decrypted_data('amount'),
-            'payment_method': t.decrypted_data('payment_method'),
-            'payment_state': t.decrypted_data('payment_state'),
         }
         for t in payments
     ]
@@ -74,15 +67,16 @@ def get_common_context():
     users = decrypted_user()
     tickets = decrypted_tickets()
     bookings = decrypted_bookings()  
-    payments = decrypted_payments()      
+    payments = decrypted_payments()
+    images = Images.objects.all()      
     return {
         'tour': tours,
         'user': users,
         'ticket': tickets,
         'booking':bookings,
         'payment': payments,
+        'image': images,
     }
-
 
 def get_home(request):  
     context = get_common_context()
@@ -142,6 +136,19 @@ def get_add_tour(request):
 def get_tour_edit(request, tour_id):
     # Lấy tour cần chỉnh sửa
     tour = get_object_or_404(Tour, id=tour_id)
+    images = tour.images.all()
+    decrypted_tour = {
+            'id': tour.id,
+            'name': tour.decrypted_data('name'),
+            'description': tour.decrypted_data('description'),
+            'start_location': tour.decrypted_data('start_location'),
+            'destination': tour.decrypted_data('destination'),
+            'price': tour.decrypted_data('price'),
+            'available_seats': tour.decrypted_data('available_seats'),
+            'remaining_seats': tour.decrypted_data('remaining_seats'),
+            'images': images  
+        }
+    tours = decrypted_tours()
     images = Images.objects.filter(tour=tour)
     tour.start_date = tour.start_date.strftime("%Y-%m-%d") if tour.start_date else ""
     tour.end_date = tour.end_date.strftime("%Y-%m-%d") if tour.end_date else ""
@@ -172,7 +179,7 @@ def get_tour_edit(request, tour_id):
     descriptions = desc.split('*') if desc else []
 
     context = {
-        'tour': tour,
+        'tour': decrypted_tour,
         'images': images,
         'descriptions': descriptions,
     }

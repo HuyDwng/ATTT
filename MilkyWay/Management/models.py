@@ -1,5 +1,5 @@
 from django.db import models
-import os
+import os, json
 from datetime import datetime
 from .utils import encrypt_data, decrypt_data
 from cryptography.fernet import Fernet,InvalidToken
@@ -41,7 +41,8 @@ class Users(models.Model):
         return None
 
     def __str__(self):
-         return self.username
+        phone = decrypt_data(self.phone_number) 
+        return phone
     
 
 def user_directory_path(instance, filename):
@@ -85,6 +86,7 @@ class Tour(models.Model):
         return decrypt_data(self.description)
 
     def save(self, *args, **kwargs):
+        self.name = encrypt_data(self.name)
         self.description = encrypt_data(self.description)
         self.destination = encrypt_data(self.destination)
         self.start_location = encrypt_data(self.start_location)
@@ -114,8 +116,21 @@ class Booking(models.Model):
     tour = models.ForeignKey(Tour, on_delete=models.CASCADE)  # Tour được đặt
     booking_date = models.DateTimeField(auto_now_add=True)  # Ngày đặt vé
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='booked')  # Trạng thái
-    payment_method = models.CharField(max_length=50, blank=True)  # Phương thức thanh toán (nếu có)
-    ticket_code = models.CharField(max_length=100, blank=True)  # Mã vé (tạo sau khi thanh toán)
+    payment_method = models.CharField(max_length=50, blank=True)  
+    ticket_code = models.CharField(max_length=100, blank=True) 
+
+    def save(self, *args, **kwargs):
+        # Mã hóa các trường nhạy cảm trước khi lưu
+        self.payment_method = encrypt_data(self.payment_method)
+        self.ticket_code = encrypt_data(self.ticket_code)
+        super().save(*args, **kwargs)
+
+    def decrypted_data(self, field_name):
+        # Giải mã dữ liệu dựa vào tên trường
+        encrypted_value = getattr(self, field_name, None)  # Lấy giá trị từ trường
+        if encrypted_value is not None:
+            return decrypt_data(encrypted_value)
+        return None
 
     def __str__(self):
         return f"Booking by {self.user} for {self.tour} with id {self.id}"
@@ -136,6 +151,19 @@ class Payment(models.Model):
     payment_date = models.DateTimeField(auto_now_add=True)  # Ngày thanh toán
     payment_method = models.CharField(max_length=15, choices=STATUS_METHOD, default="cash")  # Phương thức thanh toán
     payment_state = models.CharField(max_length=15, choices=STATUS_CHOICES, default="unpaid") 
+
+    def save(self, *args, **kwargs):
+        # Mã hóa các trường nhạy cảm trước khi lưu
+        self.amount = encrypt_data(self.amount)
+        super().save(*args, **kwargs)
+
+    def decrypted_data(self, field_name):
+        # Giải mã dữ liệu dựa vào tên trường
+        encrypted_value = getattr(self, field_name, None)  # Lấy giá trị từ trường
+        if encrypted_value is not None:
+            return decrypt_data(encrypted_value)
+        return None
+
     def __str__(self):
         return f"Payment for {self.booking} on {self.payment_date} with id {self.id}"
     
@@ -150,10 +178,22 @@ class Tickets(models.Model):
     quantity = models.CharField(max_length=100)
     ticket_status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='issued')  # Trạng thái vé
 
+    def save(self, *args, **kwargs):
+        # Mã hóa các trường nhạy cảm trước khi lưu
+        self.ticket_code = encrypt_data(self.ticket_code)
+        self.quantity = encrypt_data(self.quantity)
+        super().save(*args, **kwargs)
+
+    def decrypted_data(self, field_name):
+        # Giải mã dữ liệu dựa vào tên trường
+        encrypted_value = getattr(self, field_name, None)  
+        if encrypted_value is not None:
+            return decrypt_data(encrypted_value)
+        return None
+
     def __str__(self):
         return f"ID ticket {self.id}"
 
-        return url
     
 class Images(models.Model):
     tour = models.ForeignKey(Tour, related_name='images', on_delete=models.CASCADE, null=True, blank=True)
