@@ -152,8 +152,6 @@ def tour_detail(request, tour_id):
     images = Images.objects.filter(tour=tour)
     tour.start_date = tour.start_date.strftime("%Y-%m-%d") if tour.start_date else ""
     tour.end_date = tour.end_date.strftime("%Y-%m-%d") if tour.end_date else ""
-
-
     context = {
         'tours': tours,
         'tour': decrypted_tour,
