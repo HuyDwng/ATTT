@@ -23,7 +23,10 @@ def decrypted_tours():
             'price': t.decrypted_data('price'),
             'available_seats': t.decrypted_data('available_seats'),
             'remaining_seats': t.decrypted_data('remaining_seats'),
-            'images': images  
+            'images': images,
+            'start_date': t.start_date,
+            'end_date': t.end_date,
+            'duration_in_days_and_nights': t.duration_in_days_and_nights()
         }
         tours_with_images.append(decrypted_tour)
     return tours_with_images
@@ -136,27 +139,40 @@ def tour_detail(request, tour_id):
     context = get_common_context()
     # Lấy tour cần chỉnh sửa
     tour = get_object_or_404(Tour, id=tour_id)
-    images = tour.images.all() 
+    images = tour.images.all()
+
     decrypted_tour = {
-            'id': tour.id,
-            'name': tour.decrypted_data('name'),
-            'description': tour.decrypted_data('description'),
-            'start_location': tour.decrypted_data('start_location'),
-            'destination': tour.decrypted_data('destination'),
-            'price': tour.decrypted_data('price'),
-            'available_seats': tour.decrypted_data('available_seats'),
-            'remaining_seats': tour.decrypted_data('remaining_seats'),
-            'images': images  
-        }
+        'id': tour.id,
+        'name': tour.decrypted_data('name'),
+        'description': tour.decrypted_data('description'),
+        'start_location': tour.decrypted_data('start_location'),
+        'destination': tour.decrypted_data('destination'),
+        'price': tour.decrypted_data('price'),
+        'available_seats': tour.decrypted_data('available_seats'),
+        'remaining_seats': tour.decrypted_data('remaining_seats'),
+        'images': images,
+        'start_date': tour.start_date,
+        'end_date': tour.end_date,
+        'duration_in_days_and_nights': tour.duration_in_days_and_nights()
+    }
+
+    # Tách description thành hai phần dựa trên dấu '*'
+    description_parts = decrypted_tour['description'].split('*', 1) if decrypted_tour['description'] else ["", ""]
+    description_main = description_parts[0] if len(description_parts) > 0 else ""
+    itinerary = description_parts[1] if len(description_parts) > 1 else ""
+
     tours = decrypted_tours()
     images = Images.objects.filter(tour=tour)
     tour.start_date = tour.start_date.strftime("%Y-%m-%d") if tour.start_date else ""
     tour.end_date = tour.end_date.strftime("%Y-%m-%d") if tour.end_date else ""
-    context = {
+
+    context.update({
         'tours': tours,
         'tour': decrypted_tour,
+        'description_main': description_main,
+        'itinerary': itinerary,
         'images': images,
-    }
+    })
 
     return render(request, 'tour-detail.html', context)
 
