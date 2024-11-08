@@ -57,6 +57,7 @@ def decrypted_bookings():
             'booking_date': t.booking_date,
             'user': t.user,
             'tour': t.tour,
+            'status':t.status,
             'payment_method': t.decrypted_data('payment_method'),
             'ticket_code': t.decrypted_data('ticket_code'),
         }
@@ -223,7 +224,15 @@ def change_image(request, image_id):
             image.save()  # Lưu thay đổi
     return redirect('tour_edit', tour_id=image.tour.id)  # Điều hướng lại trang chỉnh sửa tour
 
-
+def delete_tour(request, tour_id):
+    # Lấy đối tượng tour cần xóa từ database
+    tour = get_object_or_404(Tour, id=tour_id)
+    
+    # Xóa tour khỏi database
+    tour.delete()
+    
+    # Điều hướng trở lại trang quản lý tour sau khi xóa
+    return redirect('tour_mng')
 
 def get_revenue_statistics(request):
     context = get_common_context()

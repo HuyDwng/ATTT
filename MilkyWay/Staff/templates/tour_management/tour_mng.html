@@ -29,7 +29,8 @@
                 <div class="offcanvas offcanvas-start" id="demo">
                     <div class="offcanvas-header">
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
-                        <a href="#" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i></a>
+                        <a href="{% url 'login' %}" class="logout-btn"><i
+                                class="fa-solid fa-right-from-bracket"></i></a>
                         <span class="offcanvas-title" id="offcanvas-title-1" style="color:#ffffff;">Milky</span>
                         <span class="offcanvas-title" id="offcanvas-title-2" style="color:#00d4ff"> Way</span>
                         <h1 class="staff-name">Trần Hữu Hậu</h1>
@@ -78,8 +79,8 @@
                         <td>{{i.price}}</td>
                         <td>
                             <a class="edit-btn" href="{% url 'tour_edit' tour_id=i.id %}">Sửa</a>
-                            <button class="delete-btn">Xóa</button>
-                            <a class="more-info-btn" href="#">Xem chi tiết</a>
+                            <a class="delete-btn" href="{% url 'delete_tour' tour_id=i.id %}">Xóa</a>
+                            <a class="more-info-btn" href="{%url 'tour_detail' tour_id=i.id%}">Xem chi tiết</a>
                         </td>
                     </tr>
                     {% endfor %}
@@ -102,7 +103,20 @@
             </div>
         </div>
     </div>
-    <script src="{% static 'javascript/tour_scpt/tour_mng.js' %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const deleteButtons = document.querySelectorAll('.delete-btn');
+
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function (event) {
+                    const confirmDelete = confirm('Bạn có chắc chắn muốn xóa tour này không?');
+                    if (!confirmDelete) {
+                        event.preventDefault(); // Hủy thao tác xóa nếu người dùng không xác nhận
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
