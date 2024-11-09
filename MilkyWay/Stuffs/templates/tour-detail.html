@@ -53,14 +53,34 @@
 				<h6 class="px-2">Ngày khởi hành: {{tour.start_date}}</h6>
 				<h6 class="px-2">Thời gian: {{tour.duration_in_days_and_nights}}</h6>
                 <h6 class="px-2">Số chỗ còn: {{tour.remaining_seats}}</h6>
-				<div class="counter-container">
+				<h2>{{tour.remaining_seats}}</h2>
+				{% if tour.remaining_seats == 10 %}
+				<h6 class="px-2">Số chỗ còn: {{tour.remaining_seats}}</h6>
+				<form method="POST" action="{% url 'book_tour' tour.id %}">
+					{% csrf_token %}
+					<div class="counter-container">
+						<button type="button" onclick="decrease()">-</button>
+						<input type="number" id="quantity" name="quantity" value="1" min="1" max="{{ tour.remaining_seats }}" readonly>
+						<button type="button" onclick="increase()">+</button>
+					</div>
+					<div class="container p-2 center">
+						<button type="submit" class="btn btn-success">Đặt tour</button>
+					</div>
+				</form>
+				{% else %}
+				<div class="alert alert-danger" role="alert">
+					Tour đã hết vé!
+				</div>
+				{% endif %}
+
+				{% comment %} <div class="counter-container">
 					<button onclick="decrease()">-</button>
 					<div id="counter">0</div>
 					<button onclick="increase()">+</button>
 				</div>
                 <div class="container p-2 center">
                     <button class="btn btn-success">Đặt tour</button>
-                </div>
+                </div> {% endcomment %}
             </div>
         </div>
 		  <!--Product-->
@@ -194,6 +214,18 @@
 				{% endfor %}
 			</div>
 		  </div>
+		  <div class="container mt-4">
+			{% if messages %}
+				{% for message in messages %}
+					<div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}" role="alert">
+						{{ message }}
+					</div>
+				{% endfor %}
+			{% endif %}
+			
+			{% block content %}
+			{% endblock %}
+		</div>
 		  <ul class="pagination justify-content-center mt-5">
 			<li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
 			<li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>

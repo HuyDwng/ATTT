@@ -26,23 +26,24 @@
                 <div class="Menu">
                     <div class="logo"><a href="index.html">Milky<span>Way</span></a></div>
                     <ul>
-                        <li><a href="#home" class="active-menu">Home</a></li>
-                        <li><a href="#destination">Destination</a></li>
-                        <li><a href="#package">Packages</a></li>
-                        <li><a href="#client-review">Client Review</a></li>
-                        <li><a href="#blog">Blog</a></li>
-                        <li><a href="#infomation">Infomation</a></li>
+                        <li><a href="#home" class="active-menu">Nhà</a></li>
+                        <li><a href="#destination">Địa Điểm</a></li>
+                        <li><a href="#package">Tour</a></li>
+                        <li><a href="#client-review">Đánh Giá</a></li>
+                        <li><a href="#blog">Tin Tức</a></li>
+                        <li><a href="#infomation">Liên Hệ</a></li>
                         <li><a href="{% url 'login' %}" class="btn">Đăng Nhập</a></li>
                     </ul>
                 </div>
                 <hr>
             </header>
-                <div class="PR_Slogan">
-                    <div class="Slogan">
-                        <h1>Explore the Beauty of the Beautiful World</h1>
-                        <button>Explore Now</button>
-                    </div>
+                
+            <div class="PR_Slogan">
+                <div class="Slogan">
+                    <h1>Explore the Beauty of the Beautiful World</h1>
+                    <a href="{% url 'all_tours' %}"><button>All Tours</button></a>
                 </div>
+            </div>
         </div>
         <!-- Search Tabs -->
         <div class="search-container">
@@ -182,43 +183,50 @@
                 <div class="Parent-TopCard">
                     {% for tour in tour_counts %}
                         {% if forloop.counter <= 2 %}
-                            <div class="top-card">
+                        <a href="{% url 'tours_by_destination' tour.destination %}">
+                            <div class="top-card" style="--bg-image: url('{{ tour.image_url }}')">
                                 <div class="Destination-Info">
                                     <h3 class="Destination-Name">{{ tour.destination }}</h3>
                                     <p class="Places-number">{{ tour.count }} Tours, Địa Điểm</p>
                                 </div>
                             </div>
+                        </a>
                         {% endif %}
                     {% endfor %}
                 </div>
-                    <div class="other-card">
-                        {% for tour in tour_counts %}
-                            {% if forloop.counter == 3 %}
-                            <div class="left-card">
+                <div class="other-card">
+                    {% for tour in tour_counts %}
+                    {% if forloop.counter == 3 %}
+                        <a href="{% url 'tours_by_destination' tour.destination %}">
+                            <div class="left-card" style="--bg-image: url('{{ tour.image_url }}')">
                                 <div class="Destination-Info">
                                     <h3 class="Destination-Name">{{ tour.destination }}</h3>
                                     <p class="Places-number">{{ tour.count }} Tours, Địa Điểm</p>
                                 </div>
                             </div>
-                            <div class="right-card">
-                                {% elif forloop.counter > 3 and forloop.counter <= 5 %}
-                                <div class="right-card1">
-                                    <div class="Destination-Info">
-                                        <h3 class="Destination-Name">{{ tour.destination }}</h3>
-                                        <p class="Places-number">{{ tour.count }} Tours, Địa Điểm</p>
-                                    </div>
-                                </div>
-                                {% elif forloop.counter > 5 and forloop.counter <= 6%}
-                                <div class="right-card2">
-                                    <div class="Destination-Info">
-                                        <h3 class="Destination-Name">{{ tour.destination }}</h3>
-                                        <p class="Places-number">{{ tour.count }} Tours, Địa Điểm</p>
-                                    </div>
+                        </a>
+                        <div class="right-card">
+                    {% elif forloop.counter > 3 and forloop.counter <= 5 %}
+                        <a href="{% url 'tours_by_destination' tour.destination %}">
+                            <div class="right-card1" style="--bg-image: url('{{ tour.image_url }}')">
+                                <div class="Destination-Info">
+                                    <h3 class="Destination-Name">{{ tour.destination }}</h3>
+                                    <p class="Places-number">{{ tour.count }} Tours, Địa Điểm</p>
                                 </div>
                             </div>
-                        {% endif %}
-                        {%endfor%}
-                    </div>
+                        </a>
+                    {% elif forloop.counter > 5 and forloop.counter <= 6 %}
+                        <a href="{% url 'tours_by_destination' tour.destination %}">
+                            <div class="right-card2" style="--bg-image: url('{{ tour.image_url }}')">
+                                <div class="Destination-Info">
+                                    <h3 class="Destination-Name">{{ tour.destination }}</h3>
+                                    <p class="Places-number">{{ tour.count }} Tours, Địa Điểm</p>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                    {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </section>
@@ -246,12 +254,12 @@
     <section id = "package">
         <section class="special-packages">
                 <div class="title-MainPage">
-                    <h2>special packages</h2>
-                    <p>Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla.</p>
+                    <h2>Tour Đặc Biệt</h2>
+                    <p>Hãy ngắm nhìn thế giới. Điều đó tuyệt vời hơn bất cứ giấc mơ nào. </p>
                 </div>
                 <div class="package-cards">
                     {% for i in tour %}
-                        {% if forloop.counter <= 20 %}
+                        {% if forloop.counter <= 6 %}
                             <div class="package-card">
                                 <div class="packages-info">
                                     {% with first_image=i.images.first %}
@@ -268,19 +276,12 @@
                                     </div>
                                     <hr>
                                     <div class="detail-info">
-                                        <div>{{ i.duration_in_days_and_nights }}</div>
-                                        <div>{{ i.start_location }}</div>
-                                        <div>Còn lại {{ i.remaining_seats }}</div>
-                                        <div>
-                                            <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                            <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                            <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                            <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                            <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                                        </div>
-                                        <div>2544 review</div>
+                                        <div>Khởi hành: {{i.start_location}}</div>
+                                        <div>Ngày khởi hành: {{i.start_date}}</div>
+                                        <div>Thời gian: {{i.duration_in_days_and_nights}}</div>
+                                        <div>Số chỗ ngồi: {{i.available_seats}}</div>
                                         <div class="btn-BookTour">
-                                            <button><a href="{% url 'tour_detail' tour_id=i.id %}">Book Now</a></button>
+                                            <button><a href="{% url 'tour_detail' tour_id=i.id %}">Xem Chi Tiết</a></button>
                                         </div>
                                     </div>
                                 </div>

@@ -8,6 +8,9 @@
     filter: brightness(0.8);
 }
 .pic-product img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
     transition: transform 0.3s ease-in-out;
 }
 .pic-product:hover img{
@@ -18,7 +21,7 @@
     position: relative;
     overflow: hidden; /* Ẩn phần hình ảnh bị phóng to ra ngoài khung */
     width: 100%; 
-    height: auto; /* Đảm bảo chiều cao tự động điều chỉnh theo ảnh */
+    height: 300px; /* Đảm bảo chiều cao tự động điều chỉnh theo ảnh */
 }
 
 .container-star{

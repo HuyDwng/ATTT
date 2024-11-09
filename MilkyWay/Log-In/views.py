@@ -142,10 +142,13 @@ def login(request):
                 if  db_password == password:
                     role = user.role.lower()
                     if role == "customer":
+                        request.session['username'] = user.username
                         return redirect('homepage')  
                     elif role == "staff":
+                        request.session['username'] = user.username
                         return redirect('tour_mng')
                     elif role == "admin":
+                        request.session['username'] = user.username
                         return redirect('tour-list')
                     else:
                         messages.error(request, "Lỗi phân quyền người dùng")
@@ -188,7 +191,7 @@ def forget(request):
     return render(request, 'log_in/forget-password.html') 
 
 def sign_out(request):
-    del request.session['user_data']
+    del request.session['username']
     return redirect('login')
 
 #Tài khoản google

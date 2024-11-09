@@ -6,11 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xác nhận thông tin thanh toán cho tour</title>
     <link rel="stylesheet" href="{% static 'css/tour-payment-confirmation.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+    <header class="bg_Main">
+        <div class="Pr_Menu">
+            <div class="Menu">
+                <div class="logo"><a href="index.html">Milky<span>Way</span></a></div>
+                <div class="progress-bar-container">
+                    <ul class="progress-bar">
+                        <div class="progress-step">
+                            <div class="circle active-circle">1</div>
+                            <li class="active">Đặt vé</li>
+                            <span class="dash"></span>
+                        </div>
+                        <div class="progress-step">
+                            <div class="circle">2</div>
+                            <li>Thanh toán</li>
+                            <span class="dash"></span>
+                        </div>
+                        <div class="progress-step">
+                            <div class="circle">3</div>
+                            <li>Ví điện tử</li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </header>
+
     <section class="Parent-Info-Confirm">
         <div class="Info-Confirm">
             <div class="logo">
@@ -76,10 +105,108 @@
                 </div>
             </div>
             <div class="Parent-btn-ConFirm">
-                <button class="btn-ConFirm"><span>Xác Nhận</span></button>
+                <button class="btn-ConFirm" id="pay-button"><span>Xác Nhận</span></button>
             </div>
         </div>
     </section>
+    <!-- footer-copyright start -->
+    <section id="infomation">
+        <footer  class="footer-copyright">
+            <div class="f-container">
+                <div class="footer-content">
+                    <div class="f-row">
+
+                        <div class="col-sm-3">
+                            <div class="single-footer-item">
+                                <div class="footer-logo">
+                                    <a href="index.html">
+                                        tour<span>Nest</span>
+                                    </a>
+                                    <p>
+                                        best travel agency
+                                    </p>
+                                </div>
+                            </div><!--/.single-footer-item-->
+                        </div><!--/.col-->
+
+                        <div class="col-sm-3">
+                            <div class="single-footer-item">
+                                <h2>link</h2>
+                                <div class="single-footer-txt">
+                                    <p><a href="#">home</a></p>
+                                    <p><a href="#">destination</a></p>
+                                    <p><a href="#">spacial packages</a></p>
+                                    <p><a href="#">special offers</a></p>
+                                    <p><a href="#">blog</a></p>
+                                    <p><a href="#">contacts</a></p>
+                                </div><!--/.single-footer-txt-->
+                            </div><!--/.single-footer-item-->
+
+                        </div><!--/.col-->
+
+                        <div class="col-sm-3">
+                            <div class="single-footer-item">
+                                <h2>popular destination</h2>
+                                <div class="single-footer-txt">
+                                    <p><a href="#">china</a></p>
+                                    <p><a href="#">venezuela</a></p>
+                                    <p><a href="#">brazil</a></p>
+                                    <p><a href="#">australia</a></p>
+                                    <p><a href="#">london</a></p>
+                                </div><!--/.single-footer-txt-->
+                            </div><!--/.single-footer-item-->
+                        </div><!--/.col-->
+
+                        <div class="col-sm-3">
+                            <div class="single-footer-item text-center">
+                                <h2 class="text-left">contacts</h2>
+                                <div class="single-footer-txt text-left">
+                                    <p>+1 (300) 1234 6543</p>
+                                    <p class="foot-email"><a href="#">info@tnest.com</a></p>
+                                    <p>North Warnner Park 336/A</p>
+                                    <p>Newyork, USA</p>
+                                </div><!--/.single-footer-txt-->
+                            </div><!--/.single-footer-item-->
+                        </div><!--/.col-->
+
+                    </div><!--/.row-->
+
+                </div><!--/.footer-content-->
+                <hr>
+                <div class="foot-icons ">
+                    <ul class="footer-social-links list-inline list-unstyled">
+                        <li><a href="#" target="_blank" class="foot-icon-bg-1"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="#" target="_blank" class="foot-icon-bg-2"><i class="fa-solid fa-x"></i></a></li>
+                        <li><a href="#" target="_blank" class="foot-icon-bg-3"><i class="fa-brands fa-instagram"></i></a></li>
+                    </ul>
+                    <p>&copy; 2017 <a href="https://www.themesine.com">ThemeSINE</a>. All Right Reserved</p>
+
+                </div><!--/.foot-icons-->
+                <div class="Gototop" id="Gototop">
+                    <a href="javascript:;" onclick="goToTop()"><i class="fa-solid fa-arrow-up"></i></a>
+                </div><!--/.scroll-Top-->
+            </div><!-- /.container-->
+
+        </footer><!-- /.footer-copyright-->
+    </section>
+    <!-- footer-copyright end -->
+    <div id="confirmation-popup" class="confirmation-popup ">
+        <div class="popup-content" >
+            <h2>Tất cả thông tin của bạn đều đã chính xác?</h2>
+            <p>Bạn sẽ không thể thay đổi thông tin đặt chỗ sau khi tiến hành thanh toán. Bạn có muốn tiếp tục?</p>
+            <div class="popup-buttons">
+                <button id="check-again-btn" class="btn-check">Kiểm tra lại</button>
+                <button id="proceed-btn" class="btn-cont">Tiếp tục</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="error-container" class="error-container">
+        <span id="error-message">Vui lòng điền thông tin liên hệ!</span>
+        <button id="close-error-btn" class="close-btn">&times;</button>
+    </div>
+
+<script src="{% static 'javascript/tour-payment-confirmation.js' %}"></script>
 </body>
 </html>
 

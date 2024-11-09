@@ -114,13 +114,11 @@ class Booking(models.Model):
     ]
     user = models.ForeignKey(Users, on_delete=models.CASCADE)  # Người đặt vé (khách hàng)
     tour = models.ForeignKey(Tour, on_delete=models.CASCADE)  # Tour được đặt
-    booking_date = models.DateTimeField(auto_now_add=True)  # Ngày đặt vé
+    booking_date = models.DateTimeField(auto_now_add=True, auto_created=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='booked')  # Trạng thái
-    payment_method = models.CharField(max_length=50, blank=True)  
     ticket_code = models.CharField(max_length=100, blank=True) 
 
     def save(self, *args, **kwargs):
-        # Mã hóa các trường nhạy cảm trước khi lưu
         self.payment_method = encrypt_data(self.payment_method)
         self.ticket_code = encrypt_data(self.ticket_code)
         super().save(*args, **kwargs)
@@ -148,8 +146,8 @@ class Payment(models.Model):
     ]
     booking = models.OneToOneField(Booking, on_delete=models.CASCADE)  # Đơn đặt vé
     amount = models.CharField(max_length=500)  # Số tiền thanh toán
-    payment_date = models.DateTimeField(auto_now_add=True)  # Ngày thanh toán
-    payment_method = models.CharField(max_length=15, choices=STATUS_METHOD, default="cash")  # Phương thức thanh toán
+    payment_date = models.DateTimeField(auto_now_add=True, auto_created=True)
+    payment_method = models.CharField(max_length=15, choices=STATUS_METHOD, default="cash")
     payment_state = models.CharField(max_length=15, choices=STATUS_CHOICES, default="unpaid") 
 
     def save(self, *args, **kwargs):
@@ -173,8 +171,9 @@ class Tickets(models.Model):
         ('use', 'Used'),
         ('cancelled', 'Cancelled'),
     ]  
+    booking = models.OneToOneField(Booking, on_delete=models.CASCADE, null=True, blank=True) 
     ticket_code = models.CharField(max_length=100)
-    issued_date = models.DateTimeField()
+    issued_date = models.DateTimeField(auto_now_add=True, auto_created=True)
     quantity = models.CharField(max_length=100)
     ticket_status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='issued')  # Trạng thái vé
 
