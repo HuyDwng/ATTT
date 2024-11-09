@@ -12,6 +12,8 @@ def decrypted_tours():
         images = t.images.all()  # Lấy tất cả hình ảnh liên quan đến tour
         decrypted_tour = {
             'id': t.id,
+            'start_date': t.start_date,
+            'end_date': t.end_date,
             'name': t.decrypted_data('name'),
             'description': t.decrypted_data('description'),
             'start_location': t.decrypted_data('start_location'),
@@ -19,7 +21,9 @@ def decrypted_tours():
             'price': t.decrypted_data('price'),
             'available_seats': t.decrypted_data('available_seats'),
             'remaining_seats': t.decrypted_data('remaining_seats'),
-            'images': images  
+            'images': images,
+            'start_date': t.start_date,
+            'end_date':t.end_date,
         }
         tours_with_images.append(decrypted_tour)
     return tours_with_images
@@ -49,6 +53,11 @@ def decrypted_bookings():
     bookings = Booking.objects.all()
     return [
         {
+            'id': t.id,
+            'booking_date': t.booking_date,
+            'user': t.user,
+            'tour': t.tour,
+            'status':t.status,
             'payment_method': t.decrypted_data('payment_method'),
             'ticket_code': t.decrypted_data('ticket_code'),
         }
@@ -138,7 +147,9 @@ def get_tour_edit(request, tour_id):
     tour = get_object_or_404(Tour, id=tour_id)
     images = tour.images.all()
     decrypted_tour = {
-            'id': tour.id,
+            'id': tour.id,  
+            'start_date': tour.start_date,
+            'end_date': tour.end_date,
             'name': tour.decrypted_data('name'),
             'description': tour.decrypted_data('description'),
             'start_location': tour.decrypted_data('start_location'),
@@ -146,7 +157,9 @@ def get_tour_edit(request, tour_id):
             'price': tour.decrypted_data('price'),
             'available_seats': tour.decrypted_data('available_seats'),
             'remaining_seats': tour.decrypted_data('remaining_seats'),
-            'images': images  
+            'images': images,
+            'start_date':tour.start_date.strftime("%Y-%m-%d") if tour.start_date else "",  
+            'end_date':tour.end_date.strftime("%Y-%m-%d") if tour.end_date else "",
         }
     tours = decrypted_tours()
     images = Images.objects.filter(tour=tour)
@@ -211,7 +224,15 @@ def change_image(request, image_id):
             image.save()  # Lưu thay đổi
     return redirect('tour_edit', tour_id=image.tour.id)  # Điều hướng lại trang chỉnh sửa tour
 
-
+def delete_tour(request, tour_id):
+    # Lấy đối tượng tour cần xóa từ database
+    tour = get_object_or_404(Tour, id=tour_id)
+    
+    # Xóa tour khỏi database
+    tour.delete()
+    
+    # Điều hướng trở lại trang quản lý tour sau khi xóa
+    return redirect('tour_mng')
 
 def get_revenue_statistics(request):
     context = get_common_context()

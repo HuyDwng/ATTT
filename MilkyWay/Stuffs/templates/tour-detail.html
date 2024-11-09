@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>Tôi bị hại</title>
+		<title>{{tour.name}}</title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel = "icon" href = "{% static 'images/logo.jpg' %}">
@@ -22,9 +22,7 @@
 	<body>
 		<!--Title-->
 		<div class="title">
-			<h6 class="display-6 text-capitalize fw-bolder">Chuyến du lịch Phú Quốc</h6>
-			
-
+			<h6 class="display-6 text-capitalize fw-bolder">{{tour.name}}</h6>
 		</div>
         <!--Data-->
         <div class="container-data">
@@ -52,9 +50,14 @@
                 <h5 class="text-primary p-2 card-title">Giá:</h5>
 				<h3 class="px-2">{{tour.price}} (VND)</h3>
                 <h6 class="px-2">Khởi hành: {{ tour.destination }}</h6>
-				<h6 class="px-2">Ngày khởi hành: </h6>
-				<h6 class="px-2">Thời gian: </h6>
-                <h6 class="px-2">Số chỗ còn: </h6>
+				<h6 class="px-2">Ngày khởi hành: {{tour.start_date}}</h6>
+				<h6 class="px-2">Thời gian: {{tour.duration_in_days_and_nights}}</h6>
+                <h6 class="px-2">Số chỗ còn: {{tour.remaining_seats}}</h6>
+				<div class="counter-container">
+					<button onclick="decrease()">-</button>
+					<div id="counter">0</div>
+					<button onclick="increase()">+</button>
+				</div>
                 <div class="container p-2 center">
                     <button class="btn btn-success">Đặt tour</button>
                 </div>
@@ -65,13 +68,13 @@
             <hr>
             <div class="main-content">
                 <h5 class="text-primary p-2">Mô Tả</h5>
-				<h6 class="px-2">Trải nghiệm 3 ngày 2 đêm tại Phú Quốc với các hoạt động đầy hấp dẫn</h6>
+				<h6 class="px-2">{{ description_main }}</h6>
                 
             </div>
             <hr>
 			<div class="main-content">
                 <h5 class="text-primary p-2">Lịch Trình</h5>
-				<h6 class="px-2">Trải nghiệm 3 ngày 2 đêm tại Phú Quốc với các hoạt động đầy hấp dẫn</h6>
+				<h6 class="px-2">{{ itinerary }}</h6>
             </div>
 			<hr> 
 			<div class="main-content">

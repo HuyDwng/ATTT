@@ -199,3 +199,58 @@ h3 {
     background-color: lightslategray; /* Màu nền khi hover */
 }
 
+/* Header */
+.card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    color: #009ce0;
+    flex-direction: column;
+}
+
+.card-header .icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.card-header h2 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Booking details */
+.section-title {
+    font-size: 12px;
+    font-weight: bold;
+    color: #555;
+    margin-top: 10px;
+}
+
+.detail {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.detail span {
+    display: block;
+    color: #222;
+}
+
+/* Customer info */
+.customer-info {
+    margin-top: 10px;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+.customer-info div {
+    font-size: 14px;
+    margin: 2px 0;
+}
+
+.different span{
+    color: lightslategray;
+}
+
+
+

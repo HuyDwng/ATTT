@@ -1,17 +1,17 @@
-// Lấy tất cả các phần tử img-item
-const imgItems = document.querySelectorAll('.img-item img');
+// Đếm
+let count = 0;
 
-// Lấy phần tử ảnh lớn
-const mainImage = document.querySelector('.image img');
+        function increase() {
+            count++;
+            document.getElementById('counter').innerText = count;
+        }
 
-// Lặp qua tất cả các ảnh nhỏ và thêm sự kiện click
-imgItems.forEach(item => {
-    item.addEventListener('click', function() {
-        // Khi click vào ảnh nhỏ, thay đổi src của ảnh lớn
-        mainImage.src = this.src;
-    });
-});
-
+        function decrease() {
+            if (count > 0) {
+                count--;
+                document.getElementById('counter').innerText = count;
+            }
+        }
 // TOGGLE ACCORDITION
 
 function toggleAccordion(element) {
