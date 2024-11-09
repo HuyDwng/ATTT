@@ -97,7 +97,9 @@ class Tour(models.Model):
 
 
     def __str__(self):
-        return self.name
+        name = decrypt_data(self.name) 
+        return name
+    
    
     def duration_in_days_and_nights(self):
             # Tính khoảng cách giữa end_date và start_date

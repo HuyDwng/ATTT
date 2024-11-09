@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 	<head>
@@ -6,8 +7,8 @@
 		<title></title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="../static/css/tour.css">
-		<link rel="stylesheet" href="../static/css/footer.css">
+		<link rel="stylesheet" href="{% static 'css/tour.css' %}">
+		<link rel="stylesheet" href="{% static 'css/footer.css' %}">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 	
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -23,25 +24,13 @@
 			</div>
 			<div class="carousel-inner">
 			  <div class="carousel-item active c-item" data-bs-interval="2000">
-				<img src="../static/pictures/HomeBG.jpg" class="d-block w-100 c-img" alt="pic">
-				<div class="carousel-caption top-0 mt-4 d-none d-md-block">
-				  <h5 class="fs-3 mt-5 text-uppercase">First slide label</h5>
-				  <p class="display-1 text-capitalize fw-bolder">Tour Booking</p>
-				</div>
+				<img src="{% static "images/banner-SingledaySale.jpg"%}" class="d-block w-100 c-img" alt="pic">
 			  </div>
 			  <div class="carousel-item c-item" data-bs-interval="2000">
-				<img src="../static/pictures/bg_login.jpg" class="d-block w-100 c-img" alt="pic">
-				<div class="carousel-caption top-0 mt-4 d-none d-md-block">
-					<h5 class="fs-3 mt-5 text-uppercase">First slide label</h5>
-					<p class="display-1 text-capitalize fw-bolder">Tour Booking</p>
-				</div>
+				<img src="{% static "images/banner-NoelSale.jpg"%}" class="d-block w-100 c-img" alt="pic">
 			  </div>
 			  <div class="carousel-item c-item">
-				<img src="../static/pictures/DaNang.jpg" class="d-block w-100 c-img" alt="...">
-				<div class="carousel-caption top-0 mt-4 d-none d-md-block">
-					<h5 class="fs-3 mt-5 text-uppercase">First slide label</h5>
-					<p class="display-1 text-capitalize fw-bolder">Tour Booking</p>
-				</div>
+				<img src="{% static "images/banner-NewyearSale.jpg"%}" class="d-block w-100 c-img" alt="pic">
 			  </div>
 			</div>
 			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
@@ -57,28 +46,20 @@
 		  {% comment %} {% block content %} {% endcomment %}
 		  <!--Product-->
 		  <div class="container">
-			<h5 class="fs-3 text-uppercase mt-5 fw-bolder">Phân loại theo tìm kiếm</h5>
+			<h5 class="fs-3 text-uppercase mt-5 fw-bolder">Các tour</h5>
 			<div class="row gy-4">
 				{% for tour in page_obj %}
 				<div class="col-lg-4 pic-product">
 					<div class="image-container">
-						{% with first_image=tour.images.first %}
-						<img src="{{ first_image.images.url }}" class="d-block mt-4 w-100" alt="{{ tour.destination }}">
-						{% endwith %}
+						{% if tour.first_image_url %}
+						<img src="{{ tour.first_image_url }}" class="d-block mt-4 w-100" alt="{{ tour.destination }}">
+						{% else %}
+						<img src="{% static 'default_image.jpg' %}" class="d-block mt-4 w-100" alt="No image available">
+						{% endif %}
 					</div>
 					<div class="card">
 						<h5 class="text-primary p-2">{{ tour.name }}</h5>
 						<h6 class="px-2">{{ tour.price }} VND</h6>
-						<div class="container-star p-2">
-							<div class="star">
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-								<i class="fa-regular fa-star-half-stroke" style="color: #FFD43B;"></i>
-							</div>
-							<p class="px-2">4.7</p>
-						</div>
 						<div class="container p-2">
 							<button class="btn btn-outline-success">Đặt tour</button>
 							<button class="btn btn-outline-primary">Xem thêm chi tiết</button>
@@ -95,22 +76,23 @@
 		<ul class="pagination justify-content-center mt-5">
 			{% if page_obj.has_previous %}
 			<li class="page-item">
-				<a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if query_string %}&{{ query_string }}{% endif %}">Previous</a>
+				<a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
 			</li>
 			{% endif %}
-		
+	
 			{% for num in page_obj.paginator.page_range %}
 			<li class="page-item {% if page_obj.number == num %}active{% endif %}">
-				<a class="page-link" href="?page={{ num }}{% if query_string %}&{{ query_string }}{% endif %}">{{ num }}</a>
+				<a class="page-link" href="?page={{ num }}">{{ num }}</a>
 			</li>
 			{% endfor %}
-		
+	
 			{% if page_obj.has_next %}
 			<li class="page-item">
-				<a class="page-link" href="?page={{ page_obj.next_page_number }}{% if query_string %}&{{ query_string }}{% endif %}">Next</a>
+				<a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
 			</li>
 			{% endif %}
 		</ul>
+		
 		{% comment %} {% endblock content%}
 		{% block content_detail %} {% endblock content_detail%} {% endcomment %}
 		  <!--footer-->
