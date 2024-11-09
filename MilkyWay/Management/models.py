@@ -119,7 +119,6 @@ class Booking(models.Model):
     ticket_code = models.CharField(max_length=100, blank=True) 
 
     def save(self, *args, **kwargs):
-        self.payment_method = encrypt_data(self.payment_method)
         self.ticket_code = encrypt_data(self.ticket_code)
         super().save(*args, **kwargs)
 
@@ -171,7 +170,7 @@ class Tickets(models.Model):
         ('use', 'Used'),
         ('cancelled', 'Cancelled'),
     ]  
-    booking = models.OneToOneField(Booking, on_delete=models.CASCADE, null=True, blank=True) 
+    booking = models.ForeignKey(Booking, on_delete=models.CASCADE, null=True, blank=True) 
     ticket_code = models.CharField(max_length=100)
     issued_date = models.DateTimeField(auto_now_add=True, auto_created=True)
     quantity = models.CharField(max_length=100)
@@ -191,7 +190,7 @@ class Tickets(models.Model):
         return None
 
     def __str__(self):
-        return f"ID ticket {self.id}"
+        return f"ID ticket {self.id} for {self.booking}"
 
     
 class Images(models.Model):

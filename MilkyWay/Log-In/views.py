@@ -172,13 +172,9 @@ def forget(request):
         if username == "":
             messages.error(request, "Không được để trống tên đăng nhập")
         else:
-            print("Thành công 1 phần")
-            print(password)
-            print(password1)
             if Users.objects.filter(username=username).exists():
                 if password == password1:
                     user = Users.objects.get(username=username)
-                    print(user)
                     user.password = password
                     user.save()
                     messages.success(request, "Đổi mật khẩu thành công!")

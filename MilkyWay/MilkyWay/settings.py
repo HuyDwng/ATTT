@@ -15,7 +15,8 @@ from pathlib import Path
 import stripe
 
 load_dotenv()
-
+#Login
+LOGIN_URL = 'log-in:login'
 
 #stripe
 STRIPE_PUBLIC_KEY = 'pk_test_51QFuVAASHPXVdWXjFdrGHky3kHWbyVNPiXtCPiRXYK8MgIIBQpoPiOVz9ofbTJD1IfghcNVgu2ORv1F9DF79efD400ho0pthiB'

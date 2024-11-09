@@ -20,10 +20,20 @@
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 	
 	</head>
 	<body>
+		<!--Message-->
+		<div class="container mt-4">
+			{% if messages %}
+				{% for message in messages %}
+					<div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}" role="alert">
+						{{ message }}
+					</div>
+				{% endfor %}
+			{% endif %}
 		<!--Title-->
 		<div class="title">
 			<h6 class="display-6 text-capitalize fw-bolder">{{tour.name}}</h6>
 		</div>
+
         <!--Data-->
         <div class="container-data">
             <div class="image">
@@ -54,13 +64,13 @@
 				<h6 class="px-2">Thời gian: {{tour.duration_in_days_and_nights}}</h6>
                 <h6 class="px-2">Số chỗ còn: {{tour.remaining_seats}}</h6>
 				<h2>{{tour.remaining_seats}}</h2>
-				{% if tour.remaining_seats == 10 %}
+				{% if tour.remaining_seats > 0 %}
 				<h6 class="px-2">Số chỗ còn: {{tour.remaining_seats}}</h6>
 				<form method="POST" action="{% url 'book_tour' tour.id %}">
 					{% csrf_token %}
 					<div class="counter-container">
 						<button type="button" onclick="decrease()">-</button>
-						<input type="number" id="quantity" name="quantity" value="1" min="1" max="{{ tour.remaining_seats }}" readonly>
+						<input type="number" id="quantity" name="number_of_tickets" class="number_of_tickets" value="1" min="1" max="{{ tour.remaining_seats }}" readonly>
 						<button type="button" onclick="increase()">+</button>
 					</div>
 					<div class="container p-2 center">
@@ -72,15 +82,6 @@
 					Tour đã hết vé!
 				</div>
 				{% endif %}
-
-				{% comment %} <div class="counter-container">
-					<button onclick="decrease()">-</button>
-					<div id="counter">0</div>
-					<button onclick="increase()">+</button>
-				</div>
-                <div class="container p-2 center">
-                    <button class="btn btn-success">Đặt tour</button>
-                </div> {% endcomment %}
             </div>
         </div>
 		  <!--Product-->
@@ -214,14 +215,7 @@
 				{% endfor %}
 			</div>
 		  </div>
-		  <div class="container mt-4">
-			{% if messages %}
-				{% for message in messages %}
-					<div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}" role="alert">
-						{{ message }}
-					</div>
-				{% endfor %}
-			{% endif %}
+		  
 			
 			{% block content %}
 			{% endblock %}
