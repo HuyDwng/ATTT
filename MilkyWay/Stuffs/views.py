@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 import os, json
 import os, json
+import os, json
 from Management.models import Users, Tour, Tickets, Booking, Payment, Images
 from django.db.models import OuterRef, Subquery
 from datetime import timedelta, datetime
@@ -8,6 +9,10 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator
 from urllib.parse import urlencode
 from django.db.models import Count
+from cryptography.fernet import Fernet
+from django.conf import settings
+from collections import Counter
+from django.utils.dateparse import parse_date
 from cryptography.fernet import Fernet
 from django.conf import settings
 from collections import Counter
@@ -186,7 +191,53 @@ def index(request):
     tour_counts.sort(key=lambda x: x['count'], reverse=True)
 
     # Thêm `tour_counts` vào context
+    # Lấy khóa Fernet từ settings
+    fernet = Fernet(settings.FERNET_KEY)
+    
+    # Giải mã các tour và lưu các thông tin đã giải mã vào list
+    decrypted_tours = []
+    for tour in Tour.objects.all():
+        decrypted_tour = {
+            'id': tour.id,
+            'name': json.loads(fernet.decrypt(tour.name.encode()).decode()),
+            'description': json.loads(fernet.decrypt(tour.description.encode()).decode()),
+            'start_location': json.loads(fernet.decrypt(tour.start_location.encode()).decode()),
+            'destination': json.loads(fernet.decrypt(tour.destination.encode()).decode()),
+            'price': json.loads(fernet.decrypt(tour.price.encode()).decode()),
+            'available_seats': json.loads(fernet.decrypt(tour.available_seats.encode()).decode()),
+            'remaining_seats': json.loads(fernet.decrypt(tour.remaining_seats.encode()).decode()),
+            'start_date': tour.start_date,
+            'end_date': tour.end_date,
+            'images': tour.images.first(),  # Lấy hình ảnh đầu tiên của tour
+            'duration_in_days_and_nights': tour.duration_in_days_and_nights()
+        }
+        decrypted_tours.append(decrypted_tour)
+    
+    # Đếm số lượng mỗi `destination` bằng Counter
+    destinations = [tour['destination'] for tour in decrypted_tours]
+    destination_counts = Counter(destinations)
+    
+    # Tạo danh sách `tour_counts` với các thông tin cần thiết
+    tour_counts = []
+    for dest, count in destination_counts.items():
+        # Lấy tour đầu tiên với `destination` đã giải mã để lấy ảnh
+        first_tour_with_dest = next((t for t in decrypted_tours if t['destination'] == dest), None)
+        image_url = first_tour_with_dest['images'].ImageURL if first_tour_with_dest and first_tour_with_dest['images'] else None
+
+        tour_counts.append({
+            'destination': dest,
+            'count': count,
+            'image_url': image_url
+        })
+
+    # Sắp xếp danh sách theo số lượng giảm dần
+    tour_counts.sort(key=lambda x: x['count'], reverse=True)
+
+    # Thêm `tour_counts` vào context
     context = get_common_context()
+    context['tour_counts'] = tour_counts
+    
+    return render(request, 'index.html', context)
     context['tour_counts'] = tour_counts
     
     return render(request, 'index.html', context)
@@ -362,13 +413,45 @@ def search_tours(request):
             decrypted_tours.append(decrypted_tour)
 
     # Áp dụng bộ lọc tìm kiếm
+    # Khởi tạo danh sách các tour đã giải mã
+    fernet = Fernet(settings.FERNET_KEY)
+    decrypted_tours = []
+
+    for tour in Tour.objects.all():
+        decrypted_destination = json.loads(fernet.decrypt(tour.destination.encode()).decode())
+        if decrypted_destination == destination:
+            decrypted_tour = {
+                'id': tour.id,
+                'name': fernet.decrypt(tour.name.encode()).decode().strip('"'),
+                'description': fernet.decrypt(tour.description.encode()).decode().strip('"'),
+                'start_location': fernet.decrypt(tour.start_location.encode()).decode().strip('"'),
+                'destination': decrypted_destination,
+                'price': int(fernet.decrypt(tour.price.encode()).decode().strip('"').strip()),
+                'available_seats': int(fernet.decrypt(tour.available_seats.encode()).decode().strip('"').strip()),
+                'remaining_seats': int(fernet.decrypt(tour.remaining_seats.encode()).decode().strip('"').strip()) if tour.remaining_seats else 0,
+                'start_date': tour.start_date,
+                'end_date': tour.end_date,
+                'tour_obj': tour,  # Giữ lại đối tượng tour để truy xuất sau
+                'first_image_url': tour.images.first().images.url if tour.images.exists() else None  # Truy xuất URL hình ảnh đầu tiên
+            }
+            decrypted_tours.append(decrypted_tour)
+
+    # Áp dụng bộ lọc tìm kiếm
     if starting_location:
+        decrypted_tours = [tour for tour in decrypted_tours if starting_location.lower() in tour['start_location'].lower()]
         decrypted_tours = [tour for tour in decrypted_tours if starting_location.lower() in tour['start_location'].lower()]
         decrypted_tours = [tour for tour in decrypted_tours if starting_location.lower() in tour['start_location'].lower()]
     if destination:
         decrypted_tours = [tour for tour in decrypted_tours if destination.lower() in tour['destination'].lower()]
         decrypted_tours = [tour for tour in decrypted_tours if destination.lower() in tour['destination'].lower()]
+        decrypted_tours = [tour for tour in decrypted_tours if destination.lower() in tour['destination'].lower()]
     if start_date:
+        try:
+            start_date_obj = parse_date(start_date)
+            if start_date_obj:
+                decrypted_tours = [tour for tour in decrypted_tours if tour['start_date'] == start_date_obj]
+        except ValueError:
+            pass
         try:
             start_date_obj = parse_date(start_date)
             if start_date_obj:
@@ -392,7 +475,17 @@ def search_tours(request):
             decrypted_tours = [tour for tour in decrypted_tours if (tour['end_date'] - tour['start_date']).days >= duration_days]
         except ValueError:
             pass
+        try:
+            duration_days = int(duration)
+            decrypted_tours = [tour for tour in decrypted_tours if (tour['end_date'] - tour['start_date']).days >= duration_days]
+        except ValueError:
+            pass
     if members:
+        try:
+            member_count = int(members)
+            decrypted_tours = [tour for tour in decrypted_tours if tour['remaining_seats'] >= member_count]
+        except ValueError:
+            pass
         try:
             member_count = int(members)
             decrypted_tours = [tour for tour in decrypted_tours if tour['remaining_seats'] >= member_count]
@@ -407,17 +500,22 @@ def search_tours(request):
         if price_range == "low":
             decrypted_tours = [tour for tour in decrypted_tours if tour['price'] < 1000000]
             decrypted_tours = [tour for tour in decrypted_tours if tour['price'] < 1000000]
+            decrypted_tours = [tour for tour in decrypted_tours if tour['price'] < 1000000]
         elif price_range == "medium":
+            decrypted_tours = [tour for tour in decrypted_tours if 1000000 <= tour['price'] <= 2000000]
             decrypted_tours = [tour for tour in decrypted_tours if 1000000 <= tour['price'] <= 2000000]
             decrypted_tours = [tour for tour in decrypted_tours if 1000000 <= tour['price'] <= 2000000]
         elif price_range == "rather":
             decrypted_tours = [tour for tour in decrypted_tours if 2000000 < tour['price'] <= 4000000]
             decrypted_tours = [tour for tour in decrypted_tours if 2000000 < tour['price'] <= 4000000]
+            decrypted_tours = [tour for tour in decrypted_tours if 2000000 < tour['price'] <= 4000000]
         elif price_range == "high":
+            decrypted_tours = [tour for tour in decrypted_tours if tour['price'] > 4000000]
             decrypted_tours = [tour for tour in decrypted_tours if tour['price'] > 4000000]
             decrypted_tours = [tour for tour in decrypted_tours if tour['price'] > 4000000]
 
     # Sử dụng Paginator để phân trang
+    paginator = Paginator(decrypted_tours, 6)  # Mỗi trang hiển thị tối đa 6 tour
     paginator = Paginator(decrypted_tours, 6)  # Mỗi trang hiển thị tối đa 6 tour
     paginator = Paginator(decrypted_tours, 6)  # Mỗi trang hiển thị tối đa 6 tour
     page_number = request.GET.get('page')
@@ -429,6 +527,67 @@ def search_tours(request):
         del query_params['page']
     query_string = urlencode(query_params)
 
+    return render(request, "tour.html", {
+        "page_obj": page_obj,
+        "query_string": query_string,
+    })
+def all_tours(request):
+    fernet = Fernet(settings.FERNET_KEY)
+    decrypted_tours = []
+    for tour in Tour.objects.all():
+        decrypted_tour = {
+            'id': tour.id,
+            'name': fernet.decrypt(tour.name.encode()).decode().strip('"'),
+            'description': fernet.decrypt(tour.description.encode()).decode().strip('"'),
+            'start_location': fernet.decrypt(tour.start_location.encode()).decode().strip('"'),
+            'destination': fernet.decrypt(tour.destination.encode()).decode().strip('"'),
+            'price': int(fernet.decrypt(tour.price.encode()).decode().strip('"').strip()),
+            'available_seats': int(fernet.decrypt(tour.available_seats.encode()).decode().strip('"').strip()),
+            'remaining_seats': int(fernet.decrypt(tour.remaining_seats.encode()).decode().strip('"').strip()) if tour.remaining_seats else 0,
+            'start_date': tour.start_date,
+            'end_date': tour.end_date,
+            'tour_obj': tour,  # Giữ lại đối tượng tour để truy xuất sau
+            'first_image_url': tour.images.first().images.url if tour.images.exists() else None  # Truy xuất URL hình ảnh đầu tiên
+        }
+        decrypted_tours.append(decrypted_tour)
+
+    paginator = Paginator(decrypted_tours, 6)  # Mỗi trang hiển thị tối đa 6 tour
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, "tour.html", {
+        "page_obj": page_obj,
+    })
+def tours_by_destination(request, destination):
+    fernet = Fernet(settings.FERNET_KEY)
+    decrypted_tours = []
+    
+    for tour in Tour.objects.all():
+        decrypted_destination = json.loads(fernet.decrypt(tour.destination.encode()).decode())
+        if decrypted_destination == destination:
+            decrypted_tour = {
+            'id': tour.id,
+            'name': fernet.decrypt(tour.name.encode()).decode().strip('"'),
+            'description': fernet.decrypt(tour.description.encode()).decode().strip('"'),
+            'start_location': fernet.decrypt(tour.start_location.encode()).decode().strip('"'),
+            'destination': fernet.decrypt(tour.destination.encode()).decode().strip('"'),
+            'price': int(fernet.decrypt(tour.price.encode()).decode().strip('"').strip()),
+            'available_seats': int(fernet.decrypt(tour.available_seats.encode()).decode().strip('"').strip()),
+            'remaining_seats': int(fernet.decrypt(tour.remaining_seats.encode()).decode().strip('"').strip()) if tour.remaining_seats else 0,
+            'start_date': tour.start_date,
+            'end_date': tour.end_date,
+            'tour_obj': tour,  # Giữ lại đối tượng tour để truy xuất sau
+            'first_image_url': tour.images.first().images.url if tour.images.exists() else None  # Truy xuất URL hình ảnh đầu tiên
+            }
+            decrypted_tours.append(decrypted_tour)
+
+    paginator = Paginator(decrypted_tours, 6)  # Mỗi trang hiển thị tối đa 6 tour
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, "tour.html", {
+        "page_obj": page_obj,
+    })
     return render(request, "tour.html", {
         "page_obj": page_obj,
         "query_string": query_string,
