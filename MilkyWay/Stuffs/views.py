@@ -871,7 +871,7 @@ def info_user(request):
         }
         for t in bookings
     ]
-    context = get_common_context()
+    context = get_common_context(request)
     context['bookings'] = decrypted_bookings_list
 
     context['current_user'] = current_user.username
