@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.shortcuts import render, redirect
 from Management.models import Users, Tour, Tickets, Booking, Payment, Images
 from django.shortcuts import get_object_or_404, render  
+from Management.utils import encrypt_data, decrypt_data
 
 # Create your views here.
 # Function system
@@ -87,8 +88,14 @@ def get_common_context():
         'image': images,
     }
 
+
+# Đảm bảo người dùng phải đăng nhập mới vào được view này
 def get_home(request):  
     context = get_common_context()
+    context['current_user'] =request.session.get('username')
+    
+    context['current_email'] =decrypt_data(request.session.get('email'))
+
     return render(request, 'tour_management/tour_mng.html', context)
 def get_payment(request):
     context = get_common_context()
