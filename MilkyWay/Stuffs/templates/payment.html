@@ -5,13 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xác nhận thông tin thanh toán cho tour</title>
-    <link rel="stylesheet" href="../static/css/payment.css">
-    <link rel="stylesheet" href="../static/css/tour-payment-confirmation.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tour-payment-confirmation.css' %}">
+    <link rel="stylesheet" href="{% static 'css/payment.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <div class="bg_Main">
-        <header class="Pr_Menu">
+    <header class="bg_Main">
+        <div class="Pr_Menu">
             <div class="Menu">
                 <div class="logo"><a href="index.html">Milky<span>Way</span></a></div>
                 <div class="progress-bar-container">
@@ -22,8 +24,8 @@
                             <span class="dash"></span>
                         </div>
                         <div class="progress-step">
-                            <div class="circle active-circle">2</div>
-                            <li class="active">Thanh toán</li>
+                            <div class="circle">2</div>
+                            <li>Thanh toán</li>
                             <span class="dash"></span>
                         </div>
                         <div class="progress-step">
@@ -34,8 +36,8 @@
                 </div>
             </div>
             <hr>
-        </header>
-    </div>
+        </div>
+    </header>
 
     <div class="page">
         <div class="payment">
@@ -145,6 +147,87 @@
     
     </div>
 
+<!-- footer-copyright start -->
+    <section id="infomation">
+        <footer  class="footer-copyright">
+            <div class="f-container">
+                <div class="footer-content">
+                    <div class="f-row">
+
+                        <div class="col-sm-3">
+                            <div class="single-footer-item">
+                                <div class="footer-logo">
+                                    <a href="index.html">
+                                        tour<span>Nest</span>
+                                    </a>
+                                    <p>
+                                        best travel agency
+                                    </p>
+                                </div>
+                            </div><!--/.single-footer-item-->
+                        </div><!--/.col-->
+
+                        <div class="col-sm-3">
+                            <div class="single-footer-item">
+                                <h2>link</h2>
+                                <div class="single-footer-txt">
+                                    <p><a href="#">home</a></p>
+                                    <p><a href="#">destination</a></p>
+                                    <p><a href="#">spacial packages</a></p>
+                                    <p><a href="#">special offers</a></p>
+                                    <p><a href="#">blog</a></p>
+                                    <p><a href="#">contacts</a></p>
+                                </div><!--/.single-footer-txt-->
+                            </div><!--/.single-footer-item-->
+
+                        </div><!--/.col-->
+
+                        <div class="col-sm-3">
+                            <div class="single-footer-item">
+                                <h2>popular destination</h2>
+                                <div class="single-footer-txt">
+                                    <p><a href="#">china</a></p>
+                                    <p><a href="#">venezuela</a></p>
+                                    <p><a href="#">brazil</a></p>
+                                    <p><a href="#">australia</a></p>
+                                    <p><a href="#">london</a></p>
+                                </div><!--/.single-footer-txt-->
+                            </div><!--/.single-footer-item-->
+                        </div><!--/.col-->
+
+                        <div class="col-sm-3">
+                            <div class="single-footer-item text-center">
+                                <h2 class="text-left">contacts</h2>
+                                <div class="single-footer-txt text-left">
+                                    <p>+1 (300) 1234 6543</p>
+                                    <p class="foot-email"><a href="#">info@tnest.com</a></p>
+                                    <p>North Warnner Park 336/A</p>
+                                    <p>Newyork, USA</p>
+                                </div><!--/.single-footer-txt-->
+                            </div><!--/.single-footer-item-->
+                        </div><!--/.col-->
+
+                    </div><!--/.row-->
+
+                </div><!--/.footer-content-->
+                <hr>
+                <div class="foot-icons ">
+                    <ul class="footer-social-links list-inline list-unstyled">
+                        <li><a href="#" target="_blank" class="foot-icon-bg-1"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="#" target="_blank" class="foot-icon-bg-2"><i class="fa-solid fa-x"></i></a></li>
+                        <li><a href="#" target="_blank" class="foot-icon-bg-3"><i class="fa-brands fa-instagram"></i></a></li>
+                    </ul>
+                    <p>&copy; 2017 <a href="https://www.themesine.com">ThemeSINE</a>. All Right Reserved</p>
+
+                </div><!--/.foot-icons-->
+                <div class="Gototop" id="Gototop">
+                    <a href="javascript:;" onclick="goToTop()"><i class="fa-solid fa-arrow-up"></i></a>
+                </div><!--/.scroll-Top-->
+            </div><!-- /.container-->
+
+        </footer><!-- /.footer-copyright-->
+    </section>
+<!-- footer-copyright end -->
     <!-- Popup modal (ẩn đi ban đầu) -->
     <div id="timeout-modal" class="modal">
         <div class="modal-content">

@@ -44,3 +44,18 @@ function toggleAccordion(element) {
       content.style.padding = '0 15px';
   }
 }
+
+function decrease() {
+    var qty = document.getElementById('quantity');
+    if (parseInt(qty.value) > 1) {
+        qty.value = parseInt(qty.value) - 1;
+    }
+}
+
+function increase() {
+    var qty = document.getElementById('quantity');
+    var max = parseInt(qty.getAttribute('max'));
+    if (parseInt(qty.value) < max) {
+        qty.value = parseInt(qty.value) + 1;
+    }
+}
