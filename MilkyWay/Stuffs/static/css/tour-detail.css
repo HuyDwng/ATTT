@@ -16,9 +16,7 @@
 }
 .image-container {
     position: relative;
-    overflow: hidden; /* Ẩn phần hình ảnh bị phóng to ra ngoài khung */
-    width: 100%; 
-    height: auto; /* Đảm bảo chiều cao tự động điều chỉnh theo ảnh */
+    overflow: hidden;
 }
 
 .image{
@@ -156,4 +154,17 @@
 }
 #counter {
     font-size: 24px;
+}
+
+.img-container {
+    height: 300px !important;
+}
+
+.txt-primary {
+    color: #00d8ff !important;
+}
+
+.btn-edit {
+    background-color: #00d8ff !important;
+    border-color: #00d8ff !important;
 }
