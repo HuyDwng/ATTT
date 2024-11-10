@@ -143,6 +143,10 @@ def login(request):
                     role = user.role.lower()
                     if role == "customer":
                         request.session['username'] = user.username
+                        request.session['email'] = user.decrypted_data('email')
+                        request.session['password'] = user.decrypted_data('password')
+                        request.session['phone'] = user.decrypted_data('phone_number')
+                        request.session['fullname'] = user.decrypted_data('fullname')
                         return redirect('homepage')  
                     elif role == "staff":
                         request.session['username'] = user.username
@@ -189,6 +193,10 @@ def forget(request):
 
 def sign_out(request):
     del request.session['username']
+    del request.session['email']
+    del request.session['password']
+    del request.session['phone']
+    del request.session['fullname']
     return redirect('login')
 
 #Tài khoản google
