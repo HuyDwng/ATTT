@@ -146,6 +146,7 @@ def login(request):
                         return redirect('homepage')  
                     elif role == "staff":
                         request.session['username'] = user.username
+                        request.session['email'] = user.email
                         return redirect('tour_mng')
                     elif role == "admin":
                         request.session['username'] = user.username

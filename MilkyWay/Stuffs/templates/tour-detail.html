@@ -57,15 +57,13 @@
                 </div>
             </div>
             <div class="card info">
-                <h5 class="text-primary p-2 card-title">Giá:</h5>
+                <h5 class="txt-primary p-2 card-title">Giá:</h5>
 				<h3 class="px-2">{{tour.price}} (VND)</h3>
-                <h6 class="px-2">Khởi hành: {{ tour.destination }}</h6>
-				<h6 class="px-2">Ngày khởi hành: {{tour.start_date}}</h6>
-				<h6 class="px-2">Thời gian: {{tour.duration_in_days_and_nights}}</h6>
-                <h6 class="px-2">Số chỗ còn: {{tour.remaining_seats}}</h6>
-				<h2>{{tour.remaining_seats}}</h2>
+                <h6 class="px-2"><span class="txt-primary">Khởi hành:</span> {{ tour.destination }}</h6>
+				<h6 class="px-2"><span class="txt-primary">Ngày khởi hành:</span> {{tour.start_date}}</h6>
+				<h6 class="px-2"><span class="txt-primary">Thời gian:</span> {{tour.duration_in_days_and_nights}}</h6>
+                <h6 class="px-2"><span class="txt-primary">Số chỗ còn:</span> {{tour.remaining_seats}}</h6>
 				{% if tour.remaining_seats > 0 %}
-				<h6 class="px-2">Số chỗ còn: {{tour.remaining_seats}}</h6>
 				<form method="POST" action="{% url 'book_tour' tour.id %}">
 					{% csrf_token %}
 					<div class="counter-container">
@@ -74,7 +72,7 @@
 						<button type="button" onclick="increase()">+</button>
 					</div>
 					<div class="container p-2 center">
-						<button type="submit" class="btn btn-success">Đặt tour</button>
+						<button type="submit" class="btn btn-success btn-edit">Đặt tour</button>
 					</div>
 				</form>
 				{% else %}
@@ -88,18 +86,18 @@
 		  <div class="container">
             <hr>
             <div class="main-content">
-                <h5 class="text-primary p-2">Mô Tả</h5>
+                <h5 class="txt-primary p-2">Mô Tả</h5>
 				<h6 class="px-2">{{ description_main }}</h6>
                 
             </div>
             <hr>
 			<div class="main-content">
-                <h5 class="text-primary p-2">Lịch Trình</h5>
+                <h5 class="txt-primary p-2">Lịch Trình</h5>
 				<h6 class="px-2">{{ itinerary }}</h6>
             </div>
 			<hr> 
 			<div class="main-content">
-                <h5 class="text-primary p-2">Lưu ý</h5>
+                <h5 class="txt-primary p-2">Lưu ý</h5>
 				<div class="accordion">
 					<div class="accordion-item">
 						<div class="accordion-header" onclick="toggleAccordion(this)"> Các điều kiện hủy tour đối với ngày thường <i  class="fa-solid fa-sort-down"></i></div>
@@ -191,20 +189,18 @@
 				{% for i in tours %}
 				{% if forloop.counter <= 6%}
 				<div class="col-lg-4 pic-product">
-					{% with first_image=i.images.first %}
 					<div class="image-container">
-						<img src="{% static 'images/DaNang.jpg' %}" class="d-block mt-4 w-100" alt="">
+						{% with first_image=i.images.first %}
+    						<img src="{{ first_image.images.url }}" class="d-block mt-4 img-container w-100" alt="{{ i.name }}">
+						{% endwith %}
 					</div>
-					{% comment %} <div class="image-container" style="background-image:url('{{first_image.images.url }}');">
-					</div> {% endcomment %}
-					{% endwith %}
 					<div class="card">
-						<h5 class="text-primary p-2">{{ i.name }}</h5>
-						<h6 class="px-2">Khởi hành: {{ i.start_location }}</h6>
-						<h6 class="px-2">Ngày khởi hành: {{ i.start_date }}</h6>
-						<h6 class="px-2">Thời gian: {{ i.duration_in_days_and_nights }}</h6>
-                		<h6 class="px-2">Số chỗ còn: {{ i.remaining_seats }}</h6>
-						<h5 class="p-2">Giá: {{ i.price }} VND</h5>
+						<h5 class="p-2">{{ i.name }}</h5>
+						<h6 class="px-2"> <span class="txt-primary"> Khởi hành: </span>{{ i.start_location }}</h6>
+						<h6 class="px-2"> <span class="txt-primary"> Ngày khởi hành: </span>{{ i.start_date }}</h6>
+						<h6 class="px-2"> <span class="txt-primary">Thời gian: </span>{{ i.duration_in_days_and_nights }}</h6>
+                		<h6 class="px-2"> <span class="txt-primary">Số chỗ còn: </span>{{ i.remaining_seats }}</h6>
+						<h5 class="p-2"> <span class="txt-primary">Giá: </span>{{ i.price }} VND</h5>
 						<div class="container p-2">
 							<button class="btn btn-outline-success">Đặt tour</button>
 							<button class="btn btn-outline-primary">Xem thêm chi tiết</button>
