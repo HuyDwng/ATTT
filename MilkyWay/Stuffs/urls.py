@@ -17,4 +17,6 @@ urlpatterns = [
     path('all_tours/', views.all_tours, name='all_tours'),
     path('tours/<str:destination>/', views.tours_by_destination, name='tours_by_destination'),
     path('tour/tour_detail/<int:tour_id>/book/', views.book_tour, name='book_tour'),
+    path("info_user", views.info_user, name="info_user"),
+    path("change_number", views.change_number, name="change_number"),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

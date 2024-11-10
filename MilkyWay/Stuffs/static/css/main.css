@@ -94,6 +94,9 @@ body {
     transition: all 0.5s ease-in-out; /*all Xác định hiệu ứng của quá trình chuyển đổi cho tất cả thuộc tính.*/
     width: 100%;
 }
+.Menu ul li .btn-user{
+    background-color:#ffffff00 !important;
+}
 .Menu ul li .btn {
     background-color:#01badf;
     color: #fff;
