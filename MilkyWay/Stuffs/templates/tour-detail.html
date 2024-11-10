@@ -36,7 +36,28 @@
 
         <!--Data-->
         <div class="container-data">
-            <div class="image">
+			<div class="row mt-4">
+				<div class="col-lg-8 col-md-8">
+					<div class="image">
+						{% with first_image=tour.images.first %}
+    						<img src="{{ first_image.images.url }}" class="d-block mt-4 w-100" alt="{{ tour.name }}">
+						{% endwith %}
+					</div>
+				</div>
+			
+				<div class="col-lg-4 col-md-4">
+					<div class="list-img">
+						{% for i in tour %}
+                        	{% if forloop.counter <= 6 %}
+                				{% with image=i.imagess.all %}
+    								<img src="{{ image.images.url }}" class="d-block mt-4 w-100" alt="{{ tour.name }}">
+								{% endwith %}
+							{% endif %}
+            			{% endfor %}
+					</div>
+				</div>
+			</div>			
+            {% comment %} <div class="image">
                 <img src="{% static 'images/DaNang.jpg' %}" class="d-block mt-4 w-100" alt="">
             </div>
             <div class="list-img mt-4">
@@ -55,7 +76,7 @@
                 <div class="img-item mt-2 filter">
                     <img src="{% static 'images/DaNang.jpg' %}" class="d-block w-100" alt="">
                 </div>
-            </div>
+            </div> {% endcomment %}
             <div class="card info">
                 <h5 class="txt-primary p-2 card-title">Giá:</h5>
 				<h3 class="px-2">{{tour.price}} (VND)</h3>
@@ -233,7 +254,7 @@
 							<div class="single-footer-item">
 								<div class="footer-logo">
 									<a href="index.html">
-										tour<span style="font-size: 25px">Nest</span>
+										Milky<span style="font-size: 25px">Way</span>
 									</a>
 									<p>
 										best travel agency
@@ -275,9 +296,9 @@
 								<h2 class="text-left">contacts</h2>
 								<div class="single-footer-txt text-left">
 									<p>+1 (300) 1234 6543</p>
-									<p class="foot-email"><a href="#">info@tnest.com</a></p>
+									<p class="foot-email"><a href="#">itachiquadem@gmail.com</a></p>
 									<p>North Warnner Park 336/A</p>
-									<p>Newyork, USA</p>
+									<p>Long An, VN</p>
 								</div><!--/.single-footer-txt-->
 							</div><!--/.single-footer-item-->
 						</div><!--/.col-->
