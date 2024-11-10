@@ -16,7 +16,7 @@
     <header class="bg_Main">
         <div class="Pr_Menu">
             <div class="Menu">
-                <div class="logo"><a href="index.html">Milky<span>Way</span></a></div>
+                <div class="logo"><a href="{% url 'homepage' %}">Milky<span>Way</span></a></div>
                 <div class="progress-bar-container">
                     <ul class="progress-bar">
                         <div class="progress-step">
@@ -36,14 +36,13 @@
                     </ul>
                 </div>
             </div>
-            <hr>
         </div>
     </header>
 
     <section class="Parent-Info-Confirm">
         <div class="Info-Confirm">
             <div class="logo">
-                <a href="#"><i class="fa-solid fa-house" style="color: #006a80;"></i></a>
+                <a href="{% url 'homepage' %}"><i class="fa-solid fa-house" style="color: #006a80;"></i></a>
             </div>
             <div class="Parent-UserInfo">
                 <div class="Name user-info">
