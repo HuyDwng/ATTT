@@ -1,74 +1,5 @@
-<!DOCTYPE html>
-<html lang="vi">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giao Diện Quản Trị</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <!-- Custom Styles -->
-    <link href="../../static/css/styles.css" rel="stylesheet">
-    <!-- Bootstrap Styles-->
-    <link href="../../static/css/bootstrap.css" rel="stylesheet" />
-    <!-- FontAwesome Styles-->
-    <link href="../../static/css/font-awesome.css" rel="stylesheet" />
-    <script src="../../static/js/jquery-3.7.1.min.js"></script>
-    <script src="../../static/js/bootstrap.min.js"></script>
-    <script src="../../static/js/custom.js"></script>
-    <script src="https://kit.fontawesome.com/99c4f82c90.js" crossorigin="anonymous"></script>
-
-</head>
-
-<body>
-
-    <div class="header">
-        <a class="navbar-brand" href="tour_list.html"><strong><i class="fa-solid fa-plane-departure"></i> TOUR DU
-                LỊCH</strong></a>
-        <div class="options">
-            Chào mừng, Admin | <a href="#">Đổi mật khẩu</a> | <a href="#">Đăng xuất</a>
-        </div>
-    </div>
-
-    <div class="containe">
-        <div class="sidebar">
-            <h3>QUẢN LÝ TÀI KHOẢN</h3>
-            <ul>
-                <li>
-                    <div><i class="fa-solid fa-users"></i> Group<span class="fa arrow"></span></div>
-                    <ul class="nav-second-level">
-                        <li>
-                            <a href="create_group.html"><span><i class="fa-solid fa-plus"></i> Tạo group</span></a>
-                        </li>
-                        <li>
-                            <a href="group_management.html"><span><i class="fa-solid fa-people-roof"></i> Quản lý group</span></a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <div><i class="fa-solid fa-user"></i> User<span class="fa arrow"></span></div>
-                    <ul class="nav-second-level">
-                        <li>
-                            <a href="create_user.html"><span><i class="fa-solid fa-user-plus"></i> Tạo user</span></a>
-                        </li>
-                        <li>
-                            <a href="user_management.html"><span><i class="fa-solid fa-user-pen"></i> Quản lý user</span></a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            <h3>QUẢN LÝ TOUR</h3>
-            <ul>
-                <li><a href="tour_management.html"><span>Tạo tour</span></a></li>
-                <li><a href="tour_management.html"><span>Các tour hiện tại</span></a></li>
-                <li><a href="organized_tour.html"><span>Các tour đã tổ chức</span></a></li>
-            </ul>
-            <h3>QUẢN LÝ GIAO DỊCH</h3>
-            <ul>
-                <li><a href="transaction_management.html"><span>Danh mục</span></a></li>
-            </ul>
-        </div>
-
+{% extends "admin_tour/base.html" %}
+{%block content%}
         <div class="main-content">
             <div id="page-inner">
                 <div class = "date">
@@ -144,6 +75,7 @@
                     </div>
                 </div>
                 <div class="row">
+                    <!-- Biểu đồ đường -->
                     <div class="col-sm-6 col-xs-12">
                         <div class="panel panel-default chartJs">
                             <div class="panel-heading">
@@ -156,6 +88,8 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Biểu đồ cột -->
                     <div class="col-sm-6 col-xs-12">
                         <div class="panel panel-default chartJs">
                             <div class="panel-heading">
@@ -169,7 +103,7 @@
                         </div>
                     </div>
                 </div>
-
+                     
             </div>
             <div class="row">
                 <div class="col-xs-6 col-md-3">
@@ -248,7 +182,85 @@
                 </div>
             </div>
         </div>
-
-</body>
-
-</html>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+                const dates = {{ dates|safe }};
+                const counts = {{ counts|safe }};
+                const lineChart = document.getElementById('line-chart').getContext('2d');
+                new Chart(lineChart, {
+                    type: 'line',
+                    data: {
+                        labels: dates,
+                        datasets: [{
+                            label: 'Số lượng người mua tour',
+                            data: counts,
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Ngày'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Số lượng'
+                                },
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+                const barChart = document.getElementById('bar-chart').getContext('2d');
+                new Chart(barChart, {
+                    type: 'bar',
+                    data: {
+                        labels: dates,
+                        datasets: [{
+                            label: 'Số lượng người mua tour',
+                            data: counts,
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Ngày'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Số lượng'
+                                },
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });    
+            var chartData = {{ data|safe }};  // Truyền dữ liệu vào JavaScript
+            var ctx = document.getElementById('line-chart').getContext('2d');
+            var chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: chartData.labels,
+                    datasets: [{
+                        label: 'Tour Purchases Over 7 Days',
+                        data: chartData.data,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        fill: false
+                    }]
+                }
+            });
+        </script>
+{%endblock%}

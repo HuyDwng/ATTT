@@ -1,0 +1,138 @@
+{% extends "admin_tour/base.html" %}
+{%block content%}
+        <div class="main-content">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="card-title">
+                                    <div class="title">Chỉnh Sửa Thông Tin Tour</div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <form method="POST" action="{% url 'edit_tour' tours.id %}">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="tour_name">Tên Tour:</label>
+                                        <input type="text" class="form-control" id="tour_name" name="tour_name" required value="{{ tours.name }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="start_location">Địa Điểm Khởi Hành:</label>
+                                        <input type="text"  class="form-control" id="start_location" name="start_location" required value="{{ tours.start_location }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="destination">Địa Điểm Du Lịch:</label>
+                                        <input type="text"  class="form-control" id="destination" name="destination" required value="{{ tours.destination }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="start_date">Ngày Khởi Hành:</label>
+                                        <input type="date"  class="form-control" id="start_date" name="start_date" required value="{{ tours.start_date }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="end_date">Ngày Kết Thúc:</label>
+                                        <input type="date"  class="form-control" id="end_date" name="end_date" required value="{{ tours.end_date }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tour_price">Giá Tiền (VND):</label>
+                                        <input type="number"  class="form-control" id="tour_price" name="tour_price" required value="{{ tours.price }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="passenger_count">Số Lượng Hành Khách:</label>
+                                        <input type="number"  class="form-control" id="passenger_count" name="passenger_count" required value="{{ tours.available_seats }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="remaining_count">Số Lượng Còn Lại:</label>
+                                        <input type="number"  class="form-control" id="remaining_count" name="remaining_count" required value="{{ tours.remaining_seats }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tour_price">Giá Tiền (VND):</label>
+                                        <input type="number"  class="form-control" id="tour_price" name="tour_price" required value="{{ tours.price }}">
+                                    </div>
+                                                   
+                                    <div id="description-container">
+                                        <h3>Mô tả địa điểm:</h3>
+                                        {% for description in descriptions %}
+                                        <div class="description-item">
+                                            <input type="text" name="description[]" value="{{ description }}" class="form-control"
+                                                placeholder="Mô tả địa điểm" />
+                                            <button type="button" onclick="removeDescription(this)">Xóa</button>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    <button type="button" onclick="addDescription()">Thêm Mô tả</button>
+                    
+                                </div>
+                                <button type="submit">Lưu</button>
+                            </form>
+                            <!-- Upload Hình Ảnh Tour -->
+                            <div class="image-gallery">
+                                <h2>Hình Ảnh Tour Hiện Tại:</h2>
+                                <ul>
+                                    {% for image in images %}
+                                    <form action=""></form>
+                                    <li>
+                                        <img src="{{ image.ImageURL }}" alt="Image {{ forloop.counter }}" width="200px" height="150px">
+                                        <!-- Nút Xóa Ảnh -->
+                    
+                                        <!--Form để khi vòng lặp chạy thì sẽ bị mất form này mà không mất form chứa nút-->
+                                        <form action="{% url 'delete_image' image.id %}" method="POST" style="display:inline;">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-danger">Xóa</button>
+                                        </form>
+                                        <!-- Nút Thay Đổi Ảnh -->
+                                        <form action="{% url 'change_image' image.id %}" method="POST" enctype="multipart/form-data"
+                                            style="display:inline;">
+                                            {% csrf_token %}
+                                            <input type="file" name="new_image" accept="image/*">
+                                            <button type="submit" class="btn btn-primary">Thay Đổi</button>
+                                        </form>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                    
+                            <!-- Thêm Hình Ảnh Mới -->
+                            <form id="add_image_form" action="{% url 'add_images' tours.id %}" method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <label for="tour_images">Thêm Hình Ảnh Mới:</label>
+                                <input type="file" id="tour_images" name="tour_images" accept="image/*" multiple required>
+                                <button type="submit" class="btn btn-success">Thêm Hình Ảnh</button>
+                            </form>
+                    
+                    
+                    
+                    
+                    
+                    
+                            <script>
+                                function addDescription() {
+                                    // Hàm này sẽ gọi addDescriptionInput() để thêm một ô input trống
+                                    addDescriptionInput();
+                                }
+                    
+                                function addDescriptionInput(value = '') {
+                                    const container = document.getElementById('description-container');
+                                    const inputDiv = document.createElement('div');
+                                    inputDiv.className = 'description-item';
+                                    inputDiv.innerHTML = `
+                                        <input type="text" name="description[]" class="form-control" placeholder="Mô tả địa điểm" value="${value}" />
+                                        <button type="button" onclick="removeDescription(this)">Xóa</button>
+                                    `;
+                                    container.appendChild(inputDiv);
+                                }
+                    
+                                function removeDescription(button) {
+                                    const container = document.getElementById('description-container');
+                                    const inputDiv = button.parentNode;
+                                    container.removeChild(inputDiv);
+                                }
+                            </script>
+                    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {%endblock%}

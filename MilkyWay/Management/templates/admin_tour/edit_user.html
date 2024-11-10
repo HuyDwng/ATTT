@@ -11,50 +11,56 @@
                                 </div>
                             </div>
                             <div class="panel-body">
-                                <form  method="POST" action="{% url 'create_user' %}">
+                                <form method="POST" action="{% url 'edit_user' users.id %}">
                                     {% csrf_token %}
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Tên user</label>
-                                        <input type="text" class="form-control" class"username" name="username" id="name" placeholder="Tên user">
+                                        <input type="text" class="form-control" class"username" name="username" id="name" value="{{ users.username }}"/>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Email</label>
-                                        <input type="email" class="form-control" class="email" id="email" name="email" placeholder="email">
+                                        <input type="email" class="form-control" class="email" id="email" name="email"value="{{ users.email }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Mật khẩu</label>
-                                        <input type="password" class="form-control" class="password" name="password" id="password" placeholder="Mật khẩu">
+                                        <input type="password" class="form-control" class="password" name="password" id="password" value="{{ users.password }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Nhập lại mật khẩu</label>
-                                        <input type="password" class="form-control" class="confirm_password" name="confirm_password" id="confirm-password" placeholder="Mật khẩu">
+                                        <input type="password" class="form-control" class="confirm_password" name="confirm_password" id="confirm-password" value="{{ users.password }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Họ & tên</label>
-                                        <input type="text" class="form-control" id="fullname" name="fullname" placeholder="fullname">
+                                        <input type="text" class="form-control" id="fullname" name="fullname" value="{{ users.fullname }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Số điện thoại</label>
-                                        <input type="text" class="form-control" name="phone_number" id="phone_number" placeholder="phone_number">
+                                        <input type="text" class="form-control" name="phone_number" id="phone_number" value="{{ users.phone_number }}"/>
                                     </div>
-                                    
                                     
                                     <div class="checkbox3 checkbox-round">
                                         <input type="checkbox" id="checkbox-1">
                                         <label for="checkbox-1">
-                                            Hiển thị mât khẩu
+                                            Hiển thị mật khẩu
                                         </label>
                                         
                                       </div>
                                     <div>
                                         <label for="exampleInputPassword1">Quyền</label>
                                         <select class="form-select" name="form-select" aria-label="Default select example" name="role">
-                                            <option selected>Chọn quyền</option>
-                                            <option value="admin">Admin</option>
-                                            <option value="user">User</option>
+                                            <option selected>{{users.role}}</option>
+                                            {%if users.role == 'admin'%}
+                                            <option value="customer">Customer</option>
                                             <option value="staff">Staff</option>
+                                            {%elif users.role == 'staff'%}
+                                            <option value="customer">Customer</option>
+                                            <option value="admin">Admin</option>
+                                            {%elif users.role == 'customer'%}
+                                            <option value="staff">Staff</option>
+                                            <option value="admin">Admin</option>
+                                            {%endif%}
                                         </select>
-                                    <button type="submit" class="btn btn-default">TẠO USER</button>
+                                    <button type="submit" class="btn btn-default">Cập nhật</button>
                                 </form>
                             </div>
                         </div>
