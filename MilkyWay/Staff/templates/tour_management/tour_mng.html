@@ -35,11 +35,15 @@
                         <span class="offcanvas-title" id="offcanvas-title-2" style="color:#00d4ff"> Way</span>
                         <h1 class="staff-name">{{ current_user}}</h1>
                         <h1 class="staff-mail">{{ current_email }}</h1>
+
                     </div>
 
                     <div class="offcanvas-body">
                         <a href="{% url 'payment' %}">
                             Quản lý thanh toán
+                        </a><br>
+                        <a href="{% url 'booking_mng' %}">
+                            Quản lý đặt tour
                         </a><br>
                     </div>
                 </div>

@@ -114,7 +114,7 @@ class Booking(models.Model):
     ]
     user = models.ForeignKey(Users, on_delete=models.CASCADE)  # Người đặt vé (khách hàng)
     tour = models.ForeignKey(Tour, on_delete=models.CASCADE)  # Tour được đặt
-    booking_date = models.DateTimeField(auto_now_add=True, auto_created=True)
+    booking_date = models.DateField()
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='booked')  # Trạng thái
     ticket_code = models.CharField(max_length=100, blank=True) 
 

@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from Management.models import Users, Tour, Tickets, Booking, Payment, Images
 from django.shortcuts import get_object_or_404, render  
 from Management.utils import encrypt_data, decrypt_data
+from django.template.loader import render_to_string
+from django.http import JsonResponse
 
 # Create your views here.
 # Function system
@@ -244,3 +246,9 @@ def delete_tour(request, tour_id):
 def get_revenue_statistics(request):
     context = get_common_context()
     return render(request,'revenue_statistics/revenue_statistics.html',context)
+
+def get_booking(request):
+    context = get_common_context()
+    return render(request,"booking_mng/booking_mng.html",context)
+
+
