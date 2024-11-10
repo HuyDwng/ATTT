@@ -4,6 +4,7 @@ from datetime import datetime
 from .utils import encrypt_data, decrypt_data
 from cryptography.fernet import Fernet,InvalidToken
 from django.conf import settings   
+
 # Create your models here.
 #Tạo bảng, các trường dữ liệu (database)
 #ID sẽ được tự động tạo
@@ -114,7 +115,7 @@ class Booking(models.Model):
     ]
     user = models.ForeignKey(Users, on_delete=models.CASCADE)  # Người đặt vé (khách hàng)
     tour = models.ForeignKey(Tour, on_delete=models.CASCADE)  # Tour được đặt
-    booking_date = models.DateTimeField(auto_now_add=True, auto_created=True)
+    booking_date = models.DateField()
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='booked')  # Trạng thái
     ticket_code = models.CharField(max_length=100, blank=True) 
 
@@ -143,10 +144,10 @@ class Payment(models.Model):
         ('credit-card','Credit-card'),
         ('e-wallet','E-wallet')
     ]
-    booking = models.OneToOneField(Booking, on_delete=models.CASCADE)  # Đơn đặt vé
+    booking = models.OneToOneField(Booking, related_name='payment', on_delete=models.CASCADE)  # Đơn đặt vé
     amount = models.CharField(max_length=500)  # Số tiền thanh toán
     payment_date = models.DateTimeField(auto_now_add=True, auto_created=True)
-    payment_method = models.CharField(max_length=15, choices=STATUS_METHOD, default="cash")
+    payment_method = models.CharField(max_length=15, choices=STATUS_METHOD, default="transfer")
     payment_state = models.CharField(max_length=15, choices=STATUS_CHOICES, default="unpaid") 
 
     def save(self, *args, **kwargs):
@@ -170,7 +171,7 @@ class Tickets(models.Model):
         ('use', 'Used'),
         ('cancelled', 'Cancelled'),
     ]  
-    booking = models.ForeignKey(Booking, on_delete=models.CASCADE, null=True, blank=True) 
+    booking = models.ForeignKey(Booking, related_name='ticket', on_delete=models.CASCADE, null=True, blank=True) 
     ticket_code = models.CharField(max_length=100)
     issued_date = models.DateTimeField(auto_now_add=True, auto_created=True)
     quantity = models.CharField(max_length=100)

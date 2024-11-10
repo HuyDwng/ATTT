@@ -1,0 +1,86 @@
+{% extends "admin_tour/base.html" %}
+{%block content%}
+<div class="main-content">
+    <div id="page-inner">
+        
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="card-title">
+                            <div class="title">QUẢN LÝ TOUR</div>
+                        </div>
+                    </div>
+                <div class="panel-body">
+                    <div class="container">
+                        <h1>Thêm Thông Tin Tour Du Lịch</h1>
+                        <form id="tour_form" action="{% url 'create_tour' %}" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <!-- Thông Tin Tour -->
+                                <div class="form-group">
+                                    <label for="tour_name">Tên Tour:</label>
+                                    <input type="text" class="form-control" id="tour_name" name="tour_name" autocomplete="off" required autocomplete="none"> 
+                                </div>
+                                <div class="form-group">
+                                    <label for="start_location">Địa Điểm Khởi Hành:</label>
+                                    <input type="text" class="form-control" id="start_location" name="start_location" autocomplete="off" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="destination">Địa Điểm Du Lịch:</label>
+                                    <input type="text" class="form-control" id="destination" name="destination" autocomplete="off" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="start_date">Ngày Khởi Hành:</label>
+                                    <input type="date" class="form-control" id="start_date" name="start_date" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="end_date">Ngày Kết Thúc:</label>
+                                    <input type="date" class="form-control" id="end_date" name="end_date" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tour_price">Giá Tiền (VND):</label>
+                                    <input type="number" class="form-control" id="tour_price" name="tour_price" autocomplete="off" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="passenger_count">Số Lượng Hành Khách:</label>
+                                    <input type="number" class="form-control" id="passenger_count" name="passenger_count" autocomplete="off" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="remaining_count">Số Lượng Còn Lại:</label>
+                                    <input type="number" class="form-control" id="remaining_count" name="remaining_count" autocomplete="off" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tour_image">Hình Ảnh Tour:</label>
+                                    <input type="file" class="form-control" id="tour_image" name="tour_image" accept="image/*" multiple required>
+                                </div>
+
+                            
+                    
+                                <div id="tour_sections_container">
+                                    <!-- Nút "Thêm địa điểm" để hiển thị khung mô tả mới -->
+                                    <button type="button" id="add_location_btn" class="btn btn-secondary">Thêm địa điểm</button>
+                                </div>
+                    
+                                <!-- Nút submit -->
+                                <button type="submit" class="submit-btn btn btn-primary btn-hover">Thêm Tour</button>
+                        </form>
+                    </div>
+                    <script>
+                        let locationIndex = 1;
+                        document.getElementById("add_location_btn").addEventListener("click", function () {
+                            const container = document.getElementById("tour_sections_container");
+                
+                            // Tạo phần nhập mới cho mô tả địa điểm
+                            const section = document.createElement("div");
+                            section.classList.add("form-section");
+                            section.innerHTML = `
+                        <label for="itinerary_${locationIndex}">Mô Tả Địa Điểm ${locationIndex}:</label>
+                        <textarea class="form-control" id="itinerary_${locationIndex}" name="itinerary_${locationIndex}"></textarea>`;
+                
+                            // Chèn trước nút "Thêm địa điểm"
+                            container.insertBefore(section, document.getElementById("add_location_btn"));
+                            locationIndex++;
+                        });
+                    </script>
+                    
+{%endblock%}

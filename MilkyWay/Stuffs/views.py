@@ -17,6 +17,8 @@ from django.contrib import messages
 from django.db import transaction
 from django.http import HttpResponse
 from django.urls import reverse
+from datetime import timedelta
+from django.utils import timezone
 from django.http import JsonResponse
 from django.contrib.auth import authenticate
 # Function system
@@ -92,7 +94,7 @@ def decrypted_payments():
         }
         for t in payments
     ]
-def get_common_context():
+def get_common_context(request):
     tours = decrypted_tours()
     users = decrypted_user()
     tickets = decrypted_tickets()
@@ -240,7 +242,7 @@ def index(request):
     tour_counts.sort(key=lambda x: x['count'], reverse=True)
 
     # Thêm `tour_counts` vào context
-    context = get_common_context()
+    context = get_common_context(request)
     context['tour_counts'] = tour_counts
     context['current_user'] = request.session.get('username')
 
@@ -253,11 +255,11 @@ def index(request):
     return render(request, 'index.html', context)
 
 def payment(request):
-    context = get_common_context()
+    context = get_common_context(request)
     return render(request, 'payment.html', context)
 
 def hotel(request):
-    context = get_common_context()
+    context = get_common_context(request)
     return render(request, 'hotel.html', context)
 
 # def confirm_payment(request):
@@ -283,20 +285,20 @@ def hotel(request):
 # #             return redirect('payment_success')  # Chuyển hướng sau khi thanh toán thành công
 # #     else:
 #     # form = Payment()
-#     context = get_common_context()
+#     context = get_common_context(request)
 #     return render(request, 'payment_confirm.html', context)
 
 def guide(request):
-    context = get_common_context()
+    context = get_common_context(request)
     return render(request, 'saigonguide.html', context)
 
 @csrf_exempt
 def tour(request):
-    context = get_common_context()
+    context = get_common_context(request)
     return render(request, 'tour.html', context)
 
 def tour_detail(request, tour_id):
-    context = get_common_context()
+    context = get_common_context(request)
     # Lấy tour cần chỉnh sửa
     tour = get_object_or_404(Tour, id=tour_id)
     images = tour.images.all()
@@ -342,11 +344,11 @@ def generate_ticket_code():
 
 
 def turkeyguide(request):
-    context = get_common_context()
+    context = get_common_context(request)
     return render(request, 'turkeyguide.html', context)
 
 def saigonguide(request):
-    context = get_common_context()
+    context = get_common_context(request)
     return render(request, 'saigonguide.html', context)
 
 @csrf_exempt
@@ -719,98 +721,6 @@ def tours_by_destination(request, destination):
     })
     return render(request, "tour.html", {"page_obj": page_obj, "query_string": query_string})
 
-
-# @csrf_exempt
-# def book_tour(request, tour_id):
-#     stripe.api_key = settings.STRIPE_SECRET_KEY
-#     tour = get_object_or_404(Tour, id=tour_id)
-#     decrypted_remaining_seats = tour.decrypted_data('remaining_seats')
-#     remaining_seats = int(decrypted_remaining_seats)
-#     images = tour.images.all()
-#     decrypted_tour = {
-#         'id': tour.id,
-#         'name': tour.decrypted_data('name'),
-#         'description': tour.decrypted_data('description'),
-#         'start_location': tour.decrypted_data('start_location'),
-#         'destination': tour.decrypted_data('destination'),
-#         'price': tour.decrypted_data('price'),
-#         'available_seats': tour.decrypted_data('available_seats'),
-#         'remaining_seats': remaining_seats,
-#         'images': images,
-#         'start_date': tour.start_date,
-#         'end_date': tour.end_date,
-#         'duration_in_days_and_nights': tour.duration_in_days_and_nights()
-#     }
-#     if request.method == 'POST':
-#         number_of_tickets = int(request.POST['number_of_tickets'])
-#         quantity = int(request.POST.get('quantity', 1))
-#         total_amount = tour.price * quantity
-#         if quantity <= 0:
-#             messages.error(request, "Số lượng vé phải lớn hơn 0.")
-#             return redirect('tour_detail', tour_id=tour_id)
-        
-#         if quantity > remaining_seats:
-#             messages.error(request, "Số vé đặt vượt quá số chỗ còn lại.")
-#             return redirect('tour_detail', tour_id=tour_id)
-        
-#          # Tạo phiên thanh toán Stripe
-#         checkout_session = stripe.checkout.Session.create(
-#             payment_method_types=["card"],
-#             line_items=[{
-#                 'price_data': {
-#                     'currency': 'vnd',
-#                     'product_data': {'name': tour.name},
-#                     'unit_amount': int(tour.price * 100),
-#                 },
-#                 'quantity': quantity,
-#             }],
-#             mode='payment',
-#             success_url=settings.SUCCESS_URL,
-#             cancel_url=settings.CANCEL_URL,
-#         )
-#         request.session['temp_booking'] = {'tour_id': tour.id, 'quantity': quantity, 'total_amount': total_amount}
-
-#         if remaining_seats >= quantity:
-#             tour.remaining_seats = str(remaining_seats - quantity)
-#             tour.name = tour.decrypted_data('name')
-#             tour.description = tour.decrypted_data('description')
-#             tour.start_location = tour.decrypted_data('start_location')
-#             tour.destination = tour.decrypted_data('destination')
-#             tour.price = tour.decrypted_data('price')
-#             tour.available_seats = tour.decrypted_data('available_seats')
-#         tour.save()
-        
-#         username = request.session.get('username')
-#         print(username)
-#         try:
-#             user = Users.objects.get(username=username)
-#         except Users.DoesNotExist:
-#             return HttpResponse("Bạn chưa đăng nhập", status=403)
-
-
-#         with transaction.atomic():
-#             # Tạo Booking
-#             ticket_code = generate_ticket_code()
-#             booking = Booking.objects.create(
-#                 user=user,
-#                 tour=tour,
-#                 status='booked',
-#                 ticket_code=ticket_code,
-#             )
-            
-#             # Tạo Tickets
-#             for _ in range(number_of_tickets):
-#                 Tickets.objects.create(
-#                     booking=booking,
-#                     ticket_code=ticket_code,
-#                     quantity=quantity,
-#                     ticket_status='issued'
-#                 )
-                
-#             messages.success(request, "Đặt tour thành công!")
-#             return redirect('tour_detail', tour_id=tour_id)
-#     return render(request, 'tour_detail.html', {'tour': decrypted_tour})
-
 def generate_ticket_code():
     import uuid
     return str(uuid.uuid4()).replace('-', '').upper()[:10]
@@ -839,11 +749,7 @@ def book_tour(request, tour_id):
 
     if request.method == 'POST':
         quantity = int(request.POST.get('number_of_tickets'))
-        print(decrypted_tour['price'])
-        print(quantity)
         total_amount = (int(decrypted_tour['price']))
-        print(total_amount)
-        print(type(total_amount))
         if quantity <= 0:
             messages.error(request, "Số lượng vé phải lớn hơn 0.")
             return redirect('tour_detail', tour_id=tour_id)
@@ -922,6 +828,13 @@ def confirm_payment(request):
             tour=tour,
             status='booked',
             ticket_code=ticket_code,
+            booking_date = timezone.now().date()
+        )
+        total_amount = total_amount * quantity
+        Payment.objects.create(
+            booking=booking,
+            amount = total_amount,
+            payment_state = "successful"
         )
         for _ in range(quantity):
             Tickets.objects.create(
