@@ -471,6 +471,10 @@ a {
     color: #00d4ff;
 }
 
+.ticket-details-button {
+    color: #368797;
+}
+
 footer {
     text-align: center;
     padding: 20px;

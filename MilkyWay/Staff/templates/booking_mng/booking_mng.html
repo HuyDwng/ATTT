@@ -74,7 +74,8 @@
                         <td>{{ i.tour }}</td>
                         <td>{{ i.booking_date|date:"d/m/Y" }}</td>
                         <td>{{ i.status }}</td>
-                        <td><a href="{% url 'ticket_details' i.id %}">Xem chi tiết</a></td>
+                        <td><a class="ticket-details-button" href="{% url 'ticket_details' i.id %}">Xem chi tiết</a>
+                        </td>
 
                     </tr>
                     {% endfor %}
