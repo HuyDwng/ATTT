@@ -65,14 +65,6 @@ def decrypted_tickets():
         for t in tickets
     ]
 
-# def decrypted_bookings():
-#     bookings = Booking.objects.all()
-#     return [
-#         {
-#             'ticket_code': t.decrypted_data('ticket_code'),
-#         }
-#         for t in bookings
-#     ]
 def decrypted_bookings():
     bookings = Booking.objects.all()
     return [
@@ -262,31 +254,6 @@ def hotel(request):
     context = get_common_context(request)
     return render(request, 'hotel.html', context)
 
-# def confirm_payment(request):
-# #     booking = get_object_or_404(Booking, id=booking_id)  # Lấy thông tin đặt chỗ
-# #     tour = booking.tour  # Lấy thông tin tour từ đặt chỗ
-
-# #     if request.method == 'POST':
-# #         if form.is_valid():
-# #             # Lấy thông tin từ form
-# #             name = form.cleaned_data['name']
-# #             email = form.cleaned_data['email']
-# #             payment_method = form.cleaned_data['payment_method']
-# #             amount = tour.price  # Giả sử bạn có trường giá trong mô hình Tour
-
-# #             # Tạo đối tượng Payment và lưu vào cơ sở dữ liệu
-# #             payment = Payment(
-# #                 booking=booking,
-# #                 amount=amount,
-# #                 payment_method=payment_method,
-# #                 payment_state='successful'  # Cập nhật trạng thái thanh toán
-# #             )
-# #             payment.save()
-# #             return redirect('payment_success')  # Chuyển hướng sau khi thanh toán thành công
-# #     else:
-#     # form = Payment()
-#     context = get_common_context(request)
-#     return render(request, 'payment_confirm.html', context)
 
 def guide(request):
     context = get_common_context(request)
@@ -783,7 +750,6 @@ def book_tour(request, tour_id):
             'total_amount': total_amount,
         }
         return redirect(checkout_session.url, code=303)
-
     return render(request, 'tour_detail.html', {'tour': decrypted_tour})
 
 @csrf_exempt

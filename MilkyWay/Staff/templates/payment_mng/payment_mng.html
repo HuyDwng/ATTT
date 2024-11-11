@@ -130,25 +130,15 @@
                             <th>Phương thức thanh toán</th>
                             <th>Hành động</th>
                         </tr>
-                        {% for i in booking %}
+                        {% for i in booking%}
                         <tr>
                             <td>{{i.id}}</td>
                             <td>{{i.user}}</td>
                             <td>{{i.tour}}</td>
                             <td>{{i.booking_date}}</td>
 
-
-
                             <td class="total-payment">
-                                {% for t in tour %}
-                                {% if t.name|lower == i.tour|lower %}
-                                {% for tick in ticket %}
-                                {% if i.ticket_code|stringformat:"s" == tick.ticket_code|stringformat:"s" %}
-                                {{ t.price|multiply:tick.quantity }} VND
-                                {% endif %}
-                                {% endfor%}
-                                {% endif %}
-                                {% endfor %}
+                                {{i.tickets.0.amount}}
                             </td>
                             <td>{{i.status}}</td>
                             <td>{{i.payment_method}}</td>
@@ -172,7 +162,7 @@
                                 </details>
                             </td>
                         </tr>
-                        {% endfor %}
+                        {%endfor%}
                     </thead>
                     <tbody>
 
