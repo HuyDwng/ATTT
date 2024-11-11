@@ -2,7 +2,7 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
 from . import views
-from .views import delete_image, add_images, change_image
+from .views import delete_image, add_images_admin, change_image_admin
 urlpatterns = [
     path('tour-list',views.members,name='tour-list'),
     path('create_group',views.create_group,name='create_group'),
@@ -17,8 +17,7 @@ urlpatterns = [
     path('delete_user/<int:user_id>',views.delete_user,name='delete_user'),
     path('delete_tour/<int:tour_id>',views.delete_tour,name='delete_tour'),
     path('edit_tour/<int:tour_id>/',views.edit_tour,name='edit_tour'),
-    path('tour/add_images/<int:tour_id>/', add_images, name='add_images'),
-    path('image/change/<int:image_id>/', change_image, name='change_image'),
-    path('delete_tour/<int:tour_id>/', views.delete_tour, name='delete_tour'),
+    path('management/tour/add_images/<int:tour_id>/', add_images_admin, name='add_images_admin'),
+    path('management/image/change/<int:image_id>/', change_image_admin, name='change_image_admin'),
     path('management/delete_transaction/<int:booking_id>/', views.delete_transaction, name='delete_transaction'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

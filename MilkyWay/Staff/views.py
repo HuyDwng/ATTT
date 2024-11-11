@@ -52,18 +52,26 @@ def decrypted_tickets():
     ]
 
 def decrypted_bookings():
-    bookings = Booking.objects.all()
+    booking = Booking.objects.all()
     return [
         {
             'id': t.id,
             'booking_date': t.booking_date,
-            'user': t.user,
             'tour': t.tour,
-            'status':t.status,
-            'payment_method': t.decrypted_data('payment_method'),
+            'user': t.user,
+            'status': t.status,
             'ticket_code': t.decrypted_data('ticket_code'),
+            'payment_method': t.payment.payment_method if hasattr(t, 'payment') else "No payment method",
+            'tickets': [
+                {
+                    'quantity': int(decrypt_data(ticket.quantity)),
+                    'amount': int(decrypt_data(ticket.quantity)) * int(decrypt_data(t.tour.price)),
+                }
+                for ticket in t.ticket.all()
+            ],
+            'price': t.tour.price 
         }
-        for t in bookings
+        for t in booking
     ]
 def decrypted_payments():
     payments = Payment.objects.all()
@@ -92,12 +100,12 @@ def get_common_context(request):
 
 # Đảm bảo người dùng phải đăng nhập mới vào được view này
 def get_home(request):  
-    context = get_common_context()
+    
+    context = get_common_context(request)
     context['current_user'] =request.session.get('username')
     
     context['current_email'] =decrypt_data(request.session.get('email'))
 
-    context = get_common_context(request)
     return render(request, 'tour_management/tour_mng.html', context)
 def get_payment(request):
     context = get_common_context(request)
@@ -209,6 +217,9 @@ def get_tour_edit(request, tour_id):
     return render(request, 'tour_management/tour_edit.html', context)
 
 
+    
+
+    
 def delete_image(request, image_id):
     image = get_object_or_404(Images, id=image_id)  # Tìm ảnh theo ID
     if request.method == 'POST':
@@ -245,6 +256,9 @@ def delete_tour(request, tour_id):
 
 def get_revenue_statistics(request):
     context = get_common_context(request)
+    # Lấy tất cả các bookings
+    
+    
     return render(request,'revenue_statistics/revenue_statistics.html',context)
 
 def get_booking(request):
