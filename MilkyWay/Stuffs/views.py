@@ -291,7 +291,8 @@ def tour_detail(request, tour_id):
     itinerary = description_parts[1] if len(description_parts) > 1 else ""
 
     tours = decrypted_tours()
-    images = Images.objects.filter(tour=tour)
+    images = tour.images.all()[:4] 
+    
     tour.start_date = tour.start_date.strftime("%Y-%m-%d") if tour.start_date else ""
     tour.end_date = tour.end_date.strftime("%Y-%m-%d") if tour.end_date else ""
 
