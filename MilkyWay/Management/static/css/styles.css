@@ -395,7 +395,7 @@ a {
 
 .thead-dark {
     background-color: #000;
-    color: #fff;
+    color: burlywood;
     border-bottom: 2px solid #555; 
 }
 
@@ -403,3 +403,60 @@ a {
     padding: 10px; 
     text-align: left; 
 }
+
+#tour-table th{
+    color:#000;
+    text-align: center;
+    padding: 1rem;
+    background-color: #e1fbc9;
+}
+
+#tour-data td{
+    padding: 0.5rem;
+    background-color: #f0fee3;
+}
+
+#tour-data td a{
+    color: #000;
+    text-decoration: none;
+    
+}
+.form-select{
+    
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: 0.5rem;
+}
+#create_user{
+    right: 1rem;
+    align-items: center;
+    margin: 20px;
+}
+
+#add_location_btn{
+    background-color: wheat;
+    color:  black;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    margin: 0.3rem;
+    
+}
+#add_location_btn:hover{
+    background-color: rgb(237, 201, 134);
+}
+.add_tour_btn {
+    padding: 5px 10px !important; 
+    border: none !important;
+    cursor: pointer;
+    font-size: 16px !important;
+    border-radius: 5px !important;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2)!important;
+    margin: 0.3rem !important;
+    color: black !important;
+}
+

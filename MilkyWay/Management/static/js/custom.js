@@ -133,36 +133,36 @@ document.addEventListener('DOMContentLoaded', function() {
 //             displayUsers();
 //         });
 
-//         document.addEventListener('DOMContentLoaded', function() {
-//             const links = document.querySelectorAll('.sidebar a');
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.sidebar a');
 
-//             // Function to set the active link based on the current URL
-//             function setActiveLink() {
-//                 const currentURL = window.location.href;
+            // Function to set the active link based on the current URL
+            function setActiveLink() {
+                const currentURL = window.location.href;
 
-//                 links.forEach(link => {
-//                     if (link.href === currentURL) {
-//                         link.classList.add('active');
-//                     } else {
-//                         link.classList.remove('active');
-//                     }
-//                 });
-//             }
+                links.forEach(link => {
+                    if (link.href === currentURL) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            }
 
-//             // Set the active link on page load
-//             setActiveLink();
+            // Set the active link on page load
+            setActiveLink();
 
-//             // Add click event listener to each link
-//             links.forEach(link => {
-//                 link.addEventListener('click', function() {
-//                     // Remove active class from all links
-//                     links.forEach(link => link.classList.remove('active'));
+            // Add click event listener to each link
+            links.forEach(link => {
+                link.addEventListener('click', function() {
+                    // Remove active class from all links
+                    links.forEach(link => link.classList.remove('active'));
 
-//                     // Add active class to the clicked link
-//                     this.classList.add('active');
-//                 });
-//             });
-//         });
+                    // Add active class to the clicked link
+                    this.classList.add('active');
+                });
+            });
+        });
 
 //         let tours = [
 //         { id: 1, name: "Tour Đà Nẵng", start: "Hà Nội", end: "Đà Nẵng", price: 5000000, duration: 5 },
