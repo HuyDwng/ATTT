@@ -109,6 +109,9 @@ def get_home(request):
     return render(request, 'tour_management/tour_mng.html', context)
 def get_payment(request):
     context = get_common_context(request)
+    context['current_user'] =request.session.get('username')
+    
+    context['current_email'] =decrypt_data(request.session.get('email'))
     return render(request,'payment_mng/payment_mng.html', context)
 
 
