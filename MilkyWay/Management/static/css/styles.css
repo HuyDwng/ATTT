@@ -444,15 +444,19 @@ a {
     border-radius: 5px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     margin: 0.3rem;
+    
+}
+#add_location_btn:hover{
+    background-color: rgb(237, 201, 134);
+}
+.add_tour_btn {
+    padding: 5px 10px !important; 
+    border: none !important;
+    cursor: pointer;
+    font-size: 16px !important;
+    border-radius: 5px !important;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2)!important;
+    margin: 0.3rem !important;
+    color: black !important;
 }
 
-#add_tour{
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    margin: 0.3rem;
-    color: black;
-}
