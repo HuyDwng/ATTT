@@ -213,8 +213,12 @@
                 		<h6 class="px-2"> <span class="txt-primary">Số chỗ còn: </span>{{ i.remaining_seats }}</h6>
 						<h5 class="p-2"> <span class="txt-primary">Giá: </span>{{ i.price }} VND</h5>
 						<div class="container p-2">
+						<form method="POST" action="{% url 'book_tour' tour.id %}">
 							<button class="btn btn-outline-success">Đặt tour</button>
+						</form>
+						<form method="POST" action="{% url 'tour_detail' tour.id %}">
 							<button class="btn btn-outline-primary">Xem thêm chi tiết</button>
+						</form>
 						</div>
 					</div>
 				</div>

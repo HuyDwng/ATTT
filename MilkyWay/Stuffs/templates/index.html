@@ -286,10 +286,10 @@
                                         <div>Ngày khởi hành: {{i.start_date}}</div>
                                         <div>Thời gian: {{i.duration_in_days_and_nights}}</div>
                                         <div>Số chỗ ngồi: {{i.available_seats}}</div>
-                                        <div class="btn-BookTour">
-                                            <button><a href="{% url 'tour_detail' tour_id=i.id %}">Xem Chi Tiết</a></button>
-                                        </div>
                                     </div>
+                                </div>
+                                <div class="btn-BookTour">
+                                    <button><a href="{% url 'tour_detail' tour_id=i.id %}">Xem Chi Tiết</a></button>
                                 </div>
                             </div>
                         {% endif %}
