@@ -71,6 +71,14 @@ def decrypted_bookings():
             'status': t.status,
             'ticket_code': t.decrypted_data('ticket_code'),
             'payment_method': t.payment.payment_method if hasattr(t, 'payment') else "No payment method",
+            'tickets': [
+                {
+                    'quantity': int(decrypt_data(ticket.quantity)),
+                    'amount': int(decrypt_data(ticket.quantity)) * int(decrypt_data(t.tour.price)),
+                }
+                for ticket in t.ticket.all()
+            ],
+            'price': t.tour.price,
         }
         for t in bookings
     ]
@@ -162,6 +170,7 @@ def tour_management(request):
 
 def transaction_management(request):
   context = get_common_context(request)
+
   return render(request, 'admin_tour/transaction_management.html', context)
 
 def user_management(request):
