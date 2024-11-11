@@ -47,13 +47,21 @@
 			
 				<div class="col-lg-4 col-md-4">
 					<div class="list-img">
-						{% for i in tour %}
-                        	{% if forloop.counter <= 6 %}
-                				{% with image=i.imagess.all %}
-    								<img src="{{ image.images.url }}" class="d-block mt-4 w-100" alt="{{ tour.name }}">
-								{% endwith %}
-							{% endif %}
-            			{% endfor %}
+						<div class="img-item ">
+							<img src="{% static 'images/vuon-truc-Juknokwon.jpg' %}" class="d-block w-100" alt="">
+						</div>
+						<div class="img-item mt-2">
+							<img src="{% static 'images/south-korea.jpg' %}" class="d-block w-100" alt="">
+						</div>
+						<div class="img-item mt-2">
+							<img src="{% static 'images/tavan.jpg' %}" class="d-block w-100" alt="">  
+						</div>
+						<div class="img-item mt-2">
+							<img src="{% static 'images/sumela.jpg' %}" class="d-block w-100" alt="">
+						</div>
+						<div class="img-item mt-2">
+							<img src="{% static 'images/sapat3.jpg' %}" class="d-block w-100" alt="">
+						</div>
 					</div>
 				</div>
 			</div>			
