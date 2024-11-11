@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 import os, json, stripe
 from Management.models import Users, Tour, Tickets, Booking, Payment, Images
+from Management.utils import encrypt_data, decrypt_data
 from django.db.models import OuterRef, Subquery
 from datetime import timedelta, datetime
 from django.views.decorators.csrf import csrf_exempt
@@ -18,6 +19,8 @@ from django.http import HttpResponse
 from django.urls import reverse
 from datetime import timedelta
 from django.utils import timezone
+from django.http import JsonResponse
+from django.contrib.auth import authenticate
 # Function system
 def decrypted_tours():
     tour = Tour.objects.all()
@@ -62,11 +65,24 @@ def decrypted_tickets():
         for t in tickets
     ]
 
+# def decrypted_bookings():
+#     bookings = Booking.objects.all()
+#     return [
+#         {
+#             'ticket_code': t.decrypted_data('ticket_code'),
+#         }
+#         for t in bookings
+#     ]
 def decrypted_bookings():
     bookings = Booking.objects.all()
     return [
         {
+            'id': t.id,
+            'tour': t.tour,
+            'user': t.user,
+            'status': t.status,
             'ticket_code': t.decrypted_data('ticket_code'),
+            'payment_method': t.payment.payment_method if hasattr(t, 'payment') else "No payment method",
         }
         for t in bookings
     ]
@@ -228,7 +244,8 @@ def index(request):
     # Thêm `tour_counts` vào context
     context = get_common_context(request)
     context['tour_counts'] = tour_counts
-    
+    context['current_user'] = request.session.get('username')
+
     return render(request, 'index.html', context)
     context['tour_counts'] = tour_counts
     
@@ -829,3 +846,87 @@ def confirm_payment(request):
     del request.session['temp_booking']
     messages.success(request, "Đặt tour thành công!")
     return redirect('homepage')
+
+@csrf_exempt
+def info_user(request):
+    if 'username' not in request.session:
+        return redirect('login')
+
+    # Lấy đối tượng người dùng hiện tại
+    current_username = request.session.get('username', '')
+    try:
+        current_user = Users.objects.get(username=current_username)
+    except Users.DoesNotExist:
+        return redirect('login')
+
+    bookings = Booking.objects.filter(user=current_user)
+    decrypted_bookings_list = [
+        {
+            'id': t.id,
+            'tour': t.tour,
+            'user': t.user,
+            'status': t.status,
+            'ticket_code': t.decrypted_data('ticket_code'),
+            'payment_method': t.payment.payment_method if hasattr(t, 'payment') else "No payment method",
+        }
+        for t in bookings
+    ]
+    context = get_common_context(request)
+    context['bookings'] = decrypted_bookings_list
+
+    context['current_user'] = current_user.username
+    context['current_email'] = decrypt_data(current_user.email)
+    context['current_phone'] = decrypt_data(current_user.phone_number)
+    context['current_password'] = request.session.get('password', '')  # Password thường không lưu trong session, chỉ lấy ví dụ
+    context['current_fullname'] = decrypt_data(current_user.fullname)
+    context['bookings'] = decrypted_bookings_list
+
+
+    return render(request, 'info_user.html', context)
+
+@csrf_exempt
+def change_number(request):
+    if request.method == 'POST':
+        phone_number = request.POST.get('Phone_number')
+        current_username = request.session.get('username', '')
+
+        try:
+            current_user = Users.objects.get(username=current_username)
+        except Users.DoesNotExist:
+            return redirect('login')
+
+        if phone_number:
+            encrypted_phone = encrypt_data(phone_number)
+            current_user.phone_number = encrypted_phone
+            current_user.save()
+
+            request.session['phone'] = phone_number
+
+            messages.success(request, "Đổi số điện thoại thành công!")
+            return redirect('info_user')
+        else:
+            messages.error(request, "Chưa nhập số điện thoại")
+            return redirect('info_user')
+
+    return render(request, 'info_user.html')
+
+# def user_bookings(request):
+#     username = request.session.get('username')
+#     print("helo helo")
+#     bookings = Booking.objects.filter(user=username)
+#     for t in bookings:
+#         print(t.id)
+#     decrypted_bookings_list = [
+#         {
+#             'id': t.id,
+#             'tour': t.tour,
+#             'user': t.user,
+#             'status': t.status,
+#             'ticket_code': t.decrypted_data('ticket_code'),
+#             'payment_method': t.payment.payment_method if hasattr(t, 'payment') else "No payment method",
+#         }
+#         for t in bookings
+#     ]
+#     context = get_common_context(request)
+#     context['bookings'] = decrypted_bookings_list
+#     return render(request, 'info_user.html', context)

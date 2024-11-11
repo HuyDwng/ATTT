@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Vé</title>
+    <link rel="stylesheet" href="{% static 'css/ticket_mng/ticket_mng.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Chi Tiết Vé Của Booking #{{ booking.id }}</h1>
+        <h2>Khách Hàng: {{ booking.customer_name }}</h2>
+        <h3>Ngày Đặt: {{ booking.booking_date }}</h3>
+
+        <div class="ticket-details">
+            <h3>Thông Tin Vé:</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mã Vé</th>
+                        <th>Ngày tạo</th>
+                        <th>Số Lượng</th>
+                        <th>Trạng thái vé</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ticket in tickets %}
+                    <tr>
+                        <td>{{ticket.ticket_code }}</td>
+                        <td>{{ticket.issued_date }}</td>
+                        <td>{{ticket.quantity }}</td>
+                        <td>{{ticket.ticket_status }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="2">Không có vé cho booking này.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <a class="back-link" href="{% url 'booking_mng' %}">Quay lại danh sách booking</a>
+    </div>
+</body>
+
+</html>

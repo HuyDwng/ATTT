@@ -275,6 +275,16 @@ a {
     background-color: #d3392e;
 }
 
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--main_color);
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
 #main {
     margin: 2%;
     overflow-y: auto;

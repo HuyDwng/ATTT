@@ -37,8 +37,9 @@
                         <h1 class="staff-mail">{{ current_email }}</h1>
                     </div>
                     <div class="offcanvas-body">
+                        <a href="{% url 'tour_mng' %}">Quản lý tour du lịch</a><br>
                         <a href="{% url 'payment' %}">Quản lý thanh toán</a><br>
-                        <a href="{% url 'booking_mng' %}">Quản lý đặt tour</a><br>
+
                     </div>
                 </div>
                 <!-- Button to open the offcanvas sidebar -->
@@ -52,6 +53,7 @@
             <div class="search-div">
                 <input type="text" placeholder="Tìm kiếm tour..." class="search-bar" id="searchInput">
                 <button class="search-button" onclick="filterBookings()">Tìm</button>
+                <button class="search-button" onclick="resetFilter()">Reset</button>
             </div>
             <table id="bookingTable">
                 <thead>
@@ -72,7 +74,8 @@
                         <td>{{ i.tour }}</td>
                         <td>{{ i.booking_date|date:"d/m/Y" }}</td>
                         <td>{{ i.status }}</td>
-                        <td><button>Xem chi tiết</button></td>
+                        <td><a href="{% url 'ticket_details' i.id %}">Xem chi tiết</a></td>
+
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -109,6 +112,17 @@
                 }
             });
         }
+        function resetFilter() {
+            // Xóa nội dung ô tìm kiếm
+            document.getElementById('searchInput').value = '';
+
+            // Hiển thị lại tất cả các hàng
+            const rows = document.querySelectorAll('#bookingTable tbody tr');
+            rows.forEach(row => {
+                row.style.display = '';
+            });
+        }
+
     </script>
 </body>
 

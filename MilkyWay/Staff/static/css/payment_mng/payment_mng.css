@@ -72,6 +72,16 @@ form {
     margin: 1rem;
 }
 
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--main_color);
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
 .btn-link {
 
     background-color: var(--main-color);
