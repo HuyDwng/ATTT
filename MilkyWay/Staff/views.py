@@ -1,5 +1,4 @@
 from django.shortcuts import render,redirect
-from django.shortcuts import render, redirect
 from Management.models import Users, Tour, Tickets, Booking, Payment, Images
 from django.shortcuts import get_object_or_404, render  
 from Management.utils import encrypt_data, decrypt_data
@@ -74,7 +73,7 @@ def decrypted_payments():
         }
         for t in payments
     ]
-def get_common_context():
+def get_common_context(request):
     tours = decrypted_tours()
     users = decrypted_user()
     tickets = decrypted_tickets()
@@ -98,9 +97,10 @@ def get_home(request):
     
     context['current_email'] =decrypt_data(request.session.get('email'))
 
+    context = get_common_context(request)
     return render(request, 'tour_management/tour_mng.html', context)
 def get_payment(request):
-    context = get_common_context()
+    context = get_common_context(request)
     return render(request,'payment_mng/payment_mng.html', context)
 
 
@@ -244,7 +244,7 @@ def delete_tour(request, tour_id):
     return redirect('tour_mng')
 
 def get_revenue_statistics(request):
-    context = get_common_context()
+    context = get_common_context(request)
     return render(request,'revenue_statistics/revenue_statistics.html',context)
 
 def get_booking(request):

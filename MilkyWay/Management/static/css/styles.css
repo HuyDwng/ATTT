@@ -102,25 +102,6 @@ body {
     
 }
 
-.table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.table th,
-.table td {
-    padding: 12px;
-    border: 1px solid #444;
-    text-align: left;
-}
-
-.table th {
-    background-color: #007acc;
-}
-
-.table td {
-    background-color: #333;
-}
 
 .filter-section {
     display: flex;
@@ -264,12 +245,6 @@ body {
 	width: 120px;
 }
 
-table td {
-    padding: 12px;
-    text-align: center;
-    border: 1px solid #ddd;
-    color: #ddd;
-}
 
 #easypiechart-blue .percent { color: #30a5ff;}
 #easypiechart-teal .percent { color: #1ebfae;}
@@ -334,3 +309,97 @@ label#checkbox-1{
     color: white;
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+
+
+th,
+td {
+    border: 1px solid #ddd;
+    background-color: #fef6f6;
+}
+
+
+th {
+    background-color: var(--main_color);
+    color: #f2f2f2;
+    position: sticky;
+    /* Dính vào phần trên /
+    top: 0;
+
+    / Giữ nó ở trên cùng /
+    z-index: 1;
+    / Đặt chỉ số z để nó nằm trên nội dung khác */
+    padding: 10px;
+}
+
+.add-tour,
+.edit-btn,
+.delete-btn,
+.more-info-btn {
+    background-color: var(--main_color);
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    margin: 0.3rem;
+}
+
+
+
+.more-info-btn a {
+    text-decoration: none;
+    color: #f2f2f2;
+}
+
+.add-tour a {
+    color: #f2f2f2;
+    text-decoration: none;
+}
+
+.add-tour {
+    margin: 20px;
+    box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.2);
+
+}
+
+.edit-btn {
+    background-color: #ca8912;
+}
+
+a {
+    text-decoration: none;
+    color: #f2f2f2;
+    display: inline-block;
+}
+
+.delete-btn {
+    background-color: #d3392e;
+}
+
+#main {
+    margin: 2%;
+    overflow-y: auto;
+    height: 60vh;
+    border-radius: 0.5rem;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+
+}
+
+.thead-dark {
+    background-color: #000;
+    color: #fff;
+    border-bottom: 2px solid #555; 
+}
+
+.thead-dark th {
+    padding: 10px; 
+    text-align: left; 
+}

@@ -32,7 +32,13 @@
                         <li><a href="#client-review">Đánh Giá</a></li>
                         <li><a href="#blog">Tin Tức</a></li>
                         <li><a href="#infomation">Liên Hệ</a></li>
-                        <li><a href="{% url 'login' %}" class="btn">Đăng Nhập</a></li>
+                        {%if not current_user %}
+                            <li><a href="{% url 'login' %}" class="btn">Đăng Nhập</a></li>
+                        {% else %}
+                            <li><a href="{% url 'info_user'%}" class="btn-user btn">{{ current_user}}</a></li>
+                        {% endif %}
+                        
+                        
                     </ul>
                 </div>
                 <hr>

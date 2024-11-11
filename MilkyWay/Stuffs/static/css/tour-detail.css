@@ -19,13 +19,10 @@
     overflow: hidden;
 }
 
-.image{
-    width: 50%;
-    margin-left: 7%;
-}
 .container-data{
     display: inline-flex;
     width: 100%;
+    justify-content: center;
 }
 .info{
     padding: 0 30px;
@@ -34,17 +31,9 @@
     border-radius: 16px;
     box-shadow: 0px 0px 3px 1px;
     height: 80%;
+    width: 25%;
 }
-.img-item {
-    border: 1px solid black;
-    margin-left: 10px;
-}
-.list-img{
-    display: inline-flex;
-    flex-direction: column;
-    width: 9.93%;
-    position: relative;
-}
+
 .filter{
     filter: brightness(0.6);
 }
@@ -167,4 +156,30 @@
 .btn-edit {
     background-color: #00d8ff !important;
     border-color: #00d8ff !important;
+}
+
+/* Điều chỉnh kích thước ảnh chính */
+.image img {
+    max-height: 500px; /* Giới hạn chiều cao của ảnh chính */
+    width: 100%;
+    object-fit: cover; /* Cắt ảnh cho vừa khung mà không làm méo */
+    border-radius: 8px;
+}
+
+/* Điều chỉnh kích thước ảnh thu nhỏ */
+.list-img .img-item img {
+    max-height: 100px; /* Giới hạn chiều cao ảnh thu nhỏ */
+    width: 100%;
+    object-fit: cover; /* Đảm bảo ảnh vừa khung mà không bị méo */
+    border-radius: 4px;
+}
+
+
+.list-img .img-item {
+    overflow: hidden;
+    border: 1px solid #ddd; /* Viền cho ảnh thu nhỏ */
+}
+
+.img-ctn {
+    width: 75%;
 }

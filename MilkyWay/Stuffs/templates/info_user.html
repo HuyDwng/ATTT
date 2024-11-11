@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/info_user.css' %}">
+    <title>Trung Tâm Tài Khoản</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="sidebar">
+            <a href="#" onclick="showPersonalInfo()">Thông Tin Cá Nhân</a>
+            <a href="#" onclick="showBookedTours()">Tour Đã Đặt</a>
+        </div>
+        
+        <div class="content" id="personalInfo">
+            <div class="account-id">Tên Người Dùng: {{ current_user }}</div>
+            <a href="{% url 'sign_out' %}" class="log_out">Đăng Xuất</a>
+            <h1>Thông Tin Cá Nhân</h1>
+            
+            <div class="info-section">
+                <label for="username">Họ Tên</label>
+                <div class="value">{{ current_fullname }}</div>
+            </div>
+    
+            <div class="info-section">
+                <label for="email">Email</label>
+                <div class="value">{{ current_email }}</div>
+            </div>
+    
+            <div class="info-section">
+                <label for="password">Mật Khẩu</label>
+                <div class="value">{{ current_password }}</div>
+                <a href="{% url 'forget' %}" class="change-link">Thay đổi mật khẩu</a>
+            </div>
+    
+            <div class="info-section">
+                <label for="phone">Số Điện Thoại</label>
+                <div class="value" data-info="phone">{{ current_phone }}</div>
+                <a href="#" class="change-link" onclick="openModal()">Thay Đổi Số Điện Thoại</a>
+            </div>
+        </div>
+    
+        <div class="content" id="bookedTours" style="display: none;">
+            <h1>Tour Đã Đặt</h1>
+            <h3>Danh Sách Giao Dịch</h3>
+            <div class="main-content">
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Tên Tour</th>
+                            <th>Tên Giao Dịch</th>
+                            <th>Mã Code</th>
+                            <th>Loại Giao Dịch</th>
+                            <th>Trạng Thái</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionList">
+                        {% for i in bookings %}
+                        <tr>
+                            <td>{{ i.tour }}</td>
+                            <td>{{ i.ticket_code }}</td>
+                            <td>{{ i.ticket_code }}</td>
+                            <td>{{ i.payment_method }}</td>
+                            <td>{{ i.status }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal để thay đổi số điện thoại -->
+    <div class="modal" id="phoneModal">
+        <div class="modal-content">
+            <form method="POST" action="{% url 'change_number' %}">
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+                <h2>Thay Đổi Số Điện Thoại</h2>
+                <input type="text" id="newPhoneNumber" name="Phone_number" placeholder="Nhập số điện thoại mới">
+                <button type="button" onclick="updatePhoneNumber()">Lưu Thay Đổi</button>
+            </form>
+        </div>
+    </div>
+<script src="{% static 'javascript/change-infoUser.js' %}"></script>
+</body>
+</html>
