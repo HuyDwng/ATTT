@@ -92,12 +92,11 @@ def get_common_context(request):
 
 # Đảm bảo người dùng phải đăng nhập mới vào được view này
 def get_home(request):  
-    context = get_common_context()
+    context = get_common_context(request)
     context['current_user'] =request.session.get('username')
-    
     context['current_email'] =decrypt_data(request.session.get('email'))
 
-    context = get_common_context(request)
+    
     return render(request, 'tour_management/tour_mng.html', context)
 def get_payment(request):
     context = get_common_context(request)
@@ -248,16 +247,14 @@ def get_revenue_statistics(request):
     return render(request,'revenue_statistics/revenue_statistics.html',context)
 
 def get_booking(request):
-    context = get_common_context()
-    context['current_user'] =request.session.get('username')
-    
-    context['current_email'] =decrypt_data(request.session.get('email'))
-    return render(request,"booking_mng/booking_mng.html",context)
+    context = get_common_context(request)  # Thêm request vào đây
+    context['current_user'] = request.session.get('username')
+    context['current_email'] = decrypt_data(request.session.get('email'))
+    return render(request, "booking_mng/booking_mng.html", context)
 
 def ticket_details(request, booking_id):
     booking = get_object_or_404(Booking, id=booking_id)  # Lấy booking theo ID
     tickets = Tickets.objects.filter(booking=booking)  # Lấy tất cả vé liên quan đến booking này
-    context=get_common_context()
     decrypted_tickets_list = [
         {
             'ticket_code': t.decrypted_data('ticket_code'),
