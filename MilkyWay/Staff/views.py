@@ -248,7 +248,7 @@ def get_revenue_statistics(request):
     return render(request,'revenue_statistics/revenue_statistics.html',context)
 
 def get_booking(request):
-    context = get_common_context()
+    context = get_common_context(request)
     context['current_user'] =request.session.get('username')
     
     context['current_email'] =decrypt_data(request.session.get('email'))
@@ -257,7 +257,6 @@ def get_booking(request):
 def ticket_details(request, booking_id):
     booking = get_object_or_404(Booking, id=booking_id)  # Lấy booking theo ID
     tickets = Tickets.objects.filter(booking=booking)  # Lấy tất cả vé liên quan đến booking này
-    context=get_common_context()
     decrypted_tickets_list = [
         {
             'ticket_code': t.decrypted_data('ticket_code'),
