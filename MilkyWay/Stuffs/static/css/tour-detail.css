@@ -34,9 +34,6 @@
     width: 25%;
 }
 
-.filter{
-    filter: brightness(0.6);
-}
 .center{
     text-align: center;
 }
@@ -182,4 +179,8 @@
 
 .img-ctn {
     width: 75%;
+}
+
+.list-img {
+    margin-top: 50px;
 }
