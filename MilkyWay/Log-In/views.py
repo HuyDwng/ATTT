@@ -180,6 +180,9 @@ def forget(request):
             if Users.objects.filter(username=username).exists():
                 if password == password1:
                     user = Users.objects.get(username=username)
+                    user.fullname = user.decrypted_data('fullname')
+                    user.email = user.decrypted_data('email')
+                    user.phone_number = user.decrypted_data('phone_number')
                     user.password = password
                     user.save()
                     messages.success(request, "Đổi mật khẩu thành công!")
