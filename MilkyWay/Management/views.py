@@ -53,11 +53,11 @@ def decrypted_user(request):
 def decrypted_tickets():
     tickets = Tickets.objects.all()
     return [
-        {
-            'ticket_code': t.decrypted_data('ticket_code'),
-            'quantity': t.decrypted_data('quantity'),
-            'ticket_status': t.decrypted_data('ticket_status'),
-        }
+            {
+                'ticket_code': t.decrypted_data('ticket_code'),
+                'quantity': t.decrypted_data('quantity'),
+                'ticket_status': t.decrypted_data('ticket_status'),
+            }
         for t in tickets
     ]
 
@@ -71,6 +71,14 @@ def decrypted_bookings():
             'status': t.status,
             'ticket_code': t.decrypted_data('ticket_code'),
             'payment_method': t.payment.payment_method if hasattr(t, 'payment') else "No payment method",
+            'tickets': [
+                {
+                    'quantity': int(decrypt_data(ticket.quantity)),
+                    'amount': int(decrypt_data(ticket.quantity)) * int(decrypt_data(t.tour.price)),
+                }
+                for ticket in t.ticket.all()
+            ],
+            'price': t.tour.price,
         }
         for t in bookings
     ]
@@ -90,7 +98,10 @@ def get_common_context(request):
     tickets = decrypted_tickets()
     bookings = decrypted_bookings()  
     payments = decrypted_payments()      
-    current_user = request.session['username']
+    try:
+        current_user = request.session['username']
+    except KeyError:
+        current_user = None 
     return {
         'tour': tours,
         'user': users,
@@ -159,6 +170,7 @@ def tour_management(request):
 
 def transaction_management(request):
   context = get_common_context(request)
+
   return render(request, 'admin_tour/transaction_management.html', context)
 
 def user_management(request):
@@ -309,7 +321,7 @@ def delete_image(request, image_id):
         image.delete()  # Xóa ảnh khỏi database
         return redirect('edit_tour', tour_id=image.tour.id)  # Điều hướng trở lại trang chỉnh sửa tour
 
-def add_images(request, tour_id):
+def add_images_admin(request, tour_id):
     if request.method == 'POST':
         tour = get_object_or_404(Tour, id=tour_id)
         images = request.FILES.getlist('tour_images')  # Nhận danh sách file hình ảnh
@@ -318,7 +330,7 @@ def add_images(request, tour_id):
             
         return redirect('edit_tour', tour_id=tour_id)  # Điều hướng lại trang chỉnh sửa tour
     
-def change_image(request, image_id):
+def change_image_admin(request, image_id):
     image = get_object_or_404(Images, id=image_id)
     if request.method == 'POST':
         new_image = request.FILES.get('new_image')  # Nhận hình ảnh mới

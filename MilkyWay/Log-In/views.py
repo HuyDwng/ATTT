@@ -151,9 +151,16 @@ def login(request):
                     elif role == "staff":
                         request.session['username'] = user.username
                         request.session['email'] = user.email
+                        request.session['password'] = user.decrypted_data('password')
+                        request.session['phone'] = user.decrypted_data('phone_number')
+                        request.session['fullname'] = user.decrypted_data('fullname')
                         return redirect('tour_mng')
                     elif role == "admin":
                         request.session['username'] = user.username
+                        request.session['email'] = user.decrypted_data('email')
+                        request.session['password'] = user.decrypted_data('password')
+                        request.session['phone'] = user.decrypted_data('phone_number')
+                        request.session['fullname'] = user.decrypted_data('fullname')
                         return redirect('tour-list')
                     else:
                         messages.error(request, "Lỗi phân quyền người dùng")
@@ -180,6 +187,9 @@ def forget(request):
             if Users.objects.filter(username=username).exists():
                 if password == password1:
                     user = Users.objects.get(username=username)
+                    user.fullname = user.decrypted_data('fullname')
+                    user.email = user.decrypted_data('email')
+                    user.phone_number = user.decrypted_data('phone_number')
                     user.password = password
                     user.save()
                     messages.success(request, "Đổi mật khẩu thành công!")
@@ -192,11 +202,7 @@ def forget(request):
     return render(request, 'log_in/forget-password.html') 
 
 def sign_out(request):
-    del request.session['username']
-    del request.session['email']
-    del request.session['password']
-    del request.session['phone']
-    del request.session['fullname']
+    request.session.flush()
     return redirect('login')
 
 #Tài khoản google
