@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/info_user.css' %}">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Trung Tâm Tài Khoản</title>
 </head>
 <body>
@@ -13,6 +15,7 @@
         <div class="sidebar">
             <a href="#" onclick="showPersonalInfo()">Thông Tin Cá Nhân</a>
             <a href="#" onclick="showBookedTours()">Tour Đã Đặt</a>
+            <a href="{% url 'homepage' %}" ><i class="fa-solid fa-backward"> <span>Trang chính<span></i></a>
         </div>
         
         <div class="content" id="personalInfo">
@@ -24,18 +27,18 @@
                 <label for="username">Họ Tên</label>
                 <div class="value">{{ current_fullname }}</div>
             </div>
-    
+        
             <div class="info-section">
                 <label for="email">Email</label>
                 <div class="value">{{ current_email }}</div>
             </div>
-    
+        
             <div class="info-section">
                 <label for="password">Mật Khẩu</label>
                 <div class="value">{{ current_password }}</div>
                 <a href="{% url 'forget' %}" class="change-link">Thay đổi mật khẩu</a>
             </div>
-    
+        
             <div class="info-section">
                 <label for="phone">Số Điện Thoại</label>
                 <div class="value" data-info="phone">{{ current_phone }}</div>
@@ -46,9 +49,9 @@
         <div class="content" id="bookedTours" style="display: none;">
             <h1>Tour Đã Đặt</h1>
             <h3>Danh Sách Giao Dịch</h3>
-            <div class="main-content">
-                <table class="table table-striped">
-                    <thead class="thead-dark">
+            <div class="table-wrapper">
+                <table class="table">
+                    <thead class="title-booking">
                         <tr>
                             <th>Tên Tour</th>
                             <th>Tên Giao Dịch</th>
@@ -57,18 +60,22 @@
                             <th>Trạng Thái</th>
                         </tr>
                     </thead>
-                    <tbody id="transactionList">
-                        {% for i in bookings %}
-                        <tr>
-                            <td>{{ i.tour }}</td>
-                            <td>{{ i.ticket_code }}</td>
-                            <td>{{ i.ticket_code }}</td>
-                            <td>{{ i.payment_method }}</td>
-                            <td>{{ i.status }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
                 </table>
+                <div class="table-scroll">
+                    <table class="table">
+                        <tbody id="transactionList">
+                            {% for i in bookings %}
+                            <tr>
+                                <td>{{ i.tour }}</td>
+                                <td>{{ i.ticket_code }}</td>
+                                <td>{{ i.ticket_code }}</td>
+                                <td>{{ i.payment_method }}</td>
+                                <td>{{ i.status }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
