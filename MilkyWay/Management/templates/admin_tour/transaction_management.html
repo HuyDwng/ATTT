@@ -3,7 +3,7 @@
 <div class="main-content">
     <h3>Danh Sách Giao Dịch</h3>
     <table class="table table-striped">
-        <thead class="thead-dark">
+        <thead id="tour-table">
             <tr>
                 <th>ID</th>
                 <th>Tên User</th>
@@ -15,7 +15,7 @@
                 <th>Hành Động</th>
             </tr>
         </thead>
-        <tbody id="transactionList">
+        <tbody id="tour-data">
             {%for i in booking %}
             <tr>
                 <td>{{i.id}}</td>

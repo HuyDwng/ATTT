@@ -699,6 +699,9 @@ def generate_ticket_code():
 
 @csrf_exempt
 def book_tour(request, tour_id):
+    if 'username' not in request.session:
+        messages.error(request, "Vui lòng đăng nhập để đặt tour.")
+        return redirect('login') 
     stripe.api_key = settings.STRIPE_SECRET_KEY
     tour = get_object_or_404(Tour, id=tour_id)
     decrypted_remaining_seats = tour.decrypted_data('remaining_seats')
@@ -731,7 +734,8 @@ def book_tour(request, tour_id):
         # Tạo session thanh toán Stripe
         success_url = request.build_absolute_uri(reverse('confirm_payment')) 
         cancel_url = request.build_absolute_uri(reverse('tour_detail', args=[tour_id]))  
-
+        username = request.session.get('username')
+        user = Users.objects.get(username=username)
         checkout_session = stripe.checkout.Session.create(
             payment_method_types=["card"],
             line_items=[{
@@ -745,6 +749,7 @@ def book_tour(request, tour_id):
             mode='payment',
             success_url=success_url,
             cancel_url=cancel_url,
+            customer_email=user.decrypted_data('email') 
         )
 
         # Lưu tạm dữ liệu booking vào session
@@ -752,6 +757,7 @@ def book_tour(request, tour_id):
             'tour_id': tour.id,
             'quantity': quantity,
             'total_amount': total_amount,
+
         }
         return redirect(checkout_session.url, code=303)
     return render(request, 'tour_detail.html', {'tour': decrypted_tour})
@@ -790,7 +796,7 @@ def confirm_payment(request):
         user = Users.objects.get(username=username)
     except Users.DoesNotExist:
         return HttpResponse("Bạn chưa đăng nhập", status=403)
-
+    
     with transaction.atomic():
         ticket_code = generate_ticket_code()
         booking = Booking.objects.create(
@@ -813,9 +819,9 @@ def confirm_payment(request):
                 quantity=1,
                 ticket_status='issued'
             )
-        subject = "Xác nhận đặt tour thành công"
-        message = f"Chào {decrypt_data(user.fullname)},\n\nBạn đã đặt thành công tour {decrypt_data(tour.name)} với mã vé {ticket_code}.\nSố lượng vé: {quantity}\nTổng chi phí: {total_amount} VND\n\nCảm ơn bạn đã tin tưởng sử dụng dịch vụ của chúng tôi!"
         recipient_email = user.decrypted_data('email')
+        subject = "MilkyWay - Xác nhận đặt tour thành công"
+        message = f"Chào {decrypt_data(user.fullname)},\n\nBạn đã đặt thành công tour {decrypt_data(tour.name)} với mã vé {ticket_code}.\nSố lượng vé: {quantity}\nTổng chi phí: {total_amount} VND\n\nCảm ơn bạn đã tin tưởng sử dụng dịch vụ của chúng tôi!"
         send_mail(
         subject,
         message,
