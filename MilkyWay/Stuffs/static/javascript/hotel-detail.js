@@ -59,3 +59,4 @@ function increase() {
         qty.value = parseInt(qty.value) + 1;
     }
 }
+

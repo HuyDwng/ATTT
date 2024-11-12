@@ -30,17 +30,7 @@
         <div class="sidebar">
             <h3>QUẢN LÝ TÀI KHOẢN</h3>
             <ul>
-                <li>
-                    <div><i class="fa-solid fa-users"></i> Group<span class="fa arrow"></span></div>
-                    <ul class="nav-second-level">
-                        <li>
-                            <a href=""><span><i class="fa-solid fa-plus"></i> Tạo group</span></a>
-                        </li>
-                        <li>
-                            <a href=""><span><i class="fa-solid fa-people-roof"></i> Quản lý group</span></a>
-                        </li>
-                    </ul>
-                </li>
+                
 
                 <li>
                     <div><i class="fa-solid fa-user"></i> User<span class="fa arrow"></span></div>
@@ -56,12 +46,12 @@
             </ul>
             <h3>QUẢN LÝ TOUR</h3>
             <ul>
-                <li><a href="{% url 'create_tour' %}"><span>Tạo tour</span></a></li>
-                <li><a href="{% url 'tour_management' %}"><span>Quản lý tour</span></a></li>
+                <li><a href="{% url 'create_tour' %}"><span><i class="fa-solid fa-plane"></i> Tạo tour</span></a></li>
+                <li><a href="{% url 'tour_management' %}"><span><i class="fa-solid fa-store"></i> Quản lý tour</span></a></li>
             </ul>
             <h3>QUẢN LÝ GIAO DỊCH</h3>
             <ul>
-                <li><a href="{% url 'transaction_management' %}"><span>Danh mục</span></a></li>
+                <li><a href="{% url 'transaction_management' %}"><span> <i class="fa-solid fa-list"></i>  Danh mục</span></a></li>
             </ul>
         </div>
         {%block content%}

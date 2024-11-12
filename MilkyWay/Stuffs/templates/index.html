@@ -286,10 +286,10 @@
                                         <div>Ngày khởi hành: {{i.start_date}}</div>
                                         <div>Thời gian: {{i.duration_in_days_and_nights}}</div>
                                         <div>Số chỗ ngồi: {{i.available_seats}}</div>
-                                        <div class="btn-BookTour">
-                                            <button><a href="{% url 'tour_detail' tour_id=i.id %}">Xem Chi Tiết</a></button>
-                                        </div>
                                     </div>
+                                </div>
+                                <div class="btn-BookTour">
+                                    <button><a href="{% url 'tour_detail' tour_id=i.id %}">Xem Chi Tiết</a></button>
                                 </div>
                             </div>
                         {% endif %}
@@ -319,24 +319,24 @@
             <div class="slides">
                 <!-- Slide 1 -->
                 <div class="slide">
-                    <img src="{% static 'images/triethoc.png' %}" alt="Person 1" class="testimonial-img">
-                    <p>“Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna aliqua. Ut enim ad minim veniam.”</p>
-                    <h3>kevin watson</h3>
-                    <p>london, england</p>
+                    <img src="{% static 'images/anh-client.jpg' %}" alt="Person 1" class="testimonial-img">
+                    <p>“Tour Hà Tiên mang đến trải nghiệm tuyệt vời với biển xanh, đảo ngọc, và văn hóa độc đáo miền Tây.”</p>
+                    <h3>Đào Ngọc Quý</h3>
+                    <p>Hà Tiên, Gạch Giá</p>
                 </div>
                 <!-- Slide 2 -->
                 <div class="slide">
-                    <img src="{% static 'images/triethoc.png' %}" alt="Person 2" class="testimonial-img">
-                    <p>“Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna aliqua. Ut enim ad minim veniam.”</p>
-                    <h3>kevin watson</h3>
-                    <p>london, england</p>
+                    <img src="{% static 'images/anh-client.jpg' %}" alt="Person 2" class="testimonial-img">
+                    <p>“Tour Đà Lạt hấp dẫn với không khí se lạnh, cảnh quan lãng mạn, và vườn hoa rực rỡ sắc màu.”</p>
+                    <h3>Dương Ngọc Minh Huy</h3>
+                    <p>Đà Lạt</p>
                 </div>
                 <!-- Slide 3 -->
                 <div class="slide">
-                    <img src="{% static 'images/triethoc.png' %}" alt="Person 3" class="testimonial-img">
-                    <p>“Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna aliqua. Ut enim ad minim veniam.”</p>
-                    <h3>kevin watson</h3>
-                    <p>london, england</p>
+                    <img src="{% static 'images/anh-client.jpg' %}" alt="Person 3" class="testimonial-img">
+                    <p>“Tour Phú Quốc mê hoặc du khách với biển xanh cát trắng, ẩm thực phong phú, và trải nghiệm nghỉ dưỡng đẳng cấp.”</p>
+                    <h3>Lê Minh Kiệt</h3>
+                    <p>Phú Quốc</p>
                 </div>
             </div>
     
@@ -456,7 +456,7 @@
                             <div class="col-sm-3">
                                 <div class="single-footer-item">
                                     <div class="footer-logo">
-                                        <a href="index.html">
+                                        <a href="#home">
                                             Milky<span>Way</span>
                                         </a>
                                         <p>
@@ -468,14 +468,14 @@
 
                             <div class="col-sm-3">
                                 <div class="single-footer-item">
-                                    <h2>link</h2>
+                                    <h2>Liên Kết</h2>
                                     <div class="single-footer-txt">
-                                        <p><a href="#">home</a></p>
-                                        <p><a href="#">destination</a></p>
-                                        <p><a href="#">spacial packages</a></p>
-                                        <p><a href="#">special offers</a></p>
-                                        <p><a href="#">blog</a></p>
-                                        <p><a href="#">contacts</a></p>
+                                        <p><a href="#home">Nhà</a></p>
+                                        <p><a href="#destination">Địa Điểm</a></p>
+                                        <p><a href="#package">Tour</a></p>
+                                        <p><a href="#client-review">Đánh Giá</a></p>
+                                        <p><a href="#blog">Tin Tức</a></p>
+                                        <p><a href="#infomation">Liên Hệ</a></p>
                                     </div><!--/.single-footer-txt-->
                                 </div><!--/.single-footer-item-->
 
@@ -483,7 +483,7 @@
 
                             <div class="col-sm-3">
                                 <div class="single-footer-item">
-                                    <h2>popular destination</h2>
+                                    <h2>Địa Điểm Nổi Tiếng</h2>
                                     <div class="single-footer-txt">
                                         <p><a href="#">Đà Nẵng</a></p>
                                         <p><a href="#">Phú Quốc</a></p>
@@ -496,7 +496,7 @@
 
                             <div class="col-sm-3">
                                 <div class="single-footer-item text-center">
-                                    <h2 class="text-left">contacts</h2>
+                                    <h2 class="text-left">Liên Hệ</h2>
                                     <div class="single-footer-txt text-left">
                                         <p>0123456789</p>
                                         <p class="foot-email"><a href="#">admin123@gmail.com</a></p>
@@ -516,7 +516,7 @@
                             <li><a href="#" target="_blank" class="foot-icon-bg-2"><i class="fa-solid fa-x"></i></a></li>
                             <li><a href="#" target="_blank" class="foot-icon-bg-3"><i class="fa-brands fa-instagram"></i></a></li>
                         </ul>
-                        <p>&copy; 2017 <a href="https://www.themesine.com">ThemeSINE</a>. All Right Reserved</p>
+                        <p>&copy; 2017 <a href="#home">MilkyWay</a>. All Right Reserved</p>
 
                     </div><!--/.foot-icons-->
                     <div class="Gototop" id="Gototop">
