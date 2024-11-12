@@ -110,7 +110,6 @@ def get_home(request):
 def get_payment(request):
     context = get_common_context(request)
     context['current_user'] =request.session.get('username')
-    
     context['current_email'] =decrypt_data(request.session.get('email'))
     return render(request,'payment_mng/payment_mng.html', context)
 
@@ -285,3 +284,12 @@ def ticket_details(request, booking_id):
     ]
   
     return render(request, 'ticket_mng/ticket_details.html', {'booking': booking, 'tickets': decrypted_tickets_list})
+
+
+def payment_management(request):
+    bookings = Booking.objects.all()
+    bookings = bookings.filter(id=3)
+    context = {
+        'booking': bookings,
+    }
+    return render(request, 'payment_mng/payment_mng.html', context)
