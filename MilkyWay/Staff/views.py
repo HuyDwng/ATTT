@@ -103,7 +103,7 @@ def get_common_context(request):
 # Đảm bảo người dùng phải đăng nhập mới vào được view này
 def get_home(request):  
     if 'username' not in request.session:
-        messages.error(request, "Vui lòng đăng nhập để vào admin.")
+        messages.error(request, "Vui lòng đăng nhập để vào staff.")
         return redirect('login') 
     context = get_common_context(request)
     context['current_user'] =request.session.get('username')
