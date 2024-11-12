@@ -13,7 +13,7 @@ from Management.models import Users, Tour, Tickets, Booking, Payment
 from Management.utils import encrypt_data, decrypt_data
 import datetime
 from django.conf import settings
-
+from django.core.mail import send_mail
 # Create your views here.
 
 # Function system
@@ -111,10 +111,15 @@ def register(request):
                     messages.error(request, "Email đã được sử dụng")
                 else:
                     # Tạo người dùng mới
-                    # user_account = User.objects.create_user(username=username, email=email, password=password1)  __ tài khoản admin
                     user = Users(username=username, email=email, password=password, phone_number=phone_number, fullname=fullname)
                     user.save()
-                    # user_account.save()
+                    send_mail(
+                        'MilkyWay - Đăng ký tài khoản thành công',
+                        f'Chào {fullname}, tài khoản của bạn đã được tạo thành công.\nCảm ơn bạn đã tin tưởng chúng tôi.\nMilkyWay,',
+                        settings.EMAIL_HOST_USER,
+                        [email],
+                        fail_silently=False,
+                    )
                     messages.success(request, "Đăng ký thành công!")
                     return redirect('login')
             else:

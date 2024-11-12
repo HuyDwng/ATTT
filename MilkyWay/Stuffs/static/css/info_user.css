@@ -143,3 +143,12 @@ body {
     color: #333;
     cursor: pointer;
 }
+
+table.table.table-striped {
+    border-collapse: collapse;
+    border: 1px solid black;
+  }
+  table.table.table-striped td,
+  table.table.table-striped th {
+    border: 1px solid black;
+  }
