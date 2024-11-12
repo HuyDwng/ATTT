@@ -21,6 +21,7 @@ from datetime import timedelta
 from django.utils import timezone
 from django.http import JsonResponse
 from django.contrib.auth import authenticate
+from django.core.mail import send_mail
 # Function system
 def decrypted_tours():
     tour = Tour.objects.all()
@@ -810,6 +811,16 @@ def confirm_payment(request):
                 quantity=1,
                 ticket_status='issued'
             )
+        subject = "Xác nhận đặt tour thành công"
+        message = f"Chào {decrypt_data(user.fullname)},\n\nBạn đã đặt thành công tour {decrypt_data(tour.name)} với mã vé {ticket_code}.\nSố lượng vé: {quantity}\nTổng chi phí: {total_amount} VND\n\nCảm ơn bạn đã tin tưởng sử dụng dịch vụ của chúng tôi!"
+        recipient_email = user.decrypted_data('email')
+        send_mail(
+        subject,
+        message,
+        settings.EMAIL_HOST_USER,
+        [recipient_email],
+        fail_silently=False,
+    )
     del request.session['temp_booking']
     messages.success(request, "Đặt tour thành công!")
     return redirect('homepage')

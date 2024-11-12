@@ -33,39 +33,28 @@
 		<div class="title">
 			<h6 class="display-6 text-capitalize fw-bolder">{{tour.name}}</h6>
 		</div>
-
         <!--Data-->
         <div class="container-data">
 			<div class="row mt-4">
-				<!-- Cột chứa danh sách hình ảnh nhỏ bên trái -->
-				<div class="col-lg-2 col-md-3 d-flex flex-column align-items-start">
-					<div class="list-img d-flex flex-column h-100">
-						{% for image in images %}
-							<div class="img-item mb-2 flex-grow-1">
-								<img src="{{ image.images.url }}" 
-									 class="d-block w-100 h-100" 
-									 alt="{{ tour.name }}" 
-									 style="object-fit: cover;" 
-									 onclick="changeMainImage('{{ image.images.url }}')">
-							</div>
-						{% empty %}
-							<p>Không có hình ảnh nào để hiển thị.</p>
-						{% endfor %}
-					</div>
-				</div>
-			
-				<!-- Cột chứa hình ảnh chính bên phải -->
-				<div class="col-lg-10 col-md-9 img-large">
-					<div class="image h-100 w-100">
+				<div class="col-lg-8 col-md-8">
+					<div class="image">
 						{% with first_image=tour.images.first %}
-							<img id="mainImage" src="{{ first_image.images.url }}" 
-								 class="d-block w-100 h-100" 
-								 alt="{{ tour.name }}" 
-								 style="object-fit: cover;">
+    						<img src="{{ first_image.images.url }}" class="d-block mt-4 w-100" alt="{{ tour.name }}">
 						{% endwith %}
 					</div>
 				</div>
-			</div>
+			
+				<div class="list-img">
+					{% for image in images %}
+						<div class="img-item mt-2">
+							<img src="{{ image.images.url }}" class="d-block w-100" alt="{{ tour.name }}">
+						</div>
+					{% empty %}
+						<p>Không có hình ảnh nào để hiển thị.</p>
+					{% endfor %}
+				</div>
+				
+			</div>		
 			
             <div class="card info">
                 <h5 class="txt-primary p-2 card-title">Giá:</h5>
@@ -213,10 +202,8 @@
                 		<h6 class="px-2"> <span class="txt-primary">Số chỗ còn: </span>{{ i.remaining_seats }}</h6>
 						<h5 class="p-2"> <span class="txt-primary">Giá: </span>{{ i.price }} VND</h5>
 						<div class="container p-2">
-						<form method="POST" action="{% url 'book_tour' tour.id %}">
-							<button class="btn btn-outline-success">Đặt tour</button>
-						</form>
 						<form method="POST" action="{% url 'tour_detail' tour.id %}">
+							{% csrf_token %}
 							<button class="btn btn-outline-primary">Xem thêm chi tiết</button>
 						</form>
 						</div>
@@ -231,12 +218,6 @@
 			{% block content %}
 			{% endblock %}
 		</div>
-		  <ul class="pagination justify-content-center mt-5">
-			<li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
-			<li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
-			<li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
-			<li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
-		  </ul>
 		  <!--footer-->
 		    <!-- footer-copyright start -->
 		<footer  class="footer-copyright">
@@ -269,9 +250,7 @@
 									<p><a href="#">contacts</a></p>
 								</div><!--/.single-footer-txt-->
 							</div><!--/.single-footer-item-->
-
 						</div><!--/.col-->
-
 						<div class="col-sm-3">
 							<div class="single-footer-item">
 								<h2>Địa Điểm Nổi Tiếng</h2>
@@ -322,10 +301,5 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="{% static 'javascript/hotel-detail.js' %}"></script>
 		<script src="{% static 'javascript/scrollTop.js' %}"></script>
-		<script>
-			function changeMainImage(imageUrl) {
-				document.getElementById("mainImage").src = imageUrl;
-			}
-		</script>
 	</body>
 </html>
