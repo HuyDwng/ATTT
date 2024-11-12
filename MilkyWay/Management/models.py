@@ -24,7 +24,7 @@ class Users(models.Model):
     role = models.CharField(max_length=100, choices=ROLES, default='customer')  # Phân quyền
     phone_number = models.CharField(max_length=100)
     date_joined = models.DateTimeField(auto_now_add=True, auto_created=True)
-    is_actived = models.BooleanField(default=True)
+    # is_actived = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
         # Mã hóa các trường nhạy cảm trước khi lưu
@@ -52,8 +52,6 @@ def user_directory_path(instance, filename):
     today = datetime.today()
     date_str = today.strftime("%Y%m%d")  # Định dạng ngày thành YYYYMMDD
 
-    # Đếm số lượng file được tải lên ngày hôm nay
-    # Điều này sẽ đếm tất cả các file cùng ngày với username đó
     existing_files_count = Images.objects.filter(
         tour=tour
     ).filter(images__icontains=f"{name_tour}_{date_str}").count()
@@ -173,7 +171,7 @@ class Tickets(models.Model):
     ]  
     booking = models.ForeignKey(Booking, related_name='ticket', on_delete=models.CASCADE, null=True, blank=True) 
     ticket_code = models.CharField(max_length=100)
-    issued_date = models.DateTimeField(auto_now_add=True, auto_created=True)
+    # issued_date = models.DateTimeField(auto_now_add=True, auto_created=True)
     quantity = models.CharField(max_length=100)
     ticket_status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='issued')  # Trạng thái vé
 

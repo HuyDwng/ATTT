@@ -212,9 +212,6 @@
                 		<h6 class="px-2"> <span class="txt-primary">Số chỗ còn: </span>{{ i.remaining_seats }}</h6>
 						<h5 class="p-2"> <span class="txt-primary">Giá: </span>{{ i.price }} VND</h5>
 						<div class="container p-2">
-							<form method="POST" action="{% url 'book_tour' tour.id %}" class="d-inline">
-								<button class="btn btn-outline-success">Đặt tour</button>
-							</form>
 							<form method="POST" action="{% url 'tour_detail' tour.id %}" class="d-inline">
 								<button class="btn btn-outline-primary">Xem thêm chi tiết</button>
 							</form>
@@ -230,12 +227,7 @@
 			{% block content %}
 			{% endblock %}
 		</div>
-		  <ul class="pagination justify-content-center mt-5">
-			<li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
-			<li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
-			<li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
-			<li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
-		  </ul>
+		 
 		  <!--footer-->
 		    <!-- footer-copyright start -->
 		<footer  class="footer-copyright">

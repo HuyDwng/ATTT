@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giao Diện Quản Trị</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="{% static 'css/bootstrap-theme.min.css' %}" rel="stylesheet"/>
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/bootstrap-theme.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" />
     <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet" />
     <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
@@ -17,29 +17,36 @@
     <script src="https://kit.fontawesome.com/99c4f82c90.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
 
     <div class="header">
-        <a class="navbar-brand" href="{% url 'tour-list' %}"><strong><i class="fa-solid fa-plane-departure"></i> TOUR DU LỊCH</strong></a>
+        <a class="navbar-brand" href="{% url 'tour-list' %}"><strong><i class="fa-solid fa-plane-departure"></i> TOUR DU
+            LỊCH</strong></a>
         <div class="options">
-            Chào mừng, {{current_user}} | <a href="{% url 'register' %}">Đổi mật khẩu</a> |<a href="{% url 'login' %}">Đăng xuất</a>
+            Xin chào, {{current_user}} 
+            <a href="{% url 'register' %}">Đổi mật khẩu</a> 
+            <a href="{% url 'login' %}">Đăng xuất</a>
         </div>
     </div>
 
     <div class="containe">
         <div class="sidebar">
+            
             <h3>QUẢN LÝ TÀI KHOẢN</h3>
             <ul>
-                
+
 
                 <li>
                     <div><i class="fa-solid fa-user"></i> User<span class="fa arrow"></span></div>
                     <ul class="nav-second-level">
                         <li>
-                            <a href={% url 'create_user' %}><span><i class="fa-solid fa-user-plus"></i> Tạo user</span></a>
+                            <a href={% url 'create_user' %}><span><i class="fa-solid fa-user-plus"></i> Tạo
+                                    user</span></a>
                         </li>
                         <li>
-                            <a href={% url 'user_management' %}><span><i class="fa-solid fa-user-pen"></i> Quản lý user</span></a>
+                            <a href={% url 'user_management' %}><span><i class="fa-solid fa-user-pen"></i> Quản lý
+                                    user</span></a>
                         </li>
                     </ul>
                 </li>
@@ -47,22 +54,17 @@
             <h3>QUẢN LÝ TOUR</h3>
             <ul>
                 <li><a href="{% url 'create_tour' %}"><span><i class="fa-solid fa-plane"></i> Tạo tour</span></a></li>
-                <li><a href="{% url 'tour_management' %}"><span><i class="fa-solid fa-store"></i> Quản lý tour</span></a></li>
+                <li><a href="{% url 'tour_management_admin' %}"><span><i class="fa-solid fa-store"></i> Quản lý
+                            tour</span></a></li>
             </ul>
             <h3>QUẢN LÝ GIAO DỊCH</h3>
             <ul>
-                <li><a href="{% url 'transaction_management' %}"><span> <i class="fa-solid fa-list"></i>  Danh mục</span></a></li>
+                <li><a href="{% url 'transaction_management' %}"><span> <i class="fa-solid fa-list"></i> Danh
+                            mục</span></a></li>
             </ul>
         </div>
         {%block content%}
         {%endblock%}
-    </body>
-    	<!--Message-->
-			{% if messages %}
-				{% for message in messages %}
-					<div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}" role="alert">
-						{{ message }}
-					</div>
-				{% endfor %}
-			{% endif %}
-    </html>
+</body>
+
+</html>
