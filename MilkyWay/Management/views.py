@@ -181,6 +181,7 @@ def user_management(request):
   return render(request, 'admin_tour/user_management.html', context)
 
 def create_tour(request):
+    context = get_common_context(request)
     if request.method == 'POST':
         # Nhận thông tin tour từ form
         name = request.POST.get('tour_name')
@@ -219,7 +220,7 @@ def create_tour(request):
         for idx, image in enumerate(images):
             Images.objects.create(tour=tour, images=image, position=idx + 1)
 
-        return redirect('tour_management_admin')
+        return redirect('tour_management_admin', context)
 
     context = {'range': range(1, 5)}
     return render(request, 'admin_tour/create_tour.html', context)
