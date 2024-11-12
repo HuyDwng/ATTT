@@ -263,7 +263,6 @@ def guide(request):
 def tour(request):
     context = get_common_context(request)
     return render(request, 'tour.html', context)
-
 def tour_detail(request, tour_id):
     context = get_common_context(request)
     # Lấy tour cần chỉnh sửa
@@ -278,7 +277,7 @@ def tour_detail(request, tour_id):
         'destination': tour.decrypted_data('destination'),
         'price': tour.decrypted_data('price'),
         'available_seats': tour.decrypted_data('available_seats'),
-        'remaining_seats': remaining_seats ,
+        'remaining_seats': remaining_seats,
         'images': images,
         'start_date': tour.start_date,
         'end_date': tour.end_date,
@@ -291,11 +290,13 @@ def tour_detail(request, tour_id):
     itinerary = description_parts[1] if len(description_parts) > 1 else ""
 
     tours = decrypted_tours()
-    images = tour.images.all()[:4] 
-    
+    images = tour.images.all()[:4]
+
+    # Định dạng lại ngày bắt đầu và kết thúc
     tour.start_date = tour.start_date.strftime("%Y-%m-%d") if tour.start_date else ""
     tour.end_date = tour.end_date.strftime("%Y-%m-%d") if tour.end_date else ""
 
+    # Cập nhật context với dữ liệu đã tách và giữ nguyên định dạng
     context.update({
         'tours': tours,
         'tour': decrypted_tour,
@@ -304,6 +305,7 @@ def tour_detail(request, tour_id):
         'images': images,
     })
     return render(request, 'tour-detail.html', context)
+
 
 def generate_ticket_code():
     import uuid
