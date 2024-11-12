@@ -309,7 +309,7 @@ def edit_tour(request, tour_id):
     }
     return render(request, 'admin_tour/edit_tour.html', context)
 
-def delete_tour(request, tour_id):
+def delete_tour_admin(request, tour_id):
     context = get_common_context(request)
     tour = get_object_or_404(Tour, id=tour_id)
     tour.delete()
