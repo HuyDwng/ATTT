@@ -480,4 +480,5 @@ a {
 #transaction_status{
     padding: 0.5rem;
     background-color: #f0fee3;
+    position: relative;
 }
