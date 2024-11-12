@@ -61,8 +61,10 @@
 						<h5 class="text-primary p-2">{{ tour.name }}</h5>
 						<h6 class="px-2">{{ tour.price }} VND</h6>
 						<div class="container p-2">
-							<button class="btn btn-outline-success">Đặt tour</button>
-							<button class="btn btn-outline-primary">Xem thêm chi tiết</button>
+							<form method="POST" action="{% url 'tour_detail' tour.id %}" class="d-inline">
+								{% csrf_token %}
+								<button class="btn btn-outline-primary">Xem thêm chi tiết</button>
+							</form>
 						</div>
 					</div>
 				</div>

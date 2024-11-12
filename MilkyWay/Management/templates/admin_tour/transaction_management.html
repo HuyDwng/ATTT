@@ -1,6 +1,47 @@
 {% extends "admin_tour/base.html" %}
 {%block content%}
 <div class="main-content">
+    <form method="GET" action="{% url 'transaction_filter' %}">
+        <h2>Lọc giao dịch</h2>
+        <hr>
+        <div class="row mb-3">
+            <!-- Lọc theo mã giao dịch -->
+            <div class="col-md-3">
+                <label for="transaction_id" class="form-label">Mã giao dịch</label>
+                <input type="text" class="form-control" id="transaction_id" name="transaction_id"
+                    placeholder="Nhập mã giao dịch" autocomplete="off">
+            </div>
+
+            <!-- Lọc theo ngày giao dịch -->
+            <div class="col-md-3">
+                <label for="user_name" class="form-label">Tên user</label>
+                <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Nhập tên user"
+                    autocomplete="off">
+            </div>
+
+            <!-- Lọc theo trạng thái giao dịch -->
+            <div class="col-md-3">
+                <label for="transaction_status" class="form-label">Trạng thái</label>
+                <select class="form-select" id="transaction_status" name="transaction_status">
+                    <option value="">Tất cả</option>
+                    <option value="paid">Hoàn thành</option>
+                    <option value="bookled">Chưa thanh toán</option>
+                    <option value="canclled">Đã hủy</option>
+                </select>
+            </div>
+
+
+
+        </div>
+
+        <!-- Nút lọc -->
+        <div class="d-flex justify-content-left">
+            <button type="submit" class="btn btn-primary btn-hover">Lọc</button>
+            <a href="{% url 'transaction_management' %}"><button type="button" class="btn btn-secondary"
+                    id="reset-button">Reset</button></a>
+        </div>
+    </form>
+
     <h3>Danh Sách Giao Dịch</h3>
     <table class="table table-striped">
         <thead id="tour-table">
@@ -9,8 +50,6 @@
                 <th>Tên User</th>
                 <th>Nội Dung Tour</th>
                 <th>Số Tiền</th>
-                <th>Mã Giao Dịch</th>
-                <th>Phương Thức Thanh Toán</th>
                 <th>Trạng Thái</th>
                 <th>Hành Động</th>
             </tr>
@@ -21,13 +60,12 @@
                 <td>{{i.id}}</td>
                 <td>{{i.user}}</td>
                 <td>{{i.tour}}</td>
-                <td>{{ i.tickets.0.amount }}</td> 
-                <td>{{i.ticket_code}}</td>
-                <td>{{i.payment_method}}</td>
+                <td>{{i.tickets.0.amount}}</td>
                 <td>{{i.status}}</td>
                 <td>
                     <div class="action-btns">
-                        <button class="btn btn-danger btn-sm" ><a href="{% url 'delete_transaction' booking_id=i.id %}">Xóa</a></button>
+                        <button class="btn btn-danger btn-sm"><a
+                                href="{% url 'delete_transaction' booking_id=i.id %}">Xóa</a></button>
                     </div>
                 </td>
             </tr>
