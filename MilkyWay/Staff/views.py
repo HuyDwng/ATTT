@@ -3,6 +3,7 @@ from Management.models import Users, Tour, Tickets, Booking, Payment, Images
 from django.shortcuts import get_object_or_404, render  
 from Management.utils import encrypt_data, decrypt_data
 from django.template.loader import render_to_string
+from django.contrib import messages
 from django.http import JsonResponse
 
 # Create your views here.
@@ -100,7 +101,9 @@ def get_common_context(request):
 
 # Đảm bảo người dùng phải đăng nhập mới vào được view này
 def get_home(request):  
-    
+    if 'username' not in request.session:
+        messages.error(request, "Vui lòng đăng nhập để vào admin.")
+        return redirect('login') 
     context = get_common_context(request)
     context['current_user'] =request.session.get('username')
     
