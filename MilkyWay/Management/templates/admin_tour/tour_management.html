@@ -53,6 +53,12 @@
         /* Đưa kính lúp vào bên trong input khi mở rộng */
         top: 2px;
     }
+    #sort-select{
+        width: 250px;
+        margin-right: 10px;
+        display: inline-block;
+        cursor: pointer;
+    }
 </style>
 <div class="main-content">
     <h2 class="text-center">Quản Lý Tour Du Lịch</h2>
@@ -62,8 +68,19 @@
                 <input type="text" id="search-input" class="search-input" placeholder="Tìm kiếm...">
                 <button id="search-icon" class="search-btn"><i class="fa fa-search"></i></button>
             </div>
-            <button class="btn btn-custom add_tour_btn" data-toggle="modal" data-target="#addTourModal"><i
+            <div class="sort-options">
+                <label for="sort-select">Sắp xếp:</label>
+                <select id="sort-select" class="form-control">
+                    <option value="">Chọn phương thức sắp xếp</option>
+                    <option value="price-asc">Giá (Tăng dần)</option>
+                    <option value="price-desc">Giá (Giảm dần)</option>
+                    <option value="date-asc">Ngày đi (Tăng dần)</option>
+                    <option value="date-desc">Ngày đi (Giảm dần)</option>
+                </select>
+                <button class="btn btn-custom add_tour_btn" data-toggle="modal" data-target="#addTourModal"><i
                     class="fa fa-plus"></i> Thêm Tour</button>
+            </div>          
+            
         </div>
     </div>
 
@@ -272,6 +289,50 @@
             row.style.display = '';
         });
     }
+    // Lấy dropdown và bảng dữ liệu
+const sortSelect = document.getElementById("sort-select");
+const tourData = document.getElementById("tour-data");
+
+// Hàm sắp xếp
+function sortTours() {
+    const sortBy = sortSelect.value;
+    const rows = Array.from(tourData.getElementsByTagName("tr"));
+
+    if (sortBy === "price-asc") {
+        rows.sort((a, b) => {
+            const priceA = parseFloat(a.cells[5].textContent.replace(/[^0-9.-]+/g, ""));
+            const priceB = parseFloat(b.cells[5].textContent.replace(/[^0-9.-]+/g, ""));
+            return priceA - priceB;
+        });
+    } else if (sortBy === "price-desc") {
+        rows.sort((a, b) => {
+            const priceA = parseFloat(a.cells[5].textContent.replace(/[^0-9.-]+/g, ""));
+            const priceB = parseFloat(b.cells[5].textContent.replace(/[^0-9.-]+/g, ""));
+            return priceB - priceA;
+        });
+    } else if (sortBy === "date-asc") {
+        rows.sort((a, b) => {
+            const dateA = new Date(a.cells[1].textContent);
+            const dateB = new Date(b.cells[1].textContent);
+            return dateA - dateB;
+        });
+    } else if (sortBy === "date-desc") {
+        rows.sort((a, b) => {
+            const dateA = new Date(a.cells[1].textContent);
+            const dateB = new Date(b.cells[1].textContent);
+            return dateB - dateA;
+        });
+    }
+
+    // Gán các dòng đã sắp xếp vào bảng
+    rows.forEach(row => tourData.appendChild(row));
+}
+
+// Gắn sự kiện thay đổi cho dropdown
+sortSelect.addEventListener("change", sortTours);
+
+    
+
 
 </script>
 </script>
