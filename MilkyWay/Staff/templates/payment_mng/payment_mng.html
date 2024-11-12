@@ -67,44 +67,36 @@
 
 
         <!-- Form lọc giao dịch -->
-        <form>
+        <form method="GET" action="{% url 'transaction_filter' %}">
             <h2>Lọc giao dịch</h2>
             <hr>
             <div class="row mb-3">
                 <!-- Lọc theo mã giao dịch -->
                 <div class="col-md-3">
-                    <label for="transaction-id" class="form-label">Mã giao dịch</label>
-                    <input type="text" class="form-control" id="transaction-id" placeholder="Nhập mã giao dịch"
-                        autocomplete="off">
+                    <label for="transaction_id" class="form-label">Mã giao dịch</label>
+                    <input type="text" class="form-control" id="transaction_id" name="transaction_id"
+                        placeholder="Nhập mã giao dịch" autocomplete="off">
                 </div>
 
                 <!-- Lọc theo ngày giao dịch -->
                 <div class="col-md-3">
-                    <label for="transaction-date" class="form-label">Ngày giao dịch</label>
-                    <input type="date" class="form-control" id="transaction-date">
+                    <label for="transaction_date" class="form-label">Ngày giao dịch</label>
+                    <input type="date" class="form-control" id="transaction_date" name="transaction_date">
                 </div>
 
                 <!-- Lọc theo trạng thái giao dịch -->
                 <div class="col-md-3">
-                    <label for="transaction-status" class="form-label">Trạng thái</label>
-                    <select class="form-select" id="transaction-status">
+                    <label for="transaction_status" class="form-label">Trạng thái</label>
+                    <select class="form-select" id="transaction_status" name="transaction_status">
                         <option value="">Tất cả</option>
-                        <option value="Hoàn thành">Hoàn thành</option>
-                        <option value="Chưa thanh toán">Chưa thanh toán</option>
+                        <option value="paid">Hoàn thành</option>
+                        <option value="bookled">Chưa thanh toán</option>
+                        <option value="canclled">Đã hủy</option>
                     </select>
                 </div>
 
-                <!-- Lọc theo phương thức thanh toán -->
-                <div class="col-md-3">
-                    <label for="payment-method" class="form-label">Phương thức thanh toán</label>
-                    <select class="form-select" id="payment-method">
-                        <option value="">Tất cả</option>
-                        <option value="Chuyển khoản">Chuyển khoản</option>
-                        <option value="Tiền mặt">Tiền mặt</option>
-                        <option value="Thẻ tín dụng">Thẻ tín dụng</option>
-                        <option value="Ví điện tử">Ví điện tử</option>
-                    </select>
-                </div>
+
+
             </div>
 
             <!-- Nút lọc -->
@@ -115,7 +107,6 @@
         </form>
 
         <p class="sub-title mt-4">Danh sách tất cả các giao dịch</p>
-
         <div class="container mt-3">
             <div class="inner">
                 <table class="table table-striped">
@@ -154,7 +145,7 @@
                                             <li>Tên khách hàng: {{i.user}}</li>
                                             <li>Tên tour: {{i.tour}}</li>
                                             <li>Ngày giao dịch: {{i.booking_date}}</li>
-                                            <li id="total-payment-li">Tổng số tiền: </li>
+                                            <li>Tổng số tiền: {{i.tickets.0.amount}}</li>
                                             <li>Trạng thái: {{i.payment_method}}</li>
                                             <li>Phương thức: {{i.ticket_code}}</li>
                                         </ul>

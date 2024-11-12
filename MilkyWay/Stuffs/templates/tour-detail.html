@@ -84,17 +84,16 @@
         </div>
 		  <!--Product-->
 		  <div class="container">
-            <hr>
-            <div class="main-content">
-                <h5 class="txt-primary p-2">Mô Tả</h5>
-				<h6 class="px-2">{{ description_main }}</h6>
-                
-            </div>
-            <hr>
+			<hr>
 			<div class="main-content">
-                <h5 class="txt-primary p-2">Lịch Trình</h5>
-				<h6 class="px-2">{{ itinerary }}</h6>
-            </div>
+    			<h5 class="txt-primary p-2">Mô Tả</h5>
+    			<h6 class="px-2" style="white-space: pre-wrap;">{{ description_main }}</h6>
+			</div>
+			<hr>
+			<div class="main-content">
+    			<h5 class="txt-primary p-2">Lịch Trình</h5>
+    			<h6 class="px-2" style="white-space: pre-wrap;">{{ itinerary }}</h6>
+			</div>
 			<hr> 
 			<div class="main-content">
                 <h5 class="txt-primary p-2">Lưu ý</h5>
@@ -202,11 +201,14 @@
                 		<h6 class="px-2"> <span class="txt-primary">Số chỗ còn: </span>{{ i.remaining_seats }}</h6>
 						<h5 class="p-2"> <span class="txt-primary">Giá: </span>{{ i.price }} VND</h5>
 						<div class="container p-2">
-						<form method="POST" action="{% url 'tour_detail' tour.id %}">
-							{% csrf_token %}
-							<button class="btn btn-outline-primary">Xem thêm chi tiết</button>
-						</form>
-						</div>
+							<form method="POST" action="{% url 'book_tour' tour.id %}" class="d-inline">
+								<button class="btn btn-outline-success">Đặt tour</button>
+							</form>
+							<form method="POST" action="{% url 'tour_detail' tour.id %}" class="d-inline">
+								{% csrf_token %}
+								<button class="btn btn-outline-primary">Xem thêm chi tiết</button>
+							</form>
+						</div>						
 					</div>
 				</div>
 				{% endif %}
