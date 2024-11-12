@@ -5,6 +5,7 @@ from Management.utils import encrypt_data, decrypt_data
 from django.template.loader import render_to_string
 from django.contrib import messages
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 # Function system
@@ -113,7 +114,6 @@ def get_home(request):
 def get_payment(request):
     context = get_common_context(request)
     context['current_user'] =request.session.get('username')
-    
     context['current_email'] =decrypt_data(request.session.get('email'))
     return render(request,'payment_mng/payment_mng.html', context)
 
@@ -288,3 +288,27 @@ def ticket_details(request, booking_id):
     ]
   
     return render(request, 'ticket_mng/ticket_details.html', {'booking': booking, 'tickets': decrypted_tickets_list})
+
+
+def transaction_filter(request):
+    transaction_id = request.GET.get('transaction_id', '')
+    transaction_date = request.GET.get('transaction_date', '')
+    transaction_status = request.GET.get('transaction_status', '')
+   
+
+    # Start with all bookings
+    bookings = Booking.objects.all()
+
+    # Apply filters based on the user's input
+    if transaction_id:
+        bookings = bookings.filter(id__icontains=transaction_id)
+    
+    if transaction_date:
+        bookings = bookings.filter(booking_date=transaction_date)
+    
+    if transaction_status:
+        bookings = bookings.filter(status=transaction_status)
+    
+
+    # Return the filtered results to the template
+    return render(request, 'payment_mng/payment_mng.html', {'booking': bookings})

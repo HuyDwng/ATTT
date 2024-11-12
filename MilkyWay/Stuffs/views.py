@@ -264,7 +264,6 @@ def guide(request):
 def tour(request):
     context = get_common_context(request)
     return render(request, 'tour.html', context)
-
 def tour_detail(request, tour_id):
     context = get_common_context(request)
     # Lấy tour cần chỉnh sửa
@@ -279,7 +278,7 @@ def tour_detail(request, tour_id):
         'destination': tour.decrypted_data('destination'),
         'price': tour.decrypted_data('price'),
         'available_seats': tour.decrypted_data('available_seats'),
-        'remaining_seats': remaining_seats ,
+        'remaining_seats': remaining_seats,
         'images': images,
         'start_date': tour.start_date,
         'end_date': tour.end_date,
@@ -292,11 +291,13 @@ def tour_detail(request, tour_id):
     itinerary = description_parts[1] if len(description_parts) > 1 else ""
 
     tours = decrypted_tours()
-    images = tour.images.all()[:4] 
-    
+    images = tour.images.all()[:4]
+
+    # Định dạng lại ngày bắt đầu và kết thúc
     tour.start_date = tour.start_date.strftime("%Y-%m-%d") if tour.start_date else ""
     tour.end_date = tour.end_date.strftime("%Y-%m-%d") if tour.end_date else ""
 
+    # Cập nhật context với dữ liệu đã tách và giữ nguyên định dạng
     context.update({
         'tours': tours,
         'tour': decrypted_tour,
@@ -305,6 +306,7 @@ def tour_detail(request, tour_id):
         'images': images,
     })
     return render(request, 'tour-detail.html', context)
+
 
 def generate_ticket_code():
     import uuid
@@ -831,12 +833,20 @@ def confirm_payment(request):
     messages.success(request, "Đặt tour thành công!")
     return redirect('homepage')
 
+
+def obfuscate(data, visible_start=2, visible_end=2, is_password=False):
+    if not data:
+        return ""
+    if is_password:
+        return '*' * len(data)
+    hidden_length = len(data) - visible_start - visible_end
+    return data[:visible_start] + '*' * hidden_length + data[-visible_end:]
+
 @csrf_exempt
 def info_user(request):
     if 'username' not in request.session:
         return redirect('login')
 
-    # Lấy đối tượng người dùng hiện tại
     current_username = request.session.get('username', '')
     try:
         current_user = Users.objects.get(username=current_username)
@@ -859,12 +869,10 @@ def info_user(request):
     context['bookings'] = decrypted_bookings_list
 
     context['current_user'] = current_user.username
-    context['current_email'] = decrypt_data(current_user.email)
-    context['current_phone'] = decrypt_data(current_user.phone_number)
-    context['current_password'] = request.session.get('password', '')  # Password thường không lưu trong session, chỉ lấy ví dụ
+    context['current_email'] = obfuscate(decrypt_data(current_user.email), 3, 3)
+    context['current_phone'] = obfuscate(decrypt_data(current_user.phone_number), 3, 2)
+    context['current_password'] = obfuscate(request.session.get('password', ''), is_password=True)
     context['current_fullname'] = decrypt_data(current_user.fullname)
-    context['bookings'] = decrypted_bookings_list
-
 
     return render(request, 'info_user.html', context)
 
