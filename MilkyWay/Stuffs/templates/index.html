@@ -20,6 +20,13 @@
 </head>
 
 <body>
+			{% if messages %}
+				{% for message in messages %}
+					<div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}" role="alert">
+						{{ message }}
+					</div>
+				{% endfor %}
+			{% endif %}
     <section id = "home">
         <div class="bg_Main">
             <header class="Pr_Menu" id="Menu">
@@ -320,9 +327,9 @@
                 <!-- Slide 1 -->
                 <div class="slide">
                     <img src="{% static 'images/anh-client.jpg' %}" alt="Person 1" class="testimonial-img">
-                    <p>“Tour Hà Tiên mang đến trải nghiệm tuyệt vời với biển xanh, đảo ngọc, và văn hóa độc đáo miền Tây.”</p>
+                    <p>“Tokyo là thành phố hiện đại pha lẫn truyền thống, với đền chùa cổ kính, khu phố sôi động và ẩm thực tuyệt vời. Đây là điểm đến không thể bỏ qua cho trải nghiệm văn hóa Nhật Bản.”</p>
                     <h3>Đào Ngọc Quý</h3>
-                    <p>Hà Tiên, Gạch Giá</p>
+                    <p>Tokyo</p>
                 </div>
                 <!-- Slide 2 -->
                 <div class="slide">

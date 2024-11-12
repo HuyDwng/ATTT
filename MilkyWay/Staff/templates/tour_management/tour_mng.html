@@ -24,41 +24,48 @@
             <div class="sub_head_div">
                 <h1>Quản Lý Tour Du Lịch</h1>
             </div>
-            <div class="sub_head_div">
-                <!-- Offcanvas Sidebar -->
-                <div class="offcanvas offcanvas-start" id="demo">
-                    <div class="offcanvas-header">
-                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
-                        <a href="{% url 'login' %}" class="logout-btn"><i
-                                class="fa-solid fa-right-from-bracket"></i></a>
-                        <span class="offcanvas-title" id="offcanvas-title-1" style="color:#ffffff;">Milky</span>
-                        <span class="offcanvas-title" id="offcanvas-title-2" style="color:#00d4ff"> Way</span>
-                        <h1 class="staff-name">{{ current_user}}</h1>
-                        <h1 class="staff-mail">{{ current_email }}</h1>
-
-                    </div>
-
-                    <div class="offcanvas-body">
-                        <a href="{% url 'payment' %}">
-                            Quản lý thanh toán
-                        </a><br>
-                        <a href="{% url 'booking_mng' %}">
-                            Quản lý đặt tour
-                        </a><br>
-                    </div>
+            <nav class="navbar navbar-expand-sm navbar-dark custom-bg">
+                <div class="container-fluid">
+                    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
                 </div>
+            </nav>
+            <!-- Offcanvas Sidebar -->
+            <div class="offcanvas offcanvas-start" id="demo">
+                <div class="offcanvas-header">
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+                    <a href="{% url 'login' %}" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i></a>
+                    <span class="offcanvas-title" id="offcanvas-title-1" style="color:#ffffff;">Milky</span>
+                    <span class="offcanvas-title" id="offcanvas-title-2" style="color:#00d4ff"> Way</span>
+                    <h1 class="staff-name">{{ current_user}}</h1>
+                    <h1 class="staff-mail">{{ current_email }}</h1>
 
-                <!-- Button to open the offcanvas sidebar -->
-                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
+                </div>
+                <div class="offcanvas-body">
+                    <a href="{% url 'payment' %}">
+                        Quản lý thanh toán
+                    </a><br>
+                    <a href="{% url 'booking_mng' %}">
+                        Quản lý đặt tour
+                    </a><br>
+                </div>
             </div>
+
         </div>
 
         <a class="add-tour" href="{% url 'add_tour' %}">Thêm Tour Mới</a>
 
-        <div id="main">
+        <!-- Tìm kiếm và reset -->
+        <div class="search-container">
+            <input type="text" id="searchLocation" placeholder="Địa Điểm">
+            <input type="number" id="searchSeats" placeholder="Tổng Số Vé">
+            <input type="number" id="searchPrice" placeholder="Giá Tiền">
+            <button id="searchBtn" class="btn btn-primary">Tìm kiếm</button>
+            <button id="resetBtn" class="btn btn-secondary">Reset</button>
+        </div>
 
+        <div id="main">
             <table id="tour-table">
                 <thead>
                     <tr>
@@ -72,24 +79,23 @@
                     </tr>
                 </thead>
                 <tbody id="tour-data">
-                    {%for i in tour %}
+                    {% for i in tour %}
                     <tr>
-                        <td>{{i.name}}</td>
-                        <td>{{i.start_date}}</td>
-                        <td>{{i.end_date}}</td>
-                        <td>{{i.available_seats}}</td>
-                        <td>{{i.remaining_seats}}</td>
-                        <td>{{i.price}}</td>
+                        <td>{{ i.name }}</td>
+                        <td>{{ i.start_date }}</td>
+                        <td>{{ i.end_date }}</td>
+                        <td>{{ i.available_seats }}</td>
+                        <td>{{ i.remaining_seats }}</td>
+                        <td>{{ i.price }}</td>
                         <td>
                             <a class="edit-btn" href="{% url 'tour_edit' tour_id=i.id %}">Sửa</a>
                             <a class="delete-btn" href="{% url 'delete_tour' tour_id=i.id %}">Xóa</a>
-                            <a class="more-info-btn" href="{%url 'tour_detail' tour_id=i.id%}">Xem chi tiết</a>
+                            <a class="more-info-btn" href="{% url 'tour_detail' tour_id=i.id %}">Xem chi tiết</a>
                         </td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
-
         </div>
     </div>
 
@@ -99,18 +105,51 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const deleteButtons = document.querySelectorAll('.delete-btn');
+            // Chức năng tìm kiếm
+            document.getElementById('searchBtn').addEventListener('click', function () {
+                const locationValue = document.getElementById('searchLocation').value.toLowerCase();
+                const seatsValue = document.getElementById('searchSeats').value;
+                const priceValue = document.getElementById('searchPrice').value;
 
-            deleteButtons.forEach(button => {
+                document.querySelectorAll('#tour-data tr').forEach(row => {
+                    const locationText = row.cells[0].textContent.toLowerCase();
+                    const seatsText = row.cells[3].textContent;
+                    const priceText = row.cells[5].textContent;
+
+                    const isMatch = (!locationValue || locationText.includes(locationValue)) &&
+                        (!seatsValue || seatsText == seatsValue) &&
+                        (!priceValue || priceText == priceValue);
+
+                    row.style.display = isMatch ? '' : 'none';
+                });
+            });
+
+            // Chức năng reset
+            document.getElementById('resetBtn').addEventListener('click', function () {
+                document.getElementById('searchLocation').value = '';
+                document.getElementById('searchSeats').value = '';
+                document.getElementById('searchPrice').value = '';
+
+                document.querySelectorAll('#tour-data tr').forEach(row => {
+                    row.style.display = '';
+                });
+            });
+
+            // Xác nhận xóa tour
+            document.querySelectorAll('.delete-btn').forEach(button => {
                 button.addEventListener('click', function (event) {
-                    const confirmDelete = confirm('Bạn có chắc chắn muốn xóa tour này không?');
-                    if (!confirmDelete) {
-                        event.preventDefault(); // Hủy thao tác xóa nếu người dùng không xác nhận
+                    event.preventDefault(); // Ngăn chặn hành động mặc định để xử lý xác nhận xóa
+                    const confirmDelete = confirm("Bạn có chắc chắn muốn xóa tour này không?");
+                    if (confirmDelete) {
+                        window.location.href = this.href; // Chuyển đến URL xóa nếu xác nhận
                     }
                 });
             });
         });
     </script>
+
+
+
 </body>
 
 </html>
