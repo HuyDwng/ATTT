@@ -16,5 +16,6 @@ urlpatterns = [
     path('image/change/<int:image_id>/', change_image, name='change_image'),  # Thêm đường dẫn này
     path('delete_tour/<int:tour_id>/', views.delete_tour, name='delete_tour'),
     path('ticket_details/<int:booking_id>/', views.ticket_details, name='ticket_details'),
+    path('transactions/', views.transaction_filter, name='transaction_filter'),
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
