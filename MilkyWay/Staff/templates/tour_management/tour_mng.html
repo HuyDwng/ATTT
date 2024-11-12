@@ -24,16 +24,34 @@
             <div class="sub_head_div">
                 <h1>Quản Lý Tour Du Lịch</h1>
             </div>
-            <div class="sub_head_div">
-                <!-- Offcanvas Sidebar -->
-                <div class="offcanvas offcanvas-start" id="demo">
-                    <!-- Sidebar content -->
+            <nav class="navbar navbar-expand-sm navbar-dark custom-bg">
+                <div class="container-fluid">
+                    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
                 </div>
-                <!-- Button to open the offcanvas sidebar -->
-                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
+            </nav>
+            <!-- Offcanvas Sidebar -->
+            <div class="offcanvas offcanvas-start" id="demo">
+                <div class="offcanvas-header">
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+                    <a href="{% url 'login' %}" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i></a>
+                    <span class="offcanvas-title" id="offcanvas-title-1" style="color:#ffffff;">Milky</span>
+                    <span class="offcanvas-title" id="offcanvas-title-2" style="color:#00d4ff"> Way</span>
+                    <h1 class="staff-name">{{ current_user}}</h1>
+                    <h1 class="staff-mail">{{ current_email }}</h1>
+
+                </div>
+                <div class="offcanvas-body">
+                    <a href="{% url 'payment' %}">
+                        Quản lý thanh toán
+                    </a><br>
+                    <a href="{% url 'booking_mng' %}">
+                        Quản lý đặt tour
+                    </a><br>
+                </div>
             </div>
+
         </div>
 
         <a class="add-tour" href="{% url 'add_tour' %}">Thêm Tour Mới</a>
