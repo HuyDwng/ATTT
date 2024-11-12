@@ -21,6 +21,7 @@ from datetime import timedelta
 from django.utils import timezone
 from django.http import JsonResponse
 from django.contrib.auth import authenticate
+from django.core.mail import send_mail
 # Function system
 def decrypted_tours():
     tour = Tour.objects.all()
@@ -812,16 +813,34 @@ def confirm_payment(request):
                 quantity=1,
                 ticket_status='issued'
             )
+        subject = "Xác nhận đặt tour thành công"
+        message = f"Chào {decrypt_data(user.fullname)},\n\nBạn đã đặt thành công tour {decrypt_data(tour.name)} với mã vé {ticket_code}.\nSố lượng vé: {quantity}\nTổng chi phí: {total_amount} VND\n\nCảm ơn bạn đã tin tưởng sử dụng dịch vụ của chúng tôi!"
+        recipient_email = user.decrypted_data('email')
+        send_mail(
+        subject,
+        message,
+        settings.EMAIL_HOST_USER,
+        [recipient_email],
+        fail_silently=False,
+    )
     del request.session['temp_booking']
     messages.success(request, "Đặt tour thành công!")
     return redirect('homepage')
+
+
+def obfuscate(data, visible_start=2, visible_end=2, is_password=False):
+    if not data:
+        return ""
+    if is_password:
+        return '*' * len(data)
+    hidden_length = len(data) - visible_start - visible_end
+    return data[:visible_start] + '*' * hidden_length + data[-visible_end:]
 
 @csrf_exempt
 def info_user(request):
     if 'username' not in request.session:
         return redirect('login')
 
-    # Lấy đối tượng người dùng hiện tại
     current_username = request.session.get('username', '')
     try:
         current_user = Users.objects.get(username=current_username)
@@ -844,12 +863,10 @@ def info_user(request):
     context['bookings'] = decrypted_bookings_list
 
     context['current_user'] = current_user.username
-    context['current_email'] = decrypt_data(current_user.email)
-    context['current_phone'] = decrypt_data(current_user.phone_number)
-    context['current_password'] = request.session.get('password', '')  # Password thường không lưu trong session, chỉ lấy ví dụ
+    context['current_email'] = obfuscate(decrypt_data(current_user.email), 3, 3)
+    context['current_phone'] = obfuscate(decrypt_data(current_user.phone_number), 3, 2)
+    context['current_password'] = obfuscate(request.session.get('password', ''), is_password=True)
     context['current_fullname'] = decrypt_data(current_user.fullname)
-    context['bookings'] = decrypted_bookings_list
-
 
     return render(request, 'info_user.html', context)
 
