@@ -363,3 +363,29 @@ def weekly_tour_purchases():
     counts = [entry['count'] for entry in data]
 
     return dates, counts
+
+def transaction_filter(request):
+    transaction_id = request.GET.get('transaction_id', '')
+    user_name = request.GET.get('user_name', '')
+    transaction_status = request.GET.get('transaction_status', '')
+    user_t = Users.objects.filter(username = user_name).first()
+    # Start with all bookings
+    bookings = Booking.objects.all()
+
+    # Apply filters based on the user's input
+    if transaction_id:
+        bookings = bookings.filter(id__exact=transaction_id)
+    
+    if transaction_status:
+        bookings = bookings.filter(status=transaction_status).all()
+    
+    if len(user_name) > 0:
+        if user_t:
+            bookings = bookings.filter(user=user_t).all()
+        else:
+            bookings = []
+
+
+    
+    # Return the filtered results to the template
+    return render(request, 'admin_tour/transaction_management.html', {'booking': bookings,})

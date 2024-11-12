@@ -20,4 +20,6 @@ urlpatterns = [
     path('management/tour/add_images/<int:tour_id>/', add_images_admin, name='add_images_admin'),
     path('management/image/change/<int:image_id>/', change_image_admin, name='change_image_admin'),
     path('management/delete_transaction/<int:booking_id>/', views.delete_transaction, name='delete_transaction'),
+    path('managemant/transaction_filtering', views.transaction_filter, name='transaction_filter'),
+
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
