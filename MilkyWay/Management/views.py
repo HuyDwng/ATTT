@@ -164,7 +164,7 @@ def organized_tour(request):
   context = get_common_context(request)
   return render(request, 'admin_tour/organized_tour.html', context)
 
-def tour_management(request):
+def tour_management_admin(request):
   context = get_common_context(request)
   return render(request, 'admin_tour/tour_management.html', context)
 
@@ -216,7 +216,7 @@ def create_tour(request):
         for idx, image in enumerate(images):
             Images.objects.create(tour=tour, images=image, position=idx + 1)
 
-        return redirect('tour_management')
+        return redirect('tour_management_admin')
 
     context = {'range': range(1, 5)}
     return render(request, 'admin_tour/create_tour.html', context)
@@ -295,7 +295,7 @@ def edit_tour(request, tour_id):
         # Lưu lại tour sau khi chỉnh sửa
         tour.save()
 
-        return redirect('tour_management')  # Chuyển hướng về trang quản lý tour sau khi lưu
+        return redirect('tour_management_admin')  # Chuyển hướng về trang quản lý tour sau khi lưu
 
     # Nếu là GET, render form với dữ liệu hiện tại
 
@@ -313,7 +313,7 @@ def delete_tour_admin(request, tour_id):
     context = get_common_context(request)
     tour = get_object_or_404(Tour, id=tour_id)
     tour.delete()
-    return redirect('tour_management')
+    return redirect('tour_management_admin')
 
 def delete_image(request, image_id):
     image = get_object_or_404(Images, id=image_id)  # Tìm ảnh theo ID
