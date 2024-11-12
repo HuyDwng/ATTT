@@ -26,6 +26,14 @@ stripe.api_key = STRIPE_SECRET_KEY
 #ecryption
 FERNET_KEY = b'7bjaG8Yisy7kFNSfFz1dDeaGbMtCLn_xzM5KOiaVMIE='
 
+#email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'kiet7784@gmail.com'
+EMAIL_HOST_PASSWORD = 'mdcw dwks qpwv lrod'
+
 GOOGLE_OAUTH_CLIENT_ID = os.environ.get('GOOGLE_OAUTH_CLIENT_ID')
 if not GOOGLE_OAUTH_CLIENT_ID:
     raise ValueError(

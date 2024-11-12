@@ -172,7 +172,6 @@ body {
     background-color: var(--main_color);
     padding: 5px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
@@ -256,7 +255,7 @@ th {
 }
 
 .add-tour {
-    margin: 20px;
+    margin: 1rem 1rem 1rem 2rem;
     box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.2);
 
 }
@@ -466,4 +465,61 @@ footer {
 
 .logout-btn:hover {
     color: #00d4ff;
+}
+
+/* Tạo bố cục căn giữa và khoảng cách giữa các phần tử trong container */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+/* Thiết kế cho các trường nhập */
+.search-container input[type="text"],
+.search-container input[type="number"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+    transition: border-color 0.3s ease;
+}
+
+.search-container input[type="text"]:focus,
+.search-container input[type="number"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Nút tìm kiếm và reset */
+.search-container .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Nút tìm kiếm (màu xanh) */
+.search-container .btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.search-container .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Nút reset (màu xám) */
+.search-container .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.search-container .btn-secondary:hover {
+    background-color: #5a6268;
 }

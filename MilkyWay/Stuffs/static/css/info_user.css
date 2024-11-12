@@ -35,7 +35,9 @@ body {
     text-decoration: none;
     font-weight: bold;
 }
-
+.sidebar a span{
+    font-family: Arial, sans-serif;
+}
 .sidebar a:hover {
     color: #007bff;
 }
@@ -45,7 +47,14 @@ body {
     padding: 20px;
     margin-left: 20px;
 }
-
+.content .log_out{
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+.content .log_out:hover{
+    color: #007bff;
+}
 .content h1 {
     font-size: 24px;
     margin-bottom: 20px;
@@ -142,4 +151,31 @@ body {
     font-size: 18px;
     color: #333;
     cursor: pointer;
+}
+.table-wrapper {
+    width: 100%;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Giữ độ rộng cố định cho các cột */
+}
+
+.title-booking th {
+    padding: 8px;
+    background-color: #f3f3f3;
+    text-align: center;
+    font-weight: bold;
+}
+
+.table-scroll {
+    max-height: 300px; /* Đặt chiều cao tối đa cho phần cuộn của tbody */
+    overflow-y: auto;
+}
+
+#transactionList td {
+    text-align: center;
+    padding: 8px;
+    border-top: 1px solid #ddd;
 }
