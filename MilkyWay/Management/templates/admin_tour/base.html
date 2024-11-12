@@ -22,15 +22,17 @@
 
     <div class="header">
         <a class="navbar-brand" href="{% url 'tour-list' %}"><strong><i class="fa-solid fa-plane-departure"></i> TOUR DU
-                LỊCH</strong></a>
+            LỊCH</strong></a>
         <div class="options">
-            Chào mừng, {{current_user}} | <a href="{% url 'register' %}">Đổi mật khẩu</a> |<a
-                href="{% url 'login' %}">Đăng xuất</a>
+            Xin chào, {{current_user}} 
+            <a href="{% url 'register' %}">Đổi mật khẩu</a> 
+            <a href="{% url 'login' %}">Đăng xuất</a>
         </div>
     </div>
 
     <div class="containe">
         <div class="sidebar">
+            
             <h3>QUẢN LÝ TÀI KHOẢN</h3>
             <ul>
 

@@ -27,6 +27,7 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
+    height: 135vh;	
 }
 
 .sidebar h3 {
@@ -117,21 +118,28 @@ body {
 .navbar-brand{
     left: 0;
     top: 0;
+    width: 250px;
     background-color: #5c9;
     padding: 20px;
+    align-items: center;
     position: absolute;
-    width: 250px !important;
-    text-align: center;
+    display: flex;
+    text-align: center !important;
     font-size: 24px;
-    width: 260px;
     text-align: left;
-    height: 60px !important;
+    height: 80px !important;
     font-weight: 700;
+    
 }
 
 .options a {
     margin-left: 10px;
     margin-right: 10px;
+    border-radius: 10px;
+    border: #000 1px solid;
+    padding: 5px 10px;
+    background-color: wheat;
+    display: inline-block;
 }
 
 .board .panel {
