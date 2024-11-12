@@ -419,7 +419,6 @@ a {
 #tour-data td a{
     color: #000;
     text-decoration: none;
-    
 }
 .form-select{
     
@@ -460,3 +459,12 @@ a {
     color: black !important;
 }
 
+#transactionList{
+    padding: 0.5rem;
+    background-color: #f0fee3;
+}
+
+#transactionList td {
+    color: #000;
+    text-decoration: none;
+}

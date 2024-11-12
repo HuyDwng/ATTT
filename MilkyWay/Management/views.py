@@ -113,6 +113,9 @@ def get_common_context(request):
 
 
 def members(request):
+    if 'username' not in request.session:
+        messages.error(request, "Vui lòng đăng nhập để vào admin.")
+        return redirect('login') 
     context = get_common_context(request)
     dates, counts = weekly_tour_purchases()
     context['date','counts'] =  dates, counts
