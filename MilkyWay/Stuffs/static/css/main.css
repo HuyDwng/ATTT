@@ -540,7 +540,7 @@ body {
 }
 .package-card{
     width: 25%;
-    height: 630px;
+    height: 640px;
     margin-bottom: 10px;
     box-shadow:0px 0px 5px 0px rgb(23, 23, 23); /*left right blur scale color*/ ;
     background-color: white;
@@ -556,6 +556,9 @@ body {
     height: 300px;
     background-repeat: no-repeat;
     background-size: cover;
+}
+.packages-info{
+    height: 90%;
 }
 .packages-info hr{
     margin-left: 15px;
@@ -582,9 +585,12 @@ body {
     padding-right: 20px;
     padding-bottom:5px ;
 }
-.detail-info .btn-BookTour button{
-    margin-top: 35px;
-    margin-left: 30px;
+.btn-BookTour{
+    margin-right: 20px;
+    height: 10%;
+    float: right;
+}
+.btn-BookTour button{
     height: 70%;
     background-color: #00d4ff;
     border-radius: 6px;
@@ -592,12 +598,12 @@ body {
     border: none;
     box-shadow: 0px 0px 3px 0px rgb(117, 116, 116); /*left right blur scale color*/
 }
-.detail-info .btn-BookTour button a{
-    padding: 15px 20px 15px 20px;
+.btn-BookTour button a{
+    padding: 15px 25px 15px 25px;
     text-decoration: none;
     color: #fff;
 }
-.detail-info .btn-BookTour button:hover{
+.btn-BookTour button:hover{
     transition: all 0.5s ease; /* Hiệu ứng chuyển đổi khi hover */
     background-color: #03bdaa;
     box-shadow: 0px 0px 15px 0px rgb(78, 77, 77); /*left right blur scale color*/
