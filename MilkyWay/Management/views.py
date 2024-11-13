@@ -179,9 +179,7 @@ def transaction_management(request):
 def user_management(request):
   context = get_common_context(request)
   return render(request, 'admin_tour/user_management.html', context)
-
-def create_tour(request):
-    context = get_common_context(request)
+def createtour(request):
     if request.method == 'POST':
         # Nhận thông tin tour từ form
         name = request.POST.get('tour_name')
@@ -196,10 +194,10 @@ def create_tour(request):
         # Thu thập mô tả địa điểm từ các trường itinerary_0, itinerary_1, ...
         descriptions = []
         for key in request.POST:
-            if key.startswith('itinerary_'):
+            if key.startswith('itinerary'):
                 descriptions.append(request.POST.get(key))
-        
-        description = '*'.join(descriptions)  # Ghép các mô tả lại với dấu `*` phân cách
+
+        description = ''.join(descriptions)  # Ghép các mô tả lại với dấu `` phân cách
 
         # Lưu thông tin Tour
         tour = Tour(
@@ -220,7 +218,7 @@ def create_tour(request):
         for idx, image in enumerate(images):
             Images.objects.create(tour=tour, images=image, position=idx + 1)
 
-        return redirect('tour_management_admin', context)
+        return redirect('tour_management_admin')
 
     context = {'range': range(1, 5)}
     return render(request, 'admin_tour/create_tour.html', context)
@@ -240,7 +238,7 @@ def edit_user(request, user_id):
         }
     
     if request.method == 'POST':
-        user.name = request.POST.get('username')
+        user.username = request.POST.get('username')
         user.email = request.POST.get('email')
         user.password = request.POST.get('password')
         user.fullname = request.POST.get('fullname')
