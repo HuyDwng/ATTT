@@ -1,5 +1,12 @@
 {% extends "admin_tour/base.html" %}
 {%block content%}
+<style>
+    .image-gallery input{
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 30px;
+    }
+</style>
         <div class="main-content">
             <div id="page-inner">
                 <div class="row">
@@ -84,10 +91,12 @@
                                         <form action="{% url 'change_image_admin' image.id %}" method="POST" enctype="multipart/form-data"
                                             style="display:inline;">
                                             {% csrf_token %}
-                                            <input type="file" name="new_image" accept="image/*">
+                                        
                                             <button type="submit" class="btn btn-primary">Thay Đổi</button>
+                                            <input type="file" name="new_image" accept="image/*">
                                         </form>
                                     </li>
+                                    
                                     {% endfor %}
                                 </ul>
                             </div>
