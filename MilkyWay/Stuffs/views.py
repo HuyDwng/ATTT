@@ -22,6 +22,7 @@ from django.utils import timezone
 from django.http import JsonResponse
 from django.contrib.auth import authenticate
 from django.core.mail import send_mail
+from django.contrib import messages
 # Function system
 def decrypted_tours():
     tour = Tour.objects.all()
@@ -728,9 +729,12 @@ def book_tour(request, tour_id):
             messages.error(request, "Số lượng vé phải lớn hơn 0.")
             return redirect('tour_detail', tour_id=tour_id)
         if quantity > remaining_seats:
-            messages.error(request, "Số vé đặt vượt quá số chỗ còn lại.")
+            messages.success(request, "Số vé đặt vượt quá số chỗ còn lại.")
             return redirect('tour_detail', tour_id=tour_id)
-
+        max_total_amount = 99999999  
+        if (total_amount*quantity) > max_total_amount:
+            messages.success(request, "Tổng số tiền vượt quá giới hạn cho phép của Stripe.")
+            return redirect('tour_detail', tour_id=tour_id)
         # Tạo session thanh toán Stripe
         success_url = request.build_absolute_uri(reverse('confirm_payment')) 
         cancel_url = request.build_absolute_uri(reverse('tour_detail', args=[tour_id]))  

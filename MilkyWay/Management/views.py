@@ -364,7 +364,7 @@ def weekly_tour_purchases():
 
     return dates, counts
 
-def transaction_filter(request):
+def transaction_filtering(request):
     transaction_id = request.GET.get('transaction_id', '')
     user_name = request.GET.get('user_name', '')
     transaction_status = request.GET.get('transaction_status', '')
@@ -375,17 +375,73 @@ def transaction_filter(request):
     # Apply filters based on the user's input
     if transaction_id:
         bookings = bookings.filter(id__exact=transaction_id)
-    
+        filter_bookings = [
+        {   
+            'id': t.id,
+            'tour': t.tour,
+            'user': t.user,
+            'status': t.status,
+            'ticket_code': t.decrypted_data('ticket_code'),
+            'payment_method': t.payment.payment_method if hasattr(t, 'payment') else "No payment method",
+            'tickets': [
+                {
+                    'quantity': int(decrypt_data(ticket.quantity)),
+                    'amount': int(decrypt_data(ticket.quantity)) * int(decrypt_data(t.tour.price)),
+                }
+                for ticket in t.ticket.all()
+            ],
+            'price': t.tour.price,
+        }
+        for t in bookings
+    ]
     if transaction_status:
         bookings = bookings.filter(status=transaction_status).all()
+        filter_bookings = [
+        {   
+            'id': t.id,
+            'tour': t.tour,
+            'user': t.user,
+            'status': t.status,
+            'ticket_code': t.decrypted_data('ticket_code'),
+            'payment_method': t.payment.payment_method if hasattr(t, 'payment') else "No payment method",
+            'tickets': [
+                {
+                    'quantity': int(decrypt_data(ticket.quantity)),
+                    'amount': int(decrypt_data(ticket.quantity)) * int(decrypt_data(t.tour.price)),
+                }
+                for ticket in t.ticket.all()
+            ],
+            'price': t.tour.price,
+        }
+        for t in bookings
+    ]
     
     if len(user_name) > 0:
         if user_t:
             bookings = bookings.filter(user=user_t).all()
+            filter_bookings = [
+        {   
+            'id': t.id,
+            'tour': t.tour,
+            'user': t.user,
+            'status': t.status,
+            'ticket_code': t.decrypted_data('ticket_code'),
+            'payment_method': t.payment.payment_method if hasattr(t, 'payment') else "No payment method",
+            'tickets': [
+                {
+                    'quantity': int(decrypt_data(ticket.quantity)),
+                    'amount': int(decrypt_data(ticket.quantity)) * int(decrypt_data(t.tour.price)),
+                }
+                for ticket in t.ticket.all()
+            ],
+            'price': t.tour.price,
+        }
+        for t in bookings
+    ]
         else:
             bookings = []
 
 
     
     # Return the filtered results to the template
-    return render(request, 'admin_tour/transaction_management.html', {'booking': bookings,})
+    return render(request, 'admin_tour/transaction_management.html', {'booking': filter_bookings,})

@@ -204,5 +204,6 @@ class Images(models.Model):
         return url
 
     def __str__(self):
-        return f"{self.tour.name}_image{self.position}" 
+        name = decrypt_data(self.tour.name) 
+        return f"{name}_image{self.position}" 
     
