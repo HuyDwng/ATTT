@@ -282,7 +282,6 @@ def ticket_details(request, booking_id):
             'ticket_code': t.decrypted_data('ticket_code'),
             'quantity': t.decrypted_data('quantity'),
             'ticket_status': t.ticket_status,
-            'issued_date': t.issued_date
         }
         for t in tickets
     ]

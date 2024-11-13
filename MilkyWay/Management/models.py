@@ -24,7 +24,6 @@ class Users(models.Model):
     role = models.CharField(max_length=100, choices=ROLES, default='customer')  # Phân quyền
     phone_number = models.CharField(max_length=100)
     date_joined = models.DateTimeField(auto_now_add=True, auto_created=True)
-    # is_actived = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
         # Mã hóa các trường nhạy cảm trước khi lưu
@@ -171,7 +170,6 @@ class Tickets(models.Model):
     ]  
     booking = models.ForeignKey(Booking, related_name='ticket', on_delete=models.CASCADE, null=True, blank=True) 
     ticket_code = models.CharField(max_length=100)
-    # issued_date = models.DateTimeField(auto_now_add=True, auto_created=True)
     quantity = models.CharField(max_length=100)
     ticket_status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='issued')  # Trạng thái vé
 
@@ -206,5 +204,6 @@ class Images(models.Model):
         return url
 
     def __str__(self):
-        return f"{self.tour.name}_image{self.position}" 
+        name = decrypt_data(self.tour.name) 
+        return f"{name}_image{self.position}" 
     
